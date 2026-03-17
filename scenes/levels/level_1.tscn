@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://c5qfxvv5qgugj"]
+
+[ext_resource type="PackedScene" uid="uid://cwc4lh0bobfkx" path="res://scenes/level_manager/level_manager.tscn" id="1_6iamk"]
+[ext_resource type="PackedScene" uid="uid://ccxyg3h1o17tw" path="res://scenes/enemies/crab.tscn" id="3_6761a"]
+[ext_resource type="PackedScene" uid="uid://cgg34r2ir4fn3" path="res://scenes/level_geom/enemy_formation.tscn" id="3_x42e6"]
+[ext_resource type="PackedScene" uid="uid://uu3ea6khn2cp" path="res://scenes/enemies/octopus.tscn" id="4_6761a"]
+
+[node name="Level_1" type="Node2D" unique_id=756359994 groups=["LEVEL_NODE"]]
+metadata/_edit_lock_ = true
+
+[node name="EnemyFormation" parent="." unique_id=965894497 instance=ExtResource("3_x42e6")]
+metadata/_edit_lock_ = true
+
+[node name="Crab" parent="EnemyFormation" unique_id=1291850462 instance=ExtResource("3_6761a")]
+position = Vector2(142, 192)
+
+[node name="Crab2" parent="EnemyFormation" unique_id=796347463 instance=ExtResource("3_6761a")]
+position = Vector2(230, 192)
+
+[node name="Crab3" parent="EnemyFormation" unique_id=939384373 instance=ExtResource("3_6761a")]
+position = Vector2(318, 192)
+
+[node name="Crab4" parent="EnemyFormation" unique_id=1892017361 instance=ExtResource("3_6761a")]
+position = Vector2(406, 192)
+
+[node name="Crab5" parent="EnemyFormation" unique_id=99372329 instance=ExtResource("3_6761a")]
+position = Vector2(494, 192)
+
+[node name="Crab6" parent="EnemyFormation" unique_id=1468288282 instance=ExtResource("3_6761a")]
+position = Vector2(582, 192)
+
+[node name="Crab7" parent="EnemyFormation" unique_id=1939042890 instance=ExtResource("3_6761a")]
+position = Vector2(670, 192)
+
+[node name="Crab8" parent="EnemyFormation" unique_id=1052810361 instance=ExtResource("3_6761a")]
+position = Vector2(758, 192)
+
+[node name="Crab9" parent="EnemyFormation" unique_id=1100332441 instance=ExtResource("3_6761a")]
+position = Vector2(846, 192)
+
+[node name="Crab10" parent="EnemyFormation" unique_id=436756131 instance=ExtResource("3_6761a")]
+position = Vector2(934, 192)
+
+[node name="Crab11" parent="EnemyFormation" unique_id=472107047 instance=ExtResource("3_6761a")]
+position = Vector2(142, 128)
+
+[node name="Crab12" parent="EnemyFormation" unique_id=1019829603 instance=ExtResource("3_6761a")]
+position = Vector2(230, 128)
+
+[node name="Crab13" parent="EnemyFormation" unique_id=1441247746 instance=ExtResource("3_6761a")]
+position = Vector2(318, 128)
+
+[node name="Crab14" parent="EnemyFormation" unique_id=1235846422 instance=ExtResource("3_6761a")]
+position = Vector2(406, 128)
+
+[node name="Crab15" parent="EnemyFormation" unique_id=881667599 instance=ExtResource("3_6761a")]
+position = Vector2(494, 128)
+
+[node name="Crab16" parent="EnemyFormation" unique_id=1230207263 instance=ExtResource("3_6761a")]
+position = Vector2(582, 128)
+
+[node name="Crab17" parent="EnemyFormation" unique_id=1701047678 instance=ExtResource("3_6761a")]
+position = Vector2(670, 128)
+
+[node name="Crab18" parent="EnemyFormation" unique_id=2136998145 instance=ExtResource("3_6761a")]
+position = Vector2(758, 128)
+
+[node name="Crab19" parent="EnemyFormation" unique_id=569581853 instance=ExtResource("3_6761a")]
+position = Vector2(846, 128)
+
+[node name="Crab20" parent="EnemyFormation" unique_id=1920734244 instance=ExtResource("3_6761a")]
+position = Vector2(934, 128)
+
+[node name="Crab21" parent="EnemyFormation" unique_id=639119212 instance=ExtResource("3_6761a")]
+position = Vector2(142, 64)
+
+[node name="Crab22" parent="EnemyFormation" unique_id=1864140214 instance=ExtResource("3_6761a")]
+position = Vector2(230, 64)
+
+[node name="Crab23" parent="EnemyFormation" unique_id=2119725374 instance=ExtResource("3_6761a")]
+position = Vector2(318, 64)
+
+[node name="Crab24" parent="EnemyFormation" unique_id=1645526900 instance=ExtResource("3_6761a")]
+position = Vector2(406, 64)
+
+[node name="Crab25" parent="EnemyFormation" unique_id=2019136976 instance=ExtResource("3_6761a")]
+position = Vector2(494, 64)
+
+[node name="Crab26" parent="EnemyFormation" unique_id=514659607 instance=ExtResource("3_6761a")]
+position = Vector2(582, 64)
+
+[node name="Crab27" parent="EnemyFormation" unique_id=319184195 instance=ExtResource("3_6761a")]
+position = Vector2(670, 64)
+
+[node name="Crab28" parent="EnemyFormation" unique_id=1174462261 instance=ExtResource("3_6761a")]
+position = Vector2(758, 64)
+
+[node name="Crab29" parent="EnemyFormation" unique_id=376800220 instance=ExtResource("3_6761a")]
+position = Vector2(846, 64)
+
+[node name="Crab30" parent="EnemyFormation" unique_id=2124485314 instance=ExtResource("3_6761a")]
+position = Vector2(934, 64)
+
+[node name="Octopus" parent="EnemyFormation" unique_id=130954596 instance=ExtResource("4_6761a")]
+position = Vector2(152, 0)
+
+[node name="Octopus2" parent="EnemyFormation" unique_id=1177155102 instance=ExtResource("4_6761a")]
+position = Vector2(248, 0)
+
+[node name="Octopus3" parent="EnemyFormation" unique_id=294484068 instance=ExtResource("4_6761a")]
+position = Vector2(344, 0)
+
+[node name="Octopus4" parent="EnemyFormation" unique_id=1704942049 instance=ExtResource("4_6761a")]
+position = Vector2(440, 0)
+
+[node name="Octopus5" parent="EnemyFormation" unique_id=1984892521 instance=ExtResource("4_6761a")]
+position = Vector2(440, 0)
+
+[node name="Octopus6" parent="EnemyFormation" unique_id=752453169 instance=ExtResource("4_6761a")]
+position = Vector2(536, 0)
+
+[node name="Octopus7" parent="EnemyFormation" unique_id=32645792 instance=ExtResource("4_6761a")]
+position = Vector2(632, 0)
+
+[node name="Octopus8" parent="EnemyFormation" unique_id=1056765592 instance=ExtResource("4_6761a")]
+position = Vector2(728, 0)
+
+[node name="Octopus9" parent="EnemyFormation" unique_id=1110284327 instance=ExtResource("4_6761a")]
+position = Vector2(824, 0)
+
+[node name="Octopus10" parent="EnemyFormation" unique_id=1831614579 instance=ExtResource("4_6761a")]
+position = Vector2(920, 0)
+
+[node name="Octopus11" parent="EnemyFormation" unique_id=384719038 instance=ExtResource("4_6761a")]
+position = Vector2(920, 0)
+
+[node name="LevelManager" parent="." unique_id=1578700785 groups=["LEVEL_MANAGER"] instance=ExtResource("1_6iamk")]
+enemy_start_speed = 20.0
+enemy_max_speed = 90.0

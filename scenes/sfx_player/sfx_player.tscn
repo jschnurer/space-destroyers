@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://b4i7li1ujm3os"]
+
+[ext_resource type="Script" uid="uid://icrxbnyxykcj" path="res://scenes/sfx_player/sfx_player.gd" id="1_id3ju"]
+
+[node name="SFXPlayer" type="Node" unique_id=502581797]
+process_mode = 3
+script = ExtResource("1_id3ju")
+channels = 6

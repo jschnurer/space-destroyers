@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dj5a5icrd2npf"]
+
+[node name="EnemiesHolder" type="Node2D" unique_id=1881422378]
+
+[node name="PlayAreaReference" type="ReferenceRect" parent="." unique_id=2136430469]
+offset_left = 410.0
+offset_right = 1510.0
+offset_bottom = 1080.0
+border_width = 6.0

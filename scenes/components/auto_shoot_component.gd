@@ -1,0 +1,69 @@
+extends Node2D
+class_name AutoShootComponent
+
+## Reload component to stagger shots.
+@export var reload_component: ReloadComponent
+## The bullet scene to spawn.
+@export var bullet_scene: PackedScene
+## The color to modulate the bullet.
+@export var shot_modulate: Color
+
+@export_group("Behavior")
+## The direction the shot will travel.
+@export var shot_direction: Vector2
+## The speed the shot will travel.
+@export var shot_speed: float
+## Damage dealt by the shot.
+@export var shot_damage: float
+## If true, shot_direction is ignored and the bullet will aim toward the player's current position.
+@export var shoot_at_player := false
+
+@export_group("Collision")
+@export_flags_2d_physics var shot_collision_layer: int
+@export_flags_2d_physics var shot_collision_mask: int
+
+@export_group("Delay")
+## If true, the first shot will be delayed by a random amount of time.
+@export var delay_initial_shot := true
+## Min delay before firing if delay_initial_shot is true.
+@export_range(0.0, 60.0) var min_delay := 0.0
+## Max delay before firing if delay_initial_shot is true.
+@export_range(0.0, 60.0) var max_delay := 0.0
+
+@onready var delay_timer: Timer = $DelayTimer
+
+func _ready() -> void:
+	reload_component.reload_complete.connect(_on_reload_complete)
+	
+	if delay_initial_shot:
+		if min_delay > max_delay:
+			printerr(self.name + ": Min delay is greater than max delay!")
+			delay_timer.wait_time = min_delay
+		else:
+			delay_timer.wait_time = randf_range(min_delay, max_delay)
+		delay_timer.start()
+	else:
+		call_deferred("shoot")
+
+func _on_delay_timer_timeout() -> void:
+	shoot()
+
+func _on_reload_complete() -> void:
+	shoot()
+
+func shoot() -> void:
+	_spawn_bullet(0.0)
+	reload_component.reload()
+
+func _spawn_bullet(bullet_offset: float) -> void:
+	var bullet: Bullet = bullet_scene.instantiate()
+	bullet.global_position = global_position
+	bullet.global_position.x += bullet_offset
+	bullet.collision_layer = shot_collision_layer
+	bullet.collision_mask = shot_collision_mask
+	bullet.set_power_speed_direction(\
+		shot_damage,
+		shot_speed,
+		shot_direction)
+	bullet.modulate = shot_modulate
+	Utilities.call_deferred("add_child_to_level", bullet)

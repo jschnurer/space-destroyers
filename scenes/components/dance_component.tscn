@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bdmudihj1sun8"]
+
+[ext_resource type="Script" uid="uid://dgv2errilaeh1" path="res://scenes/components/dance_component.gd" id="1_642rl"]
+
+[node name="DanceComponent" type="Node" unique_id=709328576]
+script = ExtResource("1_642rl")

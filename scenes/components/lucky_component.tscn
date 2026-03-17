@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cmoknedm8lvnp"]
+
+[ext_resource type="Script" uid="uid://dgwsdnm8mnmsl" path="res://scenes/components/lucky_component.gd" id="1_jbrld"]
+
+[node name="LuckyComponent" type="Node2D" unique_id=1751092268]
+script = ExtResource("1_jbrld")
+
+[node name="LuckyGlintTimer" type="Timer" parent="." unique_id=3841838]
+unique_name_in_owner = true
+
+[connection signal="timeout" from="LuckyGlintTimer" to="." method="_on_lucky_glint_timer_timeout"]

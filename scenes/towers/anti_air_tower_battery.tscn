@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://coa4jrtx5c26o"]
+
+[ext_resource type="PackedScene" uid="uid://b2wnlbg3odrdr" path="res://scenes/towers/anti_air_tower.tscn" id="1_r8t30"]
+[ext_resource type="Script" uid="uid://dri7xk15gg17s" path="res://scenes/towers/anti_air_tower_battery.gd" id="1_sycd1"]
+
+[node name="AntiAirTowerBattery" type="Node2D" unique_id=1385625833]
+process_mode = 3
+script = ExtResource("1_sycd1")
+
+[node name="Tower1" parent="." unique_id=74142494 instance=ExtResource("1_r8t30")]
+position = Vector2(-500, -50)
+min_rotation = -3.0
+max_rotation = 72.0
+
+[node name="Tower3" parent="." unique_id=1651116714 instance=ExtResource("1_r8t30")]
+position = Vector2(-300, -50)
+min_rotation = -13.0
+max_rotation = 66.0
+
+[node name="Tower4" parent="." unique_id=989079936 instance=ExtResource("1_r8t30")]
+position = Vector2(300, -50)
+max_rotation = 18.0
+
+[node name="Tower2" parent="." unique_id=2032407383 instance=ExtResource("1_r8t30")]
+position = Vector2(500, -50)
+min_rotation = -70.0
+max_rotation = 8.0
+
+[node name="Tower5" parent="." unique_id=965350642 instance=ExtResource("1_r8t30")]
+position = Vector2(-400, -50)
+min_rotation = -13.0
+max_rotation = 66.0
+
+[node name="Tower6" parent="." unique_id=957514907 instance=ExtResource("1_r8t30")]
+position = Vector2(400, -50)
+max_rotation = 18.0

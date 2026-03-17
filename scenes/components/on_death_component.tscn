@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://mdxtaa55xkqh"]
+
+[ext_resource type="Script" uid="uid://cpgio4mfyabx0" path="res://scenes/components/on_death_component.gd" id="1_ntq3d"]
+[ext_resource type="PackedScene" uid="uid://8th60kwk8o5f" path="res://scenes/items/credit.tscn" id="2_pdxpx"]
+
+[node name="OnDeathComponent" type="Node2D" unique_id=128414731]
+script = ExtResource("1_ntq3d")
+credit_scene = ExtResource("2_pdxpx")

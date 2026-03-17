@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://c7egr84468vw0"]
+
+[ext_resource type="PackedScene" uid="uid://dj5a5icrd2npf" path="res://scenes/level_geom/enemies_holder.tscn" id="1_0qepi"]
+[ext_resource type="PackedScene" uid="uid://ccxyg3h1o17tw" path="res://scenes/enemies/crab.tscn" id="1_44gv1"]
+[ext_resource type="PackedScene" uid="uid://cwc4lh0bobfkx" path="res://scenes/level_manager/level_manager.tscn" id="2_0ljxa"]
+[ext_resource type="PackedScene" uid="uid://cgg34r2ir4fn3" path="res://scenes/level_geom/enemy_formation.tscn" id="2_fmg3e"]
+
+[node name="Level_3" type="Node2D" unique_id=756359994 groups=["LEVEL_NODE"]]
+
+[node name="EnemiesHolder" parent="." unique_id=1881422378 instance=ExtResource("1_0qepi")]
+
+[node name="EnemyFormation" parent="EnemiesHolder" unique_id=965894497 instance=ExtResource("2_fmg3e")]
+position = Vector2(498, 0)
+
+[node name="Invader2" parent="EnemiesHolder/EnemyFormation" unique_id=1648695137 instance=ExtResource("1_44gv1")]
+position = Vector2(176, 120)
+
+[node name="Invader3" parent="EnemiesHolder/EnemyFormation" unique_id=1961314000 instance=ExtResource("1_44gv1")]
+position = Vector2(176, 32)
+
+[node name="Invader4" parent="EnemiesHolder/EnemyFormation" unique_id=1874123111 instance=ExtResource("1_44gv1")]
+position = Vector2(264, 32)
+
+[node name="Invader5" parent="EnemiesHolder/EnemyFormation" unique_id=1568394506 instance=ExtResource("1_44gv1")]
+position = Vector2(352, 32)
+
+[node name="Invader6" parent="EnemiesHolder/EnemyFormation" unique_id=1108653863 instance=ExtResource("1_44gv1")]
+position = Vector2(440, 32)
+
+[node name="Invader7" parent="EnemiesHolder/EnemyFormation" unique_id=763461821 instance=ExtResource("1_44gv1")]
+position = Vector2(528, 32)
+
+[node name="Invader8" parent="EnemiesHolder/EnemyFormation" unique_id=423974485 instance=ExtResource("1_44gv1")]
+position = Vector2(616, 32)
+
+[node name="Invader9" parent="EnemiesHolder/EnemyFormation" unique_id=241712073 instance=ExtResource("1_44gv1")]
+position = Vector2(704, 32)
+
+[node name="Invader12" parent="EnemiesHolder/EnemyFormation" unique_id=2076781643 instance=ExtResource("1_44gv1")]
+position = Vector2(88, 120)
+
+[node name="Invader15" parent="EnemiesHolder/EnemyFormation" unique_id=1895628475 instance=ExtResource("1_44gv1")]
+position = Vector2(352, 120)
+
+[node name="Invader16" parent="EnemiesHolder/EnemyFormation" unique_id=1665971511 instance=ExtResource("1_44gv1")]
+position = Vector2(440, 120)
+
+[node name="Invader18" parent="EnemiesHolder/EnemyFormation" unique_id=1976901895 instance=ExtResource("1_44gv1")]
+position = Vector2(528, 384)
+
+[node name="Invader19" parent="EnemiesHolder/EnemyFormation" unique_id=41288748 instance=ExtResource("1_44gv1")]
+position = Vector2(704, 120)
+
+[node name="Invader22" parent="EnemiesHolder/EnemyFormation" unique_id=183275807 instance=ExtResource("1_44gv1")]
+position = Vector2(88, 208)
+
+[node name="Invader24" parent="EnemiesHolder/EnemyFormation" unique_id=1951429668 instance=ExtResource("1_44gv1")]
+position = Vector2(352, 560)
+
+[node name="Invader25" parent="EnemiesHolder/EnemyFormation" unique_id=1543480858 instance=ExtResource("1_44gv1")]
+position = Vector2(352, 208)
+
+[node name="Invader26" parent="EnemiesHolder/EnemyFormation" unique_id=1467008166 instance=ExtResource("1_44gv1")]
+position = Vector2(440, 208)
+
+[node name="Invader27" parent="EnemiesHolder/EnemyFormation" unique_id=1346510551 instance=ExtResource("1_44gv1")]
+position = Vector2(528, 208)
+
+[node name="Invader28" parent="EnemiesHolder/EnemyFormation" unique_id=1096660982 instance=ExtResource("1_44gv1")]
+position = Vector2(528, 472)
+
+[node name="Invader29" parent="EnemiesHolder/EnemyFormation" unique_id=1515974055 instance=ExtResource("1_44gv1")]
+position = Vector2(792, 120)
+
+[node name="Invader32" parent="EnemiesHolder/EnemyFormation" unique_id=646478157 instance=ExtResource("1_44gv1")]
+position = Vector2(0, 296)
+
+[node name="Invader49" parent="EnemiesHolder/EnemyFormation" unique_id=803714128 instance=ExtResource("1_44gv1")]
+position = Vector2(792, 208)
+
+[node name="Invader50" parent="EnemiesHolder/EnemyFormation" unique_id=1903834451 instance=ExtResource("1_44gv1")]
+position = Vector2(880, 296)
+
+[node name="Invader33" parent="EnemiesHolder/EnemyFormation" unique_id=686701763 instance=ExtResource("1_44gv1")]
+position = Vector2(440, 560)
+
+[node name="Invader40" parent="EnemiesHolder/EnemyFormation" unique_id=121257462 instance=ExtResource("1_44gv1")]
+position = Vector2(440, 648)
+
+[node name="Invader41" parent="EnemiesHolder/EnemyFormation" unique_id=511851027 instance=ExtResource("1_44gv1")]
+position = Vector2(528, 648)
+
+[node name="Invader42" parent="EnemiesHolder/EnemyFormation" unique_id=625784372 instance=ExtResource("1_44gv1")]
+position = Vector2(440, 384)
+
+[node name="Invader43" parent="EnemiesHolder/EnemyFormation" unique_id=1402691628 instance=ExtResource("1_44gv1")]
+position = Vector2(352, 384)
+
+[node name="Invader44" parent="EnemiesHolder/EnemyFormation" unique_id=1531260990 instance=ExtResource("1_44gv1")]
+position = Vector2(352, 472)
+
+[node name="Invader45" parent="EnemiesHolder/EnemyFormation" unique_id=2076177037 instance=ExtResource("1_44gv1")]
+position = Vector2(440, 472)
+
+[node name="Invader34" parent="EnemiesHolder/EnemyFormation" unique_id=1973464718 instance=ExtResource("1_44gv1")]
+position = Vector2(352, 648)
+
+[node name="Invader35" parent="EnemiesHolder/EnemyFormation" unique_id=146720622 instance=ExtResource("1_44gv1")]
+position = Vector2(352, 296)
+
+[node name="Invader36" parent="EnemiesHolder/EnemyFormation" unique_id=177090092 instance=ExtResource("1_44gv1")]
+position = Vector2(440, 296)
+
+[node name="Invader37" parent="EnemiesHolder/EnemyFormation" unique_id=838562495 instance=ExtResource("1_44gv1")]
+position = Vector2(528, 296)
+
+[node name="Invader38" parent="EnemiesHolder/EnemyFormation" unique_id=259747628 instance=ExtResource("1_44gv1")]
+position = Vector2(528, 560)
+
+[node name="Invader39" parent="EnemiesHolder/EnemyFormation" unique_id=2124429735 instance=ExtResource("1_44gv1")]
+position = Vector2(528, 120)
+
+[node name="LevelManager" parent="." unique_id=1578700785 groups=["LEVEL_MANAGER"] instance=ExtResource("2_0ljxa")]
+enemy_start_speed = 30.0
+enemy_max_speed = 100.0

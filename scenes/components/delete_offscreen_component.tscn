@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dddchihkt36mp"]
+
+[ext_resource type="Script" uid="uid://sve2r7gbvck6" path="res://scenes/components/delete_offscreen_component.gd" id="1_1gslj"]
+
+[node name="DeleteOffscreenComponent" type="VisibleOnScreenNotifier2D" unique_id=1973328041]
+scale = Vector2(4, 4)
+rect = Rect2(-0.5, -2, 1, 4)
+script = ExtResource("1_1gslj")
+
+[connection signal="screen_exited" from="." to="." method="_on_screen_exited"]

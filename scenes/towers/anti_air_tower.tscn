@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://b2wnlbg3odrdr"]
+
+[ext_resource type="Script" uid="uid://8emk2pgospns" path="res://scenes/towers/anti_air_tower.gd" id="1_v8w4t"]
+[ext_resource type="Texture2D" uid="uid://covnen8k64wjl" path="res://art/anti-air_tower.png" id="1_wfh0a"]
+[ext_resource type="PackedScene" uid="uid://d1jln5dps07ua" path="res://scenes/bullet/bullet.tscn" id="2_2cm57"]
+[ext_resource type="Texture2D" uid="uid://c02g5ae1sit4o" path="res://art/anti-air_tower_cannon.png" id="2_v8w4t"]
+[ext_resource type="PackedScene" uid="uid://0esplk3dg3yq" path="res://scenes/components/reload_component.tscn" id="5_xe050"]
+
+[node name="AntiAirTower" type="Node2D" unique_id=74142494]
+process_mode = 1
+script = ExtResource("1_v8w4t")
+bullet_scene = ExtResource("2_2cm57")
+min_rotation = -60.0
+max_rotation = 60.0
+rotation_speed = 18.0
+
+[node name="Tower" type="Sprite2D" parent="." unique_id=773972706]
+modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
+z_index = -1
+scale = Vector2(4, 4)
+texture = ExtResource("1_wfh0a")
+metadata/_edit_lock_ = true
+
+[node name="Cannon" type="Sprite2D" parent="." unique_id=711016295]
+modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
+z_index = -1
+position = Vector2(0, -40)
+rotation = -0.006318946
+scale = Vector2(4, 4)
+texture = ExtResource("2_v8w4t")
+offset = Vector2(0, -4)
+
+[node name="BulletSpawnPoint" type="Node2D" parent="Cannon" unique_id=54406939]
+position = Vector2(0, -11)
+
+[node name="InitialShotTimer" type="Timer" parent="." unique_id=867923944]
+one_shot = true
+
+[node name="Components" type="Node2D" parent="." unique_id=798700504]
+
+[node name="ReloadComponent" parent="Components" unique_id=315688650 instance=ExtResource("5_xe050")]
+unique_name_in_owner = true
+reload_time = 2.0
+
+[connection signal="timeout" from="InitialShotTimer" to="." method="_on_initial_shot_timer_timeout"]

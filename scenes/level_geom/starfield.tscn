@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://ld7c4owsibhw"]
+
+[ext_resource type="Script" uid="uid://d3lg8831f4l8i" path="res://scenes/level_geom/starfield.gd" id="1_mtvj3"]
+
+[node name="Starfield" type="Node2D" unique_id=2061530491]
+script = ExtResource("1_mtvj3")
+
+[node name="ReferenceRect" type="ReferenceRect" parent="." unique_id=674209285]
+offset_right = 40.0
+offset_bottom = 40.0
+border_color = Color(1, 0.76862746, 0, 0.43137255)
+border_width = 4.0

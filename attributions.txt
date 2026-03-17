@@ -1,0 +1,38 @@
+ATTRIBUTIONS
+
+==Karmatic Arcade Font==
+Author: Vic Fieger
+License: 1001Fonts Free For Commercial Use License (FFC)
+https://www.1001fonts.com/karmatic-arcade-font.html
+
+==50 CC0 RETRO / SYNTH SFX==
+Author: rubberduck
+License: CC0 Public Domain
+https://opengameart.org/content/50-cc0-retro-synth-sfx
+
+==8-bit Chiptune - Moonlight==
+Author: shiru8bit
+License: CC-BY 3.0
+https://opengameart.org/content/8-bit-chiptune-moonlight
+Note: looped to 0:26.210
+
+==8-bit Chiptune - Megamix ==
+Author: shiru8bit
+License: CC-BY 3.0
+https://opengameart.org/content/8-bit-chiptune-megamix
+
+==8-bit Chiptune - Its Come From The Dark ==
+Author: shiru8bit
+License: CC-BY 3.0
+https://opengameart.org/content/8-bit-chiptune-its-come-from-the-dark
+
+==8-bit Chiptune - Mehalanholia ==
+Author: shiru8bit
+License: CC-BY 3.0
+https://opengameart.org/content/8-bit-chiptune-mehalanholia
+
+==8-bit Chiptune - Transmission ==
+Author: shiru8bit
+License: CC-BY 3.0
+https://opengameart.org/content/8-bit-chiptune-transmission
+Note: Looped to 0:03.198

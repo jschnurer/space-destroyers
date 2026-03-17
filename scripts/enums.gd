@@ -1,0 +1,39 @@
+extends Node
+
+enum ScreenEdges {
+	LEFT,
+	RIGHT,
+}
+
+enum CollisionLayers {
+	PLAYER = 0,
+	ENEMY = 1,
+	SCREEN_EDGE = 2,
+	PLAYER_BULLET = 3,
+	TERRAIN = 4,
+}
+
+enum PlayerStats {
+	TANK_SPEED = 0,
+	MAX_SHOTS = 1,
+	RELOAD = 2,
+	SHOT_POWER = 3,
+	SHOT_SPEED = 4,
+	PICKUP_AREA = 5,
+	CREDIT_MULTIPLIER = 6,
+	TELEPORT_DELAY = 7,
+	LUCK = 8,
+	MAX_LIFE = 9,
+}
+
+enum PlayerUpgrades {
+	AUTO_FIRE = 0,
+	MISSILES = 1,
+	LASER_SIGHT = 2,
+	TWIN_CANNON = 3,
+	ANTI_AIR = 4,
+	BARRICADE = 5,
+	LIGHTNING_TOWER = 6,
+	RETAINING_WALL_LEFT = 7,
+	RETAINING_WALL_RIGHT = 8
+}

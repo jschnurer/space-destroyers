@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://uu3ea6khn2cp"]
+
+[ext_resource type="PackedScene" uid="uid://cmoknedm8lvnp" path="res://scenes/components/lucky_component.tscn" id="1_kty3y"]
+[ext_resource type="Texture2D" uid="uid://bwuqr66ojkbci" path="res://art/octopus.png" id="1_nduv1"]
+[ext_resource type="PackedScene" uid="uid://bdmudihj1sun8" path="res://scenes/components/dance_component.tscn" id="2_7d2cm"]
+[ext_resource type="PackedScene" uid="uid://b8unj7w73q0w3" path="res://scenes/components/hurtbox_component.tscn" id="3_nduv1"]
+[ext_resource type="PackedScene" uid="uid://d1xwwb4h1awsi" path="res://scenes/components/life_component.tscn" id="4_13wqb"]
+[ext_resource type="PackedScene" uid="uid://mdxtaa55xkqh" path="res://scenes/components/on_death_component.tscn" id="5_81vaf"]
+[ext_resource type="PackedScene" uid="uid://b0rqtlww1es66" path="res://scenes/invader_death/invader_death.tscn" id="7_jwybb"]
+[ext_resource type="AudioStream" uid="uid://d1fe2ty4h7taq" path="res://audio/sfx/beepfx_samples/27_boom_8.wav" id="7_ofuak"]
+[ext_resource type="PackedScene" uid="uid://yb32u4vixpkb" path="res://scenes/components/formation_move_component.tscn" id="10_13wqb"]
+[ext_resource type="PackedScene" uid="uid://0esplk3dg3yq" path="res://scenes/components/reload_component.tscn" id="10_81vaf"]
+[ext_resource type="PackedScene" uid="uid://bqkgb4mpppgmt" path="res://scenes/components/auto_shoot_component.tscn" id="10_ofuak"]
+[ext_resource type="PackedScene" uid="uid://d1jln5dps07ua" path="res://scenes/bullet/bullet.tscn" id="11_ofuak"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2q4ju"]
+size = Vector2(12, 8)
+
+[node name="Octopus" type="Sprite2D" unique_id=130954596 groups=["ENEMY"]]
+modulate = Color(1, 1, 0.24313726, 1)
+scale = Vector2(4, 4)
+texture = ExtResource("1_nduv1")
+centered = false
+hframes = 2
+
+[node name="Components" type="Node2D" parent="." unique_id=74485059]
+
+[node name="LuckyComponent" parent="Components" unique_id=1751092268 node_paths=PackedStringArray("sprite") instance=ExtResource("1_kty3y")]
+unique_name_in_owner = true
+sprite = NodePath("../..")
+
+[node name="DanceComponent" parent="Components" unique_id=709328576 node_paths=PackedStringArray("sprite") instance=ExtResource("2_7d2cm")]
+sprite = NodePath("../..")
+
+[node name="HurtboxComponent" parent="Components" unique_id=2122994445 node_paths=PackedStringArray("life_component") instance=ExtResource("3_nduv1")]
+collision_layer = 2
+collision_mask = 8
+life_component = NodePath("../LifeComponent")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Components/HurtboxComponent" unique_id=1793194982]
+position = Vector2(6, 4)
+shape = SubResource("RectangleShape2D_2q4ju")
+
+[node name="LifeComponent" parent="Components" unique_id=759486464 instance=ExtResource("4_13wqb")]
+life = 10.0
+
+[node name="OnDeathComponent" parent="Components" unique_id=128414731 node_paths=PackedStringArray("life_component", "enemy_node", "deletion_node", "lucky_component") instance=ExtResource("5_81vaf")]
+position = Vector2(6, 4)
+life_component = NodePath("../LifeComponent")
+death_sound = ExtResource("7_ofuak")
+enemy_node = NodePath("../..")
+deletion_node = NodePath("../..")
+lucky_component = NodePath("../LuckyComponent")
+death_anim_scene = ExtResource("7_jwybb")
+
+[node name="FormationMoveComponent" parent="Components" unique_id=937630113 node_paths=PackedStringArray("enemy_node") instance=ExtResource("10_13wqb")]
+enemy_node = NodePath("../..")
+
+[node name="AutoShootComponent" parent="Components" unique_id=523345871 node_paths=PackedStringArray("reload_component") instance=ExtResource("10_ofuak")]
+position = Vector2(6, 9.25)
+reload_component = NodePath("../ReloadComponent")
+bullet_scene = ExtResource("11_ofuak")
+shot_modulate = Color(1, 1, 0.24313726, 1)
+shot_direction = Vector2(0, 1)
+shot_speed = 400.0
+shot_damage = 1.0
+shot_collision_layer = 64
+shot_collision_mask = 1
+min_delay = 3.0
+max_delay = 6.0
+
+[node name="ReloadComponent" parent="Components" unique_id=315688650 instance=ExtResource("10_81vaf")]
+reload_time = 4.0
+use_random_reload_time = true
+min_reload_time = 4.0
+max_reload_time = 7.0

@@ -1,0 +1,48 @@
+[gd_resource type="Shader" format=3 uid="uid://dairmqngktiej"]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform float time;
+uniform vec4 base_color: source_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform vec4 glint_color: source_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform float rotation = 0.0;
+
+uniform float hframes = 1.0;
+uniform float vframes = 1.0;
+
+uniform float band_width : hint_range(0.01, 1.0) = 0.4;
+uniform float sharpness : hint_range(0.001, 0.2) = 0.02;
+
+void fragment() {
+	vec4 tex = texture(TEXTURE, UV);
+	
+	if (time < 0.0 && (!(tex.a == 0.0 || tex.rgb == vec3(0, 0, 0)))) {
+        COLOR = vec4(base_color.rgb * tex.a, tex.a);
+	} else if (!(tex.a == 0.0 || tex.rgb == vec3(0, 0, 0))) {
+	    vec2 frame_size = 1.0 / vec2(hframes, vframes);
+        vec2 local_uv = mod(UV, frame_size) / frame_size;
+        
+        // 1. Center coordinates around 0.5 to rotate around the center of the frame
+        vec2 centered_uv = local_uv - 0.5;
+        
+        // 2. Create the Rotation Matrix (using negative rotation to counter-rotate)
+        float s = sin(-rotation);
+        float c = cos(-rotation);
+        mat2 rot_matrix = mat2(vec2(c, -s), vec2(s, c));
+        
+        // 3. Apply rotation and shift back to 0-1 range
+        vec2 rotated_uv = (rot_matrix * centered_uv) + 0.5;
+        
+        // 4. Calculate distance based on the stable, un-rotated coordinates
+        float dist = rotated_uv.x + rotated_uv.y;
+        
+        float edge_low = time - band_width;
+        float edge_high = time + band_width;
+        float glint = smoothstep(edge_low, edge_low + sharpness, dist) - 
+                      smoothstep(edge_high - sharpness, edge_high, dist);
+        
+        vec3 final_rgb = mix(base_color.rgb, glint_color.rgb, glint * 0.8);
+        COLOR = vec4(final_rgb * tex.a, tex.a);
+	}
+}"

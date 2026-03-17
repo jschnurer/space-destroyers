@@ -1,0 +1,420 @@
+[gd_scene format=3 uid="uid://dvc1ybiwavk54"]
+
+[ext_resource type="FontFile" uid="uid://6kmtx2n78kyo" path="res://art/fonts/ka1.ttf" id="1_32a87"]
+[ext_resource type="Script" uid="uid://b5saaj3w0vt7a" path="res://scenes/ui/level_ui.gd" id="1_ky048"]
+[ext_resource type="FontFile" uid="uid://ftg0yylbljr5" path="res://art/fonts/joystix.monospace.otf" id="3_ky048"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_32a87"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1966520918]
+script = ExtResource("1_ky048")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=669150873]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer" unique_id=1475264431]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_32a87")
+
+[node name="Left" type="MarginContainer" parent="HBoxContainer/PanelContainer" unique_id=891187302]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/Left" unique_id=471700108]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer/Left/VBoxContainer" unique_id=640284890]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_32a87")
+theme_override_font_sizes/font_size = 36
+text = "LEVEL"
+horizontal_alignment = 1
+
+[node name="LevelNumber" type="Label" parent="HBoxContainer/PanelContainer/Left/VBoxContainer" unique_id=630180321]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_32a87")
+theme_override_font_sizes/font_size = 36
+text = "1"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="HBoxContainer" unique_id=2106117815]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer" unique_id=1395559608]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_32a87")
+
+[node name="Right" type="MarginContainer" parent="HBoxContainer/PanelContainer2" unique_id=789853970]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer2/Right" unique_id=1885360323]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=1284975912]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_32a87")
+theme_override_font_sizes/font_size = 36
+text = "Credibux"
+horizontal_alignment = 1
+
+[node name="CreditsDisplay" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=1286271302]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_ky048")
+theme_override_font_sizes/font_size = 38
+text = "0"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 5
+
+[node name="Spacer" type="Control" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=130092362]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Life" type="HBoxContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=1118592133]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Life" unique_id=25872946]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_32a87")
+theme_override_font_sizes/font_size = 26
+text = "Life"
+
+[node name="LifeDisplay" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Life" unique_id=1733411326]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_ky048")
+theme_override_font_sizes/font_size = 26
+text = "1/1"
+horizontal_alignment = 2
+
+[node name="Speed" type="HBoxContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=1883696709]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Speed" unique_id=1370038177]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_32a87")
+theme_override_font_sizes/font_size = 26
+text = "Speed"
+
+[node name="SpeedDisplay" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Speed" unique_id=1793816886]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_ky048")
+theme_override_font_sizes/font_size = 26
+text = "200.0"
+horizontal_alignment = 2
+
+[node name="PickupArea" type="HBoxContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=983774774]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/PickupArea" unique_id=759916443]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_32a87")
+theme_override_font_sizes/font_size = 26
+text = "Pickup Area"
+
+[node name="PickupDisplay" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/PickupArea" unique_id=1359344638]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_ky048")
+theme_override_font_sizes/font_size = 26
+text = "26"
+horizontal_alignment = 2
+
+[node name="LuckArea" type="HBoxContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=2113091154]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/LuckArea" unique_id=262593731]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_32a87")
+theme_override_font_sizes/font_size = 26
+text = "Luck"
+
+[node name="LuckDisplay" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/LuckArea" unique_id=957644117]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_ky048")
+theme_override_font_sizes/font_size = 26
+text = "1"
+horizontal_alignment = 2
+
+[node name="CreditMultiplier" type="HBoxContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=1356161300]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/CreditMultiplier" unique_id=768799657]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_32a87")
+theme_override_font_sizes/font_size = 26
+text = "Credibux"
+
+[node name="CreditMultiplierDisplay" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/CreditMultiplier" unique_id=2712925]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_ky048")
+theme_override_font_sizes/font_size = 26
+text = "1.0"
+horizontal_alignment = 2
+
+[node name="MaxShots" type="HBoxContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=1832427018]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/MaxShots" unique_id=771949787]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_32a87")
+theme_override_font_sizes/font_size = 26
+text = "Max shots"
+
+[node name="MaxShotsDisplay" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/MaxShots" unique_id=947825726]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_ky048")
+theme_override_font_sizes/font_size = 26
+text = "1"
+horizontal_alignment = 2
+
+[node name="ShotPower" type="HBoxContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=1535898733]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/ShotPower" unique_id=1844561905]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_32a87")
+theme_override_font_sizes/font_size = 26
+text = "shot power"
+
+[node name="PowerDisplay" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/ShotPower" unique_id=202005160]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_ky048")
+theme_override_font_sizes/font_size = 26
+text = "1"
+horizontal_alignment = 2
+
+[node name="ShotSpeed" type="HBoxContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=638728828]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/ShotSpeed" unique_id=844662053]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_32a87")
+theme_override_font_sizes/font_size = 26
+text = "Shot speed"
+
+[node name="ShotSpeedDisplay" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/ShotSpeed" unique_id=4097516]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_ky048")
+theme_override_font_sizes/font_size = 26
+text = "50.0"
+horizontal_alignment = 2
+
+[node name="Reload" type="HBoxContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=1818790306]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Reload" unique_id=738923091]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_32a87")
+theme_override_font_sizes/font_size = 26
+text = "Reload"
+
+[node name="ReloadDisplay" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Reload" unique_id=467008385]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_ky048")
+theme_override_font_sizes/font_size = 26
+text = "100%"
+horizontal_alignment = 2
+
+[node name="TeleportDelay" type="HBoxContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=173724924]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/TeleportDelay" unique_id=1425725456]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_32a87")
+theme_override_font_sizes/font_size = 26
+text = "Tele delay"
+
+[node name="TeleportDelayDisplay" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/TeleportDelay" unique_id=534470570]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_ky048")
+theme_override_font_sizes/font_size = 26
+text = "5.0"
+horizontal_alignment = 2
+
+[node name="Spacer2" type="Control" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=1191607314]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Space Upgrades" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=1139954321]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_32a87")
+theme_override_font_sizes/font_size = 36
+text = "Upgrades"
+horizontal_alignment = 1
+
+[node name="LaserSight" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=1071832069]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_32a87")
+theme_override_font_sizes/font_size = 26
+text = "Laser Sight"
+horizontal_alignment = 1
+
+[node name="TwinCannon" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=581187798]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_32a87")
+theme_override_font_sizes/font_size = 26
+text = "Twin Cannon"
+horizontal_alignment = 1
+
+[node name="AutoFire" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=1162584901]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_32a87")
+theme_override_font_sizes/font_size = 26
+text = "Auto Fire"
+horizontal_alignment = 1
+
+[node name="SeekingMissileHolder" type="CenterContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=1329383528]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/SeekingMissileHolder" unique_id=1000632967]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/SeekingMissileHolder/HBoxContainer" unique_id=991678465]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_32a87")
+theme_override_font_sizes/font_size = 26
+text = "Seeking Missiles"
+
+[node name="SeekingMissiles" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/SeekingMissileHolder/HBoxContainer" unique_id=198483052]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_ky048")
+theme_override_font_sizes/font_size = 26
+text = "0"
+horizontal_alignment = 2
+
+[node name="AntiAirTowersHolder" type="CenterContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=1506196170]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/AntiAirTowersHolder" unique_id=2029429958]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/AntiAirTowersHolder/HBoxContainer" unique_id=908134311]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_32a87")
+theme_override_font_sizes/font_size = 26
+text = "Anti-Air Towers"
+
+[node name="AntiAirTowers" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/AntiAirTowersHolder/HBoxContainer" unique_id=1607405055]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_ky048")
+theme_override_font_sizes/font_size = 26
+text = "0"
+horizontal_alignment = 2
+
+[node name="LeftWall" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=2133200764]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_32a87")
+theme_override_font_sizes/font_size = 26
+text = "Left Wall"
+horizontal_alignment = 1
+
+[node name="RightWall" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=228611065]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_32a87")
+theme_override_font_sizes/font_size = 26
+text = "Right Wall"
+horizontal_alignment = 1
+
+[node name="Spacer3" type="Control" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=1356422105]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="OpenShop" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=1959930842]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_32a87")
+theme_override_font_sizes/font_size = 26
+text = "Press 'F' to shop"
+horizontal_alignment = 1
