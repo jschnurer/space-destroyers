@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Stat" format=3 uid="uid://c5u36nqewaty4"]
+
+[ext_resource type="Script" uid="uid://rbsniqghf2h2" path="res://resources/stat.gd" id="1_8cvxy"]
+
+[resource]
+script = ExtResource("1_8cvxy")
+player_stat = 1
+display_text = "Max Shots"
+value_curve_type = 2
+base_value = 1.0
+base_cost = 10.0
+power = 1.25
+metadata/_custom_type_script = "uid://rbsniqghf2h2"

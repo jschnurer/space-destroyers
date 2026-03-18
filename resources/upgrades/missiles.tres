@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://c53dppwom54ei"]
+
+[ext_resource type="Script" uid="uid://w65aeclpm5mw" path="res://resources/upgrade.gd" id="1_0y5o6"]
+
+[resource]
+script = ExtResource("1_0y5o6")
+upgrade = 1
+display_text = "Missiles"
+max_level = 3
+value_curve_type = 2
+base_cost = 150.0
+power = 1.75
+metadata/_custom_type_script = "uid://w65aeclpm5mw"

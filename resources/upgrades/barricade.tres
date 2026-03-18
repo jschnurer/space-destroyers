@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://bvayioe045c6x"]
+
+[ext_resource type="Script" uid="uid://w65aeclpm5mw" path="res://resources/upgrade.gd" id="1_eoi8j"]
+
+[resource]
+script = ExtResource("1_eoi8j")
+upgrade = 5
+display_text = "Barricade"
+max_level = 5
+value_curve_type = 2
+base_cost = 100.0
+power = 1.55
+metadata/_custom_type_script = "uid://w65aeclpm5mw"

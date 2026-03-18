@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://cwc4lh0bobfkx" path="res://scenes/level_manager/level_manager.tscn" id="1_6iamk"]
 [ext_resource type="PackedScene" uid="uid://ccxyg3h1o17tw" path="res://scenes/enemies/crab.tscn" id="3_6761a"]
 [ext_resource type="PackedScene" uid="uid://cgg34r2ir4fn3" path="res://scenes/level_geom/enemy_formation.tscn" id="3_x42e6"]
-[ext_resource type="PackedScene" uid="uid://uu3ea6khn2cp" path="res://scenes/enemies/octopus.tscn" id="4_6761a"]
 
 [node name="Level_1" type="Node2D" unique_id=756359994 groups=["LEVEL_NODE"]]
 metadata/_edit_lock_ = true
@@ -11,129 +10,171 @@ metadata/_edit_lock_ = true
 [node name="EnemyFormation" parent="." unique_id=965894497 instance=ExtResource("3_x42e6")]
 metadata/_edit_lock_ = true
 
-[node name="Crab" parent="EnemyFormation" unique_id=1291850462 instance=ExtResource("3_6761a")]
-position = Vector2(142, 192)
-
-[node name="Crab2" parent="EnemyFormation" unique_id=796347463 instance=ExtResource("3_6761a")]
-position = Vector2(230, 192)
-
-[node name="Crab3" parent="EnemyFormation" unique_id=939384373 instance=ExtResource("3_6761a")]
-position = Vector2(318, 192)
-
-[node name="Crab4" parent="EnemyFormation" unique_id=1892017361 instance=ExtResource("3_6761a")]
-position = Vector2(406, 192)
-
-[node name="Crab5" parent="EnemyFormation" unique_id=99372329 instance=ExtResource("3_6761a")]
-position = Vector2(494, 192)
-
-[node name="Crab6" parent="EnemyFormation" unique_id=1468288282 instance=ExtResource("3_6761a")]
-position = Vector2(582, 192)
-
-[node name="Crab7" parent="EnemyFormation" unique_id=1939042890 instance=ExtResource("3_6761a")]
-position = Vector2(670, 192)
-
-[node name="Crab8" parent="EnemyFormation" unique_id=1052810361 instance=ExtResource("3_6761a")]
-position = Vector2(758, 192)
-
-[node name="Crab9" parent="EnemyFormation" unique_id=1100332441 instance=ExtResource("3_6761a")]
-position = Vector2(846, 192)
-
-[node name="Crab10" parent="EnemyFormation" unique_id=436756131 instance=ExtResource("3_6761a")]
-position = Vector2(934, 192)
-
-[node name="Crab11" parent="EnemyFormation" unique_id=472107047 instance=ExtResource("3_6761a")]
-position = Vector2(142, 128)
-
-[node name="Crab12" parent="EnemyFormation" unique_id=1019829603 instance=ExtResource("3_6761a")]
-position = Vector2(230, 128)
-
-[node name="Crab13" parent="EnemyFormation" unique_id=1441247746 instance=ExtResource("3_6761a")]
-position = Vector2(318, 128)
-
-[node name="Crab14" parent="EnemyFormation" unique_id=1235846422 instance=ExtResource("3_6761a")]
-position = Vector2(406, 128)
-
-[node name="Crab15" parent="EnemyFormation" unique_id=881667599 instance=ExtResource("3_6761a")]
-position = Vector2(494, 128)
-
-[node name="Crab16" parent="EnemyFormation" unique_id=1230207263 instance=ExtResource("3_6761a")]
-position = Vector2(582, 128)
-
-[node name="Crab17" parent="EnemyFormation" unique_id=1701047678 instance=ExtResource("3_6761a")]
-position = Vector2(670, 128)
-
-[node name="Crab18" parent="EnemyFormation" unique_id=2136998145 instance=ExtResource("3_6761a")]
-position = Vector2(758, 128)
-
-[node name="Crab19" parent="EnemyFormation" unique_id=569581853 instance=ExtResource("3_6761a")]
-position = Vector2(846, 128)
-
-[node name="Crab20" parent="EnemyFormation" unique_id=1920734244 instance=ExtResource("3_6761a")]
-position = Vector2(934, 128)
-
 [node name="Crab21" parent="EnemyFormation" unique_id=639119212 instance=ExtResource("3_6761a")]
-position = Vector2(142, 64)
+position = Vector2(218, 64)
 
 [node name="Crab22" parent="EnemyFormation" unique_id=1864140214 instance=ExtResource("3_6761a")]
-position = Vector2(230, 64)
+position = Vector2(282, 64)
 
 [node name="Crab23" parent="EnemyFormation" unique_id=2119725374 instance=ExtResource("3_6761a")]
-position = Vector2(318, 64)
+position = Vector2(346, 64)
 
 [node name="Crab24" parent="EnemyFormation" unique_id=1645526900 instance=ExtResource("3_6761a")]
-position = Vector2(406, 64)
+position = Vector2(410, 64)
 
 [node name="Crab25" parent="EnemyFormation" unique_id=2019136976 instance=ExtResource("3_6761a")]
-position = Vector2(494, 64)
+position = Vector2(474, 64)
 
 [node name="Crab26" parent="EnemyFormation" unique_id=514659607 instance=ExtResource("3_6761a")]
-position = Vector2(582, 64)
+position = Vector2(538, 64)
 
 [node name="Crab27" parent="EnemyFormation" unique_id=319184195 instance=ExtResource("3_6761a")]
-position = Vector2(670, 64)
+position = Vector2(602, 64)
 
 [node name="Crab28" parent="EnemyFormation" unique_id=1174462261 instance=ExtResource("3_6761a")]
-position = Vector2(758, 64)
+position = Vector2(666, 64)
 
 [node name="Crab29" parent="EnemyFormation" unique_id=376800220 instance=ExtResource("3_6761a")]
-position = Vector2(846, 64)
+position = Vector2(730, 64)
 
 [node name="Crab30" parent="EnemyFormation" unique_id=2124485314 instance=ExtResource("3_6761a")]
-position = Vector2(934, 64)
+position = Vector2(794, 64)
 
-[node name="Octopus" parent="EnemyFormation" unique_id=130954596 instance=ExtResource("4_6761a")]
-position = Vector2(152, 0)
+[node name="Crab33" parent="EnemyFormation" unique_id=227125246 instance=ExtResource("3_6761a")]
+position = Vector2(858, 64)
 
-[node name="Octopus2" parent="EnemyFormation" unique_id=1177155102 instance=ExtResource("4_6761a")]
-position = Vector2(248, 0)
+[node name="Crab31" parent="EnemyFormation" unique_id=692224749 instance=ExtResource("3_6761a")]
+position = Vector2(218, 128)
 
-[node name="Octopus3" parent="EnemyFormation" unique_id=294484068 instance=ExtResource("4_6761a")]
-position = Vector2(344, 0)
+[node name="Crab32" parent="EnemyFormation" unique_id=205639826 instance=ExtResource("3_6761a")]
+position = Vector2(282, 128)
 
-[node name="Octopus4" parent="EnemyFormation" unique_id=1704942049 instance=ExtResource("4_6761a")]
-position = Vector2(440, 0)
+[node name="Crab34" parent="EnemyFormation" unique_id=1005420873 instance=ExtResource("3_6761a")]
+position = Vector2(346, 128)
 
-[node name="Octopus5" parent="EnemyFormation" unique_id=1984892521 instance=ExtResource("4_6761a")]
-position = Vector2(440, 0)
+[node name="Crab35" parent="EnemyFormation" unique_id=261022829 instance=ExtResource("3_6761a")]
+position = Vector2(410, 128)
 
-[node name="Octopus6" parent="EnemyFormation" unique_id=752453169 instance=ExtResource("4_6761a")]
-position = Vector2(536, 0)
+[node name="Crab36" parent="EnemyFormation" unique_id=699647132 instance=ExtResource("3_6761a")]
+position = Vector2(474, 128)
 
-[node name="Octopus7" parent="EnemyFormation" unique_id=32645792 instance=ExtResource("4_6761a")]
-position = Vector2(632, 0)
+[node name="Crab37" parent="EnemyFormation" unique_id=240324357 instance=ExtResource("3_6761a")]
+position = Vector2(538, 128)
 
-[node name="Octopus8" parent="EnemyFormation" unique_id=1056765592 instance=ExtResource("4_6761a")]
-position = Vector2(728, 0)
+[node name="Crab38" parent="EnemyFormation" unique_id=1302340745 instance=ExtResource("3_6761a")]
+position = Vector2(602, 128)
 
-[node name="Octopus9" parent="EnemyFormation" unique_id=1110284327 instance=ExtResource("4_6761a")]
-position = Vector2(824, 0)
+[node name="Crab39" parent="EnemyFormation" unique_id=1745717259 instance=ExtResource("3_6761a")]
+position = Vector2(666, 128)
 
-[node name="Octopus10" parent="EnemyFormation" unique_id=1831614579 instance=ExtResource("4_6761a")]
-position = Vector2(920, 0)
+[node name="Crab40" parent="EnemyFormation" unique_id=1054572827 instance=ExtResource("3_6761a")]
+position = Vector2(730, 128)
 
-[node name="Octopus11" parent="EnemyFormation" unique_id=384719038 instance=ExtResource("4_6761a")]
-position = Vector2(920, 0)
+[node name="Crab41" parent="EnemyFormation" unique_id=701056371 instance=ExtResource("3_6761a")]
+position = Vector2(794, 128)
+
+[node name="Crab42" parent="EnemyFormation" unique_id=1224857582 instance=ExtResource("3_6761a")]
+position = Vector2(858, 128)
+
+[node name="Crab43" parent="EnemyFormation" unique_id=225794016 instance=ExtResource("3_6761a")]
+position = Vector2(218, 192)
+
+[node name="Crab44" parent="EnemyFormation" unique_id=1888146293 instance=ExtResource("3_6761a")]
+position = Vector2(282, 192)
+
+[node name="Crab45" parent="EnemyFormation" unique_id=156036239 instance=ExtResource("3_6761a")]
+position = Vector2(346, 192)
+
+[node name="Crab46" parent="EnemyFormation" unique_id=1998645501 instance=ExtResource("3_6761a")]
+position = Vector2(410, 192)
+
+[node name="Crab47" parent="EnemyFormation" unique_id=525862993 instance=ExtResource("3_6761a")]
+position = Vector2(474, 192)
+
+[node name="Crab48" parent="EnemyFormation" unique_id=1448855653 instance=ExtResource("3_6761a")]
+position = Vector2(538, 192)
+
+[node name="Crab49" parent="EnemyFormation" unique_id=1975717082 instance=ExtResource("3_6761a")]
+position = Vector2(602, 192)
+
+[node name="Crab50" parent="EnemyFormation" unique_id=443946925 instance=ExtResource("3_6761a")]
+position = Vector2(666, 192)
+
+[node name="Crab51" parent="EnemyFormation" unique_id=1046241725 instance=ExtResource("3_6761a")]
+position = Vector2(730, 192)
+
+[node name="Crab52" parent="EnemyFormation" unique_id=454463242 instance=ExtResource("3_6761a")]
+position = Vector2(794, 192)
+
+[node name="Crab53" parent="EnemyFormation" unique_id=1244223738 instance=ExtResource("3_6761a")]
+position = Vector2(858, 192)
+
+[node name="Crab54" parent="EnemyFormation" unique_id=888376277 instance=ExtResource("3_6761a")]
+position = Vector2(218, 256)
+
+[node name="Crab55" parent="EnemyFormation" unique_id=1139463120 instance=ExtResource("3_6761a")]
+position = Vector2(282, 256)
+
+[node name="Crab56" parent="EnemyFormation" unique_id=2046215007 instance=ExtResource("3_6761a")]
+position = Vector2(346, 256)
+
+[node name="Crab57" parent="EnemyFormation" unique_id=437562501 instance=ExtResource("3_6761a")]
+position = Vector2(410, 256)
+
+[node name="Crab58" parent="EnemyFormation" unique_id=521417713 instance=ExtResource("3_6761a")]
+position = Vector2(474, 256)
+
+[node name="Crab59" parent="EnemyFormation" unique_id=85300536 instance=ExtResource("3_6761a")]
+position = Vector2(538, 256)
+
+[node name="Crab60" parent="EnemyFormation" unique_id=1308962306 instance=ExtResource("3_6761a")]
+position = Vector2(602, 256)
+
+[node name="Crab61" parent="EnemyFormation" unique_id=1328264862 instance=ExtResource("3_6761a")]
+position = Vector2(666, 256)
+
+[node name="Crab62" parent="EnemyFormation" unique_id=861612162 instance=ExtResource("3_6761a")]
+position = Vector2(730, 256)
+
+[node name="Crab63" parent="EnemyFormation" unique_id=41177918 instance=ExtResource("3_6761a")]
+position = Vector2(794, 256)
+
+[node name="Crab64" parent="EnemyFormation" unique_id=415492212 instance=ExtResource("3_6761a")]
+position = Vector2(858, 256)
+
+[node name="Crab65" parent="EnemyFormation" unique_id=821565936 instance=ExtResource("3_6761a")]
+position = Vector2(218, 320)
+
+[node name="Crab66" parent="EnemyFormation" unique_id=286869733 instance=ExtResource("3_6761a")]
+position = Vector2(282, 320)
+
+[node name="Crab67" parent="EnemyFormation" unique_id=998754847 instance=ExtResource("3_6761a")]
+position = Vector2(346, 320)
+
+[node name="Crab68" parent="EnemyFormation" unique_id=288801042 instance=ExtResource("3_6761a")]
+position = Vector2(410, 320)
+
+[node name="Crab69" parent="EnemyFormation" unique_id=1592974384 instance=ExtResource("3_6761a")]
+position = Vector2(474, 320)
+
+[node name="Crab70" parent="EnemyFormation" unique_id=1677482485 instance=ExtResource("3_6761a")]
+position = Vector2(538, 320)
+
+[node name="Crab71" parent="EnemyFormation" unique_id=682959158 instance=ExtResource("3_6761a")]
+position = Vector2(602, 320)
+
+[node name="Crab72" parent="EnemyFormation" unique_id=1140593039 instance=ExtResource("3_6761a")]
+position = Vector2(666, 320)
+
+[node name="Crab73" parent="EnemyFormation" unique_id=2108434161 instance=ExtResource("3_6761a")]
+position = Vector2(730, 320)
+
+[node name="Crab74" parent="EnemyFormation" unique_id=548977596 instance=ExtResource("3_6761a")]
+position = Vector2(794, 320)
+
+[node name="Crab75" parent="EnemyFormation" unique_id=2077936647 instance=ExtResource("3_6761a")]
+position = Vector2(858, 320)
 
 [node name="LevelManager" parent="." unique_id=1578700785 groups=["LEVEL_MANAGER"] instance=ExtResource("1_6iamk")]
-enemy_start_speed = 20.0
-enemy_max_speed = 90.0
+enemy_start_speed = 35.0
+enemy_max_speed = 110.0

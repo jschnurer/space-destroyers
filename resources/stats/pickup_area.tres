@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Stat" format=3 uid="uid://iwg54fq5m7xy"]
+
+[ext_resource type="Script" uid="uid://rbsniqghf2h2" path="res://resources/stat.gd" id="1_qfhxy"]
+
+[resource]
+script = ExtResource("1_qfhxy")
+player_stat = 5
+display_text = "Pickup Area"
+value_curve_type = 1
+const_start_value = 32.0
+approaches_const = 250.0
+base_cost = 20.0
+power = 1.5
+metadata/_custom_type_script = "uid://rbsniqghf2h2"

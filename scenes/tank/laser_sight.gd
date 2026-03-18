@@ -6,7 +6,7 @@ var _laser_offset := 0.0
 var _shader_mat: ShaderMaterial
 
 func _ready() -> void:
-	GameManager.player_upgrade_changed.connect(_on_player_upgrade_changed)
+	GameManager.upgrade_changed.connect(_on_upgrade_changed.unbind(1))
 	
 	_update_visibility()
 	
@@ -23,5 +23,5 @@ func _process(delta: float) -> void:
 func _update_visibility() -> void:
 	visible = GameManager.has_upgrade(Enums.PlayerUpgrades.LASER_SIGHT)
 
-func _on_player_upgrade_changed(_upgr: Enums.PlayerUpgrades, _val: float) -> void:
+func _on_upgrade_changed() -> void:
 	_update_visibility()

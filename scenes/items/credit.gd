@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 		collect()
 
 func collect() -> void:
-	var mult := GameManager.get_player_stat_curr_value(Enums.PlayerStats.CREDIT_MULTIPLIER)
+	var mult := GameManager.get_stat_value(Enums.PlayerStats.CREDIT_MULTIPLIER)
 	var pickup_amt := value * mult
 	SignalBus.emit_credits_picked_up(pickup_amt)
 	SignalBus.emit_play_sfx(credit_sound, 0.5)

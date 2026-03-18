@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://cigmup74jnd2r"]
+
+[ext_resource type="Script" uid="uid://w65aeclpm5mw" path="res://resources/upgrade.gd" id="1_8bkt5"]
+
+[resource]
+script = ExtResource("1_8bkt5")
+upgrade = 6
+display_text = "Lightning Tower"
+max_level = 1
+value_curve_type = 2
+cost_type = 2
+base_cost = 5000.0
+metadata/_custom_type_script = "uid://w65aeclpm5mw"

@@ -1,14 +1,14 @@
 extends Node2D
 
 func _ready() -> void:
-	GameManager.player_upgrade_changed.connect(_on_player_upgrade_changed)
+	GameManager.upgrade_changed.connect(_on_upgrade_changed)
 	_disable_all_towers()
-	_enable_towers(GameManager.get_player_upgrade(Enums.PlayerUpgrades.ANTI_AIR))
+	_enable_towers(GameManager.get_upgrade_level(Enums.PlayerUpgrades.ANTI_AIR_TOWER))
 
-func _on_player_upgrade_changed(upgrade: Enums.PlayerUpgrades, value: float) -> void:
-	if upgrade != Enums.PlayerUpgrades.ANTI_AIR:
+func _on_upgrade_changed(upgrade: Upgrade) -> void:
+	if upgrade.upgrade != Enums.PlayerUpgrades.ANTI_AIR_TOWER:
 		return
-	_enable_towers(value)
+	_enable_towers(upgrade.level)
 
 func _enable_towers(num_towers: float) -> void:
 	for i in range(int(num_towers)):

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://b256muf2l4s86"]
+
+[ext_resource type="Script" uid="uid://w65aeclpm5mw" path="res://resources/upgrade.gd" id="1_dpp2j"]
+
+[resource]
+script = ExtResource("1_dpp2j")
+upgrade = 2
+display_text = "Laser Sight"
+max_level = 1
+value_curve_type = 2
+cost_type = 2
+base_cost = 80.0
+metadata/_custom_type_script = "uid://w65aeclpm5mw"

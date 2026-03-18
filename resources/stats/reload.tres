@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Stat" format=3 uid="uid://orj8nlvmab67"]
+
+[ext_resource type="Script" uid="uid://rbsniqghf2h2" path="res://resources/stat.gd" id="1_h6hw4"]
+
+[resource]
+script = ExtResource("1_h6hw4")
+player_stat = 2
+display_text = "Reload"
+approaches_zero_base = 1.0
+base_cost = 5.0
+power = 1.5
+metadata/_custom_type_script = "uid://rbsniqghf2h2"

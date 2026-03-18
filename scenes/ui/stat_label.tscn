@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cufpjpgnyoers"]
+
+[ext_resource type="FontFile" uid="uid://6kmtx2n78kyo" path="res://art/fonts/ka1.ttf" id="1_4tfmd"]
+[ext_resource type="Script" uid="uid://dkmyl3i4llhrd" path="res://scenes/ui/stat_label.gd" id="1_6xov7"]
+[ext_resource type="FontFile" uid="uid://ftg0yylbljr5" path="res://art/fonts/joystix.monospace.otf" id="2_6xov7"]
+
+[node name="StatLabel" type="HBoxContainer" unique_id=277121019]
+size_flags_horizontal = 3
+script = ExtResource("1_6xov7")
+
+[node name="Label" type="Label" parent="." unique_id=685103038]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_4tfmd")
+theme_override_font_sizes/font_size = 26
+text = "Stat"
+
+[node name="ValueLabel" type="Label" parent="." unique_id=1325937401]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_6xov7")
+theme_override_font_sizes/font_size = 26
+text = "0.0"
+horizontal_alignment = 2

@@ -8,7 +8,7 @@ var detection_time := 0.0
 @onready var static_shape: CollisionShape2D = %StaticShape
 
 func _ready() -> void:
-	GameManager.player_upgrade_changed.connect(_on_player_upgrade_changed)
+	GameManager.upgrade_changed.connect(_on_upgrade_changed.unbind(1))
 	_update_static_shape()
 
 func _process(delta: float) -> void:
@@ -22,7 +22,7 @@ func _on_area_entered(_area: Area2D) -> void:
 	detection_time = detection_cooldown
 	SignalBus.emit_enemy_hit_screen_edge(edge)
 
-func _on_player_upgrade_changed(_upgrade: Enums.PlayerUpgrades, _value: float) -> void:
+func _on_upgrade_changed() -> void:
 	_update_static_shape()
 
 func _update_static_shape() -> void:

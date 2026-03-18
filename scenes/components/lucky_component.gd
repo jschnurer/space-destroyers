@@ -32,7 +32,7 @@ func _process(_delta: float) -> void:
 	sprite_mat.set_shader_parameter("rotation", global_rotation)
 
 func roll_luck() -> void:
-	var luck := GameManager.get_player_stat_curr_value(Enums.PlayerStats.LUCK)
+	var luck := GameManager.get_stat_value(Enums.PlayerStats.LUCK)
 	set_lucky(randf_range(0.00, 100.0) <= luck)
 
 func set_lucky(lucky: bool) -> void:

@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 func _on_start_teleporting() -> void:
 	visible = true
 	_is_counting_down = true
-	_time_remaining = GameManager.get_player_stat_curr_value(Enums.PlayerStats.TELEPORT_DELAY)
+	_time_remaining = 5.0
 	_update_label()
 
 func _update_label() -> void:

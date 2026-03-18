@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://bsr33kisirymk"]
+
+[ext_resource type="Script" uid="uid://w65aeclpm5mw" path="res://resources/upgrade.gd" id="1_hs0r4"]
+
+[resource]
+script = ExtResource("1_hs0r4")
+upgrade = 3
+display_text = "Multi-Cannon"
+max_level = 2
+value_curve_type = 2
+base_cost = 500.0
+power = 1.3
+metadata/_custom_type_script = "uid://w65aeclpm5mw"

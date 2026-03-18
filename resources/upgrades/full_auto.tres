@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://fre7qjpp7j33"]
+
+[ext_resource type="Script" uid="uid://w65aeclpm5mw" path="res://resources/upgrade.gd" id="1_7qede"]
+
+[resource]
+script = ExtResource("1_7qede")
+display_text = "Full Auto"
+max_level = 1
+value_curve_type = 2
+value_rounding_type = 1
+base_value = 1.0
+cost_type = 2
+base_cost = 50.0
+metadata/_custom_type_script = "uid://w65aeclpm5mw"

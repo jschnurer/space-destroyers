@@ -1,48 +1,73 @@
 extends CanvasLayer
 
-var _disabled := false
-
-@onready var button_container: GridContainer = %ButtonContainer
 @onready var purchase_description: Label = %PurchaseDescription
 
+var _input_enabled := false
+
 func _ready() -> void:
-	SignalBus.start_teleporting.connect(_on_start_teleporting)
-	SignalBus.new_level_loaded.connect(_on_new_level_loaded)
+	SignalBus.open_shop.connect(_on_open_shop)
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	_setup_hover_events()
 
 func _process(_delta: float) -> void:
-	if _disabled:
+	if !_input_enabled:
 		return
 	
 	if Input.is_action_just_pressed("shop"):
-		_toggle_shop()
+		_toggle_shop(false)
 
-func _toggle_shop() -> void:
-	visible = !visible
-	get_tree().paused = visible
-	
-	if visible:
-		_on_appear()
+func _toggle_shop(p_visible: bool) -> void:
+	if !p_visible:
+		_fade_out_shop()
 	else:
-		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		_fade_in_shop()
 
-func _on_appear() -> void:
+func _on_open_shop() -> void:
+	_toggle_shop(true)
+
+func _fade_in_shop() -> void:
+	visible = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	for child in button_container.get_children():
-		if child is ShopButton:
-			(child as ShopButton).update_label_and_cost()
-
-func _on_start_teleporting() -> void:
-	_disabled = true
+	var button_nodes := get_tree().get_nodes_in_group("SHOP_BUTTON")
+	for button in button_nodes:
+		if button is ShopButton:
+			(button as ShopButton).update_label_and_cost()
+			
+	var screen_fader: ScreenFader = get_tree().get_first_node_in_group("SCREEN_FADER")
 	
-func _on_new_level_loaded() -> void:
-	_disabled = false
+	if screen_fader:
+		screen_fader.fade_in()
+		await screen_fader.fade_complete
+	
+	_toggle_input(true)
+
+func _fade_out_shop() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	
+	_toggle_input(false)
+	
+	var screen_fader: ScreenFader = get_tree().get_first_node_in_group("SCREEN_FADER")
+	
+	if screen_fader:
+		screen_fader.fade_out()
+		await screen_fader.fade_complete
+	
+	visible = false
+	SignalBus.shop_closed.emit()
+
+func _toggle_input(p_enabled: bool) -> void:
+	_input_enabled = p_enabled
+	var nodes := get_tree().get_nodes_in_group("SHOP_BUTTON")
+	for node in nodes:
+		if node is not Button and node is not ShopButton:
+			continue 
+		(node as Control).mouse_filter = Control.MOUSE_FILTER_IGNORE if !p_enabled else Control.MOUSE_FILTER_STOP
 
 func _setup_hover_events() -> void:
-	for child in button_container.get_children():
-		if child is ShopButton:
-			var c := child as ShopButton
+	var button_nodes := get_tree().get_nodes_in_group("SHOP_BUTTON")
+	for button in button_nodes:
+		if button is ShopButton:
+			var c := button as ShopButton
 			c.mouse_entered.connect(_on_button_hovered.bind(c.hover_text))
 			c.mouse_exited.connect(_on_button_exited)
 

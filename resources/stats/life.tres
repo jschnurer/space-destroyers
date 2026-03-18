@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Stat" format=3 uid="uid://bar3t6rxsfkqr"]
+
+[ext_resource type="Script" uid="uid://rbsniqghf2h2" path="res://resources/stat.gd" id="1_fqbmw"]
+
+[resource]
+script = ExtResource("1_fqbmw")
+player_stat = 8
+display_text = "Life"
+value_curve_type = 2
+base_value = 1.0
+base_cost = 75.0
+power = 1.65
+metadata/_custom_type_script = "uid://rbsniqghf2h2"

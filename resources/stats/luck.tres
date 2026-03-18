@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Stat" format=3 uid="uid://deth2a6xbyti4"]
+
+[ext_resource type="Script" uid="uid://rbsniqghf2h2" path="res://resources/stat.gd" id="1_bwiat"]
+
+[resource]
+script = ExtResource("1_bwiat")
+player_stat = 7
+display_text = "Luck"
+value_curve_type = 1
+const_start_value = 1.0
+approaches_const = 90.0
+base_cost = 7.0
+power = 1.55
+metadata/_custom_type_script = "uid://rbsniqghf2h2"

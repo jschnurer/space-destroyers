@@ -36,6 +36,14 @@ signal new_level_loaded()
 func emit_new_level_loaded() -> void:
 	new_level_loaded.emit()
 
+signal open_shop()
+func emit_open_shop() -> void:
+	open_shop.emit()
+
+signal shop_closed()
+func emit_shop_closed() -> void:
+	shop_closed.emit()
+
 signal play_sfx(stream: AudioStream, volume_linear: float, pitch_scale: float, sfx_type: SfxPlayer.SfxType)
 func emit_play_sfx(stream: AudioStream, volume_linear: float = 1.0, pitch_scale: float = 1.0, sfx_type: SfxPlayer.SfxType = SfxPlayer.SfxType.GAME) -> void:
 	play_sfx.emit(stream, volume_linear, pitch_scale, sfx_type)

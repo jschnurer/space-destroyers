@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Stat" format=3 uid="uid://dfxua6fksbyf8"]
+
+[ext_resource type="Script" uid="uid://rbsniqghf2h2" path="res://resources/stat.gd" id="1_4tpm5"]
+
+[resource]
+script = ExtResource("1_4tpm5")
+player_stat = 4
+display_text = "Shot Speed"
+value_curve_type = 1
+const_start_value = 900.0
+approaches_const = 1600.0
+base_cost = 25.0
+power = 1.3
+metadata/_custom_type_script = "uid://rbsniqghf2h2"

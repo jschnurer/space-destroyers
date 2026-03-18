@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Stat" format=3 uid="uid://ddamaseu66h74"]
+
+[ext_resource type="Script" uid="uid://rbsniqghf2h2" path="res://resources/stat.gd" id="1_otdye"]
+
+[resource]
+script = ExtResource("1_otdye")
+player_stat = 6
+display_text = "Credibux"
+value_curve_type = 2
+base_value = 1.0
+base_cost = 5.0
+power = 1.72
+metadata/_custom_type_script = "uid://rbsniqghf2h2"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Stat" format=3 uid="uid://dqbh3xj6tys8e"]
+
+[ext_resource type="Script" uid="uid://rbsniqghf2h2" path="res://resources/stat.gd" id="1_vsfdd"]
+
+[resource]
+script = ExtResource("1_vsfdd")
+player_stat = 3
+display_text = "Damage"
+value_curve_type = 2
+base_value = 10.0
+base_cost = 12.0
+power = 1.22
+metadata/_custom_type_script = "uid://rbsniqghf2h2"

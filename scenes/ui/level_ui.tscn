@@ -3,11 +3,28 @@
 [ext_resource type="FontFile" uid="uid://6kmtx2n78kyo" path="res://art/fonts/ka1.ttf" id="1_32a87"]
 [ext_resource type="Script" uid="uid://b5saaj3w0vt7a" path="res://scenes/ui/level_ui.gd" id="1_ky048"]
 [ext_resource type="FontFile" uid="uid://ftg0yylbljr5" path="res://art/fonts/joystix.monospace.otf" id="3_ky048"]
+[ext_resource type="PackedScene" uid="uid://cufpjpgnyoers" path="res://scenes/ui/stat_label.tscn" id="4_gs80r"]
+[ext_resource type="Resource" uid="uid://dr6mj3cfwenny" path="res://resources/stats/tank_speed.tres" id="5_acfpo"]
+[ext_resource type="Resource" uid="uid://b256muf2l4s86" path="res://resources/upgrades/laser_sight.tres" id="5_u7ot7"]
+[ext_resource type="PackedScene" uid="uid://ds2llrbrkp5ep" path="res://scenes/ui/upgrade_label.tscn" id="6_lt1i3"]
+[ext_resource type="Resource" uid="uid://iwg54fq5m7xy" path="res://resources/stats/pickup_area.tres" id="6_nr7cs"]
+[ext_resource type="Resource" uid="uid://bsr33kisirymk" path="res://resources/upgrades/multi_cannon.tres" id="6_v6sr8"]
+[ext_resource type="Resource" uid="uid://fre7qjpp7j33" path="res://resources/upgrades/full_auto.tres" id="7_2tmpj"]
+[ext_resource type="Resource" uid="uid://deth2a6xbyti4" path="res://resources/stats/luck.tres" id="7_gdn6w"]
+[ext_resource type="Resource" uid="uid://ddamaseu66h74" path="res://resources/stats/credit_multiplier.tres" id="8_dlw7e"]
+[ext_resource type="Resource" uid="uid://c53dppwom54ei" path="res://resources/upgrades/missiles.tres" id="8_gs80r"]
+[ext_resource type="Resource" uid="uid://bs1r2nfyeldf8" path="res://resources/upgrades/anti_air_tower.tres" id="9_acfpo"]
+[ext_resource type="Resource" uid="uid://c5u36nqewaty4" path="res://resources/stats/max_shots.tres" id="9_dlw7e"]
+[ext_resource type="Resource" uid="uid://bibjincev0qtl" path="res://resources/upgrades/left_wall.tres" id="10_nr7cs"]
+[ext_resource type="Resource" uid="uid://dfxua6fksbyf8" path="res://resources/stats/shot_speed.tres" id="10_xp64m"]
+[ext_resource type="Resource" uid="uid://baojiq5de1hvd" path="res://resources/upgrades/right_wall.tres" id="11_in2ts"]
+[ext_resource type="Resource" uid="uid://dqbh3xj6tys8e" path="res://resources/stats/damage.tres" id="11_kvee4"]
+[ext_resource type="Resource" uid="uid://orj8nlvmab67" path="res://resources/stats/reload.tres" id="12_3be6a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_32a87"]
 bg_color = Color(0, 0, 0, 1)
 
-[node name="CanvasLayer" type="CanvasLayer" unique_id=1966520918]
+[node name="LevelUI" type="CanvasLayer" unique_id=1966520918]
 script = ExtResource("1_ky048")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=669150873]
@@ -23,6 +40,7 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_32a87")
 
 [node name="Left" type="MarginContainer" parent="HBoxContainer/PanelContainer" unique_id=891187302]
+visible = false
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
 theme_override_constants/margin_left = 16
@@ -93,10 +111,13 @@ text_overrun_behavior = 5
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
-[node name="Life" type="HBoxContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=1118592133]
+[node name="Stats" type="VBoxContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=280516229]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Life" unique_id=25872946]
+[node name="Life" type="HBoxContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Stats" unique_id=1118592133]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Stats/Life" unique_id=25872946]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -104,7 +125,7 @@ theme_override_fonts/font = ExtResource("1_32a87")
 theme_override_font_sizes/font_size = 26
 text = "Life"
 
-[node name="LifeDisplay" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Life" unique_id=1733411326]
+[node name="LifeDisplay" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Stats/Life" unique_id=1733411326]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
@@ -113,192 +134,69 @@ theme_override_font_sizes/font_size = 26
 text = "1/1"
 horizontal_alignment = 2
 
-[node name="Speed" type="HBoxContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=1883696709]
+[node name="Tank Speed" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Stats" unique_id=277121019 instance=ExtResource("4_gs80r")]
 layout_mode = 2
+stat = ExtResource("5_acfpo")
+interpolate_str = "+%s%%"
+show_only_percent_bonus = true
+round_to_int = true
 
-[node name="Label" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Speed" unique_id=1370038177]
+[node name="Pickup Area" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Stats" unique_id=2113169847 instance=ExtResource("4_gs80r")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("1_32a87")
-theme_override_font_sizes/font_size = 26
-text = "Speed"
+stat = ExtResource("6_nr7cs")
+interpolate_str = "+%s%%"
+show_only_percent_bonus = true
+round_to_int = true
 
-[node name="SpeedDisplay" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Speed" unique_id=1793816886]
-unique_name_in_owner = true
+[node name="Luck" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Stats" unique_id=421243436 instance=ExtResource("4_gs80r")]
 layout_mode = 2
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("3_ky048")
-theme_override_font_sizes/font_size = 26
-text = "200.0"
-horizontal_alignment = 2
+stat = ExtResource("7_gdn6w")
+interpolate_str = "+%s%%"
+show_only_percent_bonus = true
+round_to_int = true
 
-[node name="PickupArea" type="HBoxContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=983774774]
+[node name="CreditMultiplier" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Stats" unique_id=794639461 instance=ExtResource("4_gs80r")]
 layout_mode = 2
+stat = ExtResource("8_dlw7e")
+interpolate_str = "%sx"
+format_str = "%.2f"
 
-[node name="Label" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/PickupArea" unique_id=759916443]
+[node name="Max Shots" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Stats" unique_id=1518888019 instance=ExtResource("4_gs80r")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("1_32a87")
-theme_override_font_sizes/font_size = 26
-text = "Pickup Area"
+stat = ExtResource("9_dlw7e")
+interpolate_str = "%s"
+round_to_int = true
 
-[node name="PickupDisplay" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/PickupArea" unique_id=1359344638]
-unique_name_in_owner = true
+[node name="Shot Speed" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Stats" unique_id=410672064 instance=ExtResource("4_gs80r")]
 layout_mode = 2
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("3_ky048")
-theme_override_font_sizes/font_size = 26
-text = "26"
-horizontal_alignment = 2
+stat = ExtResource("10_xp64m")
+interpolate_str = "+%s%%"
+show_only_percent_bonus = true
+round_to_int = true
 
-[node name="LuckArea" type="HBoxContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=2113091154]
+[node name="Damage" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Stats" unique_id=1175734507 instance=ExtResource("4_gs80r")]
 layout_mode = 2
+stat = ExtResource("11_kvee4")
+interpolate_str = "%s"
+format_str = "%.0f"
 
-[node name="Label" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/LuckArea" unique_id=262593731]
+[node name="Reload" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Stats" unique_id=233088319 instance=ExtResource("4_gs80r")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("1_32a87")
-theme_override_font_sizes/font_size = 26
-text = "Luck"
-
-[node name="LuckDisplay" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/LuckArea" unique_id=957644117]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("3_ky048")
-theme_override_font_sizes/font_size = 26
-text = "1"
-horizontal_alignment = 2
-
-[node name="CreditMultiplier" type="HBoxContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=1356161300]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/CreditMultiplier" unique_id=768799657]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("1_32a87")
-theme_override_font_sizes/font_size = 26
-text = "Credibux"
-
-[node name="CreditMultiplierDisplay" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/CreditMultiplier" unique_id=2712925]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("3_ky048")
-theme_override_font_sizes/font_size = 26
-text = "1.0"
-horizontal_alignment = 2
-
-[node name="MaxShots" type="HBoxContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=1832427018]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/MaxShots" unique_id=771949787]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("1_32a87")
-theme_override_font_sizes/font_size = 26
-text = "Max shots"
-
-[node name="MaxShotsDisplay" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/MaxShots" unique_id=947825726]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("3_ky048")
-theme_override_font_sizes/font_size = 26
-text = "1"
-horizontal_alignment = 2
-
-[node name="ShotPower" type="HBoxContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=1535898733]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/ShotPower" unique_id=1844561905]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("1_32a87")
-theme_override_font_sizes/font_size = 26
-text = "shot power"
-
-[node name="PowerDisplay" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/ShotPower" unique_id=202005160]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("3_ky048")
-theme_override_font_sizes/font_size = 26
-text = "1"
-horizontal_alignment = 2
-
-[node name="ShotSpeed" type="HBoxContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=638728828]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/ShotSpeed" unique_id=844662053]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("1_32a87")
-theme_override_font_sizes/font_size = 26
-text = "Shot speed"
-
-[node name="ShotSpeedDisplay" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/ShotSpeed" unique_id=4097516]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("3_ky048")
-theme_override_font_sizes/font_size = 26
-text = "50.0"
-horizontal_alignment = 2
-
-[node name="Reload" type="HBoxContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=1818790306]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Reload" unique_id=738923091]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("1_32a87")
-theme_override_font_sizes/font_size = 26
-text = "Reload"
-
-[node name="ReloadDisplay" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Reload" unique_id=467008385]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("3_ky048")
-theme_override_font_sizes/font_size = 26
-text = "100%"
-horizontal_alignment = 2
-
-[node name="TeleportDelay" type="HBoxContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=173724924]
-visible = false
-layout_mode = 2
-
-[node name="Label" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/TeleportDelay" unique_id=1425725456]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("1_32a87")
-theme_override_font_sizes/font_size = 26
-text = "Tele delay"
-
-[node name="TeleportDelayDisplay" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/TeleportDelay" unique_id=534470570]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("3_ky048")
-theme_override_font_sizes/font_size = 26
-text = "5.0"
-horizontal_alignment = 2
+stat = ExtResource("12_3be6a")
+interpolate_str = "+%s%%"
+show_only_percent_bonus = true
+round_to_int = true
 
 [node name="Spacer2" type="Control" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=1191607314]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
-[node name="Space Upgrades" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=1139954321]
+[node name="Upgrades" type="VBoxContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=562724002]
+layout_mode = 2
+
+[node name="Upgrades" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Upgrades" unique_id=1139954321]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("1_32a87")
@@ -306,115 +204,34 @@ theme_override_font_sizes/font_size = 36
 text = "Upgrades"
 horizontal_alignment = 1
 
-[node name="LaserSight" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=1071832069]
-unique_name_in_owner = true
+[node name="Laser Sight" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Upgrades" unique_id=1547754392 instance=ExtResource("6_lt1i3")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("1_32a87")
-theme_override_font_sizes/font_size = 26
-text = "Laser Sight"
-horizontal_alignment = 1
+upgrade = ExtResource("5_u7ot7")
 
-[node name="TwinCannon" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=581187798]
-unique_name_in_owner = true
+[node name="Multi Cannon" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Upgrades" unique_id=111942866 instance=ExtResource("6_lt1i3")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("1_32a87")
-theme_override_font_sizes/font_size = 26
-text = "Twin Cannon"
-horizontal_alignment = 1
+upgrade = ExtResource("6_v6sr8")
+show_plus = true
+show_level_number = true
 
-[node name="AutoFire" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=1162584901]
-unique_name_in_owner = true
+[node name="Auto Fire" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Upgrades" unique_id=1719253321 instance=ExtResource("6_lt1i3")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("1_32a87")
-theme_override_font_sizes/font_size = 26
-text = "Auto Fire"
-horizontal_alignment = 1
+upgrade = ExtResource("7_2tmpj")
 
-[node name="SeekingMissileHolder" type="CenterContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=1329383528]
-unique_name_in_owner = true
+[node name="Missiles" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Upgrades" unique_id=1607751322 instance=ExtResource("6_lt1i3")]
 layout_mode = 2
+upgrade = ExtResource("8_gs80r")
+show_level_number = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/SeekingMissileHolder" unique_id=1000632967]
+[node name="Anti-Air Towers" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Upgrades" unique_id=1914625113 instance=ExtResource("6_lt1i3")]
 layout_mode = 2
-theme_override_constants/separation = 12
+upgrade = ExtResource("9_acfpo")
+show_level_number = true
 
-[node name="Label" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/SeekingMissileHolder/HBoxContainer" unique_id=991678465]
+[node name="Left Wall" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Upgrades" unique_id=1641735390 instance=ExtResource("6_lt1i3")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("1_32a87")
-theme_override_font_sizes/font_size = 26
-text = "Seeking Missiles"
+upgrade = ExtResource("10_nr7cs")
 
-[node name="SeekingMissiles" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/SeekingMissileHolder/HBoxContainer" unique_id=198483052]
-unique_name_in_owner = true
+[node name="Right Wall" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Upgrades" unique_id=2473419 instance=ExtResource("6_lt1i3")]
 layout_mode = 2
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("3_ky048")
-theme_override_font_sizes/font_size = 26
-text = "0"
-horizontal_alignment = 2
-
-[node name="AntiAirTowersHolder" type="CenterContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=1506196170]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/AntiAirTowersHolder" unique_id=2029429958]
-layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="Label" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/AntiAirTowersHolder/HBoxContainer" unique_id=908134311]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("1_32a87")
-theme_override_font_sizes/font_size = 26
-text = "Anti-Air Towers"
-
-[node name="AntiAirTowers" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/AntiAirTowersHolder/HBoxContainer" unique_id=1607405055]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("3_ky048")
-theme_override_font_sizes/font_size = 26
-text = "0"
-horizontal_alignment = 2
-
-[node name="LeftWall" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=2133200764]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("1_32a87")
-theme_override_font_sizes/font_size = 26
-text = "Left Wall"
-horizontal_alignment = 1
-
-[node name="RightWall" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=228611065]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("1_32a87")
-theme_override_font_sizes/font_size = 26
-text = "Right Wall"
-horizontal_alignment = 1
-
-[node name="Spacer3" type="Control" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=1356422105]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="OpenShop" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=1959930842]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("1_32a87")
-theme_override_font_sizes/font_size = 26
-text = "Press 'F' to shop"
-horizontal_alignment = 1
+upgrade = ExtResource("11_in2ts")

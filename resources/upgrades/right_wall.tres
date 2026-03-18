@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://baojiq5de1hvd"]
+
+[ext_resource type="Script" uid="uid://w65aeclpm5mw" path="res://resources/upgrade.gd" id="1_qcx5q"]
+
+[resource]
+script = ExtResource("1_qcx5q")
+upgrade = 8
+display_text = "Right Wall"
+max_level = 1
+value_curve_type = 2
+cost_type = 2
+base_cost = 125.0
+metadata/_custom_type_script = "uid://w65aeclpm5mw"

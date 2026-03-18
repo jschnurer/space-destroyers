@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://bs1r2nfyeldf8"]
+
+[ext_resource type="Script" uid="uid://w65aeclpm5mw" path="res://resources/upgrade.gd" id="1_vg0sr"]
+
+[resource]
+script = ExtResource("1_vg0sr")
+upgrade = 4
+display_text = "Anti-Air Tower"
+max_level = 6
+value_curve_type = 2
+base_cost = 300.0
+power = 1.75
+metadata/_custom_type_script = "uid://w65aeclpm5mw"
