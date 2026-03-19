@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cek5p8my0lwit"]
 
-[ext_resource type="AudioStream" uid="uid://cdnc4pgyphaxp" path="res://audio/bgm/moonlight.mp3" id="1_85g3d"]
 [ext_resource type="PackedScene" uid="uid://dvc1ybiwavk54" path="res://scenes/ui/level_ui.tscn" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://ld7c4owsibhw" path="res://scenes/level_geom/starfield.tscn" id="1_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://dbp7bcs4hsse3" path="res://scenes/bgm_player.tscn" id="1_trceg"]
 [ext_resource type="PackedScene" uid="uid://cxprdbobghsuw" path="res://scenes/level_geom/screen_edge.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://qqwnyc0intca" path="res://scenes/ui/shop_ui.tscn" id="2_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://bpjt7iq22bpbu" path="res://scenes/tank/tank.tscn" id="3_sugp2"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dvexqvv2ecu72" path="res://scenes/effects/screen_fader.tscn" id="11_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://b4i7li1ujm3os" path="res://scenes/sfx_player/sfx_player.tscn" id="12_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://coa4jrtx5c26o" path="res://scenes/towers/anti_air_tower_battery.tscn" id="12_trceg"]
+[ext_resource type="PackedScene" uid="uid://csulh3wv2wpny" path="res://scenes/game_over/game_over.tscn" id="13_trceg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tbgi4"]
 size = Vector2(400, 1080)
@@ -21,12 +22,7 @@ size = Vector2(1120, 69)
 
 [node name="Main" type="Node2D" unique_id=1327851371]
 
-[node name="BGM" type="AudioStreamPlayer2D" parent="." unique_id=184984625]
-process_mode = 3
-stream = ExtResource("1_85g3d")
-volume_db = 6.0
-autoplay = true
-metadata/_edit_lock_ = true
+[node name="BGM" parent="." unique_id=219752419 instance=ExtResource("1_trceg")]
 
 [node name="Starfield" parent="." unique_id=2061530491 instance=ExtResource("1_o6xl0")]
 position = Vector2(402, 0)
@@ -108,8 +104,6 @@ metadata/_edit_lock_ = true
 
 [node name="ShopUI" parent="." unique_id=401719951 instance=ExtResource("2_tbgi4")]
 
-[node name="ScreenFader" parent="." unique_id=259473987 groups=["SCREEN_FADER"] instance=ExtResource("11_ya4ey")]
-
 [node name="GameSFXPlayer" parent="." unique_id=405014005 instance=ExtResource("12_eb6dy")]
 
 [node name="SystemSFXPlayer" parent="." unique_id=2072273197 instance=ExtResource("12_eb6dy")]
@@ -118,5 +112,10 @@ channels = 3
 
 [node name="AntiAirTowerBattery" parent="." unique_id=1385625833 instance=ExtResource("12_trceg")]
 position = Vector2(960, 1012)
+
+[node name="GameOver" parent="." unique_id=1120379295 instance=ExtResource("13_trceg")]
+
+[node name="ScreenFader" parent="." unique_id=259473987 groups=["SCREEN_FADER"] instance=ExtResource("11_ya4ey")]
+layer = 1000
 
 [editable path="Starfield"]

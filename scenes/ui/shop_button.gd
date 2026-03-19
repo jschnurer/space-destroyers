@@ -15,6 +15,8 @@ class_name ShopButton
 @export_group("Player Stat")
 @export var player_stat: Enums.PlayerStats
 @export var bonus_delta: float
+## If this is set, it will override everything else and just add this int point to the value.
+@export var bonus_delta_int: int
 @export var percentile_bonus_delta: float
 
 @export_group("Player Upgrade")
@@ -39,7 +41,10 @@ func _on_pressed() -> void:
 		
 		if GameManager.pay_credits(upgrade_cost):
 			if is_player_stat:
-				GameManager.alter_stat(player_stat, bonus_delta, percentile_bonus_delta)
+				if bonus_delta_int != 0:
+					GameManager.alter_stat_int(player_stat, bonus_delta_int)
+				else:
+					GameManager.alter_stat(player_stat, bonus_delta, percentile_bonus_delta)
 			elif is_player_upgrade:
 				GameManager.alter_upgrade(player_upgrade, 1.0)
 			
@@ -80,7 +85,7 @@ func update_label_and_cost() -> void:
 	
 	if !Engine.is_editor_hint():
 		if is_player_stat:
-			disabled = upgrade_cost > GameManager.credits
+			disabled = upgrade_cost > GameManager.game_state.credits
 		elif is_player_upgrade:
 			disabled = GameManager.get_upgrade(player_upgrade).is_maxed()
 		else:

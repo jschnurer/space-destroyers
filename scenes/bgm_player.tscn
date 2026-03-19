@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dbp7bcs4hsse3"]
+
+[ext_resource type="Script" uid="uid://do7d5csvicy80" path="res://scenes/bgm_player.gd" id="2_nm08u"]
+
+[node name="BGM" type="AudioStreamPlayer" unique_id=1675276674]
+process_mode = 3
+volume_db = 6.0
+script = ExtResource("2_nm08u")
+metadata/_edit_lock_ = true

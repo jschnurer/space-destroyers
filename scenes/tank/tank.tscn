@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://dgfuu1m46xmvo" path="res://scenes/components/reload_meter_component.tscn" id="7_valud"]
 [ext_resource type="Shader" uid="uid://hjo4sykpukcq" path="res://shaders/laser_sight_shader.gdshader" id="8_n10so"]
 [ext_resource type="Script" uid="uid://b55sn6fb0ullr" path="res://scenes/tank/laser_sight.gd" id="9_fscqu"]
+[ext_resource type="PackedScene" uid="uid://b8unj7w73q0w3" path="res://scenes/components/hurtbox_component.tscn" id="9_t8nan"]
+[ext_resource type="PackedScene" uid="uid://d1xwwb4h1awsi" path="res://scenes/components/life_component.tscn" id="10_1pfma"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0el1g"]
 radius = 26.0
@@ -76,5 +78,17 @@ unique_name_in_owner = true
 reload_component = NodePath("../ReloadComponent")
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
+
+[node name="HurtboxComponent" parent="Components" unique_id=2122994445 node_paths=PackedStringArray("life_component", "sprite_2d") instance=ExtResource("9_t8nan")]
+life_component = NodePath("../LifeComponent")
+flash_damage = true
+sprite_2d = NodePath("../../Sprite2D")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Components/HurtboxComponent" unique_id=772414726]
+polygon = PackedVector2Array(20, 0, 24, 0, 44, 16, 44, 32, 0, 32, 0, 16)
+metadata/_edit_lock_ = true
+
+[node name="LifeComponent" parent="Components" unique_id=759486464 instance=ExtResource("10_1pfma")]
+life = 1.0
 
 [connection signal="body_entered" from="PickupArea" to="." method="_on_pickup_area_body_entered"]

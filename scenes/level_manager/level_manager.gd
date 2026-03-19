@@ -38,7 +38,6 @@ func _process(_delta: float) -> void:
 			en.queue_free()
 		
 		var mult := GameManager.get_stat_value(Enums.PlayerStats.CREDIT_MULTIPLIER)
-		print("Pass Credits: %s * %s = %s" % [total_credits, mult, total_credits * mult])
 		SignalBus.emit_credits_picked_up(total_credits * mult)
 		GameManager.load_next_level()
 

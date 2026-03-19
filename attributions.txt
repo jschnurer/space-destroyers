@@ -36,3 +36,9 @@ Author: shiru8bit
 License: CC-BY 3.0
 https://opengameart.org/content/8-bit-chiptune-transmission
 Note: Looped to 0:03.198
+
+==8-bit Chiptune - After The Rain ==
+Author: shiru8bit
+License: CC-BY 3.0
+https://opengameart.org/content/8-bit-chiptune-after-the-rain
+Note: Looped to beginning

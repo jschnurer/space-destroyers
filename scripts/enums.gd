@@ -43,3 +43,8 @@ enum EnemyType {
 	SQUID = 2,
 	UFO = 3,
 }
+
+enum GameOverReason {
+	ENEMY_LANDED = 0,
+	TANK_DESTROYED = 1,
+}

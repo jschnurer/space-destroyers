@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c077toi6hc2u4"]
+
+[ext_resource type="Script" uid="uid://c2grixkol0i0l" path="res://scenes/components/landing_component.gd" id="1_5iivk"]
+[ext_resource type="PackedScene" uid="uid://denivsfgmokeg" path="res://scenes/game_over_anim/game_over_anim.tscn" id="2_wus1o"]
+
+[node name="LandingComponent" type="Area2D" unique_id=964463748]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_5iivk")
+game_over_anim_scene = ExtResource("2_wus1o")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

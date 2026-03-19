@@ -44,6 +44,14 @@ signal shop_closed()
 func emit_shop_closed() -> void:
 	shop_closed.emit()
 
+signal play_bgm(stream: AudioStream, volume_linear: float, pitch_scale: float, fade_out_duration: float, fade_in_duration: float)
+func emit_play_bgm(stream: AudioStream, volume_linear: float = 1.0, pitch_scale: float = 1.0, fade_out_duration: float = 0.0, fade_in_duration: float = 0.0) -> void:
+	play_bgm.emit(stream, volume_linear, pitch_scale, fade_out_duration, fade_in_duration)
+
+signal fade_out_bgm(fade_duration: float)
+func emit_fade_out_bgm(fade_duration: float) -> void:
+	fade_out_bgm.emit(fade_duration)
+
 signal play_sfx(stream: AudioStream, volume_linear: float, pitch_scale: float, sfx_type: SfxPlayer.SfxType)
 func emit_play_sfx(stream: AudioStream, volume_linear: float = 1.0, pitch_scale: float = 1.0, sfx_type: SfxPlayer.SfxType = SfxPlayer.SfxType.GAME) -> void:
 	play_sfx.emit(stream, volume_linear, pitch_scale, sfx_type)
@@ -51,3 +59,7 @@ func emit_play_sfx(stream: AudioStream, volume_linear: float = 1.0, pitch_scale:
 signal stop_sfx(type: SfxPlayer.SfxType)
 func emit_stop_sfx(type: SfxPlayer.SfxType) -> void:
 	stop_sfx.emit(type)
+
+signal game_over(game_over_reason: Enums.GameOverReason)
+func emit_game_over(game_over_reason: Enums.GameOverReason) -> void:
+	game_over.emit(game_over_reason)

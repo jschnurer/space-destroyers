@@ -8,6 +8,7 @@ var level: int = 0
 ## Percent bonus used in APPROACHES formulas.
 var percent_bonus: float = 0.0
 var point_bonus: float = 0.0
+var point_bonus_int: int = 0
 
 @export_group("Value Curve")
 @export var value_curve_type: ValueCurveType
@@ -19,6 +20,7 @@ var point_bonus: float = 0.0
 @export var approaches_const: float
 @export_subgroup("No Curve")
 @export var base_value: float
+@export var base_value_int: int
 
 @export_group("Cost Curve")
 @export var cost_type: CostCurveType
@@ -46,6 +48,16 @@ func get_current_value() -> float:
 		ValueRoundingType.CEIL: return ceil(val)
 	
 	return val
+
+func get_current_value_int() -> int:
+	var val := (base_value_int + point_bonus_int) * (1 + percent_bonus)
+	
+	match value_rounding_type:
+		ValueRoundingType.NONE: return floori(val)
+		ValueRoundingType.FLOOR: return floori(val)
+		ValueRoundingType.CEIL: return ceili(val)
+	
+	return floori(val)
 
 ## [b]APPROACHES_ZERO[/b]: approaches_zero_base / (1.0 + percent_bonus) + point_bonus[br][br]
 ## [b]APPROACHES_CONST[/b]: approaches_const - (approaches_const_base / (1.0 + percent_bonus)) + point_bonus[br][br]

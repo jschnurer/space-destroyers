@@ -8,13 +8,19 @@ extends CharacterBody2D
 @onready var reload_component: ReloadComponent = %ReloadComponent
 @onready var pickup_shape: CollisionShape2D = $PickupArea/PickupShape
 @onready var pickup_point: Node2D = $PickupPoint
+@onready var life_component: LifeComponent = $Components/LifeComponent
 
 var _active_bullet_count := 0
 
 func _ready() -> void:
 	_update_reload_time(GameManager.get_stat_value(Enums.PlayerStats.RELOAD))
 	_update_pickup_area(GameManager.get_stat_value(Enums.PlayerStats.PICKUP_AREA))
+	
+	life_component.life = GameManager.get_stat_value(Enums.PlayerStats.LIFE)
+	life_component.life_changed.connect(_on_life_changed)
+	
 	GameManager.stat_changed.connect(_on_stat_changed)
+	GameManager.current_life_changed.connect(_on_game_manager_current_life_changed)
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("shoot"):
@@ -60,6 +66,7 @@ func _on_stat_changed(stat: Stat) -> void:
 	match stat.player_stat:
 		Enums.PlayerStats.RELOAD: _update_reload_time(stat.get_current_value())
 		Enums.PlayerStats.PICKUP_AREA: _update_pickup_area(stat.get_current_value())
+		Enums.PlayerStats.LIFE: life_component.life = stat.get_current_value()
 
 func _update_reload_time(reload_time: float) -> void:
 	reload_component.set_reload_time(reload_time)
@@ -82,3 +89,9 @@ func _spawn_bullet(bullet_offset: float) -> void:
 	bullet.tree_exited.connect(_on_bullet_died)
 	Utilities.call_deferred("add_child_to_level", bullet)
 	_active_bullet_count += 1
+
+func _on_life_changed(new_life: int) -> void:
+	GameManager.set_current_life(new_life)
+
+func _on_game_manager_current_life_changed(new_life: int) -> void:
+	life_component.life = new_life
