@@ -41,10 +41,6 @@ func _on_stat_changed(p_stat: Stat) -> void:
 
 func _update_value_label() -> void:
 	if interpolate_str and format_str and stat:
-		if stat.player_stat == Enums.PlayerStats.PICKUP_AREA:
-			print ("pickup")
-			print (show_only_percent_bonus)
-		
 		if !Engine.is_editor_hint():
 			var num := stat.percent_bonus * 100.0 if show_only_percent_bonus else stat.get_current_value()
 			var int_num: int = roundi(num)

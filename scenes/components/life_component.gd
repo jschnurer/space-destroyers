@@ -5,11 +5,13 @@ class_name LifeComponent
 
 signal life_zeroed
 
-## Takes damage. Returns remaining life.
+## Takes damage. Returns damage dealt.
 func take_damage(damage: float) -> float:
+	var damage_dealt := damage if life >= damage else life
 	if life > 0:
 		life -= damage
 		if life <= 0.0:
 			life = 0.0
 			life_zeroed.emit()
-	return life
+			
+	return damage_dealt

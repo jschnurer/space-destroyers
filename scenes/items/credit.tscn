@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dkre2538023tm" path="res://scenes/items/credit.gd" id="1_4nouu"]
 [ext_resource type="Texture2D" uid="uid://cdyvlsr8w6mui" path="res://art/credit.png" id="1_e0jmu"]
+[ext_resource type="Material" uid="uid://d0vxn0ewbmjii" path="res://shaders/enemy_shader_material.tres" id="1_kdqey"]
 [ext_resource type="AudioStream" uid="uid://yq6codvmyndo" path="res://audio/sfx/beepfx_samples/32_item_5.wav" id="2_jkw83"]
 [ext_resource type="PackedScene" uid="uid://cmoknedm8lvnp" path="res://scenes/components/lucky_component.tscn" id="3_ngqgq"]
 
@@ -16,6 +17,7 @@ script = ExtResource("1_4nouu")
 credit_sound = ExtResource("2_jkw83")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=430301663]
+material = ExtResource("1_kdqey")
 scale = Vector2(4, 4)
 texture = ExtResource("1_e0jmu")
 

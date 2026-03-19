@@ -1,0 +1,2 @@
+- Credit Count Multiplier in enemies (so they can spawn MORE credits / not value)
+- Heckin' Big Boi enemy which is just scaled up version with huge credit count mult and life

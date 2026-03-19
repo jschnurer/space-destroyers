@@ -26,11 +26,20 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("nuke"):
 		for en in get_tree().get_nodes_in_group(GroupNames.ENEMY):
-			var lc := Utilities.get_first_child_of_type(en, LifeComponent)
-			(lc as LifeComponent).take_damage(99999999.0)
+			var lc: LifeComponent = (en as Enemy).get_component(LifeComponent)
+			if lc:
+				lc.take_damage(99999999.0)
 	elif Input.is_action_just_pressed("pass_level"):
+		var total_credits := 0.0
 		for en in get_tree().get_nodes_in_group(GroupNames.ENEMY):
+			var od: OnDeathComponent = (en as Enemy).get_component(OnDeathComponent)
+			if od:
+				total_credits += od.get_total_credit_value()
 			en.queue_free()
+		
+		var mult := GameManager.get_stat_value(Enums.PlayerStats.CREDIT_MULTIPLIER)
+		print("Pass Credits: %s * %s = %s" % [total_credits, mult, total_credits * mult])
+		SignalBus.emit_credits_picked_up(total_credits * mult)
 		GameManager.load_next_level()
 
 func _on_enemy_hit_screen_edge(edge: Enums.ScreenEdges) -> void:

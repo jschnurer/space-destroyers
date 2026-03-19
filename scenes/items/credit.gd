@@ -82,13 +82,3 @@ func _lock_and_push() -> void:
 	var push_dir := (global_position - _player_target.global_position).normalized()
 	_collection_velocity = push_dir * _collection_push_strength
 	_is_pushing = true
-	
-	# Decelerate to a stop.
-	#var tween := create_tween()
-	#tween.tween_property(self, "_collection_velocity", Vector2.ZERO, 0.3)\
-		#.set_trans(Tween.TRANS_QUAD)\
-		#.set_ease(Tween.EASE_OUT)
-	#tween.tween_callback(func() -> void:
-		#_is_collecting = true
-		#_is_pushing = false
-	#)

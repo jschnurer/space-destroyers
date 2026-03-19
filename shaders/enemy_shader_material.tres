@@ -1,13 +1,17 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://d0vxn0ewbmjii"]
 
-[ext_resource type="Shader" uid="uid://dairmqngktiej" path="res://shaders/lucky_glint_shader.tres" id="1_4mx7j"]
+[ext_resource type="Shader" uid="uid://dairmqngktiej" path="res://shaders/enemy_shader.tres" id="1_rv2w7"]
 
 [resource]
-shader = ExtResource("1_4mx7j")
+resource_local_to_scene = true
+shader = ExtResource("1_rv2w7")
 shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
 shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
 shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
 shader_parameter/hframes = 2.0
 shader_parameter/vframes = 1.0
 shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)

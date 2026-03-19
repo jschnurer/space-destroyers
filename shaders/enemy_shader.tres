@@ -4,6 +4,7 @@
 code = "shader_type canvas_item;
 
 uniform float time;
+uniform bool is_lucky = false;
 uniform vec4 base_color: source_color = vec4(1.0, 1.0, 1.0, 1.0);
 uniform vec4 glint_color: source_color = vec4(1.0, 1.0, 1.0, 1.0);
 uniform float rotation = 0.0;
@@ -14,14 +15,16 @@ uniform float vframes = 1.0;
 uniform float band_width : hint_range(0.01, 1.0) = 0.4;
 uniform float sharpness : hint_range(0.001, 0.2) = 0.02;
 
-void fragment() {
-	vec4 tex = texture(TEXTURE, UV);
+uniform vec4 flash_color: source_color = vec4(0.0, 0.0, 0.0, 0.0);
+
+void handle_lucky(sampler2D base_tex, vec2 base_uv, inout vec4 current_color) {
+	vec4 tex = texture(base_tex, base_uv);
 	
 	if (time < 0.0 && (!(tex.a == 0.0 || tex.rgb == vec3(0, 0, 0)))) {
-        COLOR = vec4(base_color.rgb * tex.a, tex.a);
+        current_color = vec4(base_color.rgb * tex.a, tex.a);
 	} else if (!(tex.a == 0.0 || tex.rgb == vec3(0, 0, 0))) {
 	    vec2 frame_size = 1.0 / vec2(hframes, vframes);
-        vec2 local_uv = mod(UV, frame_size) / frame_size;
+        vec2 local_uv = mod(base_uv, frame_size) / frame_size;
         
         // 1. Center coordinates around 0.5 to rotate around the center of the frame
         vec2 centered_uv = local_uv - 0.5;
@@ -43,6 +46,19 @@ void fragment() {
                       smoothstep(edge_high - sharpness, edge_high, dist);
         
         vec3 final_rgb = mix(base_color.rgb, glint_color.rgb, glint * 0.8);
-        COLOR = vec4(final_rgb * tex.a, tex.a);
+        current_color = vec4(final_rgb * tex.a, tex.a);
+	}
+}
+
+void handle_flash(sampler2D base_tex, vec2 base_uv, inout vec4 current_color) {
+	vec4 tex = texture(base_tex, base_uv);
+    current_color = vec4(flash_color.rgb * tex.a, tex.a);
+}
+
+void fragment() {
+	if (flash_color.a != 0.0) {
+		handle_flash(TEXTURE, UV, COLOR);
+	} else if (is_lucky) {
+		handle_lucky(TEXTURE, UV, COLOR);
 	}
 }"

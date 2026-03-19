@@ -36,3 +36,10 @@ enum PlayerUpgrades {
 	RETAINING_WALL_LEFT = 7,
 	RETAINING_WALL_RIGHT = 8
 }
+
+enum EnemyType {
+	CRAB = 0,
+	OCTOPUS = 1,
+	SQUID = 2,
+	UFO = 3,
+}

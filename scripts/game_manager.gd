@@ -36,8 +36,8 @@ func _ready() -> void:
 	SignalBus.credits_picked_up.connect(_on_credits_picked_up)
 	
 	# DEBUG TO ADD POWER!!!
-	credits = 55
-	credits = 1000000000
+	#credits = 55
+	#credits = 1000000000
 	
 	#alter_stat(Enums.PlayerStats.TANK_SPEED, 200, 0, 0)
 	#alter_stat(Enums.PlayerStats.MAX_SHOTS, 200, 0, 0)

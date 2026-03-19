@@ -28,6 +28,8 @@ class_name OnDeathComponent
 @export var credit_scene: PackedScene
 ## How many credits is this enemy worth?
 @export var credit_value := 1.0
+## How many credits to spawn (applied AFTER lucky).
+@export var credit_count_multiplier := 1.0
 ## (Optional) Lucky component to check if credit is lucky.
 @export var lucky_component: LuckyComponent
 
@@ -56,18 +58,37 @@ func _try_spawn_credit() -> void:
 		return
 	
 	var num_credits := 1 if !lucky_component.is_lucky else randi_range(3, 5)
-
+	
+	# Apply multplier.
+	num_credits = floor(num_credits * credit_count_multiplier)
+	
 	var creds: Array[Node] = []
 
 	for i in range(num_credits):
 		var credit := credit_scene.instantiate() as Credit
-		credit.global_position = global_position
+		credit.global_position = global_position + Vector2(randf_range(-1, 1), randf_range(-1, 1))
 		if lucky_component and lucky_component.is_lucky:
 			credit.value = credit_value * randf_range(2.0, 3.0)
+		else:
+			credit.value = credit_value
 		credit.set_lucky(lucky_component.is_lucky)
 		creds.append(credit)
 	
 	Utilities.call_deferred("add_children_to_level", creds)
+
+## Simulates spawning credits and calculates their total value (without counting user stats).
+func get_total_credit_value() -> float:
+	if !spawn_credit:
+		return 0.0
+	
+	var total_value := 0.0
+	var num_credits := 1 if !lucky_component.is_lucky else randi_range(3, 5)
+	for i in range(num_credits):
+		if lucky_component and lucky_component.is_lucky:
+			total_value += credit_value * randf_range(2.0, 3.0)
+		else:
+			total_value += credit_value
+	return total_value
 
 func _try_death_anim() -> void:
 	if !show_death_anim or !death_anim_scene:

@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://uu3ea6khn2cp"]
 
+[ext_resource type="Material" uid="uid://d0vxn0ewbmjii" path="res://shaders/enemy_shader_material.tres" id="1_2q4ju"]
 [ext_resource type="PackedScene" uid="uid://cmoknedm8lvnp" path="res://scenes/components/lucky_component.tscn" id="1_kty3y"]
 [ext_resource type="Texture2D" uid="uid://bwuqr66ojkbci" path="res://art/octopus.png" id="1_nduv1"]
 [ext_resource type="PackedScene" uid="uid://bdmudihj1sun8" path="res://scenes/components/dance_component.tscn" id="2_7d2cm"]
+[ext_resource type="Script" uid="uid://dbtrrcm6y3ioy" path="res://scenes/enemies/enemy.gd" id="2_jwybb"]
 [ext_resource type="PackedScene" uid="uid://b8unj7w73q0w3" path="res://scenes/components/hurtbox_component.tscn" id="3_nduv1"]
 [ext_resource type="PackedScene" uid="uid://d1xwwb4h1awsi" path="res://scenes/components/life_component.tscn" id="4_13wqb"]
 [ext_resource type="PackedScene" uid="uid://mdxtaa55xkqh" path="res://scenes/components/on_death_component.tscn" id="5_81vaf"]
@@ -16,12 +18,17 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2q4ju"]
 size = Vector2(12, 8)
 
-[node name="Octopus" type="Sprite2D" unique_id=130954596 groups=["ENEMY"]]
+[node name="Octopus" type="Sprite2D" unique_id=130954596 node_paths=PackedStringArray("enemy_sprite") groups=["ENEMY"]]
 modulate = Color(1, 1, 0.24313726, 1)
+material = ExtResource("1_2q4ju")
 scale = Vector2(4, 4)
 texture = ExtResource("1_nduv1")
 centered = false
 hframes = 2
+script = ExtResource("2_jwybb")
+type = 1
+enemy_sprite = NodePath(".")
+life = 12
 
 [node name="Components" type="Node2D" parent="." unique_id=74485059]
 
@@ -32,10 +39,12 @@ sprite = NodePath("../..")
 [node name="DanceComponent" parent="Components" unique_id=709328576 node_paths=PackedStringArray("sprite") instance=ExtResource("2_7d2cm")]
 sprite = NodePath("../..")
 
-[node name="HurtboxComponent" parent="Components" unique_id=2122994445 node_paths=PackedStringArray("life_component") instance=ExtResource("3_nduv1")]
+[node name="HurtboxComponent" parent="Components" unique_id=2122994445 node_paths=PackedStringArray("life_component", "sprite_2d") instance=ExtResource("3_nduv1")]
 collision_layer = 2
 collision_mask = 8
 life_component = NodePath("../LifeComponent")
+flash_damage = true
+sprite_2d = NodePath("../..")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Components/HurtboxComponent" unique_id=1793194982]
 position = Vector2(6, 4)

@@ -1,121 +1,91 @@
 [gd_scene format=3 uid="uid://m8tyax4qurxf"]
 
-[ext_resource type="PackedScene" uid="uid://dj5a5icrd2npf" path="res://scenes/level_geom/enemies_holder.tscn" id="1_ogj6a"]
 [ext_resource type="PackedScene" uid="uid://ccxyg3h1o17tw" path="res://scenes/enemies/crab.tscn" id="1_vmkp1"]
 [ext_resource type="PackedScene" uid="uid://cgg34r2ir4fn3" path="res://scenes/level_geom/enemy_formation.tscn" id="2_anwe6"]
 [ext_resource type="PackedScene" uid="uid://cwc4lh0bobfkx" path="res://scenes/level_manager/level_manager.tscn" id="2_w6h2s"]
+[ext_resource type="PackedScene" uid="uid://uu3ea6khn2cp" path="res://scenes/enemies/octopus.tscn" id="3_ogj6a"]
 
 [node name="Level_4" type="Node2D" unique_id=756359994 groups=["LEVEL_NODE"]]
+metadata/_edit_lock_ = true
 
-[node name="EnemiesHolder" parent="." unique_id=1881422378 instance=ExtResource("1_ogj6a")]
+[node name="EnemyFormation" parent="." unique_id=965894497 instance=ExtResource("2_anwe6")]
+metadata/_edit_lock_ = true
 
-[node name="EnemyFormation" parent="EnemiesHolder" unique_id=965894497 instance=ExtResource("2_anwe6")]
-position = Vector2(586, 0)
+[node name="Crab" parent="EnemyFormation" unique_id=639119212 instance=ExtResource("1_vmkp1")]
+position = Vector2(177, 256)
+scale = Vector2(26, 26)
+life = 112
+credit_count_multiplier = 12.0
+credit_value = 2.0
 
-[node name="Invader2" parent="EnemiesHolder/EnemyFormation" unique_id=1648695137 instance=ExtResource("1_vmkp1")]
-position = Vector2(88, 120)
+[node name="Crab2" parent="EnemyFormation" unique_id=131338842 instance=ExtResource("1_vmkp1")]
+position = Vector2(657, 256)
+scale = Vector2(26, 26)
+life = 112
+credit_count_multiplier = 12.0
+credit_value = 2.0
 
-[node name="Invader3" parent="EnemiesHolder/EnemyFormation" unique_id=1961314000 instance=ExtResource("1_vmkp1")]
-position = Vector2(88, 32)
+[node name="Octopus3" parent="EnemyFormation" unique_id=640514349 instance=ExtResource("3_ogj6a")]
+position = Vector2(232, 192)
+credit_value = 3.0
 
-[node name="Invader4" parent="EnemiesHolder/EnemyFormation" unique_id=1874123111 instance=ExtResource("1_vmkp1")]
-position = Vector2(176, 32)
+[node name="Octopus4" parent="EnemyFormation" unique_id=1467461686 instance=ExtResource("3_ogj6a")]
+position = Vector2(296, 192)
+credit_value = 3.0
 
-[node name="Invader5" parent="EnemiesHolder/EnemyFormation" unique_id=1568394506 instance=ExtResource("1_vmkp1")]
-position = Vector2(264, 32)
+[node name="Octopus5" parent="EnemyFormation" unique_id=1297641076 instance=ExtResource("3_ogj6a")]
+position = Vector2(360, 192)
+credit_value = 3.0
 
-[node name="Invader6" parent="EnemiesHolder/EnemyFormation" unique_id=1108653863 instance=ExtResource("1_vmkp1")]
-position = Vector2(352, 32)
+[node name="Octopus6" parent="EnemyFormation" unique_id=1309305942 instance=ExtResource("3_ogj6a")]
+position = Vector2(504, 128)
+credit_value = 3.0
 
-[node name="Invader7" parent="EnemiesHolder/EnemyFormation" unique_id=763461821 instance=ExtResource("1_vmkp1")]
-position = Vector2(440, 32)
+[node name="Octopus7" parent="EnemyFormation" unique_id=497714449 instance=ExtResource("3_ogj6a")]
+position = Vector2(440, 128)
+credit_value = 3.0
 
-[node name="Invader8" parent="EnemiesHolder/EnemyFormation" unique_id=423974485 instance=ExtResource("1_vmkp1")]
-position = Vector2(528, 32)
+[node name="Octopus8" parent="EnemyFormation" unique_id=897476884 instance=ExtResource("3_ogj6a")]
+position = Vector2(568, 128)
+credit_value = 3.0
 
-[node name="Invader9" parent="EnemiesHolder/EnemyFormation" unique_id=241712073 instance=ExtResource("1_vmkp1")]
-position = Vector2(616, 32)
+[node name="Octopus9" parent="EnemyFormation" unique_id=1027865119 instance=ExtResource("3_ogj6a")]
+position = Vector2(632, 128)
+credit_value = 3.0
 
-[node name="Invader12" parent="EnemiesHolder/EnemyFormation" unique_id=2076781643 instance=ExtResource("1_vmkp1")]
-position = Vector2(176, 208)
+[node name="Octopus10" parent="EnemyFormation" unique_id=37703937 instance=ExtResource("3_ogj6a")]
+position = Vector2(712, 192)
+credit_value = 3.0
 
-[node name="Invader15" parent="EnemiesHolder/EnemyFormation" unique_id=1895628475 instance=ExtResource("1_vmkp1")]
-position = Vector2(264, 120)
+[node name="Octopus11" parent="EnemyFormation" unique_id=1124129095 instance=ExtResource("3_ogj6a")]
+position = Vector2(776, 192)
+credit_value = 3.0
 
-[node name="Invader18" parent="EnemiesHolder/EnemyFormation" unique_id=1976901895 instance=ExtResource("1_vmkp1")]
-position = Vector2(440, 384)
+[node name="Octopus12" parent="EnemyFormation" unique_id=1787314129 instance=ExtResource("3_ogj6a")]
+position = Vector2(840, 192)
+credit_value = 3.0
 
-[node name="Invader19" parent="EnemiesHolder/EnemyFormation" unique_id=41288748 instance=ExtResource("1_vmkp1")]
-position = Vector2(616, 120)
+[node name="Octopus15" parent="EnemyFormation" unique_id=2033116513 instance=ExtResource("3_ogj6a")]
+position = Vector2(488, 0)
+scale = Vector2(12, 12)
+life = 75
+credit_count_multiplier = 8.0
+credit_value = 2.0
 
-[node name="Invader22" parent="EnemiesHolder/EnemyFormation" unique_id=183275807 instance=ExtResource("1_vmkp1")]
-position = Vector2(88, 208)
+[node name="Crab5" parent="EnemyFormation" unique_id=961216907 instance=ExtResource("1_vmkp1")]
+position = Vector2(512, 256)
 
-[node name="Invader24" parent="EnemiesHolder/EnemyFormation" unique_id=1951429668 instance=ExtResource("1_vmkp1")]
-position = Vector2(176, 384)
+[node name="Crab6" parent="EnemyFormation" unique_id=1340132435 instance=ExtResource("1_vmkp1")]
+position = Vector2(576, 256)
 
-[node name="Invader25" parent="EnemiesHolder/EnemyFormation" unique_id=1543480858 instance=ExtResource("1_vmkp1")]
-position = Vector2(264, 208)
+[node name="Crab7" parent="EnemyFormation" unique_id=982120732 instance=ExtResource("1_vmkp1")]
+position = Vector2(506, 320)
 
-[node name="Invader26" parent="EnemiesHolder/EnemyFormation" unique_id=1467008166 instance=ExtResource("1_vmkp1")]
-position = Vector2(352, 208)
+[node name="Crab8" parent="EnemyFormation" unique_id=241714873 instance=ExtResource("1_vmkp1")]
+position = Vector2(570, 320)
 
-[node name="Invader27" parent="EnemiesHolder/EnemyFormation" unique_id=1346510551 instance=ExtResource("1_vmkp1")]
-position = Vector2(440, 208)
-
-[node name="Invader28" parent="EnemiesHolder/EnemyFormation" unique_id=1096660982 instance=ExtResource("1_vmkp1")]
-position = Vector2(528, 384)
-
-[node name="Invader29" parent="EnemiesHolder/EnemyFormation" unique_id=1515974055 instance=ExtResource("1_vmkp1")]
-position = Vector2(616, 296)
-
-[node name="Invader32" parent="EnemiesHolder/EnemyFormation" unique_id=646478157 instance=ExtResource("1_vmkp1")]
-position = Vector2(88, 296)
-
-[node name="Invader49" parent="EnemiesHolder/EnemyFormation" unique_id=803714128 instance=ExtResource("1_vmkp1")]
-position = Vector2(616, 208)
-
-[node name="Invader50" parent="EnemiesHolder/EnemyFormation" unique_id=1903834451 instance=ExtResource("1_vmkp1")]
-position = Vector2(528, 208)
-
-[node name="Invader33" parent="EnemiesHolder/EnemyFormation" unique_id=686701763 instance=ExtResource("1_vmkp1")]
-position = Vector2(704, 32)
-
-[node name="Invader40" parent="EnemiesHolder/EnemyFormation" unique_id=121257462 instance=ExtResource("1_vmkp1")]
-position = Vector2(0, 208)
-
-[node name="Invader46" parent="EnemiesHolder/EnemyFormation" unique_id=639119212 instance=ExtResource("1_vmkp1")]
-position = Vector2(0, 32)
-
-[node name="Invader41" parent="EnemiesHolder/EnemyFormation" unique_id=511851027 instance=ExtResource("1_vmkp1")]
-position = Vector2(0, 384)
-
-[node name="Invader42" parent="EnemiesHolder/EnemyFormation" unique_id=625784372 instance=ExtResource("1_vmkp1")]
-position = Vector2(352, 384)
-
-[node name="Invader43" parent="EnemiesHolder/EnemyFormation" unique_id=1402691628 instance=ExtResource("1_vmkp1")]
-position = Vector2(88, 384)
-
-[node name="Invader44" parent="EnemiesHolder/EnemyFormation" unique_id=1531260990 instance=ExtResource("1_vmkp1")]
-position = Vector2(704, 384)
-
-[node name="Invader45" parent="EnemiesHolder/EnemyFormation" unique_id=2076177037 instance=ExtResource("1_vmkp1")]
-position = Vector2(616, 384)
-
-[node name="Invader34" parent="EnemiesHolder/EnemyFormation" unique_id=1973464718 instance=ExtResource("1_vmkp1")]
-position = Vector2(264, 384)
-
-[node name="Invader35" parent="EnemiesHolder/EnemyFormation" unique_id=146720622 instance=ExtResource("1_vmkp1")]
-position = Vector2(264, 296)
-
-[node name="Invader37" parent="EnemiesHolder/EnemyFormation" unique_id=838562495 instance=ExtResource("1_vmkp1")]
-position = Vector2(440, 296)
-
-[node name="Invader38" parent="EnemiesHolder/EnemyFormation" unique_id=259747628 instance=ExtResource("1_vmkp1")]
-position = Vector2(704, 208)
-
-[node name="Invader39" parent="EnemiesHolder/EnemyFormation" unique_id=2124429735 instance=ExtResource("1_vmkp1")]
-position = Vector2(440, 120)
+[node name="Crab9" parent="EnemyFormation" unique_id=1986226152 instance=ExtResource("1_vmkp1")]
+position = Vector2(538, 384)
 
 [node name="LevelManager" parent="." unique_id=1578700785 groups=["LEVEL_MANAGER"] instance=ExtResource("2_w6h2s")]
 enemy_start_speed = 35.0

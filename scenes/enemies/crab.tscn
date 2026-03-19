@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://ccxyg3h1o17tw"]
 
+[ext_resource type="Material" uid="uid://d0vxn0ewbmjii" path="res://shaders/enemy_shader_material.tres" id="1_8ukmd"]
 [ext_resource type="Texture2D" uid="uid://8ec05pvmg8iv" path="res://art/crab.png" id="1_lu6qk"]
+[ext_resource type="Script" uid="uid://dbtrrcm6y3ioy" path="res://scenes/enemies/enemy.gd" id="2_86med"]
 [ext_resource type="PackedScene" uid="uid://b0rqtlww1es66" path="res://scenes/invader_death/invader_death.tscn" id="3_bb1xh"]
 [ext_resource type="AudioStream" uid="uid://65516pmqed0c" path="res://audio/sfx/beepfx_samples/22_boom_3.wav" id="7_3jqcw"]
 [ext_resource type="PackedScene" uid="uid://cmoknedm8lvnp" path="res://scenes/components/lucky_component.tscn" id="7_rnqut"]
@@ -13,12 +15,15 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_86med"]
 size = Vector2(11, 8)
 
-[node name="Crab" type="Sprite2D" unique_id=639119212 groups=["ENEMY"]]
+[node name="Crab" type="Sprite2D" unique_id=639119212 node_paths=PackedStringArray("enemy_sprite") groups=["ENEMY"]]
 modulate = Color(0.06666667, 0.99215686, 0.99215686, 1)
+material = ExtResource("1_8ukmd")
 scale = Vector2(4, 4)
 texture = ExtResource("1_lu6qk")
 centered = false
 hframes = 2
+script = ExtResource("2_86med")
+enemy_sprite = NodePath(".")
 
 [node name="Components" type="Node2D" parent="." unique_id=781469035]
 
@@ -29,10 +34,12 @@ sprite = NodePath("../..")
 [node name="DanceComponent" parent="Components" unique_id=196884501 node_paths=PackedStringArray("sprite") instance=ExtResource("8_qokaa")]
 sprite = NodePath("../..")
 
-[node name="HurtboxComponent" parent="Components" unique_id=2122994445 node_paths=PackedStringArray("life_component") instance=ExtResource("9_3jqcw")]
+[node name="HurtboxComponent" parent="Components" unique_id=2122994445 node_paths=PackedStringArray("life_component", "sprite_2d") instance=ExtResource("9_3jqcw")]
 collision_layer = 2
 collision_mask = 8
 life_component = NodePath("../LifeComponent")
+flash_damage = true
+sprite_2d = NodePath("../..")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Components/HurtboxComponent" unique_id=667308495]
 position = Vector2(5.5, 4)

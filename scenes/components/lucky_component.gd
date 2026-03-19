@@ -12,7 +12,6 @@ class_name LuckyComponent
 signal lucky_changed(lucky: bool)
 
 var is_lucky := false
-var lucky_shader_mat := load("res://shaders/lucky_glint_shader_material.tres")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,6 +19,12 @@ func _ready() -> void:
 		roll_luck()
 	
 	if is_lucky:
+		var sprite_mat := (sprite.material as ShaderMaterial)
+		if not sprite_mat:
+			return
+		
+		sprite_mat.set_shader_parameter("is_lucky", true)
+		
 		var timer := get_timer()
 		timer.wait_time = randf_range(0.0, 4.0)
 		timer.call_deferred("start")
@@ -40,7 +45,7 @@ func set_lucky(lucky: bool) -> void:
 	lucky_changed.emit(is_lucky)
 	
 	if lucky:
-		sprite.material = lucky_shader_mat.duplicate()
+		(sprite.material as ShaderMaterial).set_shader_parameter("is_lucky", true)
 		(sprite.material as ShaderMaterial).set_shader_parameter("hframes", float(sprite.hframes))
 		(sprite.material as ShaderMaterial).set_shader_parameter("vframes", float(sprite.vframes))
 		_set_lucky_shader_time(-1.0)
