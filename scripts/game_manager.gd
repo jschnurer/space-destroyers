@@ -14,7 +14,9 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	SignalBus.credits_picked_up.connect(_on_credits_picked_up)
 	SignalBus.game_over.connect(_on_game_over)
-	call_deferred("restart_game")
+	
+	if get_tree().current_scene.name == "Main":
+		call_deferred("restart_game")
 
 func _load_initial_level() -> void:
 	get_tree().paused = true

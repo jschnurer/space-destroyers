@@ -15,7 +15,7 @@ func _on_play_bgm(p_stream: AudioStream, p_volume_linear: float, p_pitch_scale: 
 	stream = p_stream
 	pitch_scale = p_pitch_scale
 	
-	if fade_in_duration == 0.0:
+	if fade_in_duration == 0:
 		volume_linear = p_volume_linear
 		play()
 	else:

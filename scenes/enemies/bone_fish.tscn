@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://b0dhb2mqp17n6"]
+
+[ext_resource type="Material" uid="uid://d0vxn0ewbmjii" path="res://shaders/enemy_shader_material.tres" id="1_lai1n"]
+[ext_resource type="Texture2D" uid="uid://bgrmstn5w3b13" path="res://art/bone-fish.png" id="1_xlpdj"]
+[ext_resource type="Script" uid="uid://dbtrrcm6y3ioy" path="res://scenes/enemies/enemy.gd" id="2_1qvcp"]
+[ext_resource type="PackedScene" uid="uid://d1xwwb4h1awsi" path="res://scenes/components/life_component.tscn" id="2_nrv5m"]
+[ext_resource type="PackedScene" uid="uid://bdmudihj1sun8" path="res://scenes/components/dance_component.tscn" id="3_1jt17"]
+[ext_resource type="PackedScene" uid="uid://yb32u4vixpkb" path="res://scenes/components/formation_move_component.tscn" id="4_xh7mb"]
+[ext_resource type="PackedScene" uid="uid://b8unj7w73q0w3" path="res://scenes/components/hurtbox_component.tscn" id="5_1qvcp"]
+[ext_resource type="PackedScene" uid="uid://cmoknedm8lvnp" path="res://scenes/components/lucky_component.tscn" id="6_lai1n"]
+[ext_resource type="PackedScene" uid="uid://c077toi6hc2u4" path="res://scenes/components/landing_component.tscn" id="7_xcd0b"]
+[ext_resource type="PackedScene" uid="uid://mdxtaa55xkqh" path="res://scenes/components/on_death_component.tscn" id="8_ypg1v"]
+[ext_resource type="AudioStream" uid="uid://bu74e2srgppi7" path="res://audio/sfx/beepfx_samples/25_boom_6.wav" id="9_q1ult"]
+[ext_resource type="PackedScene" uid="uid://b0rqtlww1es66" path="res://scenes/invader_death/invader_death.tscn" id="10_47k3u"]
+[ext_resource type="PackedScene" uid="uid://bqkgb4mpppgmt" path="res://scenes/components/auto_shoot_component.tscn" id="11_xh7mb"]
+[ext_resource type="PackedScene" uid="uid://4dt3innvpnk8" path="res://scenes/enemies/bone_fish_bomb.tscn" id="12_xh7mb"]
+[ext_resource type="PackedScene" uid="uid://0esplk3dg3yq" path="res://scenes/components/reload_component.tscn" id="13_lai1n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_10ooo"]
+size = Vector2(11, 11)
+
+[node name="bone_fish" type="Sprite2D" unique_id=417046175 node_paths=PackedStringArray("enemy_sprite") groups=["ENEMY"]]
+modulate = Color(0.89415276, 0.85486645, 0.85043997, 1)
+material = ExtResource("1_lai1n")
+scale = Vector2(4, 4)
+texture = ExtResource("1_xlpdj")
+centered = false
+hframes = 2
+script = ExtResource("2_1qvcp")
+type = 5
+enemy_sprite = NodePath(".")
+
+[node name="Components" type="Node2D" parent="." unique_id=503645169]
+
+[node name="LifeComponent" parent="Components" unique_id=759486464 instance=ExtResource("2_nrv5m")]
+life = 1.0
+
+[node name="DanceComponent" parent="Components" unique_id=709328576 node_paths=PackedStringArray("sprite") instance=ExtResource("3_1jt17")]
+sprite = NodePath("../..")
+
+[node name="FormationMoveComponent" parent="Components" unique_id=937630113 node_paths=PackedStringArray("enemy_node") instance=ExtResource("4_xh7mb")]
+enemy_node = NodePath("../..")
+
+[node name="HurtboxComponent" parent="Components" unique_id=2122994445 node_paths=PackedStringArray("life_component", "sprite_2d") instance=ExtResource("5_1qvcp")]
+visible = false
+collision_layer = 2
+collision_mask = 8
+life_component = NodePath("../LifeComponent")
+flash_damage = true
+sprite_2d = NodePath("../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HurtboxComponent" unique_id=865946991]
+position = Vector2(5.5, 5.5)
+shape = SubResource("RectangleShape2D_10ooo")
+
+[node name="LuckyComponent" parent="Components" unique_id=1751092268 node_paths=PackedStringArray("sprite") instance=ExtResource("6_lai1n")]
+sprite = NodePath("../..")
+
+[node name="LandingComponent" parent="Components" unique_id=964463748 instance=ExtResource("7_xcd0b")]
+visible = false
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Components/LandingComponent" unique_id=1619830211]
+position = Vector2(5.5, 5.5)
+shape = SubResource("RectangleShape2D_10ooo")
+
+[node name="OnDeathComponent" parent="Components" unique_id=128414731 node_paths=PackedStringArray("life_component", "enemy_node", "deletion_node", "lucky_component") instance=ExtResource("8_ypg1v")]
+position = Vector2(5.5, 5.5)
+life_component = NodePath("../LifeComponent")
+death_sound = ExtResource("9_q1ult")
+enemy_node = NodePath("../..")
+deletion_node = NodePath("../..")
+lucky_component = NodePath("../LuckyComponent")
+death_anim_scene = ExtResource("10_47k3u")
+
+[node name="AutoShootComponent" parent="Components" unique_id=523345871 node_paths=PackedStringArray("reload_component") instance=ExtResource("11_xh7mb")]
+position = Vector2(5.5, 12.5)
+reload_component = NodePath("../ReloadComponent")
+bullet_scene = ExtResource("12_xh7mb")
+shot_modulate = Color(0.89415276, 0.85486645, 0.85043997, 1)
+shot_direction = Vector2(0, 1)
+shot_speed = 275.0
+shot_damage = 1.0
+shot_collision_layer = 64
+shot_collision_mask = 17
+min_delay = 2.0
+max_delay = 10.0
+
+[node name="ReloadComponent" parent="Components" unique_id=315688650 instance=ExtResource("13_lai1n")]
+use_random_reload_time = true
+min_reload_time = 5.0
+max_reload_time = 10.0

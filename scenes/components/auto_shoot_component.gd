@@ -52,18 +52,18 @@ func _on_reload_complete() -> void:
 	shoot()
 
 func shoot() -> void:
-	_spawn_bullet(0.0)
+	_spawn_projectile(0.0)
 	reload_component.reload()
 
-func _spawn_bullet(bullet_offset: float) -> void:
-	var bullet: Bullet = bullet_scene.instantiate()
-	bullet.global_position = global_position
-	bullet.global_position.x += bullet_offset
-	bullet.collision_layer = shot_collision_layer
-	bullet.collision_mask = shot_collision_mask
-	bullet.set_power_speed_direction(\
+func _spawn_projectile(position_offset: float) -> void:
+	var projectile: BaseProjectile = bullet_scene.instantiate()
+	projectile.global_position = global_position
+	projectile.global_position.x += position_offset
+	projectile.collision_layer = shot_collision_layer
+	projectile.collision_mask = shot_collision_mask
+	projectile.set_power_speed_direction(\
 		shot_damage,
 		shot_speed,
 		shot_direction)
-	bullet.modulate = shot_modulate
-	Utilities.call_deferred("add_child_to_level", bullet)
+	projectile.modulate = shot_modulate
+	Utilities.call_deferred("add_child_to_level", projectile)

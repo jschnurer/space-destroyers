@@ -28,14 +28,17 @@ enemy_sprite = NodePath(".")
 
 [node name="Components" type="Node2D" parent="." unique_id=781469035]
 
-[node name="LuckyComponent" parent="Components" unique_id=2048975898 node_paths=PackedStringArray("sprite") instance=ExtResource("7_rnqut")]
-unique_name_in_owner = true
-sprite = NodePath("../..")
+[node name="LifeComponent" parent="Components" unique_id=759486464 instance=ExtResource("10_86med")]
+life = 1.0
 
 [node name="DanceComponent" parent="Components" unique_id=196884501 node_paths=PackedStringArray("sprite") instance=ExtResource("8_qokaa")]
 sprite = NodePath("../..")
 
+[node name="FormationMoveComponent" parent="Components" unique_id=937630113 node_paths=PackedStringArray("enemy_node") instance=ExtResource("10_8ukmd")]
+enemy_node = NodePath("../..")
+
 [node name="HurtboxComponent" parent="Components" unique_id=2122994445 node_paths=PackedStringArray("life_component", "sprite_2d") instance=ExtResource("9_3jqcw")]
+visible = false
 collision_layer = 2
 collision_mask = 8
 life_component = NodePath("../LifeComponent")
@@ -46,8 +49,16 @@ sprite_2d = NodePath("../..")
 position = Vector2(5.5, 4)
 shape = SubResource("RectangleShape2D_86med")
 
-[node name="LifeComponent" parent="Components" unique_id=759486464 instance=ExtResource("10_86med")]
-life = 1.0
+[node name="LuckyComponent" parent="Components" unique_id=2048975898 node_paths=PackedStringArray("sprite") instance=ExtResource("7_rnqut")]
+unique_name_in_owner = true
+sprite = NodePath("../..")
+
+[node name="LandingComponent" parent="Components" unique_id=865986290 instance=ExtResource("12_nrf1x")]
+visible = false
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Components/LandingComponent" unique_id=947086874]
+position = Vector2(5.5, 4)
+shape = SubResource("RectangleShape2D_86med")
 
 [node name="OnDeathComponent" parent="Components" unique_id=1414675714 node_paths=PackedStringArray("life_component", "enemy_node", "deletion_node", "lucky_component") instance=ExtResource("14_0iaea")]
 position = Vector2(5.5, 4)
@@ -57,14 +68,5 @@ enemy_node = NodePath("../..")
 deletion_node = NodePath("../..")
 lucky_component = NodePath("../LuckyComponent")
 death_anim_scene = ExtResource("3_bb1xh")
-
-[node name="FormationMoveComponent" parent="Components" unique_id=937630113 node_paths=PackedStringArray("enemy_node") instance=ExtResource("10_8ukmd")]
-enemy_node = NodePath("../..")
-
-[node name="LandingComponent" parent="Components" unique_id=865986290 instance=ExtResource("12_nrf1x")]
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Components/LandingComponent" unique_id=947086874]
-position = Vector2(5.5, 4)
-shape = SubResource("RectangleShape2D_86med")
 
 [connection signal="area_entered" from="Components/HurtboxComponent" to="." method="_on_area_2d_area_entered"]

@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+@export var shop_bgm: AudioStream
+@export var level_bgm: AudioStream
+
 @onready var purchase_description: Label = %PurchaseDescription
 
 var _input_enabled := false
@@ -32,6 +35,8 @@ func _fade_in_shop() -> void:
 	for button in button_nodes:
 		if button is ShopButton:
 			(button as ShopButton).update_label_and_cost()
+	
+	_toggle_shop_music(true)
 			
 	var screen_fader: ScreenFader = get_tree().get_first_node_in_group("SCREEN_FADER")
 	
@@ -45,6 +50,7 @@ func _fade_out_shop() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
 	_toggle_input(false)
+	_toggle_shop_music(false)
 	
 	var screen_fader: ScreenFader = get_tree().get_first_node_in_group("SCREEN_FADER")
 	
@@ -76,3 +82,6 @@ func _on_button_hovered(text: String) -> void:
 
 func _on_button_exited() -> void:
 	purchase_description.text = ""
+
+func _toggle_shop_music(play_shop_bgm: bool) -> void:
+	SignalBus.emit_play_bgm(shop_bgm if play_shop_bgm else level_bgm, 1.0, 1.0, 1.0, 1.0)

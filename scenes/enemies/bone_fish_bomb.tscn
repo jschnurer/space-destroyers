@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://4dt3innvpnk8"]
+
+[ext_resource type="Texture2D" uid="uid://dqjx7pkulod5p" path="res://art/bone-fish-bomb.png" id="1_e7lhg"]
+[ext_resource type="PackedScene" uid="uid://dddchihkt36mp" path="res://scenes/components/delete_offscreen_component.tscn" id="2_di1jj"]
+[ext_resource type="PackedScene" uid="uid://ce38u6nauhq7y" path="res://scenes/components/hitbox_component.tscn" id="2_f7qyl"]
+[ext_resource type="Script" uid="uid://b5enr3d0suwv4" path="res://scenes/enemies/bone_fish_bomb.gd" id="2_mt8sw"]
+[ext_resource type="PackedScene" uid="uid://cn702fwhuccuk" path="res://scenes/enemies/bomb_fire.tscn" id="3_p4f0h"]
+[ext_resource type="PackedScene" uid="uid://bdmudihj1sun8" path="res://scenes/components/dance_component.tscn" id="6_jjgfi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7qyl"]
+size = Vector2(5, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mt8sw"]
+size = Vector2(5, 5)
+
+[node name="bone_fish_bomb" type="Sprite2D" unique_id=90922862]
+scale = Vector2(4, 4)
+texture = ExtResource("1_e7lhg")
+hframes = 2
+script = ExtResource("2_mt8sw")
+bomb_fire_scene = ExtResource("3_p4f0h")
+collision_layer = 64
+collision_mask = 17
+
+[node name="Components" type="Node2D" parent="." unique_id=1599277441]
+
+[node name="DeleteOffscreenComponent" parent="Components" unique_id=1973328041 instance=ExtResource("2_di1jj")]
+position = Vector2(-0.5, 1.25)
+rect = Rect2(-0.5, -0.9375, 1.25, 1.25)
+
+[node name="HitboxComponent" parent="Components" unique_id=428100613 instance=ExtResource("2_f7qyl")]
+collision_layer = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HitboxComponent" unique_id=1681163980]
+shape = SubResource("RectangleShape2D_f7qyl")
+
+[node name="DanceComponent" parent="Components" unique_id=709328576 node_paths=PackedStringArray("sprite") instance=ExtResource("6_jjgfi")]
+sprite = NodePath("../..")
+speed_scale = 6.0
+
+[node name="TerrainDetector" type="Area2D" parent="." unique_id=452910968]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TerrainDetector" unique_id=97494857]
+shape = SubResource("RectangleShape2D_mt8sw")
+
+[connection signal="area_entered" from="TerrainDetector" to="." method="_on_terrain_detector_area_entered"]
+[connection signal="body_entered" from="TerrainDetector" to="." method="_on_terrain_detector_body_entered"]

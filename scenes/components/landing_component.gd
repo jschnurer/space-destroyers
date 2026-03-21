@@ -8,11 +8,9 @@ func _on_area_entered(terrain: Area2D) -> void:
 func _on_body_entered(terrain: Node2D) -> void:
 	_handle_collision(terrain)
 
-func _handle_collision(terrain_node: Node2D) -> void:
-	var terrain_shape: CollisionShape2D = Utilities.get_first_child_of_type(terrain_node, CollisionShape2D)
-	var terrain_half_height := (terrain_shape.shape as RectangleShape2D).size.y / 2.0
+func _handle_collision(_terrain_node: Node2D) -> void:
 	var my_shape: CollisionShape2D = Utilities.get_first_child_of_type(self, CollisionShape2D)
-	var impact_point := Vector2(my_shape.global_position.x, terrain_shape.global_position.y - terrain_half_height)
+	var impact_point := Vector2(my_shape.global_position.x, Utilities.get_terrain_top_edge_y_position())
 	_spawn_explosion(impact_point)
 
 func _spawn_explosion(point: Vector2) -> void:

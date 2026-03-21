@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://cn702fwhuccuk"]
+
+[ext_resource type="Texture2D" uid="uid://croknghq4wobr" path="res://art/fire.png" id="1_fgg5x"]
+[ext_resource type="Texture2D" uid="uid://cotx833pt1llo" path="res://art/particle.png" id="2_4st8t"]
+[ext_resource type="Script" uid="uid://bjad8dbt70ngc" path="res://scenes/enemies/bomb_fire.gd" id="2_152qc"]
+[ext_resource type="AudioStream" uid="uid://xl5bwvpl57tr" path="res://audio/sfx/beepfx_samples/19_jet_burst.wav" id="3_mv2ub"]
+[ext_resource type="PackedScene" uid="uid://bdmudihj1sun8" path="res://scenes/components/dance_component.tscn" id="3_pwlp2"]
+[ext_resource type="PackedScene" uid="uid://ce38u6nauhq7y" path="res://scenes/components/hitbox_component.tscn" id="5_oc4le"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mv2ub"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 80.0
+initial_velocity_max = 100.0
+scale_min = 0.25
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4st8t"]
+lifetime_randomness = 0.6
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(2.29, 1, 1)
+gravity = Vector3(0, -75, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = 13.449998
+tangential_accel_min = -16.000002
+tangential_accel_max = 25.089996
+scale_min = 0.75
+scale_max = 1.5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oc4le"]
+size = Vector2(5, 5)
+
+[node name="bomb_fire" type="Sprite2D" unique_id=1736527199]
+self_modulate = Color(1, 0.6117647, 0, 1)
+scale = Vector2(4, 4)
+texture = ExtResource("1_fgg5x")
+offset = Vector2(0, -2.5)
+hframes = 2
+script = ExtResource("2_152qc")
+fire_sound = ExtResource("3_mv2ub")
+fire_volume_linear = 0.33
+
+[node name="Debris" type="GPUParticles2D" parent="." unique_id=55880724]
+emitting = false
+texture = ExtResource("2_4st8t")
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_mv2ub")
+
+[node name="Smoke" type="GPUParticles2D" parent="." unique_id=928447752]
+modulate = Color(0.4351923, 0.43519226, 0.43519226, 1)
+position = Vector2(0, -7)
+amount = 24
+texture = ExtResource("2_4st8t")
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_4st8t")
+
+[node name="LifetimeTimer" type="Timer" parent="." unique_id=2117858158]
+unique_name_in_owner = true
+
+[node name="Components" type="Node2D" parent="." unique_id=737918710]
+
+[node name="DanceComponent" parent="Components" unique_id=709328576 node_paths=PackedStringArray("sprite") instance=ExtResource("3_pwlp2")]
+sprite = NodePath("../..")
+speed_scale = 8.0
+
+[node name="HitboxComponent" parent="Components" unique_id=428100613 instance=ExtResource("5_oc4le")]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HitboxComponent" unique_id=706232903]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_oc4le")
+
+[connection signal="timeout" from="LifetimeTimer" to="." method="_on_lifetime_timer_timeout"]

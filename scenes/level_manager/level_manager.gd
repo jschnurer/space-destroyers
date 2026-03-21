@@ -16,7 +16,6 @@ func _ready() -> void:
 	
 	SignalBus.enemy_hit_screen_edge.connect(_on_enemy_hit_screen_edge)
 	SignalBus.enemy_died.connect(_on_enemy_died)
-	SignalBus.enemy_landed.connect(_on_enemy_landed)
 	
 	# Tell enemies their starting direction and speed
 	SignalBus.emit_enemy_direction_change(Vector2.LEFT if randi_range(0, 1) == 1 else Vector2.RIGHT, false)
@@ -55,6 +54,3 @@ func _on_enemy_died(_enemy: Node2D) -> void:
 	# All enemies slain. Start teleporting to next level!
 	if _enemy_count == 0:
 		SignalBus.emit_start_teleporting()
-
-func _on_enemy_landed() -> void:
-	print ("ENEMY LANDED!")

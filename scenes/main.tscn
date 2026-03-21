@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://qqwnyc0intca" path="res://scenes/ui/shop_ui.tscn" id="2_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://bpjt7iq22bpbu" path="res://scenes/tank/tank.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://c4fufmmvxadnq" path="res://scenes/ui/level_complete_ui.tscn" id="3_tefeu"]
+[ext_resource type="PackedScene" uid="uid://begc2jldio7ln" path="res://scenes/level_geom/terrain_bottom.tscn" id="5_a8y0u"]
 [ext_resource type="Script" uid="uid://bia4gleis3x01" path="res://scenes/level_holder.gd" id="7_tipki"]
 [ext_resource type="PackedScene" uid="uid://iqoyhfigpopi" path="res://scenes/effects/teleport_animation.tscn" id="10_choun"]
 [ext_resource type="PackedScene" uid="uid://dvexqvv2ecu72" path="res://scenes/effects/screen_fader.tscn" id="11_ya4ey"]
@@ -16,9 +17,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tbgi4"]
 size = Vector2(400, 1080)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jyhfs"]
-size = Vector2(1120, 69)
 
 [node name="Main" type="Node2D" unique_id=1327851371]
 
@@ -70,23 +68,7 @@ position = Vector2(200, 540)
 shape = SubResource("RectangleShape2D_tbgi4")
 metadata/_edit_lock_ = true
 
-[node name="Terrain" type="ColorRect" parent="." unique_id=356040771]
-offset_left = 400.0
-offset_top = 1012.0
-offset_right = 1520.0
-offset_bottom = 1080.0
-color = Color(0.24115604, 0.24115604, 0.24115604, 1)
-metadata/_edit_lock_ = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Terrain" unique_id=1417655104]
-collision_layer = 16
-collision_mask = 0
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/StaticBody2D" unique_id=1337596676]
-position = Vector2(560, 34.5)
-shape = SubResource("RectangleShape2D_jyhfs")
-metadata/_edit_lock_ = true
+[node name="Terrain" parent="." unique_id=1285710284 instance=ExtResource("5_a8y0u")]
 
 [node name="Tank" parent="." unique_id=1533795974 groups=["PLAYER"] instance=ExtResource("3_sugp2")]
 position = Vector2(938, 980)
@@ -114,6 +96,7 @@ channels = 3
 position = Vector2(960, 1012)
 
 [node name="GameOver" parent="." unique_id=1120379295 instance=ExtResource("13_trceg")]
+visible = false
 
 [node name="ScreenFader" parent="." unique_id=259473987 groups=["SCREEN_FADER"] instance=ExtResource("11_ya4ey")]
 layer = 1000

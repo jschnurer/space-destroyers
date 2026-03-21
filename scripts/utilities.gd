@@ -3,12 +3,19 @@ extends Node
 func is_in_layer(node_layer: int, check_layer: Enums.CollisionLayers) -> bool:
 	return (node_layer & (1 << check_layer)) != 0
 
-func add_child_to_level(node: Node) -> void:
-	get_tree().get_first_node_in_group("LEVEL_NODE").add_child(node)
+func add_child_to_level(node: Node, deferred := false) -> void:
+	if !deferred:
+		get_tree().get_first_node_in_group("LEVEL_NODE").add_child(node)
+	else:
+		call_deferred("add_child_to_level", node)
 
-func add_children_to_level(nodes: Array[Node]) -> void:
-	for n in nodes:
-		get_tree().get_first_node_in_group("LEVEL_NODE").add_child(n)
+func add_children_to_level(nodes: Array[Node], deferred := false) -> void:
+	if !deferred:
+		var parent_node := get_tree().get_first_node_in_group("LEVEL_NODE")
+		for n in nodes:
+			parent_node.add_child(n)
+	else:
+		call_deferred("add_children_to_level", nodes)
 
 func get_children_of_type(base_node: Node, type: Variant) -> Array[Node]:
 	var matches: Array[Node] = []
@@ -22,3 +29,7 @@ func get_first_child_of_type(base_node: Node, type: Variant) -> Node:
 	if children and children.size() > 0:
 		return children[0]
 	return null
+
+func get_terrain_top_edge_y_position() -> float:
+	var bottom_terrain := get_tree().get_first_node_in_group("TERRAIN_BOTTOM")
+	return (bottom_terrain as TerrainBottom).get_top_edge_global_y_position()

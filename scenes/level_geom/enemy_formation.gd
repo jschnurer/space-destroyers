@@ -8,14 +8,17 @@ extends Node2D
 @export_tool_button("Zero Rows") var zero_rows_btn := _zero_rows
 ## Sets the EnemyFormation's x position to 0.
 @export_tool_button("Zero Position") var zero_button := _zero_position
+## Centers only the specified enemy.
+@export var center_enemy: Enemy:
+	set(value):
+		_center_single_enemy(value)
 
 func _ready() -> void:
 	if !Engine.is_editor_hint():
 		global_position.x = Global.PLAYABLE_AREA_RECT.position.x
 
 func _center_rows() -> void:
-	var play_area_ref_rect := $PlayAreaReference as ReferenceRect
-	var center_x := play_area_ref_rect.position.x + play_area_ref_rect.size.x / 2.0
+	var center_x := _get_center_x()
 	
 	var enemies_by_row: Dictionary[float, Array] = _group_enemies_by_y_position()
 	
@@ -34,6 +37,15 @@ func _center_rows() -> void:
 		# Add this offset to every enemy in this row.
 		for enemy in enemies_in_row:
 			enemy.position.x += row_offset
+
+func _center_single_enemy(enemy: Enemy) -> void:
+	var s := enemy.enemy_sprite
+	var sprite_rect := s.get_global_transform() * s.get_rect()
+	enemy.global_position.x = _get_center_x() - sprite_rect.size.x / 2
+
+func _get_center_x() -> float:
+	var play_area_ref_rect := $PlayAreaReference as ReferenceRect
+	return play_area_ref_rect.position.x + play_area_ref_rect.size.x / 2.0
 
 func _zero_rows() -> void:
 	var enemies_by_row: Dictionary[float, Array] = _group_enemies_by_y_position()

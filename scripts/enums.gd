@@ -42,6 +42,8 @@ enum EnemyType {
 	OCTOPUS = 1,
 	SQUID = 2,
 	UFO = 3,
+	BLADE_HEAD = 4,
+	BONE_FISH = 5,
 }
 
 enum GameOverReason {

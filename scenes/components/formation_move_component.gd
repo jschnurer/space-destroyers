@@ -17,8 +17,7 @@ func _process(delta: float) -> void:
 
 func _drop_down_one_row() -> void:
 	if enemy_node:
-		enemy_node.position = Vector2(enemy_node.position.x, \
-			enemy_node.position.y + Global.ENEMY_DROP_DISTANCE)
+		enemy_node.position.y += Global.ENEMY_DROP_DISTANCE
 
 func _on_enemy_direction_change(new_dir: Vector2, drop_down: bool) -> void:
 	_direction = new_dir
