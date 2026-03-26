@@ -4,6 +4,10 @@ class_name Credit
 @export var value := 1.0
 @export var collection_move_speed := 800.0
 @export var credit_sound: AudioStream
+var denomination: CreditDenomination:
+	set(val):
+		denomination = val
+		_update_shader_color()
 
 var _is_collecting := false
 var _player_target: Node2D
@@ -12,6 +16,8 @@ var _collection_push_strength := 800.0
 var _collection_speed := 1200.0
 var _is_pushing := false
 var _steer_force := 20.0
+
+@onready var sprite_2d: Sprite2D = %Sprite2D
 
 func _ready() -> void:
 	await get_tree().physics_frame
@@ -60,6 +66,12 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 
 func set_lucky(lucky: bool) -> void:
 	(%LuckyComponent as LuckyComponent).set_lucky(lucky)
+
+func _update_shader_color() -> void:
+	if !denomination:
+		return
+	
+	(%Sprite2D as Sprite2D).modulate = denomination.color
 
 func start_pickup_sequence(player_target: Node2D) -> void:
 	if _is_collecting:

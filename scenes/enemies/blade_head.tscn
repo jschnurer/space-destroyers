@@ -28,6 +28,7 @@ script = ExtResource("2_whitt")
 type = 4
 enemy_sprite = NodePath(".")
 life = 7
+credit_value = 3.25
 
 [node name="Components" type="Node2D" parent="." unique_id=81117777]
 
@@ -72,6 +73,7 @@ lucky_component = NodePath("../LuckyComponent")
 death_anim_scene = ExtResource("11_21ggi")
 
 [node name="ShieldComponent" parent="Components" unique_id=153832048 instance=ExtResource("12_rjqgc")]
+visible = false
 position = Vector2(0, 14)
 life = 33.0
 collision_layer = 2

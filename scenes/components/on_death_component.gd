@@ -57,24 +57,60 @@ func _try_spawn_credit() -> void:
 	if !spawn_credit:
 		return
 	
-	var num_credits := 1 if !lucky_component.is_lucky else randi_range(3, 5)
+	var total_credit_value := get_total_credit_value()
 	
-	# Apply multplier.
-	num_credits = floor(num_credits * credit_count_multiplier)
-	
-	var creds: Array[Node] = []
-
-	for i in range(num_credits):
-		var credit := credit_scene.instantiate() as Credit
-		credit.global_position = global_position + Vector2(randf_range(-1, 1), randf_range(-1, 1))
-		if lucky_component and lucky_component.is_lucky:
-			credit.value = credit_value * randf_range(2.0, 3.0)
+	# Figure out how many and what value of credits to spawn.
+	var pennies_to_spawn := 0
+	var coins_to_spawn: Array[CreditDenomination] = []
+	for i in range(Global.CREDIT_DENOMINATIONS.size() - 1, -1, -1):
+		var denom := Global.CREDIT_DENOMINATIONS[i]
+		var count := floori(total_credit_value / denom.value)
+		if denom.value == 1.0:
+			pennies_to_spawn += count
 		else:
-			credit.value = credit_value
-		credit.set_lucky(lucky_component.is_lucky)
-		creds.append(credit)
+			for n in range(count):
+				coins_to_spawn.append(denom)
+		total_credit_value -= count * denom.value
+		if total_credit_value == 0:
+			break
 	
-	Utilities.call_deferred("add_children_to_level", creds)
+	# Since the last fraction of a credit will be less than 1, spawn one additional coin worth
+	# a whole credit.
+	if total_credit_value > 0.0:
+		pennies_to_spawn += 1
+	
+	if coins_to_spawn.size() > 0:
+		# Now break down 10-25% of those to the next smaller size (min 1).
+		var num_break_down := clampi(floori(randf_range(.1, .25) * coins_to_spawn.size()), 1, 100)
+		for b in num_break_down:
+			var ix := randi() % coins_to_spawn.size()
+			var coin := coins_to_spawn[ix]
+			
+			# 20% chance of breaking down by 2 denominations, else only break by 1.
+			var steps := -2 if (randf() < 0.2 and coin.array_index > 1) else -1
+			# Find the denomination to break down to.
+			var next_denom := Global.CREDIT_DENOMINATIONS[coin.array_index + steps]
+			# And how many.
+			var new_count := floori(coin.value / next_denom.value)
+			
+			# Remove this coin from the array.
+			coins_to_spawn.remove_at(ix)
+			
+			# If the new denomination is a penny, just add its count.
+			if next_denom.value == 1.0:
+				pennies_to_spawn += new_count
+			else:
+				# Otherwise, add the new coins to the array.
+				for i in new_count:
+					coins_to_spawn.append(next_denom)
+	
+	for i in pennies_to_spawn:
+		coins_to_spawn.append(Global.CREDIT_DENOMINATIONS[0])
+	
+	coins_to_spawn.shuffle()
+	
+	for i in coins_to_spawn:
+		_spawn_credit(i)
 
 ## Simulates spawning credits and calculates their total value (without counting user stats).
 func get_total_credit_value() -> float:
@@ -82,13 +118,21 @@ func get_total_credit_value() -> float:
 		return 0.0
 	
 	var total_value := 0.0
-	var num_credits := 1 if !lucky_component.is_lucky else randi_range(3, 5)
+	var num_credits := 1 if !lucky_component.is_lucky else randi_range(4, 6)
+	num_credits = floor(num_credits * credit_count_multiplier)
 	for i in range(num_credits):
 		if lucky_component and lucky_component.is_lucky:
-			total_value += credit_value * randf_range(2.0, 3.0)
+			total_value += (credit_value * randf_range(1.5, 2.75))
 		else:
 			total_value += credit_value
 	return total_value
+
+func _spawn_credit(credit_denomination: CreditDenomination) -> void:
+	var credit := credit_scene.instantiate() as Credit
+	credit.global_position = global_position + Vector2(randf_range(-1, 1), randf_range(-1, 1))
+	credit.value = credit_denomination.value
+	credit.denomination = credit_denomination
+	Utilities.call_deferred("add_child_to_level", credit)
 
 func _try_death_anim() -> void:
 	if !show_death_anim or !death_anim_scene:

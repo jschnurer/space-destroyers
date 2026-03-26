@@ -118,7 +118,7 @@ skip_teleport_delay={
 2d_physics/layer_4="Player Bullet"
 2d_physics/layer_5="Terrain"
 2d_physics/layer_6="Item"
-2d_physics/layer_7="Enemy Bullet"
+2d_physics/layer_7="Enemy Attack"
 
 [physics]
 

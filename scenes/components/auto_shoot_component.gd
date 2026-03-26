@@ -59,8 +59,7 @@ func _spawn_projectile(position_offset: float) -> void:
 	var projectile: BaseProjectile = bullet_scene.instantiate()
 	projectile.global_position = global_position
 	projectile.global_position.x += position_offset
-	projectile.collision_layer = shot_collision_layer
-	projectile.collision_mask = shot_collision_mask
+	projectile.set_collision(shot_collision_layer, shot_collision_mask)
 	projectile.set_power_speed_direction(\
 		shot_damage,
 		shot_speed,

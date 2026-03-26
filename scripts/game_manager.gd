@@ -158,7 +158,7 @@ func restart_game() -> void:
 	
 	# DEBUG TO ADD POWER!!!
 	#credits = 55
-	game_state.credits = 999999999
+	#game_state.credits = 999999999
 	
 	#alter_stat(Enums.PlayerStats.TANK_SPEED, 200, 0, 0)
 	#alter_stat(Enums.PlayerStats.MAX_SHOTS, 200, 0, 0)

@@ -3,12 +3,15 @@ extends CharacterBody2D
 ## The bullet to spawn when shooting.
 @export var bullet_scene: PackedScene
 @export var shot_sound: AudioStream
+@export var die_anim_scene: PackedScene
 
 @onready var bullet_spawn_point: Node2D = $BulletSpawnPoint
 @onready var reload_component: ReloadComponent = %ReloadComponent
 @onready var pickup_shape: CollisionShape2D = $PickupArea/PickupShape
 @onready var pickup_point: Node2D = $PickupPoint
 @onready var life_component: LifeComponent = $Components/LifeComponent
+@onready var sprite_2d: Sprite2D = $Sprite2D
+
 
 var _active_bullet_count := 0
 
@@ -16,7 +19,7 @@ func _ready() -> void:
 	_update_reload_time(GameManager.get_stat_value(Enums.PlayerStats.RELOAD))
 	_update_pickup_area(GameManager.get_stat_value(Enums.PlayerStats.PICKUP_AREA))
 	
-	life_component.life = GameManager.get_stat_value(Enums.PlayerStats.LIFE)
+	life_component.life = GameManager.get_stat(Enums.PlayerStats.LIFE).get_current_value_int()
 	life_component.life_changed.connect(_on_life_changed)
 	
 	GameManager.stat_changed.connect(_on_stat_changed)
@@ -80,8 +83,7 @@ func _spawn_bullet(bullet_offset: float) -> void:
 	var bullet: Bullet = bullet_scene.instantiate()
 	bullet.global_position = bullet_spawn_point.global_position
 	bullet.global_position.x += bullet_offset
-	bullet.collision_layer = 1 << 3
-	bullet.collision_mask = 1 << 1
+	bullet.set_collision(1 << 3, 1 << 1)
 	bullet.set_power_speed_direction(\
 		GameManager.get_stat_value(Enums.PlayerStats.DAMAGE),
 		GameManager.get_stat_value(Enums.PlayerStats.SHOT_SPEED),
@@ -95,3 +97,10 @@ func _on_life_changed(new_life: int) -> void:
 
 func _on_game_manager_current_life_changed(new_life: int) -> void:
 	life_component.life = new_life
+
+func _on_life_component_life_zeroed() -> void:
+	get_tree().paused = true
+	var die_anim: GameOverAnimation = die_anim_scene.instantiate()
+	die_anim.global_position = sprite_2d.to_global(sprite_2d.get_rect().get_center())
+	die_anim.game_over_reason = Enums.GameOverReason.ENEMY_LANDED
+	Utilities.add_child_to_level(die_anim)

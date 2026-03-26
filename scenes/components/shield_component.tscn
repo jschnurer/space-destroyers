@@ -12,26 +12,15 @@
 size = Vector2(14, 7)
 
 [node name="ShieldComponent" type="Sprite2D" unique_id=153832048]
-visible = false
 texture = ExtResource("1_yy3ww")
 centered = false
 script = ExtResource("2_705yk")
-shield_life = 0.0
 
 [node name="Components" type="Node2D" parent="." unique_id=1462960999]
 
 [node name="LifeComponent" type="Node" parent="Components" unique_id=453418482]
 script = ExtResource("3_kotnx")
-life = 1.0
 metadata/_custom_type_script = "uid://dtyhv87xau72w"
-
-[node name="OnDeathComponent" parent="Components" unique_id=128414731 node_paths=PackedStringArray("life_component", "deletion_node") instance=ExtResource("5_l07rn")]
-life_component = NodePath("../LifeComponent")
-death_sound = ExtResource("5_aq41o")
-emit_enemy_died = false
-deletion_node = NodePath("../..")
-spawn_credit = false
-show_death_anim = false
 
 [node name="HurtboxComponent" parent="Components" unique_id=2122994445 node_paths=PackedStringArray("life_component", "sprite_2d") instance=ExtResource("5_yuvua")]
 life_component = NodePath("../LifeComponent")
@@ -44,5 +33,13 @@ sprite_2d = NodePath("../..")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HurtboxComponent" unique_id=874223922]
 position = Vector2(7, 3.5)
 shape = SubResource("RectangleShape2D_l07rn")
+
+[node name="OnDeathComponent" parent="Components" unique_id=128414731 node_paths=PackedStringArray("life_component", "deletion_node") instance=ExtResource("5_l07rn")]
+life_component = NodePath("../LifeComponent")
+death_sound = ExtResource("5_aq41o")
+emit_enemy_died = false
+deletion_node = NodePath("../..")
+spawn_credit = false
+show_death_anim = false
 
 [connection signal="on_hurtbox_hit" from="Components/HurtboxComponent" to="." method="_on_hurtbox_component_on_hurtbox_hit"]

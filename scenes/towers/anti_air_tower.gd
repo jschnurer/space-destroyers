@@ -72,8 +72,7 @@ func _shoot() -> void:
 		_get_bullet_direction())
 	shot.global_position = bullet_spawn_point.global_position
 	shot.rotation_degrees = cannon.rotation_degrees
-	shot.collision_layer = 1 << 3
-	shot.collision_mask = 1 << 1
+	shot.set_collision(1 << 3, 1 << 1)
 	Utilities.call_deferred("add_child_to_level", shot)
 
 	reload_component.set_reload_time(reload_time * randf_range(1.0, 1.25))

@@ -11,3 +11,7 @@ func _ready() -> void:
 
 func get_top_edge_global_y_position() -> float:
 	return _top_edge_global_y_position
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area is HitboxComponent:
+		(area as HitboxComponent).notify_dealt_damage(null, INF)

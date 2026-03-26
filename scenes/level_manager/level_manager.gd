@@ -14,6 +14,12 @@ func _ready() -> void:
 	_enemy_count = enemies.size()
 	_max_enemies = _enemy_count
 	
+	# Add difficulty modifiers.
+	for en in enemies:
+		(en as Enemy).credit_value *= (1.1 * (GameManager.game_state.current_level - 1))
+		(en as Enemy).life *= floori(1.08 * (GameManager.game_state.current_level - 1))
+		(en as Enemy).credit_count_multiplier *= (1.18 * (GameManager.game_state.current_level - 1))
+	
 	SignalBus.enemy_hit_screen_edge.connect(_on_enemy_hit_screen_edge)
 	SignalBus.enemy_died.connect(_on_enemy_died)
 	

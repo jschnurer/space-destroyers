@@ -4,12 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://d1jln5dps07ua" path="res://scenes/bullet/bullet.tscn" id="2_0el1g"]
 [ext_resource type="Script" uid="uid://3nuocgrsgomy" path="res://scenes/tank/tank.gd" id="2_x633a"]
 [ext_resource type="AudioStream" uid="uid://bnvh4nlk5v2us" path="res://audio/sfx/beepfx_samples/00_shot_1.wav" id="3_n10so"]
+[ext_resource type="PackedScene" uid="uid://denivsfgmokeg" path="res://scenes/game_over_anim/game_over_anim.tscn" id="4_wyqxc"]
 [ext_resource type="PackedScene" uid="uid://0esplk3dg3yq" path="res://scenes/components/reload_component.tscn" id="6_ofcmh"]
 [ext_resource type="PackedScene" uid="uid://dgfuu1m46xmvo" path="res://scenes/components/reload_meter_component.tscn" id="7_valud"]
 [ext_resource type="Shader" uid="uid://hjo4sykpukcq" path="res://shaders/laser_sight_shader.gdshader" id="8_n10so"]
 [ext_resource type="Script" uid="uid://b55sn6fb0ullr" path="res://scenes/tank/laser_sight.gd" id="9_fscqu"]
 [ext_resource type="PackedScene" uid="uid://b8unj7w73q0w3" path="res://scenes/components/hurtbox_component.tscn" id="9_t8nan"]
 [ext_resource type="PackedScene" uid="uid://d1xwwb4h1awsi" path="res://scenes/components/life_component.tscn" id="10_1pfma"]
+[ext_resource type="AudioStream" uid="uid://u61dg00ewpw8" path="res://audio/sfx/beepfx_samples/16_hit_2.wav" id="10_wyqxc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0el1g"]
 radius = 26.0
@@ -28,6 +30,7 @@ collision_mask = 4
 script = ExtResource("2_x633a")
 bullet_scene = ExtResource("2_0el1g")
 shot_sound = ExtResource("3_n10so")
+die_anim_scene = ExtResource("4_wyqxc")
 metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=687225454]
@@ -80,7 +83,11 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
 [node name="HurtboxComponent" parent="Components" unique_id=2122994445 node_paths=PackedStringArray("life_component", "sprite_2d") instance=ExtResource("9_t8nan")]
+collision_layer = 1
+collision_mask = 64
 life_component = NodePath("../LifeComponent")
+play_hit_sound = true
+hit_sound = ExtResource("10_wyqxc")
 flash_damage = true
 sprite_2d = NodePath("../../Sprite2D")
 
@@ -92,3 +99,4 @@ metadata/_edit_lock_ = true
 life = 1.0
 
 [connection signal="body_entered" from="PickupArea" to="." method="_on_pickup_area_body_entered"]
+[connection signal="life_zeroed" from="Components/LifeComponent" to="." method="_on_life_component_life_zeroed"]

@@ -30,6 +30,7 @@ script = ExtResource("2_jwybb")
 type = 1
 enemy_sprite = NodePath(".")
 life = 12
+credit_value = 2.0
 
 [node name="Components" type="Node2D" parent="." unique_id=74485059]
 
@@ -83,9 +84,9 @@ shot_direction = Vector2(0, 1)
 shot_speed = 400.0
 shot_damage = 1.0
 shot_collision_layer = 64
-shot_collision_mask = 1
-min_delay = 3.0
-max_delay = 6.0
+shot_collision_mask = 17
+min_delay = 1.0
+max_delay = 3.0
 
 [node name="ReloadComponent" parent="Components" unique_id=315688650 instance=ExtResource("10_81vaf")]
 use_random_reload_time = true

@@ -87,7 +87,8 @@ func update_label_and_cost() -> void:
 		if is_player_stat:
 			disabled = upgrade_cost > GameManager.game_state.credits
 		elif is_player_upgrade:
-			disabled = GameManager.get_upgrade(player_upgrade).is_maxed()
+			disabled = GameManager.get_upgrade(player_upgrade).is_maxed()\
+				or upgrade_cost > GameManager.game_state.credits
 		else:
 			disabled = false
 	else:
