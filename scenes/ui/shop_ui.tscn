@@ -115,6 +115,7 @@ player_stat = 5
 percentile_bonus_delta = 0.1
 
 [node name="Max Shots" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=1748455417 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
+visible = false
 layout_mode = 2
 btn_text = "+Max Shots"
 hover_text = "+1 allowed shot on-screen"

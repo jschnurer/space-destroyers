@@ -10,7 +10,7 @@ radius = 16.0
 
 [node name="Credit" type="RigidBody2D" unique_id=1989428875]
 collision_layer = 32
-collision_mask = 48
+collision_mask = 52
 can_sleep = false
 script = ExtResource("1_4nouu")
 credit_sound = ExtResource("2_jkw83")

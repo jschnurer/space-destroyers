@@ -45,6 +45,8 @@ func _process(_delta: float) -> void:
 		var mult := GameManager.get_stat_value(Enums.PlayerStats.CREDIT_MULTIPLIER)
 		SignalBus.emit_credits_picked_up(total_credits * mult)
 		GameManager.load_next_level()
+	elif Input.is_action_just_pressed("credits"):
+		SignalBus.emit_credits_picked_up(100000)
 
 func _on_enemy_hit_screen_edge(edge: Enums.ScreenEdges) -> void:
 	# Tell enemies to drop down and switch direction.

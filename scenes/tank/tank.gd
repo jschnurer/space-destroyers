@@ -102,5 +102,5 @@ func _on_life_component_life_zeroed() -> void:
 	get_tree().paused = true
 	var die_anim: GameOverAnimation = die_anim_scene.instantiate()
 	die_anim.global_position = sprite_2d.to_global(sprite_2d.get_rect().get_center())
-	die_anim.game_over_reason = Enums.GameOverReason.ENEMY_LANDED
+	die_anim.game_over_reason = Enums.GameOverReason.TANK_DESTROYED
 	Utilities.add_child_to_level(die_anim)

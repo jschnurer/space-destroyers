@@ -9,5 +9,5 @@ display_text = "Right Wall"
 max_level = 1
 value_curve_type = 2
 cost_type = 2
-base_cost = 125.0
+base_cost = 75.0
 metadata/_custom_type_script = "uid://w65aeclpm5mw"
