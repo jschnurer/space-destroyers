@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://cek5p8my0lwit"]
 
-[ext_resource type="PackedScene" uid="uid://dvc1ybiwavk54" path="res://scenes/ui/level_ui.tscn" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://ld7c4owsibhw" path="res://scenes/level_geom/starfield.tscn" id="1_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://dbp7bcs4hsse3" path="res://scenes/bgm_player.tscn" id="1_trceg"]
 [ext_resource type="PackedScene" uid="uid://cxprdbobghsuw" path="res://scenes/level_geom/screen_edge.tscn" id="2_sugp2"]
@@ -9,27 +8,24 @@
 [ext_resource type="PackedScene" uid="uid://c4fufmmvxadnq" path="res://scenes/ui/level_complete_ui.tscn" id="3_tefeu"]
 [ext_resource type="PackedScene" uid="uid://begc2jldio7ln" path="res://scenes/level_geom/terrain_bottom.tscn" id="5_a8y0u"]
 [ext_resource type="Script" uid="uid://bia4gleis3x01" path="res://scenes/level_holder.gd" id="7_tipki"]
+[ext_resource type="PackedScene" uid="uid://c2ejscy1w7qsh" path="res://scenes/ui/gameplay_ui/gameplay_ui.tscn" id="9_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://iqoyhfigpopi" path="res://scenes/effects/teleport_animation.tscn" id="10_choun"]
 [ext_resource type="PackedScene" uid="uid://dvexqvv2ecu72" path="res://scenes/effects/screen_fader.tscn" id="11_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://b4i7li1ujm3os" path="res://scenes/sfx_player/sfx_player.tscn" id="12_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://coa4jrtx5c26o" path="res://scenes/towers/anti_air_tower_battery.tscn" id="12_trceg"]
 [ext_resource type="PackedScene" uid="uid://csulh3wv2wpny" path="res://scenes/game_over/game_over.tscn" id="13_trceg"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbgi4"]
-size = Vector2(400, 1080)
-
 [node name="Main" type="Node2D" unique_id=1327851371]
 
 [node name="BGM" parent="." unique_id=219752419 instance=ExtResource("1_trceg")]
 
 [node name="Starfield" parent="." unique_id=2061530491 instance=ExtResource("1_o6xl0")]
-position = Vector2(402, 0)
-star_count = 1000
+star_count = 2000
 y_weight = 1.5
 metadata/_edit_lock_ = true
 
 [node name="ReferenceRect" parent="Starfield" index="0" unique_id=674209285]
-offset_right = 1119.0
+offset_right = 1920.0
 offset_bottom = 1015.0
 metadata/_edit_lock_ = true
 
@@ -37,35 +33,12 @@ metadata/_edit_lock_ = true
 visible = false
 
 [node name="ScreenEdgeLeft" parent="." unique_id=352324545 instance=ExtResource("2_sugp2")]
-position = Vector2(200, -8900)
+position = Vector2(-200, -840)
 metadata/_edit_lock_ = true
 
 [node name="ScreenEdgeRight" parent="." unique_id=1406219412 instance=ExtResource("2_sugp2")]
-position = Vector2(1720, -8898)
+position = Vector2(2120, -840)
 edge = 1
-metadata/_edit_lock_ = true
-
-[node name="PlayerStopLeft" type="StaticBody2D" parent="." unique_id=543646320]
-visible = false
-collision_layer = 4
-collision_mask = 0
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerStopLeft" unique_id=1182600847]
-position = Vector2(200, 540)
-shape = SubResource("RectangleShape2D_tbgi4")
-metadata/_edit_lock_ = true
-
-[node name="PlayerStopRight" type="StaticBody2D" parent="." unique_id=1547719144]
-visible = false
-position = Vector2(1520, 0)
-collision_layer = 4
-collision_mask = 0
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerStopRight" unique_id=1356299280]
-position = Vector2(200, 540)
-shape = SubResource("RectangleShape2D_tbgi4")
 metadata/_edit_lock_ = true
 
 [node name="Terrain" parent="." unique_id=1285710284 instance=ExtResource("5_a8y0u")]
@@ -82,7 +55,7 @@ metadata/_edit_lock_ = true
 visible = false
 metadata/_edit_lock_ = true
 
-[node name="LevelUI" parent="." unique_id=1966520918 instance=ExtResource("1_jyhfs")]
+[node name="GameplayUI" parent="." unique_id=1460615082 instance=ExtResource("9_jkv2x")]
 
 [node name="ShopUI" parent="." unique_id=401719951 instance=ExtResource("2_tbgi4")]
 

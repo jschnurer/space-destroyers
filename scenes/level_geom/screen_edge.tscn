@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dg8lxan3ca7on" path="res://scripts/screen_edge.gd" id="1_frpe8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_frpe8"]
-size = Vector2(400, 20000)
+size = Vector2(400, 3840)
 
 [node name="ScreenEdge" type="Area2D" unique_id=352324545]
 collision_layer = 4
@@ -13,12 +13,19 @@ script = ExtResource("1_frpe8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=947318580]
 shape = SubResource("RectangleShape2D_frpe8")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1135450559]
+[node name="CreditStopper" type="StaticBody2D" parent="." unique_id=1135450559]
 collision_layer = 4
 collision_mask = 0
 
-[node name="StaticShape" type="CollisionShape2D" parent="StaticBody2D" unique_id=1461942166]
+[node name="StaticShape" type="CollisionShape2D" parent="CreditStopper" unique_id=1461942166]
 unique_name_in_owner = true
+shape = SubResource("RectangleShape2D_frpe8")
+
+[node name="PlayerStopper" type="StaticBody2D" parent="." unique_id=648970006]
+collision_layer = 128
+collision_mask = 0
+
+[node name="StaticShape" type="CollisionShape2D" parent="PlayerStopper" unique_id=1420165093]
 shape = SubResource("RectangleShape2D_frpe8")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

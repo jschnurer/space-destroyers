@@ -3,12 +3,11 @@
 [ext_resource type="Script" uid="uid://bxs4hdbja166v" path="res://scenes/level_geom/terrain_bottom.gd" id="1_wfl7x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyhfs"]
-size = Vector2(1120, 69)
+size = Vector2(1920, 69)
 
 [node name="TerrainBottom" type="ColorRect" unique_id=1285710284 groups=["TERRAIN_BOTTOM"]]
-offset_left = 400.0
 offset_top = 1012.0
-offset_right = 1520.0
+offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0.24115604, 0.24115604, 0.24115604, 1)
 script = ExtResource("1_wfl7x")
@@ -20,7 +19,7 @@ collision_mask = 64
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1076049548]
-position = Vector2(560, 34.5)
+position = Vector2(960, 34.5)
 shape = SubResource("RectangleShape2D_jyhfs")
 metadata/_edit_lock_ = true
 
@@ -29,7 +28,7 @@ collision_layer = 16
 collision_mask = 64
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=816190819]
-position = Vector2(560, 34.5)
+position = Vector2(960, 34.5)
 shape = SubResource("RectangleShape2D_jyhfs")
 metadata/_edit_lock_ = true
 

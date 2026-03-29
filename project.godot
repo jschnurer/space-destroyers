@@ -124,6 +124,7 @@ credits={
 2d_physics/layer_5="Terrain"
 2d_physics/layer_6="Item"
 2d_physics/layer_7="Enemy Attack"
+2d_physics/layer_8="PlayerStopperScreenEdge"
 
 [physics]
 

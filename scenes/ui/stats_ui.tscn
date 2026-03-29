@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dvc1ybiwavk54"]
 
 [ext_resource type="FontFile" uid="uid://6kmtx2n78kyo" path="res://art/fonts/ka1.ttf" id="1_32a87"]
-[ext_resource type="Script" uid="uid://b5saaj3w0vt7a" path="res://scenes/ui/level_ui.gd" id="1_ky048"]
+[ext_resource type="Script" uid="uid://b5saaj3w0vt7a" path="res://scenes/ui/stats_ui.gd" id="1_ky048"]
 [ext_resource type="FontFile" uid="uid://ftg0yylbljr5" path="res://art/fonts/joystix.monospace.otf" id="3_ky048"]
 [ext_resource type="Texture2D" uid="uid://cdyvlsr8w6mui" path="res://art/credit.png" id="3_yrqfn"]
 [ext_resource type="PackedScene" uid="uid://cufpjpgnyoers" path="res://scenes/ui/stat_label.tscn" id="4_gs80r"]
@@ -26,19 +26,29 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_32a87"]
 bg_color = Color(0, 0, 0, 1)
 
-[node name="LevelUI" type="CanvasLayer" unique_id=1966520918]
-script = ExtResource("1_ky048")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=669150873]
+[node name="StatsUI" type="Control" unique_id=2077276304]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ky048")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=669150873]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="HBoxContainer" unique_id=1475264431]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_32a87")
 
 [node name="Left" type="MarginContainer" parent="HBoxContainer/PanelContainer" unique_id=891187302]
@@ -73,15 +83,18 @@ horizontal_alignment = 1
 [node name="Spacer" type="Control" parent="HBoxContainer" unique_id=2106117815]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer" unique_id=1395559608]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_32a87")
 
 [node name="Right" type="MarginContainer" parent="HBoxContainer/PanelContainer2" unique_id=789853970]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
@@ -89,13 +102,16 @@ theme_override_constants/margin_bottom = 16
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer2/Right" unique_id=1885360323]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=1691892159]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 16
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/HBoxContainer" unique_id=1643688271]
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("3_yrqfn")
 expand_mode = 2
 
@@ -113,15 +129,19 @@ text_overrun_behavior = 5
 [node name="Spacer" type="Control" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=130092362]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Stats" type="VBoxContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=280516229]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Life" type="HBoxContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Stats" unique_id=1118592133]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Stats/Life" unique_id=742367180]
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("5_yrqfn")
 expand_mode = 2
 
@@ -144,6 +164,7 @@ horizontal_alignment = 2
 
 [node name="Tank Speed" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Stats" unique_id=277121019 instance=ExtResource("4_gs80r")]
 layout_mode = 2
+mouse_filter = 2
 stat = ExtResource("5_acfpo")
 interpolate_str = "+%s%%"
 show_only_percent_bonus = true
@@ -151,6 +172,7 @@ round_to_int = true
 
 [node name="Pickup Area" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Stats" unique_id=2113169847 instance=ExtResource("4_gs80r")]
 layout_mode = 2
+mouse_filter = 2
 stat = ExtResource("6_nr7cs")
 interpolate_str = "+%s%%"
 show_only_percent_bonus = true
@@ -158,6 +180,7 @@ round_to_int = true
 
 [node name="Luck" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Stats" unique_id=421243436 instance=ExtResource("4_gs80r")]
 layout_mode = 2
+mouse_filter = 2
 stat = ExtResource("7_gdn6w")
 interpolate_str = "+%s%%"
 show_only_percent_bonus = true
@@ -165,6 +188,7 @@ round_to_int = true
 
 [node name="CreditMultiplier" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Stats" unique_id=794639461 instance=ExtResource("4_gs80r")]
 layout_mode = 2
+mouse_filter = 2
 stat = ExtResource("8_dlw7e")
 interpolate_str = "%sx"
 format_str = "%.2f"
@@ -172,12 +196,14 @@ format_str = "%.2f"
 [node name="Max Shots" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Stats" unique_id=1518888019 instance=ExtResource("4_gs80r")]
 visible = false
 layout_mode = 2
+mouse_filter = 2
 stat = ExtResource("9_dlw7e")
 interpolate_str = "%s"
 round_to_int = true
 
 [node name="Shot Speed" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Stats" unique_id=410672064 instance=ExtResource("4_gs80r")]
 layout_mode = 2
+mouse_filter = 2
 stat = ExtResource("10_xp64m")
 interpolate_str = "+%s%%"
 show_only_percent_bonus = true
@@ -185,12 +211,14 @@ round_to_int = true
 
 [node name="Damage" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Stats" unique_id=1175734507 instance=ExtResource("4_gs80r")]
 layout_mode = 2
+mouse_filter = 2
 stat = ExtResource("11_kvee4")
 interpolate_str = "%s"
 format_str = "%.0f"
 
 [node name="Reload" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Stats" unique_id=233088319 instance=ExtResource("4_gs80r")]
 layout_mode = 2
+mouse_filter = 2
 stat = ExtResource("12_3be6a")
 interpolate_str = "+%s%%"
 show_only_percent_bonus = true
@@ -199,9 +227,11 @@ round_to_int = true
 [node name="Spacer2" type="Control" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=1191607314]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Upgrades" type="VBoxContainer" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer" unique_id=562724002]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Upgrades" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Upgrades" unique_id=1139954321]
 unique_name_in_owner = true

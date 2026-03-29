@@ -4,7 +4,7 @@ var level_holder: Node2D
 
 var game_state: GameState
 
-signal credits_changed()
+signal credits_changed(new_credits: float)
 signal stat_changed(changed_stat: Stat)
 signal upgrade_changed(changed_upgrade: Upgrade)
 signal current_life_changed(new_life: int)
@@ -90,13 +90,13 @@ func load_next_level() -> void:
 
 func _on_credits_picked_up(amt: float) -> void:
 	game_state.credits += (amt * get_stat_value(Enums.PlayerStats.CREDIT_MULTIPLIER))
-	credits_changed.emit()
+	credits_changed.emit(game_state.credits)
 
 ## If the player has enough credits, decrement the credits and return true. Otherwise, return false.
 func pay_credits(amount: float) -> bool:
 	if game_state.credits >= amount:
 		game_state.credits -= amount
-		credits_changed.emit()
+		credits_changed.emit(game_state.credits)
 		return true
 	return false
 

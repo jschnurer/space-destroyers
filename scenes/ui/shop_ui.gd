@@ -4,6 +4,7 @@ extends CanvasLayer
 @export var level_bgm: AudioStream
 
 @onready var purchase_description: Label = %PurchaseDescription
+@onready var stats_ui: Control = %StatsUI
 
 var _input_enabled := false
 
@@ -30,6 +31,7 @@ func _on_open_shop() -> void:
 
 func _fade_in_shop() -> void:
 	visible = true
+	stats_ui.visible = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	var button_nodes := get_tree().get_nodes_in_group("SHOP_BUTTON")
 	for button in button_nodes:
@@ -59,6 +61,7 @@ func _fade_out_shop() -> void:
 		await screen_fader.fade_complete
 	
 	visible = false
+	stats_ui.visible = false
 	SignalBus.shop_closed.emit()
 
 func _toggle_input(p_enabled: bool) -> void:
