@@ -6,6 +6,7 @@
 script = ExtResource("1_qcx5q")
 upgrade = 8
 display_text = "Right Wall"
+description = "Constrains credibux within right screen edge"
 max_level = 1
 value_curve_type = 2
 cost_type = 2

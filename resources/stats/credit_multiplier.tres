@@ -6,6 +6,7 @@
 script = ExtResource("1_otdye")
 player_stat = 6
 display_text = "Credibux"
+description = "+Credibux value"
 value_curve_type = 2
 base_value = 1.0
 base_cost = 5.0

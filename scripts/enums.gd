@@ -34,7 +34,8 @@ enum PlayerUpgrades {
 	BARRICADE = 5,
 	LIGHTNING_TOWER = 6,
 	RETAINING_WALL_LEFT = 7,
-	RETAINING_WALL_RIGHT = 8
+	RETAINING_WALL_RIGHT = 8,
+	FLAK_CANNON = 9,
 }
 
 enum EnemyType {

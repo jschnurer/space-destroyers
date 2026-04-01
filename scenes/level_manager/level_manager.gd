@@ -33,7 +33,7 @@ func _process(_delta: float) -> void:
 		for en in get_tree().get_nodes_in_group(GroupNames.ENEMY):
 			var lc: LifeComponent = (en as Enemy).get_component(LifeComponent)
 			if lc:
-				lc.take_damage(99999999.0)
+				lc.take_damage(99999999.0, null)
 	elif Input.is_action_just_pressed("pass_level"):
 		var total_credits := 0.0
 		for en in get_tree().get_nodes_in_group(GroupNames.ENEMY):
@@ -46,7 +46,7 @@ func _process(_delta: float) -> void:
 		SignalBus.emit_credits_picked_up(total_credits * mult)
 		GameManager.load_next_level()
 	elif Input.is_action_just_pressed("credits"):
-		SignalBus.emit_credits_picked_up(100000)
+		SignalBus.emit_credits_picked_up(99999999999)
 
 func _on_enemy_hit_screen_edge(edge: Enums.ScreenEdges) -> void:
 	# Tell enemies to drop down and switch direction.

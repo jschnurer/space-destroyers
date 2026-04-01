@@ -6,6 +6,7 @@
 script = ExtResource("1_h6hw4")
 player_stat = 2
 display_text = "Reload"
+description = "-Wait time between shots"
 approaches_zero_base = 1.0
 base_cost = 5.0
 power = 1.5

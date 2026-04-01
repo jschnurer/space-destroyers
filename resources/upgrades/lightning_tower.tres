@@ -6,6 +6,7 @@
 script = ExtResource("1_8bkt5")
 upgrade = 6
 display_text = "Lightning Tower"
+description = "Constructs a lightning tower"
 max_level = 1
 value_curve_type = 2
 cost_type = 2

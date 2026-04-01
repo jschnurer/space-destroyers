@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://c57jca6ju4wq3"]
+
+[ext_resource type="Script" uid="uid://w65aeclpm5mw" path="res://resources/upgrade.gd" id="1_y7pvx"]
+
+[resource]
+script = ExtResource("1_y7pvx")
+upgrade = 9
+display_text = "Flak Cannon"
+description = "Explodes enemies, damaging those nearby"
+max_level = 10
+value_curve_type = 2
+base_value_int = 1
+base_cost = 50.0
+power = 1.521
+metadata/_custom_type_script = "uid://w65aeclpm5mw"

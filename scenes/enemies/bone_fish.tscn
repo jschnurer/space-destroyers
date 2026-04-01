@@ -72,6 +72,7 @@ enemy_node = NodePath("../..")
 deletion_node = NodePath("../..")
 lucky_component = NodePath("../LuckyComponent")
 death_anim_scene = ExtResource("10_47k3u")
+can_spawn_flak = true
 
 [node name="AutoShootComponent" parent="Components" unique_id=523345871 node_paths=PackedStringArray("reload_component") instance=ExtResource("11_xh7mb")]
 position = Vector2(5.5, 12.5)

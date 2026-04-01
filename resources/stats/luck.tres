@@ -6,6 +6,7 @@
 script = ExtResource("1_bwiat")
 player_stat = 7
 display_text = "Luck"
+description = "+Chance of golden enemies"
 value_curve_type = 1
 const_start_value = 1.0
 approaches_const = 90.0

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://buypeu55dbdg6"]
+
+[ext_resource type="Script" uid="uid://ba7k66owlsm4t" path="res://scenes/flak_explosion/flak_explosion.gd" id="1_xbtjs"]
+[ext_resource type="PackedScene" uid="uid://d1jln5dps07ua" path="res://scenes/bullet/bullet.tscn" id="2_87cq7"]
+[ext_resource type="PackedScene" uid="uid://cexytn51t24ps" path="res://scenes/components/lifetime_component.tscn" id="3_huofv"]
+
+[node name="FlakExplosion" type="Node2D" unique_id=596981605]
+script = ExtResource("1_xbtjs")
+bullet_scene = ExtResource("2_87cq7")
+life_time_component_scene = ExtResource("3_huofv")

@@ -6,7 +6,6 @@ class_name ShopButton
 	set(value):
 		btn_text = value
 		update_label_and_cost()
-@export var hover_text: String
 @export var purchase_sfx: AudioStream
 
 @export var is_player_stat := false

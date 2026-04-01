@@ -29,7 +29,7 @@ func _on_area_entered(area: Area2D) -> void:
 			return
 		
 		# Attempt to reduce life.
-		var dmg_dealt := life_component.take_damage(hitbox.damage)
+		var dmg_dealt := life_component.take_damage(hitbox.damage, hitbox)
 		if dmg_dealt > 0:
 			_on_took_damage(dmg_dealt, hitbox)
 		

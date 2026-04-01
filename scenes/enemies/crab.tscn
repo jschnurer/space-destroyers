@@ -68,5 +68,6 @@ enemy_node = NodePath("../..")
 deletion_node = NodePath("../..")
 lucky_component = NodePath("../LuckyComponent")
 death_anim_scene = ExtResource("3_bb1xh")
+can_spawn_flak = true
 
 [connection signal="area_entered" from="Components/HurtboxComponent" to="." method="_on_area_2d_area_entered"]

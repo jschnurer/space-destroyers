@@ -2,6 +2,7 @@ extends Area2D
 class_name HitboxComponent
 
 @export var damage: float
+@export var can_flak := false
 
 ## If this is true, the hitbox may deal damage. Otherwise, it shouldn't.
 var is_active := true

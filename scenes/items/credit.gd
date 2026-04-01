@@ -61,9 +61,6 @@ func _on_force_integration(_state: PhysicsDirectBodyState2D) -> void:
 
 	PhysicsServer2D.body_set_force_integration_callback(get_rid(), Callable())
 
-func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	queue_free()
-
 func set_lucky(lucky: bool) -> void:
 	(%LuckyComponent as LuckyComponent).set_lucky(lucky)
 

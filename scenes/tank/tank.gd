@@ -45,9 +45,16 @@ func _try_shoot() -> void:
 		return
 	
 	# Shoot bullets.
-	if GameManager.has_upgrade(Enums.PlayerUpgrades.MULTI_CANNON):
+	var multi_level := GameManager.get_upgrade_level(Enums.PlayerUpgrades.MULTI_CANNON)
+	if multi_level > 0:
 		_spawn_bullet(-8.0)
 		_spawn_bullet(8.0)
+		if multi_level >= 2:
+			# Shoot one up left.
+			_spawn_bullet(-16.0, -4, Vector2.ONE * 0.5)
+		if multi_level >= 3:
+			# Shoot one up right.
+			_spawn_bullet(16, 4, Vector2.ONE * 0.5)
 	else:
 		_spawn_bullet(0)
 	
@@ -79,26 +86,38 @@ func _update_pickup_area(pickup_size: float) -> void:
 	if shape:
 		shape.radius = pickup_size
 
-func _spawn_bullet(bullet_offset: float) -> void:
+func _spawn_bullet(bullet_offset: float, angle_offset: float = 0.0, bullet_scale: Vector2 = Vector2.ONE) -> void:
 	var bullet: Bullet = bullet_scene.instantiate()
 	bullet.global_position = bullet_spawn_point.global_position
 	bullet.global_position.x += bullet_offset
 	bullet.set_collision(1 << 3, 1 << 1)
+	
+	var dir := Vector2.UP
+	
+	if angle_offset != 0.0:
+		bullet.rotation = deg_to_rad(angle_offset)
+		dir = Vector2.from_angle(deg_to_rad(-90 + angle_offset))
+	
+	bullet.scale *= bullet_scale
+	
 	bullet.set_power_speed_direction(\
 		GameManager.get_stat_value(Enums.PlayerStats.DAMAGE),
 		GameManager.get_stat_value(Enums.PlayerStats.SHOT_SPEED),
-		Vector2.UP)
+		dir)
+	if GameManager.has_upgrade(Enums.PlayerUpgrades.FLAK_CANNON):
+		bullet.can_flak = true
+		
 	bullet.tree_exited.connect(_on_bullet_died)
 	Utilities.call_deferred("add_child_to_level", bullet)
 	_active_bullet_count += 1
 
-func _on_life_changed(new_life: int) -> void:
+func _on_life_changed(new_life: int, _hitbox: HitboxComponent) -> void:
 	GameManager.set_current_life(new_life)
 
 func _on_game_manager_current_life_changed(new_life: int) -> void:
 	life_component.life = new_life
 
-func _on_life_component_life_zeroed() -> void:
+func _on_life_component_life_zeroed(_hitbox: HitboxComponent) -> void:
 	get_tree().paused = true
 	var die_anim: GameOverAnimation = die_anim_scene.instantiate()
 	die_anim.global_position = sprite_2d.to_global(sprite_2d.get_rect().get_center())

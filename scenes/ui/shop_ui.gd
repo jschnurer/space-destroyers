@@ -77,7 +77,10 @@ func _setup_hover_events() -> void:
 	for button in button_nodes:
 		if button is ShopButton:
 			var c := button as ShopButton
-			c.mouse_entered.connect(_on_button_hovered.bind(c.hover_text))
+			if c.is_player_stat:
+				c.mouse_entered.connect(_on_button_hovered.bind(GameManager.get_stat(c.player_stat).description))
+			elif c.is_player_upgrade:
+				c.mouse_entered.connect(_on_button_hovered.bind(GameManager.get_upgrade(c.player_upgrade).description))
 			c.mouse_exited.connect(_on_button_exited)
 
 func _on_button_hovered(text: String) -> void:

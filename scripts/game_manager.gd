@@ -176,6 +176,12 @@ func restart_game() -> void:
 	#alter_upgrade(Enums.PlayerUpgrades.RETAINING_WALL_RIGHT, 1.0)
 	#alter_upgrade(Enums.PlayerUpgrades.LASER_SIGHT, 1.0)
 	
+	#var multi_cannon := game_state.upgrades[Enums.PlayerUpgrades.MULTI_CANNON]
+	#multi_cannon.level = 3
+	
+	#var flak := game_state.upgrades[Enums.PlayerUpgrades.FLAK_CANNON]
+	#flak.level = 1
+	
 	SignalBus.emit_play_bgm(load("res://audio/bgm/moonlight.mp3") as AudioStream, 1.0, 1.0, 0.0, 1.0)
 	_load_initial_level()
 

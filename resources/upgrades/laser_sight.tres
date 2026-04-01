@@ -6,6 +6,7 @@
 script = ExtResource("1_dpp2j")
 upgrade = 2
 display_text = "Laser Sight"
+description = "A laser indicates shot path"
 max_level = 1
 value_curve_type = 2
 cost_type = 2

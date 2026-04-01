@@ -38,15 +38,20 @@ class_name OnDeathComponent
 ## Scene to instantiate at this location to show death animation.
 @export var death_anim_scene: PackedScene
 
+@export_group("Flak Explosion")
+@export var can_spawn_flak := false
+var flak_scene: PackedScene = load("res://scenes/flak_explosion/flak_explosion.tscn")
+
 func _ready() -> void:
 	if life_component:
 		life_component.life_zeroed.connect(_on_life_zeroed)
 
-func _on_life_zeroed() -> void:
+func _on_life_zeroed(hitbox: HitboxComponent) -> void:
 	_try_play_death_sound()
 	_try_spawn_credit()
 	_try_death_anim()
 	_try_enemy_death_emit()
+	_try_spawn_flak(hitbox)
 	_try_delete()
 
 func _try_play_death_sound() -> void:
@@ -145,6 +150,14 @@ func _try_death_anim() -> void:
 func _try_enemy_death_emit() -> void:
 	if emit_enemy_died and enemy_node:
 		SignalBus.emit_enemy_died(enemy_node)
+
+func _try_spawn_flak(hitbox: HitboxComponent) -> void:
+	if !can_spawn_flak or !hitbox.can_flak:
+		return
+	
+	var flak := flak_scene.instantiate() as FlakExplosion
+	flak.global_position = global_position
+	Utilities.call_deferred("add_child_to_level", flak)
 
 func _try_delete() -> void:
 	if deletion and deletion_node:

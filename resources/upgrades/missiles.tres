@@ -6,6 +6,7 @@
 script = ExtResource("1_0y5o6")
 upgrade = 1
 display_text = "Missiles"
+description = "Occasionally fire seeking missiles"
 max_level = 3
 value_curve_type = 2
 base_cost = 150.0

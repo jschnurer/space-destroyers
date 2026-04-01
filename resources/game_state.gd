@@ -27,4 +27,5 @@ var upgrades: Dictionary[Enums.PlayerUpgrades, Upgrade] = {
 	Enums.PlayerUpgrades.LIGHTNING_TOWER: load("res://resources/upgrades/lightning_tower.tres"),
 	Enums.PlayerUpgrades.RETAINING_WALL_LEFT: load("res://resources/upgrades/left_wall.tres"),
 	Enums.PlayerUpgrades.RETAINING_WALL_RIGHT: load("res://resources/upgrades/right_wall.tres"),
+	Enums.PlayerUpgrades.FLAK_CANNON: load("res://resources/upgrades/flak_cannon.tres"),
 }

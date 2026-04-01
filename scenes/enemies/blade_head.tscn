@@ -71,8 +71,10 @@ enemy_node = NodePath("../..")
 deletion_node = NodePath("../..")
 lucky_component = NodePath("../LuckyComponent")
 death_anim_scene = ExtResource("11_21ggi")
+can_spawn_flak = true
 
 [node name="ShieldComponent" parent="Components" unique_id=153832048 instance=ExtResource("12_rjqgc")]
+visible = false
 position = Vector2(0, 14)
 life = 33.0
 collision_layer = 2

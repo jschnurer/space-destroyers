@@ -6,6 +6,7 @@
 script = ExtResource("1_qfhxy")
 player_stat = 5
 display_text = "Pickup Area"
+description = "+Credibux pickup radius"
 value_curve_type = 1
 const_start_value = 32.0
 approaches_const = 250.0

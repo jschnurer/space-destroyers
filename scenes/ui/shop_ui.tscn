@@ -78,7 +78,6 @@ columns = 3
 [node name="MaxLife" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=1890730274 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
 layout_mode = 2
 btn_text = "+Max Life"
-hover_text = "+Maximum life"
 is_player_stat = true
 player_stat = 8
 bonus_delta_int = 1
@@ -86,14 +85,12 @@ bonus_delta_int = 1
 [node name="Speed" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=29397967 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
 layout_mode = 2
 btn_text = "+Speed"
-hover_text = "+Tank movement speed"
 is_player_stat = true
 percentile_bonus_delta = 0.1
 
 [node name="Luck" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=1958245463 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
 layout_mode = 2
 btn_text = "+Luck"
-hover_text = "+Chance of golden enemies"
 is_player_stat = true
 player_stat = 7
 percentile_bonus_delta = 0.05
@@ -101,7 +98,6 @@ percentile_bonus_delta = 0.05
 [node name="Credibux Value" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=29639636 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
 layout_mode = 2
 btn_text = "+Credibux Value"
-hover_text = "+Value of collected credibux"
 is_player_stat = true
 player_stat = 6
 bonus_delta = 0.05
@@ -110,7 +106,6 @@ percentile_bonus_delta = 0.05
 [node name="Pickup" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=465462026 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
 layout_mode = 2
 btn_text = "+Pickup Area"
-hover_text = "+Credibux pickup radius"
 is_player_stat = true
 player_stat = 5
 percentile_bonus_delta = 0.1
@@ -119,7 +114,6 @@ percentile_bonus_delta = 0.1
 visible = false
 layout_mode = 2
 btn_text = "+Max Shots"
-hover_text = "+1 allowed shot on-screen"
 is_player_stat = true
 player_stat = 1
 bonus_delta = 1.0
@@ -127,7 +121,6 @@ bonus_delta = 1.0
 [node name="Shot Power" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=315851921 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
 layout_mode = 2
 btn_text = "+Shot Power"
-hover_text = "+Damage dealt to enemies"
 is_player_stat = true
 player_stat = 3
 percentile_bonus_delta = 0.1
@@ -135,7 +128,6 @@ percentile_bonus_delta = 0.1
 [node name="Shot Speed" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=232779556 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
 layout_mode = 2
 btn_text = "+Shot Speed"
-hover_text = "+Move speed of fired shots"
 is_player_stat = true
 player_stat = 4
 percentile_bonus_delta = 0.15
@@ -143,7 +135,6 @@ percentile_bonus_delta = 0.15
 [node name="Reload" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=1954780166 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
 layout_mode = 2
 btn_text = "+Reload"
-hover_text = "Decreases wait time between shots"
 is_player_stat = true
 player_stat = 2
 percentile_bonus_delta = 0.25
@@ -151,39 +142,35 @@ percentile_bonus_delta = 0.25
 [node name="Laser Sight" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=776057343 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
 layout_mode = 2
 btn_text = "Laser Sight"
-hover_text = "A laser indicates shot path"
 is_player_upgrade = true
 player_upgrade = 2
 
 [node name="Multi Cannon" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=999333814 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
 layout_mode = 2
 btn_text = "Multi Cannon"
-hover_text = "Fires +1 parallel shot"
 is_player_upgrade = true
 player_upgrade = 3
 
 [node name="Full Auto" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=1910026014 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
 layout_mode = 2
 btn_text = "Full Auto"
-hover_text = "Hold button to fire continuously"
 is_player_upgrade = true
 
 [node name="Missiles" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=78837581 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
 visible = false
 layout_mode = 2
 btn_text = "Seeking Missiles"
-hover_text = "+1 auto-fired seeking missiles"
 is_player_upgrade = true
 player_upgrade = 1
 
 [node name="Anti-Air Tower" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=561967771 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
 layout_mode = 2
 btn_text = "Anti-Air Tower"
-hover_text = "Builds an auto-firing anti-air tower"
 is_player_upgrade = true
 player_upgrade = 4
 
 [node name="Barricade" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=813422252 groups=["SHOP_BUTTON"]]
+visible = false
 custom_minimum_size = Vector2(350, 76)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -193,27 +180,21 @@ theme_override_font_sizes/font_size = 28
 text = "+Barricade
 [$80]"
 
-[node name="Lightning Tower" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=2085148230 groups=["SHOP_BUTTON"]]
-custom_minimum_size = Vector2(350, 76)
+[node name="Flak Cannon" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=925314407 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_fonts/font = ExtResource("2_avfhx")
-theme_override_font_sizes/font_size = 25
-text = "+Lightning tower
-[$400]"
+btn_text = "Flak Cannon"
+is_player_upgrade = true
+player_upgrade = 9
 
 [node name="Left Wall" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=1459959674 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
 layout_mode = 2
 btn_text = "Left Wall"
-hover_text = "Prevents credibux from left side of screen"
 is_player_upgrade = true
 player_upgrade = 7
 
 [node name="Right Wall" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=337299482 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
 layout_mode = 2
 btn_text = "Right Wall"
-hover_text = "Prevents credibux from right side of screen"
 is_player_upgrade = true
 player_upgrade = 8
 

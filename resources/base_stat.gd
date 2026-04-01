@@ -2,13 +2,10 @@ extends Resource
 class_name BaseStat
 
 @export var display_text: String = ""
+## Description shown when hovering and in store. Max length = 43.
+@export var description: String = ""
 
-var level: int = 0
 @export var max_level: int = 1000
-## Percent bonus used in APPROACHES formulas.
-var percent_bonus: float = 0.0
-var point_bonus: float = 0.0
-var point_bonus_int: int = 0
 
 @export_group("Value Curve")
 @export var value_curve_type: ValueCurveType
@@ -26,6 +23,12 @@ var point_bonus_int: int = 0
 @export var cost_type: CostCurveType
 @export var base_cost: float
 @export var power: float
+
+var level: int = 0
+## Percent bonus used in APPROACHES formulas.
+var percent_bonus: float = 0.0
+var point_bonus: float = 0.0
+var point_bonus_int: int = 0
 
 func get_upgrade_cost() -> int:
 	match cost_type:
