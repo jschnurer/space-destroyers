@@ -30,7 +30,7 @@ script = ExtResource("2_jwybb")
 type = 1
 enemy_sprite = NodePath(".")
 life = 12
-credit_value = 2.0
+credit_value = 2.5
 
 [node name="Components" type="Node2D" parent="." unique_id=74485059]
 
@@ -76,7 +76,7 @@ lucky_component = NodePath("../LuckyComponent")
 death_anim_scene = ExtResource("7_jwybb")
 can_spawn_flak = true
 
-[node name="AutoShootComponent" parent="Components" unique_id=523345871 node_paths=PackedStringArray("reload_component") instance=ExtResource("10_ofuak")]
+[node name="AutoShootComponent" parent="Components" unique_id=523345871 node_paths=PackedStringArray("reload_component", "inherit_from_sprite") instance=ExtResource("10_ofuak")]
 position = Vector2(6, 9.25)
 reload_component = NodePath("../ReloadComponent")
 bullet_scene = ExtResource("11_ofuak")
@@ -88,6 +88,8 @@ shot_collision_layer = 64
 shot_collision_mask = 17
 min_delay = 1.0
 max_delay = 3.0
+inherit_sprite_scale = true
+inherit_from_sprite = NodePath("../..")
 
 [node name="ReloadComponent" parent="Components" unique_id=315688650 instance=ExtResource("10_81vaf")]
 use_random_reload_time = true

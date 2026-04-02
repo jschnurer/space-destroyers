@@ -74,7 +74,7 @@ lucky_component = NodePath("../LuckyComponent")
 death_anim_scene = ExtResource("10_47k3u")
 can_spawn_flak = true
 
-[node name="AutoShootComponent" parent="Components" unique_id=523345871 node_paths=PackedStringArray("reload_component") instance=ExtResource("11_xh7mb")]
+[node name="AutoShootComponent" parent="Components" unique_id=523345871 node_paths=PackedStringArray("reload_component", "inherit_from_sprite") instance=ExtResource("11_xh7mb")]
 position = Vector2(5.5, 12.5)
 reload_component = NodePath("../ReloadComponent")
 bullet_scene = ExtResource("12_xh7mb")
@@ -86,6 +86,8 @@ shot_collision_layer = 64
 shot_collision_mask = 17
 min_delay = 1.0
 max_delay = 5.0
+inherit_sprite_scale = true
+inherit_from_sprite = NodePath("../..")
 
 [node name="ReloadComponent" parent="Components" unique_id=315688650 instance=ExtResource("13_lai1n")]
 use_random_reload_time = true

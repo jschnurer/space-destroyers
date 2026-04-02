@@ -6,14 +6,14 @@
 script = ExtResource("1_3yw43")
 
 [node name="PlayAreaReference" type="ReferenceRect" parent="." unique_id=1203394698]
-offset_right = 1120.0
+offset_right = 1920.0
 offset_bottom = 1080.0
 border_color = Color(0.19813854, 0.7741333, 0.9999997, 1)
 border_width = 3.0
 
 [node name="CenterLine" type="ReferenceRect" parent="." unique_id=9584631]
-offset_left = 560.0
-offset_right = 560.0
+offset_left = 960.0
+offset_right = 960.0
 offset_bottom = 1080.0
 border_color = Color(0.19813854, 0.7741333, 0.9999997, 1)
 border_width = 3.0

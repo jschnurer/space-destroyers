@@ -8,6 +8,11 @@ extends Node2D
 @export_tool_button("Zero Rows") var zero_rows_btn := _zero_rows
 ## Sets the EnemyFormation's x position to 0.
 @export_tool_button("Zero Position") var zero_button := _zero_position
+## Keeps formation but 0's left edge.
+@export_tool_button("Zero Formation") var zero_formation := _zero_formation
+## Keeps formation and centers it.
+@export_tool_button("Center Formation") var center_formation := _center_formation
+
 ## Centers only the specified enemy.
 @export var center_enemy: Enemy:
 	set(value):
@@ -17,6 +22,7 @@ func _ready() -> void:
 	if !Engine.is_editor_hint():
 		global_position.x = Global.PLAYABLE_AREA_RECT.position.x
 
+## Calculates width of each "row" (shared Y-coord) and centers them within the EnemyFormation.
 func _center_rows() -> void:
 	var center_x := _get_center_x()
 	
@@ -44,9 +50,9 @@ func _center_single_enemy(enemy: Enemy) -> void:
 	enemy.global_position.x = _get_center_x() - sprite_rect.size.x / 2
 
 func _get_center_x() -> float:
-	var play_area_ref_rect := $PlayAreaReference as ReferenceRect
-	return play_area_ref_rect.position.x + play_area_ref_rect.size.x / 2.0
+	return ($CenterLine as ReferenceRect).global_position.x
 
+## Calculates width of each "row" (shared Y-coord) and sets the left edge to 0.
 func _zero_rows() -> void:
 	var enemies_by_row: Dictionary[float, Array] = _group_enemies_by_y_position()
 	
@@ -64,17 +70,33 @@ func _zero_rows() -> void:
 		for enemy in enemies_in_row:
 			enemy.position.x += -extents.min_val
 
+## Zeroes the position of the EnemyFormation node.
 func _zero_position() -> void:
 	position = Vector2.ZERO
 
+## Calculates bounding box of ALL enemies and moves it to X=0.
+func _zero_formation() -> void:
+	var enemies := _get_all_enemies()
+	var min_max := _get_min_max_x_from_enemies(enemies)
+	if min_max.min_val > 0:
+		for e in enemies:
+			e.global_position.x -= min_max.min_val
+
+func _center_formation() -> void:
+	var enemies := _get_all_enemies()
+	var min_max := _get_min_max_x_from_enemies(enemies)
+	var formation_width := min_max.max_val - min_max.min_val
+	var formation_center := formation_width / 2.0
+	
+	var screen_center_x := Global.PLAYABLE_AREA_RECT.get_center().x
+	
+	var offset := screen_center_x - formation_center
+	for e in enemies:
+		e.global_position.x += offset
+
 func _group_enemies_by_y_position() -> Dictionary[float, Array]:
 	# Get all child enemies' sprites.
-	var enemies: Array[Sprite2D] = []
-	enemies.assign(
-		get_children().filter(
-			func(child: Node) -> bool: return child.is_in_group("ENEMY") and child is Sprite2D
-		)
-	)
+	var enemies: Array[Sprite2D] = _get_all_enemies()
 	
 	# Group sprites by their y position.
 	var row_dict: Dictionary[float, Array] = {}
@@ -85,6 +107,15 @@ func _group_enemies_by_y_position() -> Dictionary[float, Array]:
 			row_dict[e.position.y] = [e]
 	
 	return row_dict
+
+func _get_all_enemies() -> Array[Sprite2D]:
+	var enemies: Array[Sprite2D] = []
+	enemies.assign(
+		get_children().filter(
+			func(child: Node) -> bool: return child.is_in_group("ENEMY") and child is Sprite2D
+		)
+	)
+	return enemies
 
 func _get_min_max_x_from_enemies(enemies: Array[Sprite2D]) -> MinMax:
 	var min_x := INF

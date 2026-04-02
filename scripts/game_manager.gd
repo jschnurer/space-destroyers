@@ -15,6 +15,7 @@ func _ready() -> void:
 	SignalBus.credits_picked_up.connect(_on_credits_picked_up)
 	SignalBus.game_over.connect(_on_game_over)
 	
+	# TODO: Remove this and load first level via main menu instead.
 	if get_tree().current_scene.name == "Main":
 		call_deferred("restart_game")
 
@@ -30,10 +31,11 @@ func _load_initial_level() -> void:
 	if next_level:
 		level_holder.add_child(next_level.instantiate())
 	
-	
 	var screen_fader: ScreenFader = get_tree().get_first_node_in_group("SCREEN_FADER")
 	await screen_fader.fade_in()
+	
 	get_tree().paused = false
+	
 	SignalBus.emit_new_level_loaded()
 
 ## Loads the next level sequentially.

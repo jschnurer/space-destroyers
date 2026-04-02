@@ -30,6 +30,12 @@ class_name AutoShootComponent
 ## Max delay before firing if delay_initial_shot is true.
 @export_range(0.0, 60.0) var max_delay := 0.0
 
+@export_group("Projectile Size")
+## If true, bullet scene will have same scale as provided sprite.
+@export var inherit_sprite_scale: bool
+## The sprite to inherit projectile scale from.
+@export var inherit_from_sprite: Sprite2D
+
 @onready var delay_timer: Timer = $DelayTimer
 
 func _ready() -> void:
@@ -65,4 +71,8 @@ func _spawn_projectile(position_offset: float) -> void:
 		shot_speed,
 		shot_direction)
 	projectile.modulate = shot_modulate
+	
+	if inherit_sprite_scale and inherit_from_sprite:
+		projectile.scale = inherit_from_sprite.scale
+	
 	Utilities.call_deferred("add_child_to_level", projectile)

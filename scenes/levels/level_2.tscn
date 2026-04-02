@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cwc4lh0bobfkx" path="res://scenes/level_manager/level_manager.tscn" id="2_ra442"]
 [ext_resource type="PackedScene" uid="uid://cgg34r2ir4fn3" path="res://scenes/level_geom/enemy_formation.tscn" id="3_l37oo"]
 [ext_resource type="Shader" uid="uid://dairmqngktiej" path="res://shaders/enemy_shader.tres" id="3_qpwj6"]
-[ext_resource type="PackedScene" uid="uid://dbxpocsd5xmim" path="res://scenes/enemies/blade_head.tscn" id="4_ibugp"]
+[ext_resource type="PackedScene" uid="uid://uu3ea6khn2cp" path="res://scenes/enemies/octopus.tscn" id="4_l37oo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l37oo"]
 resource_local_to_scene = true
@@ -692,6 +692,48 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kt0v5"]
+resource_local_to_scene = true
+shader = ExtResource("3_qpwj6")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_laosj"]
+resource_local_to_scene = true
+shader = ExtResource("3_qpwj6")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nsjcl"]
+resource_local_to_scene = true
+shader = ExtResource("3_qpwj6")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
 [node name="Level_2" type="Node2D" unique_id=756359994 groups=["LEVEL_NODE"]]
 metadata/_edit_lock_ = true
 
@@ -700,200 +742,212 @@ metadata/_edit_lock_ = true
 
 [node name="Invader" parent="EnemyFormation" unique_id=2124429735 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_l37oo")
-position = Vector2(406, 32)
+position = Vector2(806, 64)
 
 [node name="Invader2" parent="EnemyFormation" unique_id=663863507 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_qpwj6")
-position = Vector2(450, 64)
+position = Vector2(850, 96)
 
 [node name="Invader3" parent="EnemyFormation" unique_id=1511534014 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_ibugp")
-position = Vector2(626, 64)
+position = Vector2(1026, 96)
 
 [node name="Invader5" parent="EnemyFormation" unique_id=361460181 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_8qukl")
-position = Vector2(406, 96)
+position = Vector2(806, 128)
 
 [node name="Invader12" parent="EnemyFormation" unique_id=1851789126 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_3p04p")
-position = Vector2(362, 128)
+position = Vector2(762, 160)
 
 [node name="Invader13" parent="EnemyFormation" unique_id=1539793981 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_qsp8v")
-position = Vector2(406, 128)
+position = Vector2(806, 160)
 
 [node name="Invader14" parent="EnemyFormation" unique_id=278416838 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_nt80m")
-position = Vector2(494, 128)
+position = Vector2(894, 160)
 
 [node name="Invader15" parent="EnemyFormation" unique_id=1932672860 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_brxtv")
-position = Vector2(538, 128)
+position = Vector2(938, 160)
 credit_value = 25.0
 
 [node name="Invader16" parent="EnemyFormation" unique_id=2115917565 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_tv7cl")
-position = Vector2(582, 128)
+position = Vector2(982, 160)
 
 [node name="Invader17" parent="EnemyFormation" unique_id=951601912 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_r88tb")
-position = Vector2(670, 128)
+position = Vector2(1070, 160)
 
 [node name="Invader18" parent="EnemyFormation" unique_id=963381866 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_1yj8c")
-position = Vector2(714, 128)
+position = Vector2(1114, 160)
 
 [node name="Invader19" parent="EnemyFormation" unique_id=1172599949 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_ndlae")
-position = Vector2(318, 160)
+position = Vector2(718, 192)
 
 [node name="Invader20" parent="EnemyFormation" unique_id=643436228 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_v8d84")
-position = Vector2(362, 160)
+position = Vector2(762, 192)
 
 [node name="Invader21" parent="EnemyFormation" unique_id=2004806871 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_gw1l3")
-position = Vector2(406, 160)
+position = Vector2(806, 192)
 
 [node name="Invader22" parent="EnemyFormation" unique_id=1170084816 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_p4se4")
-position = Vector2(450, 160)
+position = Vector2(850, 192)
 
 [node name="Invader23" parent="EnemyFormation" unique_id=1506096762 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_sibr7")
-position = Vector2(494, 160)
+position = Vector2(894, 192)
 
 [node name="Invader24" parent="EnemyFormation" unique_id=1972501115 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_lkn2k")
-position = Vector2(538, 160)
+position = Vector2(938, 192)
 
 [node name="Invader25" parent="EnemyFormation" unique_id=150617746 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_sbygb")
-position = Vector2(582, 160)
+position = Vector2(982, 192)
 
 [node name="Invader26" parent="EnemyFormation" unique_id=1032936178 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_5niy6")
-position = Vector2(626, 160)
+position = Vector2(1026, 192)
 
 [node name="Invader27" parent="EnemyFormation" unique_id=1955850747 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_wikm6")
-position = Vector2(670, 160)
+position = Vector2(1070, 192)
 
 [node name="Invader28" parent="EnemyFormation" unique_id=509796801 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_1c1qw")
-position = Vector2(714, 160)
+position = Vector2(1114, 192)
 
 [node name="Invader29" parent="EnemyFormation" unique_id=1108211286 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_1a10c")
-position = Vector2(758, 160)
+position = Vector2(1158, 192)
 
 [node name="Invader30" parent="EnemyFormation" unique_id=649686972 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_mx6s3")
-position = Vector2(318, 192)
+position = Vector2(718, 224)
 
 [node name="Invader31" parent="EnemyFormation" unique_id=1650863465 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_7d3nu")
-position = Vector2(406, 192)
+position = Vector2(806, 224)
 
 [node name="Invader32" parent="EnemyFormation" unique_id=687489850 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_r6ket")
-position = Vector2(450, 192)
+position = Vector2(850, 224)
 
 [node name="Invader33" parent="EnemyFormation" unique_id=491130382 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_xworo")
-position = Vector2(494, 192)
+position = Vector2(894, 224)
 
 [node name="Invader34" parent="EnemyFormation" unique_id=1642914489 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_wwjag")
-position = Vector2(538, 192)
+position = Vector2(938, 224)
 
 [node name="Invader35" parent="EnemyFormation" unique_id=175035339 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_rvwo1")
-position = Vector2(582, 192)
+position = Vector2(982, 224)
 
 [node name="Invader36" parent="EnemyFormation" unique_id=1347520450 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_yxkvy")
-position = Vector2(626, 192)
+position = Vector2(1026, 224)
 
 [node name="Invader37" parent="EnemyFormation" unique_id=163837504 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_joiyc")
-position = Vector2(670, 192)
+position = Vector2(1070, 224)
 
 [node name="Invader38" parent="EnemyFormation" unique_id=174907815 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_tn15g")
-position = Vector2(758, 192)
+position = Vector2(1158, 224)
 
 [node name="Invader39" parent="EnemyFormation" unique_id=776056919 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_oftal")
-position = Vector2(318, 224)
+position = Vector2(718, 256)
 
 [node name="Invader40" parent="EnemyFormation" unique_id=543432609 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_fqy8p")
-position = Vector2(406, 224)
+position = Vector2(806, 256)
 
 [node name="Invader41" parent="EnemyFormation" unique_id=86064144 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_s7kn7")
-position = Vector2(670, 224)
+position = Vector2(1070, 256)
 
 [node name="Invader42" parent="EnemyFormation" unique_id=1873802643 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_wk7pi")
-position = Vector2(758, 224)
+position = Vector2(1158, 256)
 
 [node name="Invader43" parent="EnemyFormation" unique_id=1746185260 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_yqg3d")
-position = Vector2(450, 256)
+position = Vector2(850, 288)
 
 [node name="Invader44" parent="EnemyFormation" unique_id=892959581 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_2e0t0")
-position = Vector2(494, 256)
+position = Vector2(894, 288)
 
 [node name="Invader45" parent="EnemyFormation" unique_id=823974730 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_keip3")
-position = Vector2(582, 256)
+position = Vector2(982, 288)
 
 [node name="Invader46" parent="EnemyFormation" unique_id=789159395 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_exwx8")
-position = Vector2(626, 256)
+position = Vector2(1026, 288)
 
 [node name="Invader6" parent="EnemyFormation" unique_id=805441721 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_17aof")
-position = Vector2(450, 96)
+position = Vector2(850, 128)
 
 [node name="Invader7" parent="EnemyFormation" unique_id=1862045032 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_6nfno")
-position = Vector2(494, 96)
+position = Vector2(894, 128)
 
 [node name="Invader8" parent="EnemyFormation" unique_id=1516954800 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_0y23r")
-position = Vector2(538, 96)
+position = Vector2(938, 128)
 
 [node name="Invader9" parent="EnemyFormation" unique_id=644025855 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_wrgna")
-position = Vector2(582, 96)
+position = Vector2(982, 128)
 
 [node name="Invader10" parent="EnemyFormation" unique_id=2139557799 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_8ghkn")
-position = Vector2(626, 96)
+position = Vector2(1026, 128)
 
 [node name="Invader11" parent="EnemyFormation" unique_id=1708274192 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_5ar51")
-position = Vector2(670, 96)
+position = Vector2(1070, 128)
 
 [node name="Invader4" parent="EnemyFormation" unique_id=1353645182 instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_b1k63")
-position = Vector2(670, 32)
+position = Vector2(1070, 64)
 
-[node name="blade_head" parent="EnemyFormation" unique_id=235114018 instance=ExtResource("4_ibugp")]
+[node name="Octopus" parent="EnemyFormation" unique_id=130954596 instance=ExtResource("4_l37oo")]
 material = SubResource("ShaderMaterial_holbn")
-position = Vector2(532, 320)
+position = Vector2(804, 0)
 
-[node name="blade_head3" parent="EnemyFormation" unique_id=77109911 instance=ExtResource("4_ibugp")]
+[node name="Octopus2" parent="EnemyFormation" unique_id=606606242 instance=ExtResource("4_l37oo")]
 material = SubResource("ShaderMaterial_px4x2")
-position = Vector2(708, 320)
+position = Vector2(892, 0)
 
-[node name="blade_head2" parent="EnemyFormation" unique_id=1572387629 instance=ExtResource("4_ibugp")]
+[node name="Octopus3" parent="EnemyFormation" unique_id=1892593131 instance=ExtResource("4_l37oo")]
 material = SubResource("ShaderMaterial_u5lg2")
-position = Vector2(356, 320)
+position = Vector2(980, 0)
+
+[node name="Octopus4" parent="EnemyFormation" unique_id=1814330381 instance=ExtResource("4_l37oo")]
+material = SubResource("ShaderMaterial_kt0v5")
+position = Vector2(1068, 0)
+
+[node name="Octopus5" parent="EnemyFormation" unique_id=617686526 instance=ExtResource("4_l37oo")]
+material = SubResource("ShaderMaterial_laosj")
+position = Vector2(1540, 192)
+
+[node name="Octopus6" parent="EnemyFormation" unique_id=295446508 instance=ExtResource("4_l37oo")]
+material = SubResource("ShaderMaterial_nsjcl")
+position = Vector2(352, 192)
 
 [node name="LevelManager" parent="." unique_id=1578700785 groups=["LEVEL_MANAGER"] instance=ExtResource("2_ra442")]
 enemy_start_speed = 30.0
