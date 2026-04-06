@@ -63,3 +63,19 @@ func emit_stop_sfx(type: SfxPlayer.SfxType) -> void:
 signal game_over(game_over_reason: Enums.GameOverReason)
 func emit_game_over(game_over_reason: Enums.GameOverReason) -> void:
 	game_over.emit(game_over_reason)
+
+signal fade_out_screen()
+func emit_fade_out_screen() -> void:
+	fade_out_screen.emit()
+
+signal fade_in_screen()
+func emit_fade_in_screen() -> void:
+	fade_in_screen.emit()
+
+signal fade_out_complete()
+func emit_fade_out_complete() -> void:
+	fade_out_complete.emit()
+
+signal fade_in_complete()
+func emit_fade_in_complete() -> void:
+	fade_in_complete.emit()

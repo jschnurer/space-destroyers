@@ -25,6 +25,11 @@ func _ready() -> void:
 	GameManager.stat_changed.connect(_on_stat_changed)
 	GameManager.current_life_changed.connect(_on_game_manager_current_life_changed)
 
+func _process(delta: float) -> void:
+	# TODO: Remove this debug stuff!
+	if Input.is_action_just_pressed("launch"):
+		_launch()
+
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("shoot"):
 		_try_shoot()
@@ -123,3 +128,11 @@ func _on_life_component_life_zeroed(_hitbox: HitboxComponent) -> void:
 	die_anim.global_position = sprite_2d.to_global(sprite_2d.get_rect().get_center())
 	die_anim.game_over_reason = Enums.GameOverReason.TANK_DESTROYED
 	Utilities.add_child_to_level(die_anim)
+
+func _launch() -> void:
+	var scene_file: PackedScene = load("res://scenes/rocket_launch_anim/rocket_launch_animation.tscn")
+	var anim: Node2D = scene_file.instantiate()
+	anim.global_position = global_position
+	Utilities.add_child_to_level(anim, true)
+	self.visible = false
+	get_tree().paused = true

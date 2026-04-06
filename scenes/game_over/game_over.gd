@@ -21,11 +21,10 @@ func _process(_delta: float) -> void:
 
 func _on_game_over(game_over_reason: Enums.GameOverReason) -> void:
 	SignalBus.emit_play_bgm(game_over_bgm, 1.0, 1.0, 0.0, 1.0)
-	var screen_fader: ScreenFader = get_tree().get_first_node_in_group("SCREEN_FADER")
 	_update_labels(game_over_reason)
 	visible = true
-	screen_fader.fade_in()
-	await screen_fader.fade_complete
+	SignalBus.emit_fade_in_screen()
+	await SignalBus.fade_in_complete
 	_input_enabled = true
 
 func _update_labels(game_over_reason: Enums.GameOverReason) -> void:
@@ -38,9 +37,8 @@ func _update_labels(game_over_reason: Enums.GameOverReason) -> void:
 func _fade_out_restart() -> void:
 	_input_enabled = false
 	
-	var screen_fader: ScreenFader = get_tree().get_first_node_in_group("SCREEN_FADER")
-	screen_fader.fade_out()
-	await screen_fader.fade_complete
+	SignalBus.emit_fade_out_screen()
+	await SignalBus.fade_out_complete
 	
 	GameManager.restart_game()
 	visible = false

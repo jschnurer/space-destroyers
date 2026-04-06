@@ -1,0 +1,371 @@
+[gd_scene format=3 uid="uid://c55umwmkkb1ud"]
+
+[ext_resource type="Texture2D" uid="uid://di37twjlnj8gw" path="res://art/tank/tank-body-only.png" id="1_ndcqh"]
+[ext_resource type="Script" uid="uid://15f3fn1gix7x" path="res://scenes/rocket_launch_anim/rocket_launch_animation.gd" id="1_s5ox0"]
+[ext_resource type="Texture2D" uid="uid://cbjq4oo7mxm2w" path="res://art/tank/tank-door-1-side.png" id="2_s5ox0"]
+[ext_resource type="AudioStream" uid="uid://d0wa458qlo6k0" path="res://audio/sfx/beepfx_samples/49_alarm_3.wav" id="2_wdlyn"]
+[ext_resource type="AudioStream" uid="uid://din5pi8cdx7av" path="res://audio/sfx/beepfx_samples/01_shot_2.wav" id="3_wdlyn"]
+[ext_resource type="Texture2D" uid="uid://kwtqk2b5fi28" path="res://art/tank/rocket.png" id="3_yddrn"]
+[ext_resource type="AudioStream" uid="uid://xl5bwvpl57tr" path="res://audio/sfx/beepfx_samples/19_jet_burst.wav" id="4_oq14b"]
+[ext_resource type="AudioStream" uid="uid://dndku7cm8db4h" path="res://audio/sfx/beepfx_samples/02_jump_1.wav" id="5_3klsw"]
+[ext_resource type="PackedScene" uid="uid://bdmudihj1sun8" path="res://scenes/components/dance_component.tscn" id="5_6ccb7"]
+[ext_resource type="Texture2D" uid="uid://croknghq4wobr" path="res://art/fire.png" id="5_pkov0"]
+[ext_resource type="Texture2D" uid="uid://cotx833pt1llo" path="res://art/particle.png" id="5_yddrn"]
+[ext_resource type="AudioStream" uid="uid://biw6inkrn237y" path="res://audio/bgm/transmission.mp3" id="6_ebl6m"]
+[ext_resource type="FontFile" uid="uid://6kmtx2n78kyo" path="res://art/fonts/ka1.ttf" id="8_5kh77"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pkov0"]
+lifetime_randomness = 0.6
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(2.29, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 5.0
+initial_velocity_min = 75.0
+initial_velocity_max = 125.0
+gravity = Vector3(0, -150, 0)
+scale_min = 0.75
+
+[sub_resource type="Animation" id="Animation_yddrn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TankDoorLeft:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TankDoorRight:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RocketClipPolygon/Rocket:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [37.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextLayer/HBoxContainer/VBoxContainer/MissionUpdate:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextLayer/HBoxContainer/VBoxContainer/MissionText:visible_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_5kh77"]
+resource_name = "blink_mission_update"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextLayer/HBoxContainer/VBoxContainer/MissionUpdate:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"type_mission_text", -1, 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_s5ox0"]
+resource_name = "launch"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TankDoorLeft:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.5707964]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TankDoorRight:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5707964]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_begin_moving_rocket"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RocketClipPolygon/Rocket:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [37.0]
+}
+
+[sub_resource type="Animation" id="Animation_f0gln"]
+resource_name = "type_mission_text"
+length = 16.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextLayer/HBoxContainer/VBoxContainer/MissionUpdate:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextLayer/HBoxContainer/VBoxContainer/MissionText:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 15, 16),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"_play_typewriter_sound"
+}, {
+"args": [],
+"method": &"_stop_audio"
+}, {
+"args": [],
+"method": &"_show_continue_prompt"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yddrn"]
+_data = {
+&"RESET": SubResource("Animation_yddrn"),
+&"blink_mission_update": SubResource("Animation_5kh77"),
+&"open_doors": SubResource("Animation_s5ox0"),
+&"type_mission_text": SubResource("Animation_f0gln")
+}
+
+[node name="RocketLaunchAnimation" type="Node2D" unique_id=1044592445]
+process_mode = 3
+position = Vector2(960, 980)
+script = ExtResource("1_s5ox0")
+booster_time = 3.0
+klaxon_stream = ExtResource("2_wdlyn")
+typewriter_stream = ExtResource("3_wdlyn")
+jet_burst_stream = ExtResource("4_oq14b")
+open_doors_stream = ExtResource("5_3klsw")
+bgm = ExtResource("6_ebl6m")
+
+[node name="TankBase" type="Sprite2D" parent="." unique_id=130902567]
+position = Vector2(22, 24)
+scale = Vector2(4, 4)
+texture = ExtResource("1_ndcqh")
+
+[node name="TankDoorLeft" type="Sprite2D" parent="." unique_id=107957574]
+position = Vector2(2, 18)
+scale = Vector2(4, 4)
+texture = ExtResource("2_s5ox0")
+offset = Vector2(2, -0.5)
+
+[node name="TankDoorRight" type="Sprite2D" parent="." unique_id=1245627538]
+position = Vector2(41.77575, 18.064827)
+scale = Vector2(-4, 4)
+texture = ExtResource("2_s5ox0")
+offset = Vector2(1.9439373, -0.51620674)
+
+[node name="RocketClipPolygon" type="Polygon2D" parent="." unique_id=692380735]
+clip_children = 1
+position = Vector2(0, -14.578369)
+scale = Vector2(1, 0.9540115)
+polygon = PackedVector2Array(-1000, 32, -1000, -200000, 1000, -200000, 1000, 32)
+
+[node name="Rocket" type="Node2D" parent="RocketClipPolygon" unique_id=1086308626]
+unique_name_in_owner = true
+position = Vector2(0, 37)
+
+[node name="Fire" type="Sprite2D" parent="RocketClipPolygon/Rocket" unique_id=1860156719]
+modulate = Color(1, 0.58431375, 0, 1)
+position = Vector2(22, 20)
+scale = Vector2(4, -4)
+texture = ExtResource("5_pkov0")
+hframes = 2
+
+[node name="DanceComponent" parent="RocketClipPolygon/Rocket/Fire" unique_id=709328576 node_paths=PackedStringArray("sprite") instance=ExtResource("5_6ccb7")]
+sprite = NodePath("..")
+speed_scale = 12.0
+
+[node name="RocketSprite" type="Sprite2D" parent="RocketClipPolygon/Rocket" unique_id=1774581070]
+position = Vector2(22, 0)
+scale = Vector2(4, 4)
+texture = ExtResource("3_yddrn")
+
+[node name="Smoke" type="GPUParticles2D" parent="RocketClipPolygon/Rocket" unique_id=2103907132]
+unique_name_in_owner = true
+modulate = Color(0.4351923, 0.43519226, 0.43519226, 1)
+position = Vector2(22, 28)
+scale = Vector2(4, 4)
+amount = 175
+texture = ExtResource("5_yddrn")
+lifetime = 2.0
+visibility_rect = Rect2(-100, -100, 1000, 1000)
+process_material = SubResource("ParticleProcessMaterial_pkov0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=997337208]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_yddrn")
+
+[node name="TextLayer" type="CanvasLayer" parent="." unique_id=1671024154]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextLayer" unique_id=957928247]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextLayer/HBoxContainer" unique_id=1788468829]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TopPadding" type="Control" parent="TextLayer/HBoxContainer/VBoxContainer" unique_id=64879865]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+
+[node name="MissionUpdate" type="Label" parent="TextLayer/HBoxContainer/VBoxContainer" unique_id=475028888]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_5kh77")
+theme_override_font_sizes/font_size = 64
+text = "MISSION UPDATE"
+horizontal_alignment = 1
+
+[node name="MidPadding" type="Control" parent="TextLayer/HBoxContainer/VBoxContainer" unique_id=1607561903]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+
+[node name="MissionText" type="Label" parent="TextLayer/HBoxContainer/VBoxContainer" unique_id=952531400]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_5kh77")
+theme_override_font_sizes/font_size = 36
+text = "Enemy vanguard annihilated. Immediate
+threat to Earth eliminated.
+
+Enemy attack fleet detected in deep space
+on intercept course for Earth!
+
+- Destroy incoming enemy fleet -
+- Assault enemy home world -
+- Destroy all resistance -
+
+The enemy must be stopped at all costs.
+Good luck."
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="MidPadding2" type="Control" parent="TextLayer/HBoxContainer/VBoxContainer" unique_id=96347098]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+
+[node name="ContinuePrompt" type="Label" parent="TextLayer/HBoxContainer/VBoxContainer" unique_id=1011035748]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_5kh77")
+theme_override_font_sizes/font_size = 36
+text = "F"
+horizontal_alignment = 1
+
+[node name="PromptBlinkTimer" type="Timer" parent="." unique_id=1495466005]
+wait_time = 0.5
+
+[node name="KlaxonPlayer" type="AudioStreamPlayer2D" parent="." unique_id=482165584]
+unique_name_in_owner = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="PromptBlinkTimer" to="." method="_on_prompt_blink_timer_timeout"]
+[connection signal="finished" from="KlaxonPlayer" to="." method="_on_klaxon_player_finished"]

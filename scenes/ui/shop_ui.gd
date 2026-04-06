@@ -39,12 +39,9 @@ func _fade_in_shop() -> void:
 			(button as ShopButton).update_label_and_cost()
 	
 	_toggle_shop_music(true)
-			
-	var screen_fader: ScreenFader = get_tree().get_first_node_in_group("SCREEN_FADER")
 	
-	if screen_fader:
-		screen_fader.fade_in()
-		await screen_fader.fade_complete
+	SignalBus.emit_fade_in_screen()
+	await SignalBus.fade_in_complete
 	
 	_toggle_input(true)
 
@@ -54,11 +51,8 @@ func _fade_out_shop() -> void:
 	_toggle_input(false)
 	_toggle_shop_music(false)
 	
-	var screen_fader: ScreenFader = get_tree().get_first_node_in_group("SCREEN_FADER")
-	
-	if screen_fader:
-		screen_fader.fade_out()
-		await screen_fader.fade_complete
+	SignalBus.emit_fade_out_screen()
+	await SignalBus.fade_out_complete
 	
 	visible = false
 	stats_ui.visible = false

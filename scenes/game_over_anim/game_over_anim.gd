@@ -17,9 +17,8 @@ func _ready() -> void:
 	_fade_out_audio()
 
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
-	var screen_fader: ScreenFader = get_tree().get_first_node_in_group("SCREEN_FADER")
-	screen_fader.fade_out()
-	await screen_fader.fade_complete
+	SignalBus.emit_fade_out_screen()
+	await SignalBus.fade_out_complete
 	SignalBus.emit_game_over(game_over_reason)
 	queue_free()
 

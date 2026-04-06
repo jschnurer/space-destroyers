@@ -31,8 +31,8 @@ func _load_initial_level() -> void:
 	if next_level:
 		level_holder.add_child(next_level.instantiate())
 	
-	var screen_fader: ScreenFader = get_tree().get_first_node_in_group("SCREEN_FADER")
-	await screen_fader.fade_in()
+	SignalBus.emit_fade_in_screen()
+	await SignalBus.fade_in_complete
 	
 	get_tree().paused = false
 	
@@ -47,7 +47,6 @@ func load_next_level() -> void:
 		child.queue_free()
 	
 	var player_tank: Node2D = get_tree().get_first_node_in_group("PLAYER")
-	var screen_fader: ScreenFader = get_tree().get_first_node_in_group("SCREEN_FADER")
 	
 	var teleport_anim: TeleportAnimation = get_tree().get_first_node_in_group("TELEPORT_ANIM")
 	if teleport_anim and player_tank:
@@ -55,10 +54,11 @@ func load_next_level() -> void:
 		teleport_anim.global_position = player_tank.global_position
 		teleport_anim.teleport_out()
 		await teleport_anim.animation_complete
-		
-	if screen_fader:
-		await screen_fader.fade_out()
-		SignalBus.emit_level_transition_screen_faded()
+	
+	
+	SignalBus.emit_fade_out_screen()
+	await SignalBus.fade_out_complete
+	SignalBus.emit_level_transition_screen_faded()
 	
 	SignalBus.emit_open_shop()
 	await SignalBus.shop_closed
@@ -78,9 +78,8 @@ func load_next_level() -> void:
 		if teleport_anim:
 			teleport_anim.global_position = player_tank.global_position
 	
-	if screen_fader:
-		await screen_fader.fade_in()
-		
+	SignalBus.emit_fade_in_screen()
+	
 	if teleport_anim and player_tank:
 		# Play the animation and then wait for it to complete.
 		teleport_anim.teleport_in()
