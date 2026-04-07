@@ -16,7 +16,7 @@ func _ready() -> void:
 	SignalBus.game_over.connect(_on_game_over)
 	
 	# TODO: Remove this and load first level via main menu instead.
-	if get_tree().current_scene.name == "Main":
+	if get_tree().current_scene.name == "InvadersLevels":
 		call_deferred("restart_game")
 
 func _load_initial_level() -> void:
@@ -46,7 +46,7 @@ func load_next_level() -> void:
 	for child in level_holder.get_children():
 		child.queue_free()
 	
-	var player_tank: Node2D = get_tree().get_first_node_in_group("PLAYER")
+	var player_tank: Tank = get_tree().get_first_node_in_group("PLAYER")
 	
 	var teleport_anim: TeleportAnimation = get_tree().get_first_node_in_group("TELEPORT_ANIM")
 	if teleport_anim and player_tank:
@@ -54,7 +54,6 @@ func load_next_level() -> void:
 		teleport_anim.global_position = player_tank.global_position
 		teleport_anim.teleport_out()
 		await teleport_anim.animation_complete
-	
 	
 	SignalBus.emit_fade_out_screen()
 	await SignalBus.fade_out_complete
@@ -74,7 +73,11 @@ func load_next_level() -> void:
 	
 	# Snap player back to center.
 	if player_tank:
-		player_tank.global_position.x = Global.PLAYABLE_AREA_RECT.size.x / 2.0 + Global.PLAYABLE_AREA_RECT.position.x
+		var tank_sprite_rect := player_tank.get_scaled_sprite_rect()
+		player_tank.global_position.x = Global.PLAYABLE_AREA_RECT.size.x / 2.0 \
+			+ Global.PLAYABLE_AREA_RECT.position.x\
+			- tank_sprite_rect.size.x / 2.0
+		
 		if teleport_anim:
 			teleport_anim.global_position = player_tank.global_position
 	
@@ -156,32 +159,6 @@ func _on_game_over(_reason: Enums.GameOverReason) -> void:
 
 func restart_game() -> void:
 	game_state = GameState.new()
-	
-	# DEBUG TO ADD POWER!!!
-	#credits = 55
-	#game_state.credits = 999999999
-	
-	#alter_stat(Enums.PlayerStats.TANK_SPEED, 200, 0, 0)
-	#alter_stat(Enums.PlayerStats.MAX_SHOTS, 200, 0, 0)
-	#alter_stat(Enums.PlayerStats.RELOAD, 0, 0, 12.0)
-	#alter_stat(Enums.PlayerStats.DAMAGE, 250, 0, 0)
-	#alter_stat(Enums.PlayerStats.SHOT_SPEED, 0, 0, 10)
-	#alter_stat(Enums.PlayerStats.PICKUP_AREA, 0, 0, 10)
-	#alter_stat(Enums.PlayerStats.CREDIT_MULTIPLIER, 25, 0, 0)
-	#alter_stat(Enums.PlayerStats.LUCK, 25, 0, 0)
-	#alter_stat(Enums.PlayerStats.LIFE, 20, 0, 0)
-	
-	#alter_upgrade(Enums.PlayerUpgrades.FULL_AUTO, 1.0)
-	#alter_upgrade(Enums.PlayerUpgrades.MULTI_CANNON, 1.0)
-	#alter_upgrade(Enums.PlayerUpgrades.RETAINING_WALL_LEFT, 1.0)
-	#alter_upgrade(Enums.PlayerUpgrades.RETAINING_WALL_RIGHT, 1.0)
-	#alter_upgrade(Enums.PlayerUpgrades.LASER_SIGHT, 1.0)
-	
-	#var multi_cannon := game_state.upgrades[Enums.PlayerUpgrades.MULTI_CANNON]
-	#multi_cannon.level = 3
-	
-	#var flak := game_state.upgrades[Enums.PlayerUpgrades.FLAK_CANNON]
-	#flak.level = 1
 	
 	SignalBus.emit_play_bgm(load("res://audio/bgm/moonlight.mp3") as AudioStream, 1.0, 1.0, 0.0, 1.0)
 	_load_initial_level()

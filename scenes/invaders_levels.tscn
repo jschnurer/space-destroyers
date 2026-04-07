@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://cek5p8my0lwit"]
+
+[ext_resource type="PackedScene" uid="uid://dbp7bcs4hsse3" path="res://scenes/bgm_player.tscn" id="1_rv8iu"]
+[ext_resource type="PackedScene" uid="uid://ld7c4owsibhw" path="res://scenes/level_geom/starfield.tscn" id="2_8v7q3"]
+[ext_resource type="PackedScene" uid="uid://c4fufmmvxadnq" path="res://scenes/ui/level_complete_ui.tscn" id="3_6k04t"]
+[ext_resource type="PackedScene" uid="uid://cxprdbobghsuw" path="res://scenes/level_geom/screen_edge.tscn" id="4_isfar"]
+[ext_resource type="PackedScene" uid="uid://begc2jldio7ln" path="res://scenes/level_geom/terrain_bottom.tscn" id="5_y003m"]
+[ext_resource type="PackedScene" uid="uid://bpjt7iq22bpbu" path="res://scenes/tank/tank.tscn" id="6_ko710"]
+[ext_resource type="Script" uid="uid://bia4gleis3x01" path="res://scenes/level_holder.gd" id="7_ioxky"]
+[ext_resource type="PackedScene" uid="uid://iqoyhfigpopi" path="res://scenes/effects/teleport_animation.tscn" id="8_o11bu"]
+[ext_resource type="PackedScene" uid="uid://c2ejscy1w7qsh" path="res://scenes/ui/gameplay_ui/gameplay_ui.tscn" id="9_ivkc4"]
+[ext_resource type="PackedScene" uid="uid://qqwnyc0intca" path="res://scenes/ui/shop_ui.tscn" id="10_1ewlr"]
+[ext_resource type="PackedScene" uid="uid://b4i7li1ujm3os" path="res://scenes/sfx_player/sfx_player.tscn" id="11_wvf2m"]
+[ext_resource type="PackedScene" uid="uid://coa4jrtx5c26o" path="res://scenes/towers/anti_air_tower_battery.tscn" id="12_55ttk"]
+[ext_resource type="PackedScene" uid="uid://csulh3wv2wpny" path="res://scenes/game_over/game_over.tscn" id="13_xbnkk"]
+[ext_resource type="PackedScene" uid="uid://dvexqvv2ecu72" path="res://scenes/effects/screen_fader.tscn" id="14_vqi3h"]
+
+[node name="InvadersLevels" type="Node2D" unique_id=1327851371]
+
+[node name="BGM" parent="." unique_id=219752419 instance=ExtResource("1_rv8iu")]
+
+[node name="Starfield" parent="." unique_id=2061530491 instance=ExtResource("2_8v7q3")]
+star_count = 2000
+y_weight = 1.5
+metadata/_edit_lock_ = true
+
+[node name="ReferenceRect" parent="Starfield" index="0" unique_id=674209285]
+offset_right = 1920.0
+offset_bottom = 1015.0
+metadata/_edit_lock_ = true
+
+[node name="LevelCompleteUI" parent="." unique_id=983809610 instance=ExtResource("3_6k04t")]
+visible = false
+
+[node name="ScreenEdgeLeft" parent="." unique_id=352324545 instance=ExtResource("4_isfar")]
+position = Vector2(-200, -840)
+metadata/_edit_lock_ = true
+
+[node name="ScreenEdgeRight" parent="." unique_id=1406219412 instance=ExtResource("4_isfar")]
+position = Vector2(2120, -840)
+edge = 1
+metadata/_edit_lock_ = true
+
+[node name="Terrain" parent="." unique_id=1285710284 instance=ExtResource("5_y003m")]
+
+[node name="Tank" parent="." unique_id=1533795974 groups=["PLAYER"] instance=ExtResource("6_ko710")]
+position = Vector2(938, 980)
+
+[node name="LevelHolder" type="Node2D" parent="." unique_id=1108014533]
+unique_name_in_owner = true
+script = ExtResource("7_ioxky")
+metadata/_edit_lock_ = true
+
+[node name="TeleportAnimation" parent="." unique_id=1938676921 groups=["TELEPORT_ANIM"] instance=ExtResource("8_o11bu")]
+visible = false
+metadata/_edit_lock_ = true
+
+[node name="GameplayUI" parent="." unique_id=1460615082 instance=ExtResource("9_ivkc4")]
+
+[node name="ShopUI" parent="." unique_id=401719951 instance=ExtResource("10_1ewlr")]
+
+[node name="GameSFXPlayer" parent="." unique_id=405014005 instance=ExtResource("11_wvf2m")]
+
+[node name="SystemSFXPlayer" parent="." unique_id=2072273197 instance=ExtResource("11_wvf2m")]
+sfx_player_type = 1
+channels = 3
+
+[node name="AntiAirTowerBattery" parent="." unique_id=1385625833 instance=ExtResource("12_55ttk")]
+position = Vector2(960, 1012)
+
+[node name="GameOver" parent="." unique_id=1120379295 instance=ExtResource("13_xbnkk")]
+visible = false
+
+[node name="ScreenFader" parent="." unique_id=259473987 groups=["SCREEN_FADER"] instance=ExtResource("14_vqi3h")]
+layer = 1000
+
+[editable path="Starfield"]

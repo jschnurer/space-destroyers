@@ -28,27 +28,6 @@ func _ready() -> void:
 	SignalBus.emit_enemy_direction_change(Vector2.LEFT if randi_range(0, 1) == 1 else Vector2.RIGHT, false)
 	SignalBus.emit_enemy_speed_change(_enemy_speed)
 
-# TODO: Remove this debug stuff.
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("nuke"):
-		for en in get_tree().get_nodes_in_group(GroupNames.ENEMY):
-			var lc: LifeComponent = (en as Enemy).get_component(LifeComponent)
-			if lc:
-				lc.take_damage(99999999.0, null)
-	elif Input.is_action_just_pressed("pass_level"):
-		var total_credits := 0.0
-		for en in get_tree().get_nodes_in_group(GroupNames.ENEMY):
-			var od: OnDeathComponent = (en as Enemy).get_component(OnDeathComponent)
-			if od:
-				total_credits += od.get_total_credit_value()
-			en.queue_free()
-		
-		var mult := GameManager.get_stat_value(Enums.PlayerStats.CREDIT_MULTIPLIER)
-		SignalBus.emit_credits_picked_up(total_credits * mult)
-		GameManager.load_next_level()
-	elif Input.is_action_just_pressed("credits"):
-		SignalBus.emit_credits_picked_up(99999999999)
-
 func _on_enemy_hit_screen_edge(edge: Enums.ScreenEdges) -> void:
 	# Tell enemies to drop down and switch direction.
 	SignalBus.emit_enemy_direction_change(Vector2.RIGHT if edge == Enums.ScreenEdges.LEFT else Vector2.LEFT, true)

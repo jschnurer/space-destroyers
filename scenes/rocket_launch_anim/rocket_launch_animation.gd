@@ -9,9 +9,9 @@ extends Node2D
 @export_group("Audio")
 @export var klaxon_stream: AudioStream
 @export var typewriter_stream: AudioStream
+@export var bgm: AudioStream
 @export var jet_burst_stream: AudioStream
 @export var open_doors_stream: AudioStream
-@export var bgm: AudioStream
 
 @onready var rocket: Node2D = %Rocket
 @onready var animation_player: AnimationPlayer = %AnimationPlayer

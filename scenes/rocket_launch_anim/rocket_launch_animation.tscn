@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cotx833pt1llo" path="res://art/particle.png" id="5_yddrn"]
 [ext_resource type="AudioStream" uid="uid://biw6inkrn237y" path="res://audio/bgm/transmission.mp3" id="6_ebl6m"]
 [ext_resource type="FontFile" uid="uid://6kmtx2n78kyo" path="res://art/fonts/ka1.ttf" id="8_5kh77"]
+[ext_resource type="FontFile" uid="uid://ftg0yylbljr5" path="res://art/fonts/joystix.monospace.otf" id="14_afyb4"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pkov0"]
 lifetime_randomness = 0.6
@@ -235,9 +236,9 @@ script = ExtResource("1_s5ox0")
 booster_time = 3.0
 klaxon_stream = ExtResource("2_wdlyn")
 typewriter_stream = ExtResource("3_wdlyn")
+bgm = ExtResource("6_ebl6m")
 jet_burst_stream = ExtResource("4_oq14b")
 open_doors_stream = ExtResource("5_3klsw")
-bgm = ExtResource("6_ebl6m")
 
 [node name="TankBase" type="Sprite2D" parent="." unique_id=130902567]
 position = Vector2(22, 24)
@@ -329,7 +330,7 @@ layout_mode = 2
 [node name="MissionText" type="Label" parent="TextLayer/HBoxContainer/VBoxContainer" unique_id=952531400]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_fonts/font = ExtResource("8_5kh77")
+theme_override_fonts/font = ExtResource("14_afyb4")
 theme_override_font_sizes/font_size = 36
 text = "Enemy vanguard annihilated. Immediate
 threat to Earth eliminated.

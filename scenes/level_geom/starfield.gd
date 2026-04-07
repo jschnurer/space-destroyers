@@ -16,6 +16,9 @@ extends Node2D
 		y_weight = value
 		_generate_stars()
 
+@export var use_y_weight := true
+@export var use_y_scaling := true
+
 @export_tool_button("Clear Stars") var clear_stars_button := _clear_stars
 @export_tool_button("Generate Stars") var generate_stars_button := _generate_stars
 
@@ -45,6 +48,13 @@ func _generate_stars() -> void:
 	# 3. Create random stars
 	for i in range(star_count):
 		var star := ColorRect.new()
-		star.position = Vector2(randf_range(0, area_size.x), pow(randf(), y_weight) * area_size.y)
-		star.size = star_size * (0.95 - star.position.y / area_size.y)
+		var y_pos := 0.0
+		
+		if use_y_weight:
+			y_pos = pow(randf(), y_weight) * area_size.y
+		else:
+			y_pos = randf_range(0, area_size.y)
+			
+		star.position = Vector2(randf_range(0, area_size.x), y_pos)
+		star.size = star_size * (0.95 - star.position.y / area_size.y) if use_y_scaling else star_size
 		add_child(star)

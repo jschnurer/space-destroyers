@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://xsgcag185atq"]
+
+[ext_resource type="FontFile" uid="uid://6kmtx2n78kyo" path="res://art/fonts/ka1.ttf" id="1_m25xr"]
+[ext_resource type="Script" uid="uid://cmnt2aqrwn2ng" path="res://scenes/mission_update_text_animation/mission_update_text_animation.gd" id="1_yko0x"]
+[ext_resource type="FontFile" uid="uid://ftg0yylbljr5" path="res://art/fonts/joystix.monospace.otf" id="2_yko0x"]
+[ext_resource type="AudioStream" uid="uid://din5pi8cdx7av" path="res://audio/sfx/beepfx_samples/01_shot_2.wav" id="3_lxs6d"]
+[ext_resource type="AudioStream" uid="uid://biw6inkrn237y" path="res://audio/bgm/transmission.mp3" id="4_qgq6q"]
+[ext_resource type="AudioStream" uid="uid://b1h6p3whln6ca" path="res://audio/sfx/49_alarm_3_trimmed.ogg" id="5_2gici"]
+
+[node name="MissionUpdateTextAnimation" type="CanvasLayer" unique_id=1668417129]
+script = ExtResource("1_yko0x")
+mission_text = "DEFAULT PLACEHOLDER TEXT"
+bgm = ExtResource("4_qgq6q")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1016108961]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1785734033]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TopPadding" type="Control" parent="HBoxContainer/VBoxContainer" unique_id=597225757]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=2062132309]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_m25xr")
+theme_override_font_sizes/font_size = 64
+text = "MISSION UPDATE"
+horizontal_alignment = 1
+
+[node name="MidPadding" type="Control" parent="HBoxContainer/VBoxContainer" unique_id=105914876]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+
+[node name="MissionText" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=795740925]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yko0x")
+theme_override_font_sizes/font_size = 36
+text = "Enemy vanguard annihilated. Immediate
+threat to Earth eliminated.
+
+Enemy attack fleet detected in deep space
+on intercept course for Earth!
+
+- Destroy incoming enemy fleet -
+- Assault enemy home world -
+- Destroy all resistance -
+
+The enemy must be stopped at all costs.
+Good luck."
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="MidPadding2" type="Control" parent="HBoxContainer/VBoxContainer" unique_id=573514649]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+
+[node name="ContinuePrompt" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=1021840088]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_m25xr")
+theme_override_font_sizes/font_size = 36
+text = "F"
+horizontal_alignment = 1
+
+[node name="PromptBlinkTimer" type="Timer" parent="." unique_id=1481639675]
+unique_name_in_owner = true
+wait_time = 0.5
+
+[node name="TitleBlinkTimer" type="Timer" parent="." unique_id=956457696]
+
+[node name="KlaxonPlayer" type="AudioStreamPlayer2D" parent="." unique_id=757785664]
+unique_name_in_owner = true
+stream = ExtResource("5_2gici")
+
+[node name="TypingAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1899636139]
+unique_name_in_owner = true
+stream = ExtResource("3_lxs6d")
+
+[connection signal="timeout" from="PromptBlinkTimer" to="." method="_on_prompt_blink_timer_timeout"]
+[connection signal="finished" from="TypingAudioPlayer" to="." method="_on_typing_audio_player_finished"]

@@ -27,6 +27,7 @@ Enums="*uid://cesak2w7q0n2r"
 SignalBus="*uid://diwd7tamf3kow"
 GameManager="*uid://de8jitvyyy34i"
 Utilities="*uid://dec6kjver7jfk"
+Debug="*uid://dokquhjgjc4xe"
 
 [debug]
 

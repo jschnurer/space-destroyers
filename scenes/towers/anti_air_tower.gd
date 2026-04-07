@@ -16,7 +16,7 @@ class_name AntiAirTower
 @export var rotation_speed: float = 60.0
 
 var _rotation_dir := 1
-var debug_guide_length: float = 1000.0
+var editor_guide_length: float = 1000.0
 
 @onready var cannon: Sprite2D = $Cannon
 @onready var reload_component: ReloadComponent = %ReloadComponent
@@ -42,8 +42,8 @@ func _draw() -> void:
 	var min_dir := Vector2.from_angle(deg_to_rad(min_rotation) + offset)
 	var max_dir := Vector2.from_angle(deg_to_rad(max_rotation) + offset)
 	
-	draw_line(cannon_origin, cannon_origin + (min_dir * pow(debug_guide_length, 4)), Color.YELLOW, 1.0)
-	draw_line(cannon_origin, cannon_origin + (max_dir * pow(debug_guide_length, 4)), Color.RED, 1.0)
+	draw_line(cannon_origin, cannon_origin + (min_dir * pow(editor_guide_length, 4)), Color.YELLOW, 1.0)
+	draw_line(cannon_origin, cannon_origin + (max_dir * pow(editor_guide_length, 4)), Color.RED, 1.0)
 
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
