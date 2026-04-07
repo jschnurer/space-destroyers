@@ -85,3 +85,6 @@ func _on_button_exited() -> void:
 
 func _toggle_shop_music(play_shop_bgm: bool) -> void:
 	SignalBus.emit_play_bgm(shop_bgm if play_shop_bgm else level_bgm, 1.0, 1.0, 1.0, 1.0)
+
+func _on_button_pressed() -> void:
+	_toggle_shop(false)

@@ -38,12 +38,14 @@ layout_mode = 2
 theme = ExtResource("3_smd1y")
 theme_override_font_sizes/font_size = 38
 text = "1"
+vertical_alignment = 1
 
 [node name="Slash" type="Label" parent="MarginContainer/GridContainer/HBoxContainer" unique_id=815220636]
 layout_mode = 2
 theme = ExtResource("3_smd1y")
 theme_override_font_sizes/font_size = 38
 text = "/"
+vertical_alignment = 1
 
 [node name="MaxLife" type="Label" parent="MarginContainer/GridContainer/HBoxContainer" unique_id=182435947]
 unique_name_in_owner = true
@@ -51,6 +53,7 @@ layout_mode = 2
 theme = ExtResource("3_smd1y")
 theme_override_font_sizes/font_size = 38
 text = "1"
+vertical_alignment = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/GridContainer" unique_id=1474739705]
 layout_mode = 2
@@ -68,6 +71,7 @@ layout_mode = 2
 theme = ExtResource("3_smd1y")
 theme_override_font_sizes/font_size = 38
 text = "MOVE "
+vertical_alignment = 1
 
 [node name="ShootInputIcon" parent="MarginContainer/GridContainer/HBoxContainer2" unique_id=2076291069 instance=ExtResource("4_smd1y")]
 layout_mode = 2
@@ -78,6 +82,7 @@ layout_mode = 2
 theme = ExtResource("3_smd1y")
 theme_override_font_sizes/font_size = 38
 text = "SHOOT"
+vertical_alignment = 1
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/GridContainer" unique_id=511239699]
 layout_mode = 2
@@ -99,3 +104,4 @@ layout_mode = 2
 theme = ExtResource("3_smd1y")
 theme_override_font_sizes/font_size = 38
 text = "0"
+vertical_alignment = 1

@@ -4,5 +4,4 @@
 
 [resource]
 base_font = ExtResource("1_26yf0")
-spacing_top = 3
-spacing_bottom = 3
+spacing_top = 5

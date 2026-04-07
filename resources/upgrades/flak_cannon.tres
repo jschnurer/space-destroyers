@@ -6,7 +6,7 @@
 script = ExtResource("1_y7pvx")
 upgrade = 9
 display_text = "Flak Cannon"
-description = "Explodes enemies, damaging those nearby"
+description = "Destroyed enemies explode, damaging other nearby enemies"
 max_level = 10
 value_curve_type = 2
 base_value_int = 1

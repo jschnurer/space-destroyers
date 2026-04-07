@@ -1,11 +1,6 @@
 extends Label
 class_name ShopButtonLabel
 
-func _ready() -> void:
-	# Connect to the text_changed signal if you change text via code
-	# Or just call this function whenever you set the text
-	update_font_size()
-
 func update_font_size() -> void:
 	var font := get_theme_font("font")
 	var parent_button: Button = get_parent()

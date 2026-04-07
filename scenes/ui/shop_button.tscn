@@ -1,27 +1,17 @@
 [gd_scene format=3 uid="uid://tdtvpwguick7"]
 
-[ext_resource type="FontFile" uid="uid://ftg0yylbljr5" path="res://art/fonts/joystix.monospace.otf" id="1_ofmg3"]
+[ext_resource type="Theme" uid="uid://blgn547iw1k7d" path="res://themes/main_theme.tres" id="1_dxkve"]
 [ext_resource type="Script" uid="uid://c5p7krkae12f3" path="res://scenes/ui/shop_button.gd" id="2_8g3bp"]
 [ext_resource type="AudioStream" uid="uid://thb5ogk88m07" path="res://audio/sfx/beepfx_samples/40_select_1.wav" id="2_ehfxd"]
 [ext_resource type="Script" uid="uid://coq8l45ufaxjq" path="res://scenes/ui/shop_button_label.gd" id="3_go8fd"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dxkve"]
-bg_color = Color(0, 0.14901961, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ukrvp"]
-bg_color = Color(0, 0.21325663, 4.813075e-08, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ehfxd"]
-bg_color = Color(0.1879043, 2.2862106e-07, 3.008172e-08, 1)
 
 [node name="ShopButton" type="Button" unique_id=1890730274]
 process_mode = 3
 custom_minimum_size = Vector2(350, 76)
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_dxkve")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ukrvp")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_ehfxd")
+theme = ExtResource("1_dxkve")
+theme_type_variation = &"ShopButton"
 script = ExtResource("2_8g3bp")
 purchase_sfx = ExtResource("2_ehfxd")
 
@@ -32,8 +22,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_ofmg3")
-theme_override_font_sizes/font_size = 28
+theme = ExtResource("1_dxkve")
+theme_type_variation = &"ShopButtonLabel"
 text = "
 [$00000]"
 horizontal_alignment = 1

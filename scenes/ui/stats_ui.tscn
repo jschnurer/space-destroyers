@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://dr6mj3cfwenny" path="res://resources/stats/tank_speed.tres" id="5_acfpo"]
 [ext_resource type="Resource" uid="uid://b256muf2l4s86" path="res://resources/upgrades/laser_sight.tres" id="5_u7ot7"]
 [ext_resource type="Texture2D" uid="uid://d4frx3bjg8ebp" path="res://art/shield_icon.png" id="5_yrqfn"]
+[ext_resource type="Theme" uid="uid://blgn547iw1k7d" path="res://themes/main_theme.tres" id="6_7pvy5"]
 [ext_resource type="PackedScene" uid="uid://ds2llrbrkp5ep" path="res://scenes/ui/upgrade_label.tscn" id="6_lt1i3"]
 [ext_resource type="Resource" uid="uid://iwg54fq5m7xy" path="res://resources/stats/pickup_area.tres" id="6_nr7cs"]
 [ext_resource type="Resource" uid="uid://bsr33kisirymk" path="res://resources/upgrades/multi_cannon.tres" id="6_v6sr8"]
@@ -108,6 +109,7 @@ mouse_filter = 2
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 16
+alignment = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/HBoxContainer" unique_id=1643688271]
 layout_mode = 2
@@ -120,9 +122,10 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("3_ky048")
+theme = ExtResource("6_7pvy5")
 theme_override_font_sizes/font_size = 38
 text = "0"
+vertical_alignment = 1
 clip_text = true
 text_overrun_behavior = 5
 
@@ -149,8 +152,8 @@ expand_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("1_32a87")
-theme_override_font_sizes/font_size = 26
+theme = ExtResource("6_7pvy5")
+theme_type_variation = &"StatLabel"
 text = "Life"
 
 [node name="LifeDisplay" type="Label" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Stats/Life" unique_id=1733411326]

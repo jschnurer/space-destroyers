@@ -23,11 +23,6 @@ class_name ShopButton
 
 var upgrade_cost: int = 999
 
-func _ready() -> void:
-	update_label_and_cost()
-	if !Engine.is_editor_hint():
-		GameManager.credits_changed.connect(update_label_and_cost.unbind(1))
-
 func _on_pressed() -> void:
 	var count := 1
 	if Input.is_action_pressed("buy_5"): count = 5

@@ -66,10 +66,13 @@ horizontal_alignment = 1
 
 [node name="PurchaseDescription" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1745356537]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 71)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_avfhx")
+theme = ExtResource("4_fbehl")
 theme_override_font_sizes/font_size = 28
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="ButtonContainer" type="GridContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1787940483]
 layout_mode = 2
@@ -79,7 +82,6 @@ columns = 3
 
 [node name="MaxLife" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=1890730274 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
 layout_mode = 2
-theme = ExtResource("4_fbehl")
 btn_text = "+Max Life"
 is_player_stat = true
 player_stat = 8
@@ -201,19 +203,34 @@ btn_text = "Right Wall"
 is_player_upgrade = true
 player_upgrade = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=89439313]
+[node name="Button" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1590123149]
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button" unique_id=89439313]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.0
+offset_top = -32.0
+offset_right = 142.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
 alignment = 1
 
-[node name="InputPromptLabel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=50002874 instance=ExtResource("7_30c1b")]
+[node name="InputPromptLabel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button/HBoxContainer" unique_id=50002874 instance=ExtResource("7_30c1b")]
 layout_mode = 2
 texture = ExtResource("8_fbehl")
 action = 1
 
-[node name="CloseShop" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=265741125]
+[node name="CloseShop" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button/HBoxContainer" unique_id=265741125]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_avfhx")
-theme_override_font_sizes/font_size = 22
+theme = ExtResource("4_fbehl")
+theme_override_font_sizes/font_size = 24
 text = "Exit shop"
 horizontal_alignment = 1
 
@@ -222,3 +239,5 @@ unique_name_in_owner = true
 visible = false
 
 [node name="MouseVisibilityManager" parent="." unique_id=1831252566 instance=ExtResource("10_fbehl")]
+
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

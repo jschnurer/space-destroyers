@@ -3,7 +3,7 @@ class_name BaseStat
 
 @export var display_text: String = ""
 ## Description shown when hovering and in store. Max length = 43.
-@export var description: String = ""
+@export_multiline var description: String = ""
 
 @export var max_level: int = 1000
 
