@@ -152,7 +152,7 @@ func _try_enemy_death_emit() -> void:
 		SignalBus.emit_enemy_died(enemy_node)
 
 func _try_spawn_flak(hitbox: HitboxComponent) -> void:
-	if !can_spawn_flak or !hitbox.can_flak:
+	if !can_spawn_flak or !hitbox or !hitbox.can_flak:
 		return
 	
 	var flak := flak_scene.instantiate() as FlakExplosion

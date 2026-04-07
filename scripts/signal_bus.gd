@@ -72,10 +72,14 @@ signal fade_in_screen()
 func emit_fade_in_screen() -> void:
 	fade_in_screen.emit()
 
-signal fade_out_complete()
+signal fade_out_screen_complete()
 func emit_fade_out_complete() -> void:
-	fade_out_complete.emit()
+	fade_out_screen_complete.emit()
 
-signal fade_in_complete()
+signal fade_in_screen_complete()
 func emit_fade_in_complete() -> void:
-	fade_in_complete.emit()
+	fade_in_screen_complete.emit()
+
+signal toggle_mouse_visibility(allow_visible: bool)
+func emit_toggle_mouse_visibility(allow_visible: bool) -> void:
+	toggle_mouse_visibility.emit(allow_visible)

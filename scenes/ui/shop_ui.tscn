@@ -1,12 +1,15 @@
 [gd_scene format=3 uid="uid://qqwnyc0intca"]
 
 [ext_resource type="Script" uid="uid://b36gwpw2ne1a6" path="res://scenes/ui/shop_ui.gd" id="1_nwxdi"]
-[ext_resource type="FontFile" uid="uid://6kmtx2n78kyo" path="res://art/fonts/ka1.ttf" id="1_ygcrn"]
 [ext_resource type="FontFile" uid="uid://ftg0yylbljr5" path="res://art/fonts/joystix.monospace.otf" id="2_avfhx"]
 [ext_resource type="AudioStream" uid="uid://c5m0qfva2s0di" path="res://audio/bgm/megamix.mp3" id="2_sawmr"]
 [ext_resource type="PackedScene" uid="uid://tdtvpwguick7" path="res://scenes/ui/shop_button.tscn" id="3_a65e2"]
 [ext_resource type="AudioStream" uid="uid://cdnc4pgyphaxp" path="res://audio/bgm/moonlight.mp3" id="3_se4pl"]
+[ext_resource type="Theme" uid="uid://blgn547iw1k7d" path="res://themes/main_theme.tres" id="4_fbehl"]
+[ext_resource type="PackedScene" uid="uid://b1sxbmhh6261m" path="res://scenes/input_prompt/input_prompt.tscn" id="7_30c1b"]
 [ext_resource type="PackedScene" uid="uid://dvc1ybiwavk54" path="res://scenes/ui/stats_ui.tscn" id="7_se4pl"]
+[ext_resource type="Texture2D" uid="uid://c5em4qbjr2anu" path="res://art/input/kb/keyboard_escape.png" id="8_fbehl"]
+[ext_resource type="PackedScene" uid="uid://sxhe04dawedo" path="res://scenes/ui/mouse_visibility_manager/mouse_visibility_manager.tscn" id="10_fbehl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ygcrn"]
 bg_color = Color(0, 0, 0, 0)
@@ -18,7 +21,6 @@ border_color = Color(1, 1, 1, 1)
 
 [node name="ShopUI" type="CanvasLayer" unique_id=401719951]
 process_mode = 3
-visible = false
 script = ExtResource("1_nwxdi")
 shop_bgm = ExtResource("2_sawmr")
 level_bgm = ExtResource("3_se4pl")
@@ -53,13 +55,13 @@ theme_override_constants/margin_bottom = 12
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer" unique_id=2122108532]
 layout_mode = 2
-theme_override_constants/separation = 26
+theme_override_constants/separation = 18
 
 [node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=261138685]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_ygcrn")
-theme_override_font_sizes/font_size = 36
-text = "super turbo ultra space shop"
+theme = ExtResource("4_fbehl")
+theme_type_variation = &"TitleLabel"
+text = "SOPHIA 0 UPGRADES"
 horizontal_alignment = 1
 
 [node name="PurchaseDescription" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1745356537]
@@ -77,6 +79,7 @@ columns = 3
 
 [node name="MaxLife" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=1890730274 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
 layout_mode = 2
+theme = ExtResource("4_fbehl")
 btn_text = "+Max Life"
 is_player_stat = true
 player_stat = 8
@@ -198,13 +201,24 @@ btn_text = "Right Wall"
 is_player_upgrade = true
 player_upgrade = 8
 
-[node name="Label2" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=265741125]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=89439313]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_ygcrn")
+alignment = 1
+
+[node name="InputPromptLabel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=50002874 instance=ExtResource("7_30c1b")]
+layout_mode = 2
+texture = ExtResource("8_fbehl")
+action = 1
+
+[node name="CloseShop" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=265741125]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_avfhx")
 theme_override_font_sizes/font_size = 22
-text = "Press 'f' to close"
+text = "Exit shop"
 horizontal_alignment = 1
 
 [node name="StatsUI" parent="." unique_id=1966520918 instance=ExtResource("7_se4pl")]
 unique_name_in_owner = true
 visible = false
+
+[node name="MouseVisibilityManager" parent="." unique_id=1831252566 instance=ExtResource("10_fbehl")]

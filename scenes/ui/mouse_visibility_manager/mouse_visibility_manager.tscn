@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://sxhe04dawedo"]
+
+[ext_resource type="Script" uid="uid://c56kqkekhvsng" path="res://scenes/ui/mouse_visibility_manager/mouse_visibility_manager.gd" id="1_wkugm"]
+
+[node name="MouseVisibilityManager" type="Node" unique_id=1831252566]
+script = ExtResource("1_wkugm")

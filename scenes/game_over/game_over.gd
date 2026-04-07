@@ -24,7 +24,7 @@ func _on_game_over(game_over_reason: Enums.GameOverReason) -> void:
 	_update_labels(game_over_reason)
 	visible = true
 	SignalBus.emit_fade_in_screen()
-	await SignalBus.fade_in_complete
+	await SignalBus.fade_in_screen_complete
 	_input_enabled = true
 
 func _update_labels(game_over_reason: Enums.GameOverReason) -> void:
@@ -38,7 +38,7 @@ func _fade_out_restart() -> void:
 	_input_enabled = false
 	
 	SignalBus.emit_fade_out_screen()
-	await SignalBus.fade_out_complete
+	await SignalBus.fade_out_screen_complete
 	
 	GameManager.restart_game()
 	visible = false

@@ -9,8 +9,8 @@ extends CanvasLayer
 var _input_enabled := false
 
 func _ready() -> void:
+	visible = false
 	SignalBus.open_shop.connect(_on_open_shop)
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	_setup_hover_events()
 
 func _process(_delta: float) -> void:
@@ -32,7 +32,7 @@ func _on_open_shop() -> void:
 func _fade_in_shop() -> void:
 	visible = true
 	stats_ui.visible = true
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	SignalBus.emit_toggle_mouse_visibility(true)
 	var button_nodes := get_tree().get_nodes_in_group("SHOP_BUTTON")
 	for button in button_nodes:
 		if button is ShopButton:
@@ -41,18 +41,18 @@ func _fade_in_shop() -> void:
 	_toggle_shop_music(true)
 	
 	SignalBus.emit_fade_in_screen()
-	await SignalBus.fade_in_complete
+	await SignalBus.fade_in_screen_complete
 	
 	_toggle_input(true)
 
 func _fade_out_shop() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	SignalBus.emit_toggle_mouse_visibility(false)
 	
 	_toggle_input(false)
 	_toggle_shop_music(false)
 	
 	SignalBus.emit_fade_out_screen()
-	await SignalBus.fade_out_complete
+	await SignalBus.fade_out_screen_complete
 	
 	visible = false
 	stats_ui.visible = false

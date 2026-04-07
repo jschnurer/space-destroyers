@@ -19,6 +19,11 @@ func _ready() -> void:
 	if get_tree().current_scene.name == "InvadersLevels":
 		call_deferred("restart_game")
 
+func switch_to_scene_file(scene_path: String) -> void:
+	get_tree().change_scene_to_file(scene_path)
+	await get_tree().process_frame
+	_load_initial_level()
+
 func _load_initial_level() -> void:
 	get_tree().paused = true
 	game_state.current_level = 1
@@ -32,7 +37,7 @@ func _load_initial_level() -> void:
 		level_holder.add_child(next_level.instantiate())
 	
 	SignalBus.emit_fade_in_screen()
-	await SignalBus.fade_in_complete
+	await SignalBus.fade_in_screen_complete
 	
 	get_tree().paused = false
 	
@@ -56,7 +61,7 @@ func load_next_level() -> void:
 		await teleport_anim.animation_complete
 	
 	SignalBus.emit_fade_out_screen()
-	await SignalBus.fade_out_complete
+	await SignalBus.fade_out_screen_complete
 	SignalBus.emit_level_transition_screen_faded()
 	
 	SignalBus.emit_open_shop()

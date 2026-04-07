@@ -5,6 +5,20 @@ Author: Vic Fieger
 License: 1001Fonts Free For Commercial Use License (FFC)
 https://www.1001fonts.com/karmatic-arcade-font.html
 
+==Press Start 2P Font==
+Author: codeman38
+License: SIL Open Font License (OFL)
+https://www.1001fonts.com/press-start-2p-font.html
+
+::::: ART :::::
+
+==Input Prompts==
+Author: Kenney
+License: CC0 Public Domain
+https://opengameart.org/content/input-prompts
+
+::::: AUDIO :::::
+
 ==50 CC0 RETRO / SYNTH SFX==
 Author: rubberduck
 License: CC0 Public Domain

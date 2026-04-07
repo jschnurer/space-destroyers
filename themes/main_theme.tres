@@ -1,0 +1,30 @@
+[gd_resource type="Theme" format=3 uid="uid://blgn547iw1k7d"]
+
+[ext_resource type="FontVariation" uid="uid://dp77pt34y5ntn" path="res://art/fonts/press_start_2p_variation.tres" id="1_vu6l5"]
+[ext_resource type="FontFile" uid="uid://6kmtx2n78kyo" path="res://art/fonts/ka1.ttf" id="2_vu6l5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8gw6x"]
+bg_color = Color(0.1879043, 2.2862106e-07, 3.008172e-08, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydht1"]
+bg_color = Color(0, 0.21325663, 4.813075e-08, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vu6l5"]
+bg_color = Color(0, 0.14901961, 0, 1)
+
+[resource]
+Control/fonts/font = ExtResource("1_vu6l5")
+RichTextLabel/fonts/bold_font = ExtResource("1_vu6l5")
+RichTextLabel/fonts/bold_italics_font = ExtResource("1_vu6l5")
+RichTextLabel/fonts/italics_font = ExtResource("1_vu6l5")
+RichTextLabel/fonts/mono_font = ExtResource("1_vu6l5")
+RichTextLabel/fonts/normal_font = ExtResource("1_vu6l5")
+ShopButton/base_type = &"Button"
+ShopButton/styles/disabled = SubResource("StyleBoxFlat_8gw6x")
+ShopButton/styles/hover = SubResource("StyleBoxFlat_ydht1")
+ShopButton/styles/normal = SubResource("StyleBoxFlat_vu6l5")
+StandardLabel/base_type = &"Label"
+StandardLabel/font_sizes/font_size = 24
+TitleLabel/base_type = &"Label"
+TitleLabel/font_sizes/font_size = 64
+TitleLabel/fonts/font = ExtResource("2_vu6l5")

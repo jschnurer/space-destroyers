@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://ld7c4owsibhw" path="res://scenes/level_geom/starfield.tscn" id="1_fsom3"]
 [ext_resource type="Script" uid="uid://dsnbdwnwullmr" path="res://scenes/main_menu/main_menu.gd" id="1_uqeha"]
-[ext_resource type="FontFile" uid="uid://6kmtx2n78kyo" path="res://art/fonts/ka1.ttf" id="2_0ebjn"]
-[ext_resource type="FontFile" uid="uid://ftg0yylbljr5" path="res://art/fonts/joystix.monospace.otf" id="3_ob46e"]
+[ext_resource type="AudioStream" uid="uid://by42t8iikq1xg" path="res://audio/bgm/mehalanholia.mp3" id="2_4xg86"]
+[ext_resource type="Theme" uid="uid://blgn547iw1k7d" path="res://themes/main_theme.tres" id="4_3ovsr"]
 [ext_resource type="PackedScene" uid="uid://xsgcag185atq" path="res://scenes/mission_update_text_animation/mission_update_text_animation.tscn" id="5_wem23"]
 
 [sub_resource type="Animation" id="Animation_wem23"]
@@ -51,10 +51,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uqeha")
+bgm = ExtResource("2_4xg86")
 
 [node name="Starfield" parent="." unique_id=2061530491 instance=ExtResource("1_fsom3")]
 star_count = 1000
-star_size = Vector2(2, 4)
+star_size = Vector2(2, 2)
 use_y_weight = false
 use_y_scaling = false
 
@@ -86,8 +87,8 @@ layout_mode = 2
 
 [node name="Title" type="Label" parent="UI/VBoxContainer/CenterContainer/VBoxContainer" unique_id=597604752]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_0ebjn")
-theme_override_font_sizes/font_size = 64
+theme = ExtResource("4_3ovsr")
+theme_type_variation = &"TitleLabel"
 text = "SPACE DESTROYERS"
 
 [node name="Spacer" type="Control" parent="UI/VBoxContainer/CenterContainer/VBoxContainer" unique_id=1160817225]
@@ -96,14 +97,13 @@ layout_mode = 2
 
 [node name="Start Game" type="Button" parent="UI/VBoxContainer/CenterContainer/VBoxContainer" unique_id=1341047335]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_ob46e")
-theme_override_font_sizes/font_size = 42
+theme = ExtResource("4_3ovsr")
+theme_override_font_sizes/font_size = 32
 text = "START GAME"
 
 [node name="Label" type="Label" parent="UI/VBoxContainer" unique_id=334510376]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_ob46e")
-theme_override_font_sizes/font_size = 24
+theme = ExtResource("4_3ovsr")
 text = "(c) Zero XP Games"
 horizontal_alignment = 2
 
@@ -113,13 +113,27 @@ libraries/ = SubResource("AnimationLibrary_wem23")
 [node name="MissionUpdateTextAnimation" parent="." unique_id=1668417129 instance=ExtResource("5_wem23")]
 visible = false
 autoplay = false
-mission_text = "Enemy forces are attacking key
-locations across earth's surface.
+mission_text = "Locations across Earth's surface are
+being attacked by invaders from space.
 
-Board the prototype modular assault
-vehicle \"SOPHIA 0\""
+Prototype modular assault vehicle
+[color=yellow]SOPHIA 0[/color] is ready for action.
+
+Spatial tele-relocation network
+installed in targeted regions.
+
+- Board [color=yellow]SOPHIA 0[/color] -
+- Teleport to each besieged area -
+- Destroy all invaders -
+
+Earth's hopes rest with you.
+Good luck, pilot."
+typing_chars_per_second = 40.0
+bgm_fade_out_time = 0.0
+bgm_fade_in_time = 0.0
 
 [connection signal="pressed" from="UI/VBoxContainer/CenterContainer/VBoxContainer/Start Game" to="." method="_on_start_game_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="player_dismissed" from="MissionUpdateTextAnimation" to="." method="_on_mission_update_text_animation_player_dismissed"]
 
 [editable path="Starfield"]

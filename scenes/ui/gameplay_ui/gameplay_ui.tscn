@@ -2,73 +2,100 @@
 
 [ext_resource type="Script" uid="uid://rjdj45cp4rm3" path="res://scenes/ui/gameplay_ui/gameplay_ui.gd" id="1_ya03u"]
 [ext_resource type="Texture2D" uid="uid://d4frx3bjg8ebp" path="res://art/shield_icon.png" id="1_yucqp"]
-[ext_resource type="FontFile" uid="uid://ftg0yylbljr5" path="res://art/fonts/joystix.monospace.otf" id="3_2mbl5"]
+[ext_resource type="Theme" uid="uid://blgn547iw1k7d" path="res://themes/main_theme.tres" id="3_smd1y"]
 [ext_resource type="Texture2D" uid="uid://cdyvlsr8w6mui" path="res://art/credit.png" id="4_opt6b"]
+[ext_resource type="PackedScene" uid="uid://b1sxbmhh6261m" path="res://scenes/input_prompt/input_prompt.tscn" id="4_smd1y"]
+[ext_resource type="Texture2D" uid="uid://dmy6dpfb4i8j8" path="res://art/input/kb/keyboard_arrows.png" id="5_ywcpa"]
 
 [node name="GameplayUI" type="CanvasLayer" unique_id=1460615082]
 script = ExtResource("1_ya03u")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1957037157]
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -68.0
-grow_horizontal = 2
-grow_vertical = 0
-metadata/_edit_lock_ = true
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer" unique_id=1521305598]
-layout_mode = 2
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1521305598]
+offset_top = 1011.0
+offset_right = 1920.0
+offset_bottom = 1081.0
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer" unique_id=810548772]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer" unique_id=150850288]
 layout_mode = 2
+columns = 3
 
-[node name="ShieldIcon" type="TextureRect" parent="MarginContainer/MarginContainer/HBoxContainer" unique_id=930170985]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/GridContainer" unique_id=430582701]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ShieldIcon" type="TextureRect" parent="MarginContainer/GridContainer/HBoxContainer" unique_id=930170985]
 layout_mode = 2
 texture = ExtResource("1_yucqp")
 expand_mode = 2
 
-[node name="CurrentLife" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer" unique_id=1543433398]
+[node name="CurrentLife" type="Label" parent="MarginContainer/GridContainer/HBoxContainer" unique_id=1543433398]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_2mbl5")
+theme = ExtResource("3_smd1y")
 theme_override_font_sizes/font_size = 38
 text = "1"
 
-[node name="Slash" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer" unique_id=815220636]
+[node name="Slash" type="Label" parent="MarginContainer/GridContainer/HBoxContainer" unique_id=815220636]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_2mbl5")
+theme = ExtResource("3_smd1y")
 theme_override_font_sizes/font_size = 38
 text = "/"
 
-[node name="MaxLife" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer" unique_id=182435947]
+[node name="MaxLife" type="Label" parent="MarginContainer/GridContainer/HBoxContainer" unique_id=182435947]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_2mbl5")
+theme = ExtResource("3_smd1y")
 theme_override_font_sizes/font_size = 38
 text = "1"
 
-[node name="Control" type="Control" parent="MarginContainer/MarginContainer/HBoxContainer" unique_id=1699456522]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/GridContainer" unique_id=1474739705]
 layout_mode = 2
 size_flags_horizontal = 3
+alignment = 1
 
-[node name="CreditIcon" type="TextureRect" parent="MarginContainer/MarginContainer/HBoxContainer" unique_id=493623270]
+[node name="MoveInputIcon" parent="MarginContainer/GridContainer/HBoxContainer2" unique_id=50002874 instance=ExtResource("4_smd1y")]
+layout_mode = 2
+texture = ExtResource("5_ywcpa")
+expand_mode = 3
+action = 2
+
+[node name="MoveText" type="Label" parent="MarginContainer/GridContainer/HBoxContainer2" unique_id=645831774]
+layout_mode = 2
+theme = ExtResource("3_smd1y")
+theme_override_font_sizes/font_size = 38
+text = "MOVE "
+
+[node name="ShootInputIcon" parent="MarginContainer/GridContainer/HBoxContainer2" unique_id=2076291069 instance=ExtResource("4_smd1y")]
+layout_mode = 2
+expand_mode = 3
+
+[node name="ShootText" type="Label" parent="MarginContainer/GridContainer/HBoxContainer2" unique_id=853124041]
+layout_mode = 2
+theme = ExtResource("3_smd1y")
+theme_override_font_sizes/font_size = 38
+text = "SHOOT"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/GridContainer" unique_id=511239699]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="CreditIcon" type="TextureRect" parent="MarginContainer/GridContainer/HBoxContainer3" unique_id=493623270]
 layout_mode = 2
 texture = ExtResource("4_opt6b")
 expand_mode = 2
 
-[node name="Control2" type="Control" parent="MarginContainer/MarginContainer/HBoxContainer" unique_id=1603278716]
+[node name="Control2" type="Control" parent="MarginContainer/GridContainer/HBoxContainer3" unique_id=1603278716]
 custom_minimum_size = Vector2(12, 0)
 layout_mode = 2
 
-[node name="CreditsDisplay" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer" unique_id=514837014]
+[node name="CreditsDisplay" type="Label" parent="MarginContainer/GridContainer/HBoxContainer3" unique_id=514837014]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_2mbl5")
+theme = ExtResource("3_smd1y")
 theme_override_font_sizes/font_size = 38
 text = "0"
