@@ -54,7 +54,7 @@ func _ready() -> void:
 
 ## Plays the mission update animation.
 func play() -> void:
-	SignalBus.emit_play_bgm(bgm, 1.0, 1.0, bgm_fade_out_time, bgm_fade_in_time)
+	SignalBus.emit_play_bgm(bgm, 1.75, 1.0, bgm_fade_out_time, bgm_fade_in_time)
 	if bgm_fade_in_time > 0:
 		await get_tree().create_timer(bgm_fade_in_time).timeout
 	_blink_title()

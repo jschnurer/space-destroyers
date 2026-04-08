@@ -85,6 +85,7 @@ wait_time = 0.5
 [node name="KlaxonPlayer" type="AudioStreamPlayer2D" parent="." unique_id=757785664]
 unique_name_in_owner = true
 stream = ExtResource("5_2gici")
+volume_db = 12.0
 
 [node name="TypingAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1899636139]
 unique_name_in_owner = true

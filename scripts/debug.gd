@@ -11,7 +11,7 @@ func _process(delta: float) -> void:
 			var lc: LifeComponent = (en as Enemy).get_component(LifeComponent)
 			if lc:
 				lc.take_damage(99999999.0, null)
-	elif Input.is_action_just_pressed("pass_level"):
+	elif Input.is_action_just_pressed("pass_level") or Input.is_action_just_pressed("pass_level_shop"):
 		var total_credits := 0.0
 		for en in get_tree().get_nodes_in_group(GroupNames.ENEMY):
 			var od: OnDeathComponent = (en as Enemy).get_component(OnDeathComponent)
@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 		
 		var mult := GameManager.get_stat_value(Enums.PlayerStats.CREDIT_MULTIPLIER)
 		SignalBus.emit_credits_picked_up(total_credits * mult)
-		GameManager.load_next_level()
+		GameManager.load_next_level(!Input.is_action_just_pressed("pass_level_shop"))
 	elif Input.is_action_just_pressed("credits"):
 		SignalBus.emit_credits_picked_up(99999999999)
 	elif Input.is_action_just_pressed("launch"):

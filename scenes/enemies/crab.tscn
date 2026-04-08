@@ -61,7 +61,7 @@ position = Vector2(22, 20)
 shape = SubResource("RectangleShape2D_86med")
 
 [node name="OnDeathComponent" parent="Components" unique_id=1414675714 node_paths=PackedStringArray("life_component", "enemy_node", "deletion_node", "lucky_component") instance=ExtResource("14_0iaea")]
-position = Vector2(5.5, 4)
+position = Vector2(22, 17)
 life_component = NodePath("../LifeComponent")
 death_sound = ExtResource("7_3jqcw")
 enemy_node = NodePath("../..")

@@ -8,12 +8,17 @@ script = ExtResource("1_shxs6")
 
 [node name="MissionUpdateTextAnimation" parent="." unique_id=1668417129 instance=ExtResource("2_v2c4b")]
 title_text = "-- WARNING -- WARNING -- WARNING --"
-mission_text = "INCOMING HIGH ENERGY SIGNATURE DETECTED!
+mission_text = "- DANGER - DANGER - DANGER -
+
+
+INCOMING HIGH ENERGY SIGNATURE DETECTED!
 [p=0.5]
-PREPARE FOR ENEMY CONTACT!"
+CONTACT IMMINENT!
+[p=0.5]
+PREPARE TO ENGAGE!"
 autoplay = false
 require_player_confirm = false
-auto_confirm_time = 2.0
+auto_confirm_time = 5.0
 bgm_fade_out_time = 0.0
 bgm_fade_in_time = 0.25
 
