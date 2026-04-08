@@ -23,9 +23,12 @@ func _ready() -> void:
 	# Add difficulty modifiers.
 	var level_bonus := GameManager.game_state.current_level - 1
 	for en in enemies:
-		(en as Enemy).credit_value *= (1 + (.1 * level_bonus))
-		(en as Enemy).life *= floori(1.08 * level_bonus)
-		(en as Enemy).credit_count_multiplier *= (1.15 * level_bonus)
+		var e := en as Enemy
+		e.credit_value *= (1 + (.15 * level_bonus))
+		e.life = floori(e.life * (1 + (.2 * level_bonus)))
+		e.credit_count_multiplier *= (1 + (.15 * level_bonus))
+		# If this enemy has a shield, also set its life.
+		e.shield_life = e.life * 5
 	
 	SignalBus.enemy_hit_screen_edge.connect(_on_enemy_hit_screen_edge)
 	SignalBus.enemy_died.connect(_on_enemy_died)

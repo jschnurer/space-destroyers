@@ -1508,7 +1508,7 @@ position = Vector2(1246.5, 572)
 [node name="Octopus" parent="EnemyFormation" unique_id=130954596 instance=ExtResource("5_vvoq0")]
 material = SubResource("ShaderMaterial_7y82d")
 position = Vector2(816.50006, 317)
-scale = Vector2(24, 24)
+scale = Vector2(6, 6)
 
 [node name="Octopus2" parent="EnemyFormation" unique_id=81094124 instance=ExtResource("5_vvoq0")]
 material = SubResource("ShaderMaterial_cx0sa")
@@ -1528,4 +1528,4 @@ position = Vector2(1066, 44)
 
 [node name="LevelManager" parent="." unique_id=1578700785 groups=["LEVEL_MANAGER"] instance=ExtResource("2_dswqx")]
 enemy_start_speed = 50.0
-enemy_max_speed = 100.0
+enemy_max_speed = 125.0

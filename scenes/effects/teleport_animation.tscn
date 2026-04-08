@@ -349,6 +349,5 @@ process_material = SubResource("ParticleProcessMaterial_y46bj")
 unique_name_in_owner = true
 visible = false
 modulate = Color(1, 1, 1, 0)
-scale = Vector2(4, 4)
 texture = ExtResource("3_qxpmg")
 centered = false

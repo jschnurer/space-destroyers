@@ -9,5 +9,5 @@ display_text = "Reload"
 description = "-Wait time between shots"
 approaches_zero_base = 1.0
 base_cost = 5.0
-power = 1.5
+power = 1.425
 metadata/_custom_type_script = "uid://rbsniqghf2h2"

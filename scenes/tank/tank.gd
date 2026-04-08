@@ -13,8 +13,6 @@ class_name Tank
 @onready var life_component: LifeComponent = $Components/LifeComponent
 @onready var sprite_2d: Sprite2D = %Sprite2D
 
-var _active_bullet_count := 0
-
 func _ready() -> void:
 	_update_reload_time(GameManager.get_stat_value(Enums.PlayerStats.RELOAD))
 	_update_pickup_area(GameManager.get_stat_value(Enums.PlayerStats.PICKUP_AREA))
@@ -41,9 +39,6 @@ func _try_shoot() -> void:
 	if reload_component.is_reloading():
 		return
 	
-	if _active_bullet_count >= GameManager.get_stat_value(Enums.PlayerStats.MAX_SHOTS):
-		return
-	
 	# Shoot bullets.
 	var multi_level := GameManager.get_upgrade_level(Enums.PlayerUpgrades.MULTI_CANNON)
 	if multi_level > 0:
@@ -63,10 +58,6 @@ func _try_shoot() -> void:
 	
 	# Start reloading.
 	reload_component.reload()
-
-func _on_bullet_died() -> void:
-	# Subtract one from the active bullet count (min 0).
-	_active_bullet_count = clampi(_active_bullet_count - 1, 0, 999999)
 
 func _on_pickup_area_body_entered(body: Node2D) -> void:
 	if body is Credit:
@@ -107,9 +98,7 @@ func _spawn_bullet(bullet_offset: float, angle_offset: float = 0.0, bullet_scale
 	if GameManager.has_upgrade(Enums.PlayerUpgrades.FLAK_CANNON):
 		bullet.can_flak = true
 		
-	bullet.tree_exited.connect(_on_bullet_died)
 	Utilities.call_deferred("add_child_to_level", bullet)
-	_active_bullet_count += 1
 
 func _on_life_changed(new_life: int, _hitbox: HitboxComponent) -> void:
 	GameManager.set_current_life(new_life)

@@ -130,27 +130,27 @@ jet_burst_stream = ExtResource("4_oq14b")
 open_doors_stream = ExtResource("5_3klsw")
 
 [node name="TankBase" type="Sprite2D" parent="." unique_id=130902567]
-position = Vector2(22, 24)
-scale = Vector2(4, 4)
+position = Vector2(0, 16)
 texture = ExtResource("1_ndcqh")
+centered = false
 
 [node name="TankDoorLeft" type="Sprite2D" parent="." unique_id=107957574]
 position = Vector2(2, 18)
-scale = Vector2(4, 4)
 texture = ExtResource("2_s5ox0")
-offset = Vector2(2, -0.5)
+offset = Vector2(8, -2)
 
 [node name="TankDoorRight" type="Sprite2D" parent="." unique_id=1245627538]
-position = Vector2(41.77575, 18.064827)
-scale = Vector2(-4, 4)
+position = Vector2(42, 18)
+scale = Vector2(-1, 1)
 texture = ExtResource("2_s5ox0")
-offset = Vector2(1.9439373, -0.51620674)
+offset = Vector2(8, -2)
 
 [node name="RocketClipPolygon" type="Polygon2D" parent="." unique_id=692380735]
 clip_children = 1
 position = Vector2(0, -14.578369)
 scale = Vector2(1, 0.9540115)
 polygon = PackedVector2Array(-1000, 32, -1000, -200000, 1000, -200000, 1000, 32)
+metadata/_edit_lock_ = true
 
 [node name="Rocket" type="Node2D" parent="RocketClipPolygon" unique_id=1086308626]
 unique_name_in_owner = true
@@ -159,7 +159,7 @@ position = Vector2(0, 37)
 [node name="Fire" type="Sprite2D" parent="RocketClipPolygon/Rocket" unique_id=1860156719]
 modulate = Color(1, 0.58431375, 0, 1)
 position = Vector2(22, 20)
-scale = Vector2(4, -4)
+scale = Vector2(1, -1)
 texture = ExtResource("5_pkov0")
 hframes = 2
 
@@ -168,8 +168,7 @@ sprite = NodePath("..")
 speed_scale = 12.0
 
 [node name="RocketSprite" type="Sprite2D" parent="RocketClipPolygon/Rocket" unique_id=1774581070]
-position = Vector2(22, 0)
-scale = Vector2(4, 4)
+position = Vector2(22, 0.29346466)
 texture = ExtResource("3_yddrn")
 
 [node name="Smoke" type="GPUParticles2D" parent="RocketClipPolygon/Rocket" unique_id=2103907132]

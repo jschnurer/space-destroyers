@@ -19,12 +19,7 @@ func _ready() -> void:
 	if get_tree().current_scene.name == "InvadersLevels":
 		call_deferred("restart_game")
 
-func switch_to_scene_file(scene_path: String) -> void:
-	get_tree().change_scene_to_file(scene_path)
-	await get_tree().process_frame
-	_load_initial_level()
-
-func _load_initial_level() -> void:
+func load_initial_level(loaded_directly := false) -> void:
 	get_tree().paused = true
 	game_state.current_level = 1
 	var level_filename := "res://scenes/levels/level_" + str(game_state.current_level) + ".tscn"
@@ -35,17 +30,19 @@ func _load_initial_level() -> void:
 	var next_level: PackedScene = load(level_filename)
 	if next_level:
 		level_holder.add_child(next_level.instantiate())
+		
+	if loaded_directly:
+		SignalBus.emit_play_bgm(load("res://audio/bgm/moonlight.mp3") as AudioStream)
+		SignalBus.emit_fade_in_screen()
+		await SignalBus.fade_in_screen_complete
 	
-	SignalBus.emit_play_bgm(load("res://audio/bgm/moonlight.mp3") as AudioStream)
-	SignalBus.emit_fade_in_screen()
-	await SignalBus.fade_in_screen_complete
-	
-	get_tree().paused = false
+	if loaded_directly:
+		get_tree().paused = false
 	
 	SignalBus.emit_new_level_loaded()
 
 ## Loads the next level sequentially.
-func load_next_level() -> void:
+func load_next_level(instantly := false) -> void:
 	get_tree().paused = true
 	game_state.current_level += 1
 	
@@ -53,20 +50,20 @@ func load_next_level() -> void:
 		child.queue_free()
 	
 	var player_tank: Tank = get_tree().get_first_node_in_group("PLAYER")
-	
 	var teleport_anim: TeleportAnimation = get_tree().get_first_node_in_group("TELEPORT_ANIM")
-	if teleport_anim and player_tank:
+	
+	if !instantly:
 		# Play the animation and then wait for it to complete.
 		teleport_anim.global_position = player_tank.global_position
 		teleport_anim.teleport_out()
 		await teleport_anim.animation_complete
-	
-	SignalBus.emit_fade_out_screen()
-	await SignalBus.fade_out_screen_complete
-	SignalBus.emit_level_transition_screen_faded()
-	
-	SignalBus.emit_open_shop()
-	await SignalBus.shop_closed
+		
+		SignalBus.emit_fade_out_screen()
+		await SignalBus.fade_out_screen_complete
+		SignalBus.emit_level_transition_screen_faded()
+		
+		SignalBus.emit_open_shop()
+		await SignalBus.shop_closed
 	
 	var level_filename := "res://scenes/levels/level_" + str(game_state.current_level) + ".tscn"
 	if !FileAccess.file_exists(level_filename):
@@ -78,18 +75,16 @@ func load_next_level() -> void:
 		level_holder.add_child(next_level.instantiate())
 	
 	# Snap player back to center.
-	if player_tank:
-		var tank_sprite_rect := player_tank.get_scaled_sprite_rect()
-		player_tank.global_position.x = Global.PLAYABLE_AREA_RECT.size.x / 2.0 \
-			+ Global.PLAYABLE_AREA_RECT.position.x\
-			- tank_sprite_rect.size.x / 2.0
-		
-		if teleport_anim:
+	var tank_sprite_rect := player_tank.get_scaled_sprite_rect()
+	player_tank.global_position.x = Global.PLAYABLE_AREA_RECT.size.x / 2.0 \
+		+ Global.PLAYABLE_AREA_RECT.position.x\
+		- tank_sprite_rect.size.x / 2.0
+	
+	if !instantly:
 			teleport_anim.global_position = player_tank.global_position
+			SignalBus.emit_fade_in_screen()
 	
-	SignalBus.emit_fade_in_screen()
-	
-	if teleport_anim and player_tank:
+	if !instantly:
 		# Play the animation and then wait for it to complete.
 		teleport_anim.teleport_in()
 		await teleport_anim.animation_complete
@@ -100,9 +95,14 @@ func load_next_level() -> void:
 
 ## Jumps to specified level.
 func go_to_level(lvl_num: int) -> void:
+	if get_tree().current_scene.name != "invaders_levels":
+		get_tree().change_scene_to_file("res://scenes/invaders_levels.tscn")
+		await get_tree().scene_changed
+		SignalBus.emit_play_bgm(load("res://audio/bgm/moonlight.mp3") as AudioStream)
+	
 	# Decrement one because load_next_level increments.
 	game_state.current_level = lvl_num - 1
-	load_next_level()
+	load_next_level(lvl_num == 1)
 
 func _on_credits_picked_up(amt: float) -> void:
 	game_state.credits += (amt * get_stat_value(Enums.PlayerStats.CREDIT_MULTIPLIER))
@@ -171,9 +171,9 @@ func _on_game_over(_reason: Enums.GameOverReason) -> void:
 
 func restart_game() -> void:
 	game_state = GameState.new()
-	
-	SignalBus.emit_play_bgm(load("res://audio/bgm/moonlight.mp3") as AudioStream, 1.0, 1.0, 0.0, 1.0)
-	_load_initial_level()
+	SignalBus.emit_fade_out_screen()
+	await SignalBus.fade_out_screen_complete
+	get_tree().change_scene_to_file("res://scenes/ui/main_menu/main_menu.tscn")
 
 func set_current_life(new_life: int) -> void:
 	if game_state.current_life != new_life:

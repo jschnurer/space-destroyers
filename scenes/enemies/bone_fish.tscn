@@ -17,12 +17,12 @@
 [ext_resource type="PackedScene" uid="uid://0esplk3dg3yq" path="res://scenes/components/reload_component.tscn" id="13_lai1n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_10ooo"]
-size = Vector2(11, 11)
+size = Vector2(44, 44)
 
 [node name="bone_fish" type="Sprite2D" unique_id=417046175 node_paths=PackedStringArray("enemy_sprite") groups=["ENEMY"]]
 modulate = Color(0.89415276, 0.85486645, 0.85043997, 1)
+z_index = 1
 material = ExtResource("1_lai1n")
-scale = Vector2(4, 4)
 texture = ExtResource("1_xlpdj")
 centered = false
 hframes = 2
@@ -51,7 +51,7 @@ flash_damage = true
 sprite_2d = NodePath("../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HurtboxComponent" unique_id=865946991]
-position = Vector2(5.5, 5.5)
+position = Vector2(22, 22)
 shape = SubResource("RectangleShape2D_10ooo")
 
 [node name="LuckyComponent" parent="Components" unique_id=1751092268 node_paths=PackedStringArray("sprite") instance=ExtResource("6_lai1n")]
@@ -61,11 +61,11 @@ sprite = NodePath("../..")
 visible = false
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Components/LandingComponent" unique_id=1619830211]
-position = Vector2(5.5, 5.5)
+position = Vector2(22, 26)
 shape = SubResource("RectangleShape2D_10ooo")
 
 [node name="OnDeathComponent" parent="Components" unique_id=128414731 node_paths=PackedStringArray("life_component", "enemy_node", "deletion_node", "lucky_component") instance=ExtResource("8_ypg1v")]
-position = Vector2(5.5, 5.5)
+position = Vector2(22, 22)
 life_component = NodePath("../LifeComponent")
 death_sound = ExtResource("9_q1ult")
 enemy_node = NodePath("../..")
@@ -75,7 +75,7 @@ death_anim_scene = ExtResource("10_47k3u")
 can_spawn_flak = true
 
 [node name="AutoShootComponent" parent="Components" unique_id=523345871 node_paths=PackedStringArray("reload_component", "inherit_from_sprite") instance=ExtResource("11_xh7mb")]
-position = Vector2(5.5, 12.5)
+position = Vector2(22, 48)
 reload_component = NodePath("../ReloadComponent")
 bullet_scene = ExtResource("12_xh7mb")
 shot_modulate = Color(0.89415276, 0.85486645, 0.85043997, 1)

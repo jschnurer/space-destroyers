@@ -8,13 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://bdmudihj1sun8" path="res://scenes/components/dance_component.tscn" id="6_jjgfi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f7qyl"]
-size = Vector2(5, 5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mt8sw"]
-size = Vector2(5, 5)
+size = Vector2(20, 21)
 
 [node name="bone_fish_bomb" type="Sprite2D" unique_id=90922862]
-scale = Vector2(4, 4)
+z_index = 2
 texture = ExtResource("1_e7lhg")
 hframes = 2
 script = ExtResource("2_mt8sw")
@@ -41,6 +40,7 @@ collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TerrainDetector" unique_id=97494857]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_mt8sw")
 
 [connection signal="area_entered" from="TerrainDetector" to="." method="_on_terrain_detector_area_entered"]

@@ -73,7 +73,6 @@ alignment = 1
 [node name="MoveInputIcon" parent="MarginContainer/GridContainer/Control/ControlsContainer" unique_id=50002874 instance=ExtResource("4_smd1y")]
 layout_mode = 2
 texture = ExtResource("5_ywcpa")
-expand_mode = 3
 action = 2
 
 [node name="MoveText" type="Label" parent="MarginContainer/GridContainer/Control/ControlsContainer" unique_id=645831774]
@@ -85,7 +84,6 @@ vertical_alignment = 1
 
 [node name="ShootInputIcon" parent="MarginContainer/GridContainer/Control/ControlsContainer" unique_id=2076291069 instance=ExtResource("4_smd1y")]
 layout_mode = 2
-expand_mode = 3
 
 [node name="ShootText" type="Label" parent="MarginContainer/GridContainer/Control/ControlsContainer" unique_id=853124041]
 layout_mode = 2

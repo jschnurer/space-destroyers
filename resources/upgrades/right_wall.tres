@@ -10,5 +10,5 @@ description = "Prevents credibux from exiting right side of battle area"
 max_level = 1
 value_curve_type = 2
 cost_type = 2
-base_cost = 75.0
+base_cost = 25.0
 metadata/_custom_type_script = "uid://w65aeclpm5mw"

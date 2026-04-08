@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b3n0ku0dgotlx" path="res://scenes/level_geom/enemy_formation.gd" id="1_3yw43"]
 
 [node name="EnemyFormation" type="Node2D" unique_id=965894497]
+texture_filter = 1
 script = ExtResource("1_3yw43")
 
 [node name="PlayAreaReference" type="ReferenceRect" parent="." unique_id=1203394698]

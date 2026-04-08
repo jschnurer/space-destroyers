@@ -982,7 +982,7 @@ metadata/_edit_lock_ = true
 [node name="Crab" parent="EnemyFormation" unique_id=639119212 instance=ExtResource("1_vmkp1")]
 material = SubResource("ShaderMaterial_rej77")
 position = Vector2(577, 264)
-scale = Vector2(26, 26)
+scale = Vector2(6.5, 6.5)
 life = 112
 credit_count_multiplier = 13.0
 credit_value = 2.25
@@ -990,7 +990,7 @@ credit_value = 2.25
 [node name="Crab2" parent="EnemyFormation" unique_id=131338842 instance=ExtResource("1_vmkp1")]
 material = SubResource("ShaderMaterial_5vn0v")
 position = Vector2(1057, 264)
-scale = Vector2(26, 26)
+scale = Vector2(6.5, 6.5)
 life = 112
 credit_count_multiplier = 13.0
 credit_value = 2.25
@@ -1047,7 +1047,7 @@ position = Vector2(1224, 136)
 [node name="Octopus15" parent="EnemyFormation" unique_id=2033116513 instance=ExtResource("3_ogj6a")]
 material = SubResource("ShaderMaterial_vq5n0")
 position = Vector2(888, 8)
-scale = Vector2(12, 12)
+scale = Vector2(3, 3)
 life = 75
 credit_count_multiplier = 10.0
 
@@ -1276,5 +1276,5 @@ material = SubResource("ShaderMaterial_agniq")
 position = Vector2(1229.5, 192)
 
 [node name="LevelManager" parent="." unique_id=1578700785 groups=["LEVEL_MANAGER"] instance=ExtResource("2_w6h2s")]
-enemy_start_speed = 35.0
-enemy_max_speed = 100.0
+enemy_start_speed = 40.0
+enemy_max_speed = 120.0

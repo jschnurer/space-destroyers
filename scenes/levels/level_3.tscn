@@ -1407,5 +1407,5 @@ position = Vector2(778, 352)
 credit_value = 3.0
 
 [node name="LevelManager" parent="." unique_id=1578700785 groups=["LEVEL_MANAGER"] instance=ExtResource("2_0ljxa")]
-enemy_start_speed = 30.0
-enemy_max_speed = 100.0
+enemy_start_speed = 40.0
+enemy_max_speed = 110.0

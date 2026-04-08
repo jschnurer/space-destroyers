@@ -28,13 +28,12 @@ scale_min = 0.75
 scale_max = 1.5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oc4le"]
-size = Vector2(5, 5)
 
 [node name="bomb_fire" type="Sprite2D" unique_id=1736527199]
 self_modulate = Color(1, 0.6117647, 0, 1)
-scale = Vector2(4, 4)
+z_index = 2
 texture = ExtResource("1_fgg5x")
-offset = Vector2(0, -2.5)
+offset = Vector2(0, -10)
 hframes = 2
 script = ExtResource("2_152qc")
 fire_sound = ExtResource("3_mv2ub")
@@ -50,7 +49,7 @@ process_material = SubResource("ParticleProcessMaterial_mv2ub")
 
 [node name="Smoke" type="GPUParticles2D" parent="." unique_id=928447752]
 modulate = Color(0.4351923, 0.43519226, 0.43519226, 1)
-position = Vector2(0, -7)
+position = Vector2(0, -28)
 amount = 24
 texture = ExtResource("2_4st8t")
 lifetime = 2.0
@@ -71,7 +70,8 @@ collision_layer = 64
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HitboxComponent" unique_id=706232903]
-position = Vector2(0, -2.5)
+visible = false
+position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_oc4le")
 
 [connection signal="timeout" from="LifetimeTimer" to="." method="_on_lifetime_timer_timeout"]

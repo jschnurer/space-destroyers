@@ -44,6 +44,7 @@ _data = {
 }
 
 [node name="MainMenu" type="Control" unique_id=1307408375]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,16 +53,20 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uqeha")
 bgm = ExtResource("2_4xg86")
+scroll_animation_duration = 5.0
 
 [node name="Starfield" parent="." unique_id=2061530491 instance=ExtResource("1_fsom3")]
-star_count = 1000
-star_size = Vector2(2, 2)
+unique_name_in_owner = true
+star_count = 6000
+star_size_min = 1
+animate_direction = Vector2(-1, 0)
+animate_speed = 10.0
 use_y_weight = false
 use_y_scaling = false
 
 [node name="ReferenceRect" parent="Starfield" index="0" unique_id=674209285]
 offset_right = 1920.0
-offset_bottom = 1080.0
+offset_bottom = 3240.0
 
 [node name="UI" type="MarginContainer" parent="." unique_id=427466273]
 layout_mode = 1
@@ -115,13 +120,15 @@ libraries/ = SubResource("AnimationLibrary_wem23")
 visible = false
 title_text = "-- MISSION UPDATE --"
 mission_text = "Locations across Earth's surface are
-being attacked by invaders from space.
+under attack by destroyers from space.
 
 Prototype modular assault vehicle
 [color=yellow]SOPHIA 0[/color] is ready for deployment.
 
 Spatial teleportation network
 installed in targeted regions.
+
+Your mission:
 
 - Board [color=yellow]SOPHIA 0[/color] -
 - Teleport to each besieged area -

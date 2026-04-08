@@ -9,9 +9,10 @@
 [ext_resource type="AudioStream" uid="uid://brg37kmrhqmeb" path="res://audio/sfx/beepfx_samples/18_hit_4.wav" id="6_yuvua"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l07rn"]
-size = Vector2(14, 7)
+size = Vector2(56, 28)
 
 [node name="ShieldComponent" type="Sprite2D" unique_id=153832048]
+visible = false
 texture = ExtResource("1_yy3ww")
 centered = false
 script = ExtResource("2_705yk")
@@ -31,7 +32,7 @@ flash_color = Color(0, 0.6392157, 1, 1)
 sprite_2d = NodePath("../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HurtboxComponent" unique_id=874223922]
-position = Vector2(7, 3.5)
+position = Vector2(28, 14)
 shape = SubResource("RectangleShape2D_l07rn")
 
 [node name="OnDeathComponent" parent="Components" unique_id=128414731 node_paths=PackedStringArray("life_component", "deletion_node") instance=ExtResource("5_l07rn")]

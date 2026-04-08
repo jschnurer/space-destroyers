@@ -54,9 +54,8 @@ _data = {
 }
 
 [node name="InvaderDeath" type="Sprite2D" unique_id=242708913]
-scale = Vector2(4, 4)
+position = Vector2(0, -2)
 texture = ExtResource("1_7mjcb")
-centered = false
 hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1602540996]

@@ -17,12 +17,12 @@
 [ext_resource type="PackedScene" uid="uid://d1jln5dps07ua" path="res://scenes/bullet/bullet.tscn" id="11_ofuak"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2q4ju"]
-size = Vector2(12, 8)
+size = Vector2(48, 32)
 
 [node name="Octopus" type="Sprite2D" unique_id=130954596 node_paths=PackedStringArray("enemy_sprite") groups=["ENEMY"]]
 modulate = Color(1, 1, 0.24313726, 1)
+z_index = 1
 material = ExtResource("1_2q4ju")
-scale = Vector2(4, 4)
 texture = ExtResource("1_nduv1")
 centered = false
 hframes = 2
@@ -52,7 +52,7 @@ flash_damage = true
 sprite_2d = NodePath("../..")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Components/HurtboxComponent" unique_id=1793194982]
-position = Vector2(6, 4)
+position = Vector2(24, 16)
 shape = SubResource("RectangleShape2D_2q4ju")
 
 [node name="LuckyComponent" parent="Components" unique_id=1751092268 node_paths=PackedStringArray("sprite") instance=ExtResource("1_kty3y")]
@@ -63,11 +63,11 @@ sprite = NodePath("../..")
 visible = false
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Components/LandingComponent" unique_id=1903840505]
-position = Vector2(6, 4)
+position = Vector2(24, 20)
 shape = SubResource("RectangleShape2D_2q4ju")
 
 [node name="OnDeathComponent" parent="Components" unique_id=128414731 node_paths=PackedStringArray("life_component", "enemy_node", "deletion_node", "lucky_component") instance=ExtResource("5_81vaf")]
-position = Vector2(6, 4)
+position = Vector2(24, 16)
 life_component = NodePath("../LifeComponent")
 death_sound = ExtResource("7_ofuak")
 enemy_node = NodePath("../..")
@@ -77,7 +77,7 @@ death_anim_scene = ExtResource("7_jwybb")
 can_spawn_flak = true
 
 [node name="AutoShootComponent" parent="Components" unique_id=523345871 node_paths=PackedStringArray("reload_component", "inherit_from_sprite") instance=ExtResource("10_ofuak")]
-position = Vector2(6, 9.25)
+position = Vector2(24, 36)
 reload_component = NodePath("../ReloadComponent")
 bullet_scene = ExtResource("11_ofuak")
 shot_modulate = Color(1, 1, 0.24313726, 1)

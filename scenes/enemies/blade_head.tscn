@@ -15,12 +15,12 @@
 [ext_resource type="PackedScene" uid="uid://dh543gsa0tw8k" path="res://scenes/components/shield_component.tscn" id="12_rjqgc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_whitt"]
-size = Vector2(14, 14)
+size = Vector2(56, 56)
 
 [node name="blade_head" type="Sprite2D" unique_id=235114018 node_paths=PackedStringArray("enemy_sprite") groups=["ENEMY"]]
 modulate = Color(5.0055983e-06, 0.8592934, 0.47698796, 1)
+z_index = 1
 material = ExtResource("1_rs4dl")
-scale = Vector2(4, 4)
 texture = ExtResource("1_ha781")
 centered = false
 hframes = 2
@@ -50,7 +50,7 @@ flash_damage = true
 sprite_2d = NodePath("../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HurtboxComponent" unique_id=1631534075]
-position = Vector2(7, 7)
+position = Vector2(28, 28)
 shape = SubResource("RectangleShape2D_whitt")
 
 [node name="LuckyComponent" parent="Components" unique_id=1751092268 node_paths=PackedStringArray("sprite") instance=ExtResource("6_rjqgc")]
@@ -60,7 +60,7 @@ sprite = NodePath("../..")
 visible = false
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Components/LandingComponent" unique_id=1081975819]
-position = Vector2(7, 7)
+position = Vector2(28, 32)
 shape = SubResource("RectangleShape2D_whitt")
 
 [node name="OnDeathComponent" parent="Components" unique_id=128414731 node_paths=PackedStringArray("life_component", "enemy_node", "deletion_node", "lucky_component") instance=ExtResource("8_dq8q5")]
@@ -74,8 +74,7 @@ death_anim_scene = ExtResource("11_21ggi")
 can_spawn_flak = true
 
 [node name="ShieldComponent" parent="Components" unique_id=153832048 instance=ExtResource("12_rjqgc")]
-visible = false
-position = Vector2(0, 14)
-life = 33.0
+position = Vector2(0, 56)
+life = 50.0
 collision_layer = 2
 collision_mask = 8

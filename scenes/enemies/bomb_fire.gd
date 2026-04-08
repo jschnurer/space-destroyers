@@ -15,7 +15,6 @@ func _ready() -> void:
 	debris.emitting = true
 	lifetime_timer.wait_time = min(lifetime_min, lifetime_max) if lifetime_min > lifetime_max else _get_random_lifetime()
 	lifetime_timer.start()
-	print("bomb timer: ", lifetime_timer.wait_time)
 	hitbox_component.damage = damage
 	SignalBus.emit_play_sfx(fire_sound, fire_volume_linear, 0.175)
 

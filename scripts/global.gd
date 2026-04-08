@@ -12,3 +12,15 @@ var CREDIT_DENOMINATIONS: Array[CreditDenomination] = [
 	CreditDenomination.new(50.0, Color.GOLDENROD, 3),
 	CreditDenomination.new(100.0, Color.AQUA, 4),
 ]
+
+func _enter_tree() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("toggle_fullscreen"):
+		var mode := DisplayServer.window_get_mode()
+
+		if mode != DisplayServer.WINDOW_MODE_FULLSCREEN:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		else:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)

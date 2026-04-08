@@ -15,7 +15,6 @@ func _on_contact() -> void:
 	var my_shape: CollisionShape2D = Utilities.get_first_child_of_type(self, CollisionShape2D)
 	var impact_point := Vector2(my_shape.global_position.x, Utilities.get_terrain_top_edge_y_position())
 	call_deferred("_spawn_fire", impact_point)
-	_spawn_fire(impact_point)
 	queue_free()
 
 func _spawn_fire(impact_point: Vector2) -> void:

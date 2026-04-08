@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d1jln5dps07ua"]
 
-[ext_resource type="Texture2D" uid="uid://cxcqbeuliagh5" path="res://art/shot.png" id="1_7c8un"]
+[ext_resource type="Texture2D" uid="uid://cxcqbeuliagh5" path="res://art/shot.png" id="1_0vdx3"]
 [ext_resource type="Script" uid="uid://dloa5yfb2gkkb" path="res://scenes/bullet/bullet.gd" id="1_83itf"]
 [ext_resource type="PackedScene" uid="uid://dddchihkt36mp" path="res://scenes/components/delete_offscreen_component.tscn" id="3_c6pnf"]
 [ext_resource type="PackedScene" uid="uid://ce38u6nauhq7y" path="res://scenes/components/hitbox_component.tscn" id="4_0vdx3"]
@@ -8,9 +8,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7c8un"]
 size = Vector2(0.25, 1)
 
-[node name="Bullet" type="Sprite2D" unique_id=2075551522]
-scale = Vector2(4, 4)
-texture = ExtResource("1_7c8un")
+[node name="Bullet" type="Sprite2D" unique_id=1239881327]
+z_index = 2
+texture = ExtResource("1_0vdx3")
 script = ExtResource("1_83itf")
 
 [node name="Components" type="Node2D" parent="." unique_id=95617124]

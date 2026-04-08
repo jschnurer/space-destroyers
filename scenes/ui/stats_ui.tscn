@@ -185,8 +185,8 @@ round_to_int = true
 layout_mode = 2
 mouse_filter = 2
 stat = ExtResource("11_kvee4")
-interpolate_str = "%s"
-format_str = "%.0f"
+interpolate_str = "+%s%%"
+show_only_percent_bonus = true
 
 [node name="Reload" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Stats" unique_id=233088319 instance=ExtResource("4_gs80r")]
 layout_mode = 2
