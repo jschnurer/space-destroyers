@@ -19,8 +19,6 @@ texture = ExtResource("1_e7lhg")
 hframes = 2
 script = ExtResource("2_mt8sw")
 bomb_fire_scene = ExtResource("3_p4f0h")
-collision_layer = 64
-collision_mask = 17
 
 [node name="Components" type="Node2D" parent="." unique_id=1599277441]
 

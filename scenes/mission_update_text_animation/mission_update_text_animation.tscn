@@ -12,15 +12,9 @@ script = ExtResource("1_yko0x")
 mission_text = "DEFAULT PLACEHOLDER TEXT"
 bgm = ExtResource("4_qgq6q")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1016108961]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=2052403706]
-layout_mode = 2
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2052403706]
+offset_right = 1920.0
+offset_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/margin_left = 16
@@ -28,11 +22,11 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer" unique_id=1785734033]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1785734033]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Title" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer" unique_id=2062132309]
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer" unique_id=2062132309]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -41,31 +35,45 @@ theme_type_variation = &"TitleLabel"
 text = "MISSION UPDATE"
 horizontal_alignment = 1
 
-[node name="MidPadding" type="Control" parent="HBoxContainer/MarginContainer/VBoxContainer" unique_id=105914876]
+[node name="MidPadding" type="Control" parent="MarginContainer/VBoxContainer" unique_id=105914876]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="MissionText" type="RichTextLabel" parent="HBoxContainer/MarginContainer/VBoxContainer" unique_id=1415978631]
+[node name="MissionText" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=1415978631]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("3_lxs6d")
+theme_type_variation = &"MissionText"
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 horizontal_alignment = 1
-visible_characters = 0
 
-[node name="MidPadding2" type="Control" parent="HBoxContainer/MarginContainer/VBoxContainer" unique_id=573514649]
+[node name="MidPadding2" type="Control" parent="MarginContainer/VBoxContainer" unique_id=573514649]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="ContinuePrompt" parent="HBoxContainer/MarginContainer/VBoxContainer" unique_id=1142584804 instance=ExtResource("5_lxs6d")]
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer" unique_id=757846536]
+layout_mode = 2
+
+[node name="ContinuePrompt" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CenterContainer" unique_id=1378040054]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
 
-[node name="EndPadding" type="Control" parent="HBoxContainer/MarginContainer/VBoxContainer" unique_id=1131012105]
-custom_minimum_size = Vector2(0, 75)
+[node name="Icon" parent="MarginContainer/VBoxContainer/CenterContainer/ContinuePrompt" unique_id=1142584804 instance=ExtResource("5_lxs6d")]
+layout_mode = 2
+
+[node name="Continue" type="Label" parent="MarginContainer/VBoxContainer/CenterContainer/ContinuePrompt" unique_id=822127448]
+layout_mode = 2
+theme = ExtResource("3_lxs6d")
+theme_override_font_sizes/font_size = 22
+text = "CONTINUE"
+
+[node name="EndPadding" type="Control" parent="MarginContainer/VBoxContainer" unique_id=1131012105]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 
 [node name="PromptBlinkTimer" type="Timer" parent="." unique_id=1481639675]

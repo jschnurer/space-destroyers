@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bl0bhuawiisf7"]
 
 [ext_resource type="PackedScene" uid="uid://ld7c4owsibhw" path="res://scenes/level_geom/starfield.tscn" id="1_fsom3"]
-[ext_resource type="Script" uid="uid://dsnbdwnwullmr" path="res://scenes/main_menu/main_menu.gd" id="1_uqeha"]
+[ext_resource type="Script" uid="uid://dsnbdwnwullmr" path="res://scenes/ui/main_menu/main_menu.gd" id="1_uqeha"]
 [ext_resource type="AudioStream" uid="uid://by42t8iikq1xg" path="res://audio/bgm/mehalanholia.mp3" id="2_4xg86"]
 [ext_resource type="Theme" uid="uid://blgn547iw1k7d" path="res://themes/main_theme.tres" id="4_3ovsr"]
 [ext_resource type="PackedScene" uid="uid://xsgcag185atq" path="res://scenes/mission_update_text_animation/mission_update_text_animation.tscn" id="5_wem23"]
@@ -96,6 +96,7 @@ custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
 [node name="Start Game" type="Button" parent="UI/VBoxContainer/CenterContainer/VBoxContainer" unique_id=1341047335]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("4_3ovsr")
 theme_override_font_sizes/font_size = 32
@@ -112,14 +113,14 @@ libraries/ = SubResource("AnimationLibrary_wem23")
 
 [node name="MissionUpdateTextAnimation" parent="." unique_id=1668417129 instance=ExtResource("5_wem23")]
 visible = false
-autoplay = false
+title_text = "-- MISSION UPDATE --"
 mission_text = "Locations across Earth's surface are
 being attacked by invaders from space.
 
 Prototype modular assault vehicle
-[color=yellow]SOPHIA 0[/color] is ready for action.
+[color=yellow]SOPHIA 0[/color] is ready for deployment.
 
-Spatial tele-relocation network
+Spatial teleportation network
 installed in targeted regions.
 
 - Board [color=yellow]SOPHIA 0[/color] -
@@ -128,7 +129,7 @@ installed in targeted regions.
 
 Earth's hopes rest with you.
 Good luck, pilot."
-typing_chars_per_second = 40.0
+autoplay = false
 bgm_fade_out_time = 0.0
 bgm_fade_in_time = 0.0
 

@@ -1,6 +1,11 @@
 extends Node2D
 
-func _process(_delta: float) -> void:
+var _go_to_level_timeout := 0.0
+
+func _process(delta: float) -> void:
+	if _go_to_level_timeout > 0:
+		_go_to_level_timeout -= delta
+	
 	if Input.is_action_just_pressed("nuke"):
 		for en in get_tree().get_nodes_in_group(GroupNames.ENEMY):
 			var lc: LifeComponent = (en as Enemy).get_component(LifeComponent)
@@ -21,6 +26,21 @@ func _process(_delta: float) -> void:
 		SignalBus.emit_credits_picked_up(99999999999)
 	elif Input.is_action_just_pressed("launch"):
 		_launch()
+	elif Input.is_action_just_pressed("go_to_level"):
+		_go_to_level_timeout = 1.0
+
+func _input(event: InputEvent) -> void:
+	if _go_to_level_timeout <= 0:
+		return
+	
+	if event is InputEventKey:
+		var e: InputEventKey = event
+		if e.pressed:
+			var lvl_num := e.as_text_keycode()
+			if lvl_num.is_valid_int():
+				var num := lvl_num.to_int()
+				GameManager.go_to_level(num)
+			
 
 func _launch() -> void:
 	var scene_file: PackedScene = load("res://scenes/rocket_launch_anim/rocket_launch_animation.tscn")

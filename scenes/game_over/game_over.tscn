@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://csulh3wv2wpny"]
 
 [ext_resource type="Script" uid="uid://br77vypabq8cl" path="res://scenes/game_over/game_over.gd" id="1_3j056"]
-[ext_resource type="FontFile" uid="uid://6kmtx2n78kyo" path="res://art/fonts/ka1.ttf" id="2_sseyc"]
 [ext_resource type="AudioStream" uid="uid://batinbrhxibmj" path="res://audio/bgm/after_the_rain.mp3" id="2_vtso4"]
-[ext_resource type="FontFile" uid="uid://ftg0yylbljr5" path="res://art/fonts/joystix.monospace.otf" id="3_anb0t"]
+[ext_resource type="Theme" uid="uid://blgn547iw1k7d" path="res://themes/main_theme.tres" id="3_vtso4"]
+[ext_resource type="PackedScene" uid="uid://b1sxbmhh6261m" path="res://scenes/input_prompt/input_prompt.tscn" id="4_vtso4"]
 
 [node name="GameOver" type="CanvasLayer" unique_id=1120379295]
 process_mode = 3
@@ -31,8 +31,8 @@ theme_override_constants/separation = 32
 
 [node name="GameOver" type="Label" parent="CenterContainer/VBoxContainer" unique_id=120874698]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_sseyc")
-theme_override_font_sizes/font_size = 128
+theme = ExtResource("3_vtso4")
+theme_type_variation = &"TitleLabel"
 text = "Game Over"
 horizontal_alignment = 1
 
@@ -40,15 +40,26 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1800, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_anb0t")
-theme_override_font_sizes/font_size = 42
+theme = ExtResource("3_vtso4")
+theme_override_font_sizes/font_size = 28
 text = "GameOverReason"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="PressToQuit" type="Label" parent="CenterContainer/VBoxContainer" unique_id=561678754]
+[node name="Control" type="Control" parent="CenterContainer/VBoxContainer" unique_id=805471515]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_anb0t")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=108304766]
+layout_mode = 2
+alignment = 1
+
+[node name="InputPromptLabel" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=50002874 instance=ExtResource("4_vtso4")]
+layout_mode = 2
+
+[node name="Try Again" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=561678754]
+layout_mode = 2
+theme = ExtResource("3_vtso4")
 theme_override_font_sizes/font_size = 26
-text = "Press 'F' to quit"
+text = "Try Again"
 horizontal_alignment = 1

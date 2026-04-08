@@ -8,10 +8,10 @@
 [ext_resource type="Script" uid="uid://bia4gleis3x01" path="res://scenes/level_holder.gd" id="7_ioxky"]
 [ext_resource type="PackedScene" uid="uid://iqoyhfigpopi" path="res://scenes/effects/teleport_animation.tscn" id="8_o11bu"]
 [ext_resource type="PackedScene" uid="uid://c2ejscy1w7qsh" path="res://scenes/ui/gameplay_ui/gameplay_ui.tscn" id="9_ivkc4"]
-[ext_resource type="PackedScene" uid="uid://b4i7li1ujm3os" path="res://scenes/sfx_player/sfx_player.tscn" id="11_wvf2m"]
 [ext_resource type="PackedScene" uid="uid://coa4jrtx5c26o" path="res://scenes/towers/anti_air_tower_battery.tscn" id="12_55ttk"]
 
 [node name="InvadersLevels" type="Node2D" unique_id=1327851371]
+texture_filter = 1
 
 [node name="Starfield" parent="." unique_id=2061530491 instance=ExtResource("2_8v7q3")]
 star_count = 2000
@@ -42,6 +42,7 @@ position = Vector2(938, 980)
 
 [node name="LevelHolder" type="Node2D" parent="." unique_id=1108014533]
 unique_name_in_owner = true
+texture_filter = 1
 script = ExtResource("7_ioxky")
 metadata/_edit_lock_ = true
 
@@ -50,12 +51,6 @@ visible = false
 metadata/_edit_lock_ = true
 
 [node name="GameplayUI" parent="." unique_id=1460615082 instance=ExtResource("9_ivkc4")]
-
-[node name="GameSFXPlayer" parent="." unique_id=405014005 instance=ExtResource("11_wvf2m")]
-
-[node name="SystemSFXPlayer" parent="." unique_id=2072273197 instance=ExtResource("11_wvf2m")]
-sfx_player_type = 1
-channels = 3
 
 [node name="AntiAirTowerBattery" parent="." unique_id=1385625833 instance=ExtResource("12_55ttk")]
 position = Vector2(960, 1012)

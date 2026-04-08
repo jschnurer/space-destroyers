@@ -36,6 +36,7 @@ func _load_initial_level() -> void:
 	if next_level:
 		level_holder.add_child(next_level.instantiate())
 	
+	SignalBus.emit_play_bgm(load("res://audio/bgm/moonlight.mp3") as AudioStream)
 	SignalBus.emit_fade_in_screen()
 	await SignalBus.fade_in_screen_complete
 	
@@ -96,6 +97,12 @@ func load_next_level() -> void:
 	
 	get_tree().paused = false
 	SignalBus.emit_new_level_loaded()
+
+## Jumps to specified level.
+func go_to_level(lvl_num: int) -> void:
+	# Decrement one because load_next_level increments.
+	game_state.current_level = lvl_num - 1
+	load_next_level()
 
 func _on_credits_picked_up(amt: float) -> void:
 	game_state.credits += (amt * get_stat_value(Enums.PlayerStats.CREDIT_MULTIPLIER))

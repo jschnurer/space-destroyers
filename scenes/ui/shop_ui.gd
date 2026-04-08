@@ -5,11 +5,13 @@ extends CanvasLayer
 
 @onready var purchase_description: Label = %PurchaseDescription
 @onready var stats_ui: Control = %StatsUI
+@onready var button_container: GridContainer = %ButtonContainer
 
 var _input_enabled := false
 
 func _ready() -> void:
 	visible = false
+	GameManager.credits_changed.connect(_on_credits_changed.unbind(1))
 	SignalBus.open_shop.connect(_on_open_shop)
 	_setup_hover_events()
 
@@ -17,7 +19,7 @@ func _process(_delta: float) -> void:
 	if !_input_enabled:
 		return
 	
-	if Input.is_action_just_pressed("shop"):
+	if Input.is_action_just_pressed("ui_cancel"):
 		_toggle_shop(false)
 
 func _toggle_shop(p_visible: bool) -> void:
@@ -44,6 +46,8 @@ func _fade_in_shop() -> void:
 	await SignalBus.fade_in_screen_complete
 	
 	_toggle_input(true)
+	if button_container.get_child_count() > 0:
+		(button_container.get_child(0) as Button).grab_focus()
 
 func _fade_out_shop() -> void:
 	SignalBus.emit_toggle_mouse_visibility(false)
@@ -73,9 +77,12 @@ func _setup_hover_events() -> void:
 			var c := button as ShopButton
 			if c.is_player_stat:
 				c.mouse_entered.connect(_on_button_hovered.bind(GameManager.get_stat(c.player_stat).description))
+				c.focus_entered.connect(_on_button_hovered.bind(GameManager.get_stat(c.player_stat).description))
 			elif c.is_player_upgrade:
 				c.mouse_entered.connect(_on_button_hovered.bind(GameManager.get_upgrade(c.player_upgrade).description))
+				c.focus_entered.connect(_on_button_hovered.bind(GameManager.get_upgrade(c.player_upgrade).description))
 			c.mouse_exited.connect(_on_button_exited)
+			c.focus_exited.connect(_on_button_exited)
 
 func _on_button_hovered(text: String) -> void:
 	purchase_description.text = text
@@ -88,3 +95,10 @@ func _toggle_shop_music(play_shop_bgm: bool) -> void:
 
 func _on_button_pressed() -> void:
 	_toggle_shop(false)
+
+func _on_credits_changed() -> void:
+	if visible:
+		var button_nodes := get_tree().get_nodes_in_group("SHOP_BUTTON")
+		for button in button_nodes:
+			if button is ShopButton:
+				(button as ShopButton).update_label_and_cost()

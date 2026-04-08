@@ -1,7 +1,7 @@
 extends Node
 class_name SfxPlayer
 
-@export var sfx_player_type: SfxType
+@export var sfx_player_type: SfxType = SfxType.SYSTEM
 @export var channels := 8
 
 var audio_players: Array[AudioStreamPlayer]

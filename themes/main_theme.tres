@@ -14,6 +14,8 @@ bg_color = Color(0, 0.14901961, 0, 1)
 
 [resource]
 Control/fonts/font = ExtResource("1_vu6l5")
+MissionText/base_type = &"RichTextLabel"
+MissionText/constants/outline_size = 24
 RichTextLabel/fonts/bold_font = ExtResource("1_vu6l5")
 RichTextLabel/fonts/bold_italics_font = ExtResource("1_vu6l5")
 RichTextLabel/fonts/italics_font = ExtResource("1_vu6l5")
@@ -33,5 +35,7 @@ StatLabel/fonts/font = ExtResource("2_vu6l5")
 StatLabelValue/base_type = &"Label"
 StatLabelValue/font_sizes/font_size = 26
 TitleLabel/base_type = &"Label"
+TitleLabel/constants/outline_size = 32
+TitleLabel/constants/shadow_outline_size = 32
 TitleLabel/font_sizes/font_size = 64
 TitleLabel/fonts/font = ExtResource("2_vu6l5")

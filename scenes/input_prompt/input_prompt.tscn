@@ -12,6 +12,7 @@
 offset_right = 64.0
 offset_bottom = 64.0
 texture = ExtResource("6_k7qsd")
+expand_mode = 3
 stretch_mode = 5
 script = ExtResource("2_3dag5")
 controller_images = Dictionary[int, Texture2D]({

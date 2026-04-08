@@ -53,7 +53,7 @@ func emit_fade_out_bgm(fade_duration: float) -> void:
 	fade_out_bgm.emit(fade_duration)
 
 signal play_sfx(stream: AudioStream, volume_linear: float, pitch_scale: float, sfx_type: SfxPlayer.SfxType)
-func emit_play_sfx(stream: AudioStream, volume_linear: float = 1.0, pitch_scale: float = 1.0, sfx_type: SfxPlayer.SfxType = SfxPlayer.SfxType.GAME) -> void:
+func emit_play_sfx(stream: AudioStream, volume_linear: float = 1.0, pitch_scale: float = 1.0, sfx_type: SfxPlayer.SfxType = SfxPlayer.SfxType.SYSTEM) -> void:
 	play_sfx.emit(stream, volume_linear, pitch_scale, sfx_type)
 
 signal stop_sfx(type: SfxPlayer.SfxType)

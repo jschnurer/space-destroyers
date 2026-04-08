@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://qqwnyc0intca"]
 
 [ext_resource type="Script" uid="uid://b36gwpw2ne1a6" path="res://scenes/ui/shop_ui.gd" id="1_nwxdi"]
-[ext_resource type="FontFile" uid="uid://ftg0yylbljr5" path="res://art/fonts/joystix.monospace.otf" id="2_avfhx"]
 [ext_resource type="AudioStream" uid="uid://c5m0qfva2s0di" path="res://audio/bgm/megamix.mp3" id="2_sawmr"]
 [ext_resource type="PackedScene" uid="uid://tdtvpwguick7" path="res://scenes/ui/shop_button.tscn" id="3_a65e2"]
 [ext_resource type="AudioStream" uid="uid://cdnc4pgyphaxp" path="res://audio/bgm/moonlight.mp3" id="3_se4pl"]
@@ -9,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://b1sxbmhh6261m" path="res://scenes/input_prompt/input_prompt.tscn" id="7_30c1b"]
 [ext_resource type="PackedScene" uid="uid://dvc1ybiwavk54" path="res://scenes/ui/stats_ui.tscn" id="7_se4pl"]
 [ext_resource type="Texture2D" uid="uid://c5em4qbjr2anu" path="res://art/input/kb/keyboard_escape.png" id="8_fbehl"]
-[ext_resource type="PackedScene" uid="uid://sxhe04dawedo" path="res://scenes/ui/mouse_visibility_manager/mouse_visibility_manager.tscn" id="10_fbehl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ygcrn"]
 bg_color = Color(0, 0, 0, 0)
@@ -75,6 +73,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="ButtonContainer" type="GridContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1787940483]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/h_separation = 12
 theme_override_constants/v_separation = 12
@@ -174,17 +173,6 @@ btn_text = "Anti-Air Tower"
 is_player_upgrade = true
 player_upgrade = 4
 
-[node name="Barricade" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=813422252 groups=["SHOP_BUTTON"]]
-visible = false
-custom_minimum_size = Vector2(350, 76)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_fonts/font = ExtResource("2_avfhx")
-theme_override_font_sizes/font_size = 28
-text = "+Barricade
-[$80]"
-
 [node name="Flak Cannon" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=925314407 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
 layout_mode = 2
 btn_text = "Flak Cannon"
@@ -209,15 +197,9 @@ layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button" unique_id=89439313]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -142.0
-offset_top = -32.0
-offset_right = 142.0
-offset_bottom = 32.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -237,7 +219,5 @@ horizontal_alignment = 1
 [node name="StatsUI" parent="." unique_id=1966520918 instance=ExtResource("7_se4pl")]
 unique_name_in_owner = true
 visible = false
-
-[node name="MouseVisibilityManager" parent="." unique_id=1831252566 instance=ExtResource("10_fbehl")]
 
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

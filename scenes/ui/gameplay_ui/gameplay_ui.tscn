@@ -55,29 +55,39 @@ theme_override_font_sizes/font_size = 38
 text = "1"
 vertical_alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/GridContainer" unique_id=1474739705]
+[node name="Control" type="Control" parent="MarginContainer/GridContainer" unique_id=227343680]
+custom_minimum_size = Vector2(629, 43)
 layout_mode = 2
+
+[node name="ControlsContainer" type="HBoxContainer" parent="MarginContainer/GridContainer/Control" unique_id=1474739705]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="MoveInputIcon" parent="MarginContainer/GridContainer/HBoxContainer2" unique_id=50002874 instance=ExtResource("4_smd1y")]
+[node name="MoveInputIcon" parent="MarginContainer/GridContainer/Control/ControlsContainer" unique_id=50002874 instance=ExtResource("4_smd1y")]
 layout_mode = 2
 texture = ExtResource("5_ywcpa")
 expand_mode = 3
 action = 2
 
-[node name="MoveText" type="Label" parent="MarginContainer/GridContainer/HBoxContainer2" unique_id=645831774]
+[node name="MoveText" type="Label" parent="MarginContainer/GridContainer/Control/ControlsContainer" unique_id=645831774]
 layout_mode = 2
 theme = ExtResource("3_smd1y")
 theme_override_font_sizes/font_size = 38
 text = "MOVE "
 vertical_alignment = 1
 
-[node name="ShootInputIcon" parent="MarginContainer/GridContainer/HBoxContainer2" unique_id=2076291069 instance=ExtResource("4_smd1y")]
+[node name="ShootInputIcon" parent="MarginContainer/GridContainer/Control/ControlsContainer" unique_id=2076291069 instance=ExtResource("4_smd1y")]
 layout_mode = 2
 expand_mode = 3
 
-[node name="ShootText" type="Label" parent="MarginContainer/GridContainer/HBoxContainer2" unique_id=853124041]
+[node name="ShootText" type="Label" parent="MarginContainer/GridContainer/Control/ControlsContainer" unique_id=853124041]
 layout_mode = 2
 theme = ExtResource("3_smd1y")
 theme_override_font_sizes/font_size = 38

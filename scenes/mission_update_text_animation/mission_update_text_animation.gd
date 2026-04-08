@@ -1,9 +1,19 @@
 extends CanvasLayer
 class_name MissionUpdateTextAnimation
 
-@export var autoplay := true
+@export var title_text := "MISSION UPDATE"
 @export_multiline() var mission_text: String
-@export var typing_chars_per_second := 10.0
+
+@export_group("Options")
+## Start playing immediately upon ready?
+@export var autoplay := true
+## Show confirm prompt after text, requiring player to press button.
+@export var require_player_confirm := true
+## If require_player_confirm is false, do not show confirm prompt after text, automatically
+## continue after this amount of time.
+@export var auto_confirm_time: float
+## How many text characters appear per second.
+@export var typing_chars_per_second := 35.0
 
 @export_group("Audio")
 @export var bgm: AudioStream
@@ -14,10 +24,10 @@ class_name MissionUpdateTextAnimation
 
 @onready var title: Label = %Title
 @onready var mission_text_label: RichTextLabel = %MissionText
-@onready var continue_prompt: TextureRect = %ContinuePrompt
 @onready var klaxon_player: AudioStreamPlayer2D = %KlaxonPlayer
 @onready var prompt_blink_timer: Timer = %PromptBlinkTimer
 @onready var typing_audio_player: AudioStreamPlayer2D = %TypingAudioPlayer
+@onready var continue_prompt: HBoxContainer = %ContinuePrompt
 
 signal player_dismissed
 
@@ -32,12 +42,13 @@ enum Mode {
 
 var _mode := Mode.NONE
 var _mission_text_length := 0
+var _mission_text_pauses: Array[MessagePause] = []
 var _visible_chars := 0.0
 var _title_blink_tween: Tween
+var _typing_is_paused := false
 
 func _ready() -> void:
-	mission_text_label.text = mission_text
-	_mission_text_length = _get_text_length(mission_text)
+	_parse_text()
 	if autoplay:
 		play()
 
@@ -63,13 +74,29 @@ func _process(delta: float) -> void:
 		typing_audio_player.stop()
 		_show_continue_prompt()
 	elif _mode == Mode.PROMPT and Input.is_action_just_pressed("ui_accept"):
+		_mode = Mode.DONE
 		player_dismissed.emit()
 	
 	if _mode == Mode.TYPING:
-		_visible_chars += typing_chars_per_second * delta
-		mission_text_label.visible_characters = floori(_visible_chars)
+		if !_typing_is_paused:
+			_visible_chars += typing_chars_per_second * delta
+			mission_text_label.visible_characters = floori(_visible_chars)
+			
+			# Check for and handle pauses.
+			if _mission_text_pauses.size() > 0 \
+				and _mission_text_pauses[0].index == mission_text_label.visible_characters - 1:
+				_pause_typing(_mission_text_pauses[0].duration)
+				_mission_text_pauses.pop_front()
+		
 		if mission_text_label.visible_characters >= _mission_text_length:
 			_pause_before_prompt()
+
+func _pause_typing(duration: float) -> void:
+	typing_audio_player.stop()
+	_typing_is_paused = true
+	await get_tree().create_timer(duration).timeout
+	typing_audio_player.play()
+	_typing_is_paused = false
 
 func _show_continue_prompt() -> void:
 	_mode = Mode.PROMPT
@@ -112,11 +139,61 @@ func _type_mission_text() -> void:
 func _pause_before_prompt() -> void:
 	_mode = Mode.PAUSE_BEFORE_PROMPT
 	typing_audio_player.stop()
-	await get_tree().create_timer(1.0).timeout
-	_show_continue_prompt()
+	
+	if require_player_confirm:
+		await get_tree().create_timer(1.0).timeout
+		_show_continue_prompt()
+	else:
+		_mode = Mode.DONE
+		if auto_confirm_time > 0:
+			await get_tree().create_timer(auto_confirm_time).timeout
+		player_dismissed.emit()
 
 func _get_text_length(text: String) -> int:
 	var regex := RegEx.new()
 	regex.compile("\\[.*?\\]") 
 	var plain_text := regex.sub(text, "", true)
 	return plain_text.length()
+
+func _parse_text() -> void:
+	title.text = title_text
+	mission_text_label.visible_characters = 0
+	_parse_mission_text()
+	_mission_text_length = _get_text_length(mission_text)
+
+func _parse_mission_text() -> void:
+	var regex := RegEx.new()
+	# Find pause tags.
+	regex.compile("\\[(?:p|pause)=(\\d+(?:\\.\\d+)?)\\]")
+
+	var results: Array[MessagePause] = []
+	var clean_text := mission_text
+	var position_offset := 0
+
+	var matches := regex.search_all(mission_text)
+
+	for m in matches:
+		var full_tag := m.get_string() # Entire pause tag
+		var value_str := m.get_string(1) # Just the duration inside
+		
+		# Calculate the position in the "clean" string
+		# Original start position minus how many characters we've already deleted
+		var clean_index := m.get_start() - position_offset
+		
+		results.append(MessagePause.new(clean_index, value_str.to_float()))
+		
+		# Since tag is stripped from message, add its length to the index for later tags.
+		position_offset += full_tag.length()
+	
+	# Strip out all pause tags
+	clean_text = regex.sub(mission_text, "", true)
+	mission_text_label.text = clean_text
+	_mission_text_pauses = results
+
+class MessagePause:
+	var index: int
+	var duration: float
+	
+	func _init(p_index: int, p_duration: float) -> void:
+		index = p_index
+		duration = p_duration

@@ -1,7 +1,13 @@
 extends Node
+class_name LevelManager
 
 @export var enemy_start_speed := 1.0
 @export var enemy_max_speed := 5.0
+
+## Automatically start teleporting and then load next level when all enemies are destroyed.
+@export var auto_load_next_level := true
+
+signal all_enemies_destroyed
 
 var _enemy_count := 1
 var _max_enemies := 1
@@ -35,10 +41,13 @@ func _on_enemy_hit_screen_edge(edge: Enums.ScreenEdges) -> void:
 func _on_enemy_died(_enemy: Node2D) -> void:
 	# Subtract one enemy, calculate new enemy speed, and update all enemies' speeds.
 	_enemy_count -= 1
-	var pct := 1.0 - float(_enemy_count) / float(_max_enemies)
-	_enemy_speed = lerp(enemy_start_speed, enemy_max_speed, pct)
-	SignalBus.emit_enemy_speed_change(_enemy_speed)
 	
-	# All enemies slain. Start teleporting to next level!
-	if _enemy_count == 0:
-		SignalBus.emit_start_teleporting()
+	if _enemy_count > 0:
+		var pct := 1.0 - float(_enemy_count) / float(_max_enemies)
+		_enemy_speed = lerp(enemy_start_speed, enemy_max_speed, pct)
+		SignalBus.emit_enemy_speed_change(_enemy_speed)
+	elif _enemy_count == 0:
+		all_enemies_destroyed.emit()
+		if auto_load_next_level:
+			# All enemies slain. Start teleporting to next level!
+			SignalBus.emit_start_teleporting()

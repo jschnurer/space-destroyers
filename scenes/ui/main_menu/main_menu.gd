@@ -5,10 +5,12 @@ class_name MainMenu
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var mission_update_text_animation: MissionUpdateTextAnimation = $MissionUpdateTextAnimation
-@onready var start_game: Button = $"UI/VBoxContainer/CenterContainer/VBoxContainer/Start Game"
+@onready var start_game: Button = %"Start Game"
 
 func _ready() -> void:
+	SignalBus.emit_toggle_mouse_visibility(true)
 	SignalBus.emit_play_bgm(bgm)
+	start_game.grab_focus()
 
 func _on_start_game_pressed() -> void:
 	start_game.disabled = true

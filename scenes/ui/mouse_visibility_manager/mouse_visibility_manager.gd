@@ -1,7 +1,7 @@
 extends Node
 class_name MouseVisibilityManager
 
-var _mouse_should_be_visible := true
+var _mouse_should_be_visible := false
 var _is_using_controller := false
 
 func _ready() -> void:

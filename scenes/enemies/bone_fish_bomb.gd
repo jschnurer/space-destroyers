@@ -20,6 +20,7 @@ func _on_contact() -> void:
 
 func _spawn_fire(impact_point: Vector2) -> void:
 	var bomb_fire: BombFire = bomb_fire_scene.instantiate()
+	bomb_fire.scale = scale
 	bomb_fire.damage = bomb_fire_damage
 	bomb_fire.global_position = impact_point
 	Utilities.add_child_to_level(bomb_fire, true)
