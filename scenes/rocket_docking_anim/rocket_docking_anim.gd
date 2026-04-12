@@ -59,9 +59,10 @@ func _animate_rocket_arriving() -> void:
 		.tween_property(anim_position, "position", Vector2(anim_position.position.x, 700), dock_duration)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	
-	tween\
-		.tween_property(starfield, "animate_speed", max_star_speed, dock_duration / 2.0)\
-		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	if starfield:
+		tween\
+			.tween_property(starfield, "animate_speed", max_star_speed, dock_duration / 2.0)\
+			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 	tween.set_parallel(false)
 	tween.tween_callback(func() -> void: _animate_gleam())
 
@@ -78,11 +79,12 @@ func _animate_gleam() -> void:
 	SignalBus.emit_play_sfx(jet_burst)
 	get_tree().paused = false
 	
-	# Animate star speed!
-	var tween := create_tween()
-	tween\
-		.tween_property(starfield, "animate_speed", cruise_star_speed, 2.5)\
-		.set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+	if starfield:
+		# Animate star speed!
+		var tween := create_tween()
+		tween\
+			.tween_property(starfield, "animate_speed", cruise_star_speed, 2.5)\
+			.set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 
 func _animate_jets() -> void:
 	_jets_activated = true

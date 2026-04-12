@@ -30,7 +30,7 @@ func _ready() -> void:
 		e.life = roundi((e.life + e.scale.x) * pow(e.scale.x, 1.225))
 		e.credit_value = roundi((e.credit_value + e.scale.x) * pow(e.scale.x, 1.10))
 		# Derive shield value from life.
-		e.shield_life = floori(e.life * pow(3, 1.01))
+		e.shield_life = floori(e.life * 6.5)
 	
 	SignalBus.enemy_hit_screen_edge.connect(_on_enemy_hit_screen_edge)
 	SignalBus.enemy_died.connect(_on_enemy_died)

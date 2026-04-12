@@ -33,7 +33,7 @@ credit_value = 3.25
 [node name="Components" type="Node2D" parent="." unique_id=81117777]
 
 [node name="LifeComponent" parent="Components" unique_id=759486464 instance=ExtResource("4_v6001")]
-life = 1.0
+life = 7.0
 
 [node name="DanceComponent" parent="Components" unique_id=709328576 node_paths=PackedStringArray("sprite") instance=ExtResource("2_d7wub")]
 sprite = NodePath("../..")
