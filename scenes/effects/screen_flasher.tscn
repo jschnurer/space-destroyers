@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bub0j62idf5lp"]
+
+[ext_resource type="Script" uid="uid://bllsaoanr4xyq" path="res://scenes/effects/screen_flasher.gd" id="1_kbg7y"]
+
+[node name="ScreenFlasher" type="CanvasLayer" unique_id=259473987]
+process_mode = 3
+layer = 1100
+script = ExtResource("1_kbg7y")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=824031871]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)

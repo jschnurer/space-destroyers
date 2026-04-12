@@ -8,7 +8,7 @@ var detection_time := 0.0
 @onready var static_shape: CollisionShape2D = %StaticShape
 
 func _ready() -> void:
-	GameManager.upgrade_changed.connect(_on_upgrade_changed.unbind(1))
+	Game.upgrade_changed.connect(_on_upgrade_changed.unbind(1))
 	_update_static_shape()
 
 func _process(delta: float) -> void:
@@ -27,6 +27,6 @@ func _on_upgrade_changed() -> void:
 
 func _update_static_shape() -> void:
 	if edge == Enums.ScreenEdges.LEFT:
-		static_shape.disabled = !GameManager.has_upgrade(Enums.PlayerUpgrades.RETAINING_WALL_LEFT)
+		static_shape.disabled = !Game.has_upgrade(Enums.PlayerUpgrades.RETAINING_WALL_LEFT)
 	elif edge == Enums.ScreenEdges.RIGHT:
-		static_shape.disabled = !GameManager.has_upgrade(Enums.PlayerUpgrades.RETAINING_WALL_RIGHT)
+		static_shape.disabled = !Game.has_upgrade(Enums.PlayerUpgrades.RETAINING_WALL_RIGHT)

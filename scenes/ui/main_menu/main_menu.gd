@@ -1,8 +1,10 @@
 extends Control
 class_name MainMenu
 
-@export var bgm: AudioStream
+@export var menu_bgm: AudioStream
 @export var scroll_animation_duration := 4.0
+@export var main_bgm: AudioStream
+@export var invaders_levels: PackedScene
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var mission_update_text_animation: MissionUpdateTextAnimation = $MissionUpdateTextAnimation
@@ -13,7 +15,7 @@ func _ready() -> void:
 	SignalBus.emit_fade_out_screen(true)
 	SignalBus.emit_fade_in_screen()
 	SignalBus.emit_toggle_mouse_visibility(true)
-	SignalBus.emit_play_bgm(bgm)
+	SignalBus.emit_play_bgm(menu_bgm)
 	start_game.grab_focus()
 
 func _on_start_game_pressed() -> void:
@@ -36,8 +38,7 @@ func _on_mission_update_text_animation_player_dismissed() -> void:
 	await tween.finished
 	
 	# Load next scene 3 screens below.
-	var new_scene_file: PackedScene = load("res://scenes/invaders_levels.tscn")
-	var new_scene: Node2D = new_scene_file.instantiate()
+	var new_scene: Node2D = invaders_levels.instantiate()
 	new_scene.global_position.y = 1080*3
 	
 	var gameplay_ui: CanvasLayer = new_scene.find_child("GameplayUI")
@@ -46,10 +47,10 @@ func _on_mission_update_text_animation_player_dismissed() -> void:
 	get_tree().root.add_child(new_scene)
 
 	# Load level 1.
-	GameManager.load_initial_level()
+	Game.load_initial_level()
 	
 	# Start some background music.
-	SignalBus.emit_play_bgm(load("res://audio/bgm/moonlight.mp3") as AudioStream, 1, 1, scroll_animation_duration / 2.0, scroll_animation_duration / 2.0)
+	SignalBus.emit_play_bgm(main_bgm as AudioStream, 1, 1, scroll_animation_duration / 2.0, scroll_animation_duration / 2.0)
 	_scroll_screens(new_scene, gameplay_ui)
 
 func _scroll_screens(new_scene: Node2D, gameplay_ui: CanvasLayer) -> void:

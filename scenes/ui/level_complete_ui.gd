@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 	if _time_remaining <= 0:
 		_is_counting_down = false
 		visible = false
-		GameManager.load_next_level()
+		Game.load_next_level()
 	else:
 		_update_label()
 

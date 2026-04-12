@@ -6,7 +6,7 @@ var _laser_offset := 0.0
 var _shader_mat: ShaderMaterial
 
 func _ready() -> void:
-	GameManager.upgrade_changed.connect(_on_upgrade_changed.unbind(1))
+	Game.upgrade_changed.connect(_on_upgrade_changed.unbind(1))
 	
 	_update_visibility()
 	
@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 	_shader_mat.set_shader_parameter("scroll_offset", _laser_offset)
 
 func _update_visibility() -> void:
-	visible = GameManager.has_upgrade(Enums.PlayerUpgrades.LASER_SIGHT)
+	visible = Game.has_upgrade(Enums.PlayerUpgrades.LASER_SIGHT)
 
 func _on_upgrade_changed() -> void:
 	_update_visibility()

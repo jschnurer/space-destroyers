@@ -11,5 +11,5 @@ value_curve_type = 1
 const_start_value = 32.0
 approaches_const = 250.0
 base_cost = 20.0
-power = 1.5
+power = 1.55
 metadata/_custom_type_script = "uid://rbsniqghf2h2"

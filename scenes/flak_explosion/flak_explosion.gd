@@ -7,14 +7,14 @@ class_name FlakExplosion
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var flak_level := GameManager.get_upgrade_level(Enums.PlayerUpgrades.FLAK_CANNON)
+	var flak_level := Game.get_upgrade_level(Enums.PlayerUpgrades.FLAK_CANNON)
 	
 	# If this scene was instantiated even though the player has no flak cannon, bail out.
 	if flak_level == 0:
 		return
 	
 	# Bullet damage is 10% the player's damage + 5% per flak level (max player damage)
-	var player_dmg := GameManager.get_stat_value(Enums.PlayerStats.DAMAGE)
+	var player_dmg := Game.get_stat_value(Enums.PlayerStats.DAMAGE)
 	var bullet_dmg := clampf((0.10 + flak_level * 0.05) * player_dmg, 0.001, player_dmg)
 	
 	# Spawn half the number of bullets as the cannon level (min 1, max 10) + 2.

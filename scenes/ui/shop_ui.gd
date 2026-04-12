@@ -11,7 +11,7 @@ var _input_enabled := false
 
 func _ready() -> void:
 	visible = false
-	GameManager.credits_changed.connect(_on_credits_changed.unbind(1))
+	Game.credits_changed.connect(_on_credits_changed.unbind(1))
 	SignalBus.open_shop.connect(_on_open_shop)
 	_setup_hover_events()
 
@@ -76,11 +76,11 @@ func _setup_hover_events() -> void:
 		if button is ShopButton:
 			var c := button as ShopButton
 			if c.is_player_stat:
-				c.mouse_entered.connect(_on_button_hovered.bind(GameManager.get_stat(c.player_stat).description))
-				c.focus_entered.connect(_on_button_hovered.bind(GameManager.get_stat(c.player_stat).description))
+				c.mouse_entered.connect(_on_button_hovered.bind(Game.get_stat(c.player_stat).description))
+				c.focus_entered.connect(_on_button_hovered.bind(Game.get_stat(c.player_stat).description))
 			elif c.is_player_upgrade:
-				c.mouse_entered.connect(_on_button_hovered.bind(GameManager.get_upgrade(c.player_upgrade).description))
-				c.focus_entered.connect(_on_button_hovered.bind(GameManager.get_upgrade(c.player_upgrade).description))
+				c.mouse_entered.connect(_on_button_hovered.bind(Game.get_upgrade(c.player_upgrade).description))
+				c.focus_entered.connect(_on_button_hovered.bind(Game.get_upgrade(c.player_upgrade).description))
 			c.mouse_exited.connect(_on_button_exited)
 			c.focus_exited.connect(_on_button_exited)
 

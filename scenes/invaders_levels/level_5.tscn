@@ -1,0 +1,1534 @@
+[gd_scene format=3 uid="uid://bhi07h75dgvjc"]
+
+[ext_resource type="PackedScene" uid="uid://ccxyg3h1o17tw" path="res://scenes/enemies/crab.tscn" id="1_845dy"]
+[ext_resource type="PackedScene" uid="uid://cwc4lh0bobfkx" path="res://scenes/level_manager/level_manager.tscn" id="2_dswqx"]
+[ext_resource type="PackedScene" uid="uid://cgg34r2ir4fn3" path="res://scenes/level_geom/enemy_formation.tscn" id="2_fi56y"]
+[ext_resource type="Shader" uid="uid://dairmqngktiej" path="res://shaders/enemy_shader.tres" id="3_fsnos"]
+[ext_resource type="PackedScene" uid="uid://uu3ea6khn2cp" path="res://scenes/enemies/octopus.tscn" id="5_vvoq0"]
+[ext_resource type="PackedScene" uid="uid://b0dhb2mqp17n6" path="res://scenes/enemies/bone_fish.tscn" id="6_tqnj0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_geh51"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_245sn"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pqeta"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xsq7a"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5pxv7"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u3ha2"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bjhd6"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d5liq"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ncegw"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g3isj"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_535ou"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_reihr"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ltr86"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nyr4u"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sdnu3"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wdsb5"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sdrju"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sl8kd"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vdx6g"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l7y08"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7t0i0"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ms0b"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v8tus"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6yab0"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oxaq7"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cduj7"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_05icb"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mxgf7"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4k7ps"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7nfgr"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oqp2i"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_87ld0"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sbj5n"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x8egv"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k8ph3"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uk2fk"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g6ov4"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_stfqs"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x63k7"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_28dfn"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_px7px"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7lp78"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qae6y"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5ul1e"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c6pky"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_etany"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uorvn"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nrhuy"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tmb6m"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5mfvk"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7qpb4"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k7smw"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4nkoa"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_becvf"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bjkmt"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c4ei8"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mde8d"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g2ulf"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hiyu3"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_il816"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lkevb"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l3tbr"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m7vbf"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eqa8i"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hxfhi"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a1o15"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8w5pr"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mbikn"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xfj8r"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jnntg"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n153g"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_enylb"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_trvkf"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rn2qp"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pe7yq"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tak2s"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rft27"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eob0k"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uowip"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eu2ij"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rofrx"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ijgc"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ckc4d"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_47pbx"]
+resource_local_to_scene = true
+shader = ExtResource("3_fsnos")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[node name="Level_5" type="Node2D" unique_id=756359994 groups=["LEVEL_NODE"]]
+metadata/_edit_lock_ = true
+
+[node name="EnemyFormation" parent="." unique_id=965894497 instance=ExtResource("2_fi56y")]
+metadata/_edit_lock_ = true
+
+[node name="bone_fish3" parent="EnemyFormation" unique_id=823845708 instance=ExtResource("6_tqnj0")]
+material = SubResource("ShaderMaterial_geh51")
+position = Vector2(938.5, 44)
+frame = 0
+
+[node name="bone_fish6" parent="EnemyFormation" unique_id=783250537 instance=ExtResource("6_tqnj0")]
+material = SubResource("ShaderMaterial_245sn")
+position = Vector2(630.5, 44)
+frame = 0
+
+[node name="bone_fish7" parent="EnemyFormation" unique_id=1246853499 instance=ExtResource("6_tqnj0")]
+material = SubResource("ShaderMaterial_pqeta")
+position = Vector2(1246.5, 44)
+frame = 0
+
+[node name="Crab" parent="EnemyFormation" unique_id=639119212 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_xsq7a")
+position = Vector2(586, 264)
+
+[node name="Crab2" parent="EnemyFormation" unique_id=731981075 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_5pxv7")
+position = Vector2(674, 264)
+
+[node name="Crab3" parent="EnemyFormation" unique_id=1948669412 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_u3ha2")
+position = Vector2(762, 264)
+
+[node name="Crab4" parent="EnemyFormation" unique_id=191853676 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_bjhd6")
+position = Vector2(850, 264)
+
+[node name="Crab5" parent="EnemyFormation" unique_id=1662728205 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_d5liq")
+position = Vector2(938, 264)
+
+[node name="Crab6" parent="EnemyFormation" unique_id=319214099 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_ncegw")
+position = Vector2(1026, 264)
+
+[node name="Crab7" parent="EnemyFormation" unique_id=1316426311 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_g3isj")
+position = Vector2(1114, 264)
+
+[node name="Crab8" parent="EnemyFormation" unique_id=1534844197 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_535ou")
+position = Vector2(1202, 264)
+
+[node name="Crab9" parent="EnemyFormation" unique_id=347909387 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_reihr")
+position = Vector2(1291, 264)
+
+[node name="Crab10" parent="EnemyFormation" unique_id=1323990044 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_ltr86")
+position = Vector2(630.5, 308)
+
+[node name="Crab11" parent="EnemyFormation" unique_id=2042707741 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_nyr4u")
+position = Vector2(718.5, 308)
+
+[node name="Crab12" parent="EnemyFormation" unique_id=1268570387 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_sdnu3")
+position = Vector2(718.5, 220)
+
+[node name="Crab13" parent="EnemyFormation" unique_id=260875013 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_wdsb5")
+position = Vector2(1114.5, 616)
+
+[node name="Crab14" parent="EnemyFormation" unique_id=32189428 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_sdrju")
+position = Vector2(762.5, 616)
+
+[node name="Crab15" parent="EnemyFormation" unique_id=1043814448 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_sl8kd")
+position = Vector2(1158.5, 220)
+
+[node name="Crab16" parent="EnemyFormation" unique_id=778125190 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_vdx6g")
+position = Vector2(1158.5, 308)
+
+[node name="Crab17" parent="EnemyFormation" unique_id=233973458 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_l7y08")
+position = Vector2(1246.5, 308)
+
+[node name="Crab18" parent="EnemyFormation" unique_id=690392209 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_7t0i0")
+position = Vector2(586, 352)
+
+[node name="Crab19" parent="EnemyFormation" unique_id=39231210 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_0ms0b")
+position = Vector2(674, 352)
+
+[node name="Crab20" parent="EnemyFormation" unique_id=624584865 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_v8tus")
+position = Vector2(762, 352)
+
+[node name="Crab21" parent="EnemyFormation" unique_id=2122306486 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_6yab0")
+position = Vector2(850, 616)
+
+[node name="Crab22" parent="EnemyFormation" unique_id=1606758536 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_oxaq7")
+position = Vector2(938, 616)
+
+[node name="Crab23" parent="EnemyFormation" unique_id=1489545317 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_cduj7")
+position = Vector2(1026, 616)
+
+[node name="Crab24" parent="EnemyFormation" unique_id=468285124 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_05icb")
+position = Vector2(1114, 352)
+
+[node name="Crab25" parent="EnemyFormation" unique_id=298822165 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_mxgf7")
+position = Vector2(1202, 352)
+
+[node name="Crab26" parent="EnemyFormation" unique_id=2012626277 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_4k7ps")
+position = Vector2(1291, 352)
+
+[node name="Crab27" parent="EnemyFormation" unique_id=72945129 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_7nfgr")
+position = Vector2(630.5, 396)
+
+[node name="Crab28" parent="EnemyFormation" unique_id=1195334249 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_oqp2i")
+position = Vector2(718.5, 396)
+
+[node name="Crab29" parent="EnemyFormation" unique_id=74286071 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_87ld0")
+position = Vector2(806.5, 220)
+
+[node name="Crab30" parent="EnemyFormation" unique_id=1377081199 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_sbj5n")
+position = Vector2(894.5, 220)
+
+[node name="Crab31" parent="EnemyFormation" unique_id=1518670170 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_x8egv")
+position = Vector2(982.5, 220)
+
+[node name="Crab32" parent="EnemyFormation" unique_id=282507507 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_k8ph3")
+position = Vector2(1070.5, 220)
+
+[node name="Crab33" parent="EnemyFormation" unique_id=638830122 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_uk2fk")
+position = Vector2(1158.5, 396)
+
+[node name="Crab34" parent="EnemyFormation" unique_id=606031746 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_g6ov4")
+position = Vector2(1246.5, 396)
+
+[node name="Crab35" parent="EnemyFormation" unique_id=1356386397 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_stfqs")
+position = Vector2(586, 440)
+
+[node name="Crab69" parent="EnemyFormation" unique_id=1567926137 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_x63k7")
+position = Vector2(498, 352)
+
+[node name="Crab73" parent="EnemyFormation" unique_id=628089916 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_28dfn")
+position = Vector2(454, 396)
+
+[node name="Crab74" parent="EnemyFormation" unique_id=1634087142 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_px7px")
+position = Vector2(542, 396)
+
+[node name="Crab75" parent="EnemyFormation" unique_id=974952319 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_7lp78")
+position = Vector2(1334, 396)
+
+[node name="Crab76" parent="EnemyFormation" unique_id=1995083789 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_qae6y")
+position = Vector2(1422, 396)
+
+[node name="Crab70" parent="EnemyFormation" unique_id=2136170254 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_5ul1e")
+position = Vector2(498, 440)
+
+[node name="Crab71" parent="EnemyFormation" unique_id=2009325659 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_c6pky")
+position = Vector2(1378, 352)
+
+[node name="Crab72" parent="EnemyFormation" unique_id=492519206 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_etany")
+position = Vector2(1378, 440)
+
+[node name="Crab36" parent="EnemyFormation" unique_id=718605087 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_uorvn")
+position = Vector2(674, 440)
+
+[node name="Crab37" parent="EnemyFormation" unique_id=10440018 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_nrhuy")
+position = Vector2(762, 440)
+
+[node name="Crab38" parent="EnemyFormation" unique_id=317555023 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_tmb6m")
+position = Vector2(850, 176)
+
+[node name="Crab39" parent="EnemyFormation" unique_id=544923456 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_5mfvk")
+position = Vector2(938, 176)
+
+[node name="Crab40" parent="EnemyFormation" unique_id=1860628865 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_7qpb4")
+position = Vector2(1026, 176)
+
+[node name="Crab41" parent="EnemyFormation" unique_id=931933303 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_k7smw")
+position = Vector2(1114, 440)
+
+[node name="Crab42" parent="EnemyFormation" unique_id=1456199503 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_4nkoa")
+position = Vector2(1202, 440)
+
+[node name="Crab43" parent="EnemyFormation" unique_id=259504916 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_becvf")
+position = Vector2(1291, 440)
+
+[node name="Crab44" parent="EnemyFormation" unique_id=1351113663 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_bjkmt")
+position = Vector2(630.5, 484)
+
+[node name="Crab45" parent="EnemyFormation" unique_id=1149568249 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_c4ei8")
+position = Vector2(718.5, 484)
+
+[node name="Crab46" parent="EnemyFormation" unique_id=121891267 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_mde8d")
+position = Vector2(806.5, 660)
+
+[node name="Crab47" parent="EnemyFormation" unique_id=1526951220 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_g2ulf")
+position = Vector2(894.5, 660)
+
+[node name="Crab48" parent="EnemyFormation" unique_id=2125423211 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_hiyu3")
+position = Vector2(982.5, 660)
+
+[node name="Crab49" parent="EnemyFormation" unique_id=214316892 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_il816")
+position = Vector2(1070.5, 660)
+
+[node name="Crab50" parent="EnemyFormation" unique_id=1021560491 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_lkevb")
+position = Vector2(1158.5, 484)
+
+[node name="Crab51" parent="EnemyFormation" unique_id=1622403431 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_l3tbr")
+position = Vector2(1246.5, 484)
+
+[node name="Crab52" parent="EnemyFormation" unique_id=1881837305 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_m7vbf")
+position = Vector2(586, 528)
+
+[node name="Crab53" parent="EnemyFormation" unique_id=934080302 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_eqa8i")
+position = Vector2(674, 528)
+
+[node name="Crab54" parent="EnemyFormation" unique_id=800218791 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_hxfhi")
+position = Vector2(762, 528)
+
+[node name="Crab55" parent="EnemyFormation" unique_id=1318013576 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_a1o15")
+position = Vector2(850, 528)
+
+[node name="Crab56" parent="EnemyFormation" unique_id=1473531160 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_8w5pr")
+position = Vector2(938, 528)
+
+[node name="Crab57" parent="EnemyFormation" unique_id=86255446 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_mbikn")
+position = Vector2(1026, 528)
+
+[node name="Crab58" parent="EnemyFormation" unique_id=1995062679 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_xfj8r")
+position = Vector2(1114, 528)
+
+[node name="Crab59" parent="EnemyFormation" unique_id=1362262198 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_jnntg")
+position = Vector2(1202, 528)
+
+[node name="Crab60" parent="EnemyFormation" unique_id=1323557366 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_n153g")
+position = Vector2(1291, 528)
+
+[node name="Crab61" parent="EnemyFormation" unique_id=971875440 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_enylb")
+position = Vector2(630.5, 572)
+
+[node name="Crab62" parent="EnemyFormation" unique_id=707655724 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_trvkf")
+position = Vector2(718.5, 572)
+
+[node name="Crab63" parent="EnemyFormation" unique_id=594465368 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_rn2qp")
+position = Vector2(806.5, 572)
+
+[node name="Crab64" parent="EnemyFormation" unique_id=579474823 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_pe7yq")
+position = Vector2(894.5, 572)
+
+[node name="Crab65" parent="EnemyFormation" unique_id=858469123 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_tak2s")
+position = Vector2(982.5, 572)
+
+[node name="Crab66" parent="EnemyFormation" unique_id=218471045 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_rft27")
+position = Vector2(1070.5, 572)
+
+[node name="Crab67" parent="EnemyFormation" unique_id=1835657241 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_eob0k")
+position = Vector2(1158.5, 572)
+
+[node name="Crab68" parent="EnemyFormation" unique_id=322028038 instance=ExtResource("1_845dy")]
+material = SubResource("ShaderMaterial_uowip")
+position = Vector2(1246.5, 572)
+
+[node name="Octopus" parent="EnemyFormation" unique_id=130954596 instance=ExtResource("5_vvoq0")]
+material = SubResource("ShaderMaterial_eu2ij")
+position = Vector2(816.50006, 317)
+scale = Vector2(6, 6)
+
+[node name="Octopus2" parent="EnemyFormation" unique_id=81094124 instance=ExtResource("5_vvoq0")]
+material = SubResource("ShaderMaterial_rofrx")
+position = Vector2(718, 44)
+
+[node name="Octopus3" parent="EnemyFormation" unique_id=1448694479 instance=ExtResource("5_vvoq0")]
+material = SubResource("ShaderMaterial_6ijgc")
+position = Vector2(806, 44)
+
+[node name="Octopus4" parent="EnemyFormation" unique_id=1002253950 instance=ExtResource("5_vvoq0")]
+material = SubResource("ShaderMaterial_ckc4d")
+position = Vector2(1154, 44)
+
+[node name="Octopus5" parent="EnemyFormation" unique_id=1575261793 instance=ExtResource("5_vvoq0")]
+material = SubResource("ShaderMaterial_47pbx")
+position = Vector2(1066, 44)
+
+[node name="LevelManager" parent="." unique_id=1578700785 groups=["LEVEL_MANAGER"] instance=ExtResource("2_dswqx")]
+enemy_start_speed = 50.0
+enemy_max_speed = 125.0

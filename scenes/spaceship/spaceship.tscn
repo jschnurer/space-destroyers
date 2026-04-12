@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://kw6ct5hy8kno"]
+
+[ext_resource type="Texture2D" uid="uid://bwykywuojcxvu" path="res://art/spaceship/spaceship.png" id="1_4vs15"]
+[ext_resource type="Script" uid="uid://dkchao8l4u7x8" path="res://scenes/spaceship/spaceship.gd" id="1_6nyhl"]
+[ext_resource type="Texture2D" uid="uid://croknghq4wobr" path="res://art/fire.png" id="1_rga66"]
+[ext_resource type="PackedScene" uid="uid://bdmudihj1sun8" path="res://scenes/components/dance_component.tscn" id="2_6nyhl"]
+[ext_resource type="AudioStream" uid="uid://eytq35tcp5m8" path="res://audio/sfx/spaceship_shot.ogg" id="2_cours"]
+[ext_resource type="PackedScene" uid="uid://d1jln5dps07ua" path="res://scenes/bullet/bullet.tscn" id="2_oedjh"]
+[ext_resource type="Texture2D" uid="uid://cotx833pt1llo" path="res://art/particle.png" id="3_fu1d6"]
+[ext_resource type="Shader" uid="uid://dfipd73yxhce" path="res://scenes/spaceship/spaceship.gdshader" id="5_fu1d6"]
+[ext_resource type="PackedScene" uid="uid://0esplk3dg3yq" path="res://scenes/components/reload_component.tscn" id="7_yl4tl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rga66"]
+radius = 28.01785
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yl4tl"]
+lifetime_randomness = 0.6
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(2.29, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 2.5
+initial_velocity_min = 200.0
+initial_velocity_max = 400.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yl4tl"]
+shader = ExtResource("5_fu1d6")
+shader_parameter/shadow_intensity = 0.0
+shader_parameter/shadow_side = 0
+shader_parameter/shadow_steps = 8.0
+
+[node name="Spaceship" type="CharacterBody2D" unique_id=564671516]
+process_mode = 1
+script = ExtResource("1_6nyhl")
+shot_sound = ExtResource("2_cours")
+bullet_scene = ExtResource("2_oedjh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2032204974]
+shape = SubResource("CircleShape2D_rga66")
+
+[node name="Smoke" type="GPUParticles2D" parent="." unique_id=1664217093]
+unique_name_in_owner = true
+visible = false
+modulate = Color(0.47258085, 0.7699986, 0.908237, 1)
+position = Vector2(-1, 30)
+scale = Vector2(4, 4)
+amount = 175
+texture = ExtResource("3_fu1d6")
+lifetime = 2.0
+visibility_rect = Rect2(-100, -100, 1000, 1000)
+process_material = SubResource("ParticleProcessMaterial_yl4tl")
+
+[node name="Fire" type="Sprite2D" parent="." unique_id=1482468511]
+unique_name_in_owner = true
+modulate = Color(6.7383053e-06, 0.7665205, 0.99321204, 1)
+position = Vector2(0, 35.5)
+scale = Vector2(1, -2.65)
+texture = ExtResource("1_rga66")
+hframes = 3
+
+[node name="DanceComponent" parent="Fire" unique_id=709328576 node_paths=PackedStringArray("sprite") instance=ExtResource("2_6nyhl")]
+sprite = NodePath("..")
+frame_count = 3
+fps = 12.0
+
+[node name="ShipSprite" type="Sprite2D" parent="." unique_id=515595434]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_yl4tl")
+texture = ExtResource("1_4vs15")
+
+[node name="BulletSpawnPoint" type="Node2D" parent="." unique_id=622951088]
+unique_name_in_owner = true
+position = Vector2(0, -36)
+
+[node name="Components" type="Node2D" parent="." unique_id=957829650]
+
+[node name="ReloadComponent" parent="Components" unique_id=315688650 instance=ExtResource("7_yl4tl")]

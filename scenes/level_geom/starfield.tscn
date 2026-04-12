@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://d3lg8831f4l8i" path="res://scenes/level_geom/starfield.gd" id="1_mtvj3"]
 
 [node name="Starfield" type="Node2D" unique_id=2061530491]
+process_mode = 3
 script = ExtResource("1_mtvj3")
 
 [node name="ReferenceRect" type="ReferenceRect" parent="." unique_id=674209285]

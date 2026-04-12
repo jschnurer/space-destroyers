@@ -40,7 +40,7 @@ class_name OnDeathComponent
 
 @export_group("Flak Explosion")
 @export var can_spawn_flak := false
-var flak_scene: PackedScene = load("res://scenes/flak_explosion/flak_explosion.tscn")
+@export var flak_scene: PackedScene
 
 func _ready() -> void:
 	if life_component:
@@ -85,8 +85,8 @@ func _try_spawn_credit() -> void:
 		pennies_to_spawn += 1
 	
 	if coins_to_spawn.size() > 0:
-		# Now break down 10-25% of those to the next smaller size (min 1).
-		var num_break_down := clampi(floori(randf_range(.1, .25) * coins_to_spawn.size()), 1, 100)
+		# Now break down 1-2 of those 1-2 denominations.
+		var num_break_down := clampi(randi_range(0, 1), 0, coins_to_spawn.size())
 		for b in num_break_down:
 			var ix := randi() % coins_to_spawn.size()
 			var coin := coins_to_spawn[ix]

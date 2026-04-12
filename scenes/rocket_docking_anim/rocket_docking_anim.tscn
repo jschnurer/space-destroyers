@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://c1d0q60eo05na"]
+
+[ext_resource type="Script" uid="uid://cg5jsx5mdehl8" path="res://scenes/rocket_docking_anim/rocket_docking_anim.gd" id="1_7qbpf"]
+[ext_resource type="Texture2D" uid="uid://btiu2l0c5c7q4" path="res://art/spaceship/spaceship-no-rocket.png" id="1_aitqc"]
+[ext_resource type="AudioStream" uid="uid://c2w7558n07ium" path="res://audio/sfx/50-CC0-retro-synth-SFX/shot_01.ogg" id="2_1mq86"]
+[ext_resource type="PackedScene" uid="uid://ddrxve2tnukjm" path="res://scenes/rocket_launch_anim/rocket.tscn" id="2_vlukg"]
+[ext_resource type="AudioStream" uid="uid://djonplyn8hu4u" path="res://audio/sfx/50-CC0-retro-synth-SFX/synth_misc_03.ogg" id="3_3qsyk"]
+[ext_resource type="AudioStream" uid="uid://cmelkioyjjdho" path="res://audio/bgm/8-bit_last_mission_full.mp3" id="4_3qsyk"]
+[ext_resource type="Texture2D" uid="uid://cqt6y1s5tmy5a" path="res://art/spaceship/spaceship-half.png" id="4_32w13"]
+[ext_resource type="AudioStream" uid="uid://xl5bwvpl57tr" path="res://audio/sfx/beepfx_samples/19_jet_burst.wav" id="5_n11v0"]
+[ext_resource type="PackedScene" uid="uid://kw6ct5hy8kno" path="res://scenes/spaceship/spaceship.tscn" id="6_dhyg0"]
+
+[node name="RocketDockingAnim" type="Node2D" unique_id=1753536332]
+process_mode = 3
+script = ExtResource("1_7qbpf")
+rocket_cutoff_distance = 400.0
+dock_sound = ExtResource("2_1mq86")
+engine_charge_sound = ExtResource("3_3qsyk")
+bgm = ExtResource("4_3qsyk")
+jet_burst = ExtResource("5_n11v0")
+
+[node name="AnimPosition" type="Node2D" parent="." unique_id=1734454305]
+unique_name_in_owner = true
+position = Vector2(960, 250)
+
+[node name="EmptyWings" type="Sprite2D" parent="AnimPosition" unique_id=1154964257]
+unique_name_in_owner = true
+texture = ExtResource("1_aitqc")
+
+[node name="RightHalf" type="Sprite2D" parent="AnimPosition" unique_id=526168362]
+unique_name_in_owner = true
+visible = false
+texture = ExtResource("4_32w13")
+offset = Vector2(17, 0)
+
+[node name="LeftHalf" type="Sprite2D" parent="AnimPosition" unique_id=1069763818]
+unique_name_in_owner = true
+visible = false
+scale = Vector2(-1, 1)
+texture = ExtResource("4_32w13")
+offset = Vector2(17, 0)
+
+[node name="Rocket" parent="AnimPosition" unique_id=1905750930 instance=ExtResource("2_vlukg")]
+unique_name_in_owner = true
+position = Vector2(0, 1200)
+
+[node name="AirJetRight" type="Polygon2D" parent="AnimPosition/Rocket" unique_id=1098374283]
+unique_name_in_owner = true
+visible = false
+polygon = PackedVector2Array(5, -23, 10, -35, 13, -33)
+
+[node name="AirJetLeft" type="Polygon2D" parent="AnimPosition/Rocket" unique_id=1136365193]
+unique_name_in_owner = true
+visible = false
+scale = Vector2(-1, 1)
+polygon = PackedVector2Array(5, -23, 10, -35, 13, -33)
+
+[node name="Spaceship" parent="AnimPosition" unique_id=564671516 instance=ExtResource("6_dhyg0")]
+unique_name_in_owner = true
+visible = false
+motion_mode = 1
+
+[node name="RocketSoundPlayer" type="AudioStreamPlayer2D" parent="." unique_id=230152784]
+stream = ExtResource("5_n11v0")
+pitch_scale = 0.2
+autoplay = true

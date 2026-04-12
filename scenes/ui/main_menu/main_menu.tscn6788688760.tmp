@@ -1,0 +1,148 @@
+[gd_scene format=3 uid="uid://bl0bhuawiisf7"]
+
+[ext_resource type="PackedScene" uid="uid://ld7c4owsibhw" path="res://scenes/level_geom/starfield.tscn" id="1_fsom3"]
+[ext_resource type="Script" uid="uid://dsnbdwnwullmr" path="res://scenes/ui/main_menu/main_menu.gd" id="1_uqeha"]
+[ext_resource type="AudioStream" uid="uid://by42t8iikq1xg" path="res://audio/bgm/mehalanholia.mp3" id="2_4xg86"]
+[ext_resource type="Theme" uid="uid://blgn547iw1k7d" path="res://themes/main_theme.tres" id="4_3ovsr"]
+[ext_resource type="PackedScene" uid="uid://xsgcag185atq" path="res://scenes/mission_update_text_animation/mission_update_text_animation.tscn" id="5_wem23"]
+
+[sub_resource type="Animation" id="Animation_wem23"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_uqeha"]
+resource_name = "fade_out_ui"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wem23"]
+_data = {
+&"RESET": SubResource("Animation_wem23"),
+&"fade_out_ui": SubResource("Animation_uqeha")
+}
+
+[node name="MainMenu" type="Control" unique_id=1307408375]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uqeha")
+bgm = ExtResource("2_4xg86")
+scroll_animation_duration = 5.0
+
+[node name="Starfield" parent="." unique_id=2061530491 instance=ExtResource("1_fsom3")]
+unique_name_in_owner = true
+star_count = 6000
+star_size_min = 1
+animate_direction = Vector2(-1, 0)
+animate_speed = 10.0
+randomize_y_on_wrap = true
+use_y_weight = false
+use_y_scaling = false
+
+[node name="ReferenceRect" parent="Starfield" index="0" unique_id=674209285]
+offset_right = 1920.0
+offset_bottom = 3240.0
+
+[node name="UI" type="MarginContainer" parent="." unique_id=427466273]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI" unique_id=407402686]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/VBoxContainer" unique_id=1393303793]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/VBoxContainer/CenterContainer" unique_id=1521280634]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="UI/VBoxContainer/CenterContainer/VBoxContainer" unique_id=597604752]
+layout_mode = 2
+theme = ExtResource("4_3ovsr")
+theme_type_variation = &"TitleLabel"
+text = "SPACE DESTROYERS"
+
+[node name="Spacer" type="Control" parent="UI/VBoxContainer/CenterContainer/VBoxContainer" unique_id=1160817225]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Start Game" type="Button" parent="UI/VBoxContainer/CenterContainer/VBoxContainer" unique_id=1341047335]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("4_3ovsr")
+theme_override_font_sizes/font_size = 32
+text = "START GAME"
+
+[node name="Label" type="Label" parent="UI/VBoxContainer" unique_id=334510376]
+layout_mode = 2
+theme = ExtResource("4_3ovsr")
+text = "(c) Zero XP Games"
+horizontal_alignment = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1160116930]
+libraries/ = SubResource("AnimationLibrary_wem23")
+
+[node name="MissionUpdateTextAnimation" parent="." unique_id=1668417129 instance=ExtResource("5_wem23")]
+visible = false
+title_text = "-- MISSION UPDATE --"
+mission_text = "Locations across Earth's surface are
+under attack by destroyers from space.
+
+Prototype modular assault vehicle
+[color=yellow]SOPHIA 0[/color] is ready for deployment.
+
+Spatial teleportation network
+installed in targeted regions.
+
+Your mission:
+
+- Board [color=yellow]SOPHIA 0[/color] -
+- Teleport to each besieged area -
+- Destroy all invaders -
+
+Earth's hopes rest with you.
+Good luck, pilot."
+autoplay = false
+bgm_fade_out_time = 0.0
+bgm_fade_in_time = 0.0
+
+[connection signal="pressed" from="UI/VBoxContainer/CenterContainer/VBoxContainer/Start Game" to="." method="_on_start_game_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="player_dismissed" from="MissionUpdateTextAnimation" to="." method="_on_mission_update_text_animation_player_dismissed"]
+
+[editable path="Starfield"]

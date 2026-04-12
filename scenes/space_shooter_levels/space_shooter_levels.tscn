@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://du0v4m5ctxnq1"]
+
+[ext_resource type="PackedScene" uid="uid://ld7c4owsibhw" path="res://scenes/level_geom/starfield.tscn" id="1_0hnfl"]
+[ext_resource type="PackedScene" uid="uid://c1d0q60eo05na" path="res://scenes/rocket_docking_anim/rocket_docking_anim.tscn" id="2_bl0i2"]
+
+[node name="SpaceShooterLevels" type="Node2D" unique_id=1940226276]
+
+[node name="Starfield" parent="." unique_id=2061530491 instance=ExtResource("1_0hnfl")]
+star_count = 2000
+star_size_min = 1
+star_size_max = 2
+animate_direction = Vector2(0, 1)
+animate_speed = 2.0
+randomize_x_on_wrap = true
+use_y_weight = false
+use_y_scaling = false
+
+[node name="ReferenceRect" parent="Starfield" index="0" unique_id=674209285]
+offset_right = 1920.0
+offset_bottom = 1080.0
+metadata/_edit_use_anchors_ = true
+
+[node name="RocketDockingAnim" parent="." unique_id=1753536332 node_paths=PackedStringArray("starfield") instance=ExtResource("2_bl0i2")]
+starfield = NodePath("../Starfield")
+
+[editable path="Starfield"]

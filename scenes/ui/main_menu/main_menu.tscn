@@ -3,7 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://ld7c4owsibhw" path="res://scenes/level_geom/starfield.tscn" id="1_fsom3"]
 [ext_resource type="Script" uid="uid://dsnbdwnwullmr" path="res://scenes/ui/main_menu/main_menu.gd" id="1_uqeha"]
 [ext_resource type="AudioStream" uid="uid://by42t8iikq1xg" path="res://audio/bgm/mehalanholia.mp3" id="2_4xg86"]
+[ext_resource type="AudioStream" uid="uid://cdnc4pgyphaxp" path="res://audio/bgm/moonlight.mp3" id="3_8ouhi"]
 [ext_resource type="Theme" uid="uid://blgn547iw1k7d" path="res://themes/main_theme.tres" id="4_3ovsr"]
+[ext_resource type="PackedScene" uid="uid://cek5p8my0lwit" path="res://scenes/invaders_levels/invaders_levels.tscn" id="4_5mqxt"]
 [ext_resource type="PackedScene" uid="uid://xsgcag185atq" path="res://scenes/mission_update_text_animation/mission_update_text_animation.tscn" id="5_wem23"]
 
 [sub_resource type="Animation" id="Animation_wem23"]
@@ -52,8 +54,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uqeha")
-bgm = ExtResource("2_4xg86")
+menu_bgm = ExtResource("2_4xg86")
 scroll_animation_duration = 5.0
+main_bgm = ExtResource("3_8ouhi")
+invaders_levels = ExtResource("4_5mqxt")
 
 [node name="Starfield" parent="." unique_id=2061530491 instance=ExtResource("1_fsom3")]
 unique_name_in_owner = true

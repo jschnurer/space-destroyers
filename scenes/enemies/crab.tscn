@@ -33,6 +33,7 @@ life = 1.0
 
 [node name="DanceComponent" parent="Components" unique_id=196884501 node_paths=PackedStringArray("sprite") instance=ExtResource("8_qokaa")]
 sprite = NodePath("../..")
+fps = 1.0
 
 [node name="FormationMoveComponent" parent="Components" unique_id=937630113 node_paths=PackedStringArray("enemy_node") instance=ExtResource("10_8ukmd")]
 enemy_node = NodePath("../..")

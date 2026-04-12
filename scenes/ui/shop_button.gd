@@ -30,17 +30,17 @@ func _on_pressed() -> void:
 	var any_bought := false
 	
 	for i in range(count):
-		if is_player_upgrade and GameManager.get_upgrade(player_upgrade).is_maxed():
+		if is_player_upgrade and Game.get_upgrade(player_upgrade).is_maxed():
 			break
 		
-		if GameManager.pay_credits(upgrade_cost):
+		if Game.pay_credits(upgrade_cost):
 			if is_player_stat:
 				if bonus_delta_int != 0:
-					GameManager.alter_stat_int(player_stat, bonus_delta_int)
+					Game.alter_stat_int(player_stat, bonus_delta_int)
 				else:
-					GameManager.alter_stat(player_stat, bonus_delta, percentile_bonus_delta)
+					Game.alter_stat(player_stat, bonus_delta, percentile_bonus_delta)
 			elif is_player_upgrade:
-				GameManager.alter_upgrade(player_upgrade, 1.0)
+				Game.alter_upgrade(player_upgrade, 1.0)
 			
 			update_label_and_cost()
 			any_bought = true
@@ -62,10 +62,10 @@ func update_label_and_cost() -> void:
 		label.text = "%s\n[$%s]" % [btn_text, "00000"]
 	else:
 		if is_player_stat:
-			upgrade_cost = GameManager.get_stat(player_stat).get_upgrade_cost()
+			upgrade_cost = Game.get_stat(player_stat).get_upgrade_cost()
 			label.text = "%s\n[$%s]" % [btn_text, str(upgrade_cost)]
 		elif is_player_upgrade:
-			var pu := GameManager.get_upgrade(player_upgrade)
+			var pu := Game.get_upgrade(player_upgrade)
 			upgrade_cost = pu.get_upgrade_cost()
 			if pu.is_maxed():
 				label.text = "%s\n[SOLD OUT]" % btn_text
@@ -79,10 +79,10 @@ func update_label_and_cost() -> void:
 	
 	if !Engine.is_editor_hint():
 		if is_player_stat:
-			disabled = upgrade_cost > GameManager.game_state.credits
+			disabled = upgrade_cost > Game.game_state.credits
 		elif is_player_upgrade:
-			disabled = GameManager.get_upgrade(player_upgrade).is_maxed()\
-				or upgrade_cost > GameManager.game_state.credits
+			disabled = Game.get_upgrade(player_upgrade).is_maxed()\
+				or upgrade_cost > Game.game_state.credits
 		else:
 			disabled = false
 	else:

@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://ddrxve2tnukjm"]
+
+[ext_resource type="Script" uid="uid://bpcvul5j5iej3" path="res://scenes/rocket_launch_anim/rocket.gd" id="1_ahoqy"]
+[ext_resource type="Texture2D" uid="uid://croknghq4wobr" path="res://art/fire.png" id="1_stcxb"]
+[ext_resource type="PackedScene" uid="uid://bdmudihj1sun8" path="res://scenes/components/dance_component.tscn" id="2_ahoqy"]
+[ext_resource type="Texture2D" uid="uid://kwtqk2b5fi28" path="res://art/tank/rocket.png" id="3_ss16f"]
+[ext_resource type="Texture2D" uid="uid://cotx833pt1llo" path="res://art/particle.png" id="4_6a4vn"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pkov0"]
+lifetime_randomness = 0.6
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(2.29, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 5.0
+initial_velocity_min = 75.0
+initial_velocity_max = 125.0
+gravity = Vector3(0, -150, 0)
+scale_min = 0.75
+
+[node name="Rocket" type="Node2D" unique_id=1905750930]
+script = ExtResource("1_ahoqy")
+
+[node name="Fire" type="Sprite2D" parent="." unique_id=1539895933]
+modulate = Color(1, 0.58431375, 0, 1)
+position = Vector2(0, 20)
+scale = Vector2(1, -1)
+texture = ExtResource("1_stcxb")
+hframes = 3
+frame = 2
+
+[node name="DanceComponent" parent="Fire" unique_id=709328576 node_paths=PackedStringArray("sprite") instance=ExtResource("2_ahoqy")]
+sprite = NodePath("..")
+frame_count = 3
+fps = 10.0
+current_frame = 2
+
+[node name="RocketSprite" type="Sprite2D" parent="." unique_id=2086288273]
+texture = ExtResource("3_ss16f")
+
+[node name="Smoke" type="GPUParticles2D" parent="." unique_id=1324828394]
+unique_name_in_owner = true
+modulate = Color(0.4351923, 0.43519226, 0.43519226, 1)
+position = Vector2(0, 28)
+scale = Vector2(4, 4)
+amount = 175
+texture = ExtResource("4_6a4vn")
+lifetime = 2.0
+visibility_rect = Rect2(-100, -100, 1000, 1000)
+process_material = SubResource("ParticleProcessMaterial_pkov0")

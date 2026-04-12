@@ -127,7 +127,7 @@ layout_mode = 2
 btn_text = "+Shot Power"
 is_player_stat = true
 player_stat = 3
-percentile_bonus_delta = 0.25
+percentile_bonus_delta = 0.1
 
 [node name="Shot Speed" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=232779556 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
 layout_mode = 2

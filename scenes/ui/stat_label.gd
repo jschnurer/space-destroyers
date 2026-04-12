@@ -32,8 +32,8 @@ extends HBoxContainer
 
 func _ready() -> void:
 	if !Engine.is_editor_hint():
-		GameManager.stat_changed.connect(_on_stat_changed)
-		_on_stat_changed(GameManager.get_stat(stat.player_stat))
+		Game.stat_changed.connect(_on_stat_changed)
+		_on_stat_changed(Game.get_stat(stat.player_stat))
 
 func _on_stat_changed(p_stat: Stat) -> void:
 	if p_stat.player_stat == stat.player_stat:

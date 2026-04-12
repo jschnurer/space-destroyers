@@ -14,23 +14,23 @@ class_name Tank
 @onready var sprite_2d: Sprite2D = %Sprite2D
 
 func _ready() -> void:
-	_update_reload_time(GameManager.get_stat_value(Enums.PlayerStats.RELOAD))
-	_update_pickup_area(GameManager.get_stat_value(Enums.PlayerStats.PICKUP_AREA))
+	_update_reload_time(Game.get_stat_value(Enums.PlayerStats.RELOAD))
+	_update_pickup_area(Game.get_stat_value(Enums.PlayerStats.PICKUP_AREA))
 	
-	life_component.life = GameManager.get_stat(Enums.PlayerStats.LIFE).get_current_value_int()
+	life_component.life = Game.get_stat(Enums.PlayerStats.LIFE).get_current_value_int()
 	life_component.life_changed.connect(_on_life_changed)
 	
-	GameManager.stat_changed.connect(_on_stat_changed)
-	GameManager.current_life_changed.connect(_on_game_manager_current_life_changed)
+	Game.stat_changed.connect(_on_stat_changed)
+	Game.current_life_changed.connect(_on_game_manager_current_life_changed)
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("shoot"):
 		_try_shoot()
-	elif GameManager.has_upgrade(Enums.PlayerUpgrades.FULL_AUTO) and Input.is_action_pressed("shoot"):
+	elif Game.has_upgrade(Enums.PlayerUpgrades.FULL_AUTO) and Input.is_action_pressed("shoot"):
 		_try_shoot()
 		
 	velocity = Vector2(Input.get_axis("move_left", "move_right") \
-		* GameManager.get_stat_value(Enums.PlayerStats.TANK_SPEED) \
+		* Game.get_stat_value(Enums.PlayerStats.TANK_SPEED) \
 		* delta, 0)
 	
 	move_and_collide(velocity)
@@ -40,7 +40,7 @@ func _try_shoot() -> void:
 		return
 	
 	# Shoot bullets.
-	var multi_level := GameManager.get_upgrade_level(Enums.PlayerUpgrades.MULTI_CANNON)
+	var multi_level := Game.get_upgrade_level(Enums.PlayerUpgrades.MULTI_CANNON)
 	if multi_level > 0:
 		_spawn_bullet(-8.0)
 		_spawn_bullet(8.0)
@@ -92,16 +92,16 @@ func _spawn_bullet(bullet_offset: float, angle_offset: float = 0.0, bullet_scale
 	bullet.scale *= bullet_scale
 	
 	bullet.set_power_speed_direction(\
-		GameManager.get_stat_value(Enums.PlayerStats.DAMAGE),
-		GameManager.get_stat_value(Enums.PlayerStats.SHOT_SPEED),
+		Game.get_stat_value(Enums.PlayerStats.DAMAGE),
+		Game.get_stat_value(Enums.PlayerStats.SHOT_SPEED),
 		dir)
-	if GameManager.has_upgrade(Enums.PlayerUpgrades.FLAK_CANNON):
+	if Game.has_upgrade(Enums.PlayerUpgrades.FLAK_CANNON):
 		bullet.can_flak = true
 		
 	Utilities.call_deferred("add_child_to_level", bullet)
 
 func _on_life_changed(new_life: int, _hitbox: HitboxComponent) -> void:
-	GameManager.set_current_life(new_life)
+	Game.set_current_life(new_life)
 
 func _on_game_manager_current_life_changed(new_life: int) -> void:
 	life_component.life = new_life

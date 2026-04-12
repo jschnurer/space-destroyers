@@ -3,25 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://di37twjlnj8gw" path="res://art/tank/tank-body-only.png" id="1_ndcqh"]
 [ext_resource type="Script" uid="uid://15f3fn1gix7x" path="res://scenes/rocket_launch_anim/rocket_launch_animation.gd" id="1_s5ox0"]
 [ext_resource type="Texture2D" uid="uid://cbjq4oo7mxm2w" path="res://art/tank/tank-door-1-side.png" id="2_s5ox0"]
-[ext_resource type="Texture2D" uid="uid://kwtqk2b5fi28" path="res://art/tank/rocket.png" id="3_yddrn"]
 [ext_resource type="AudioStream" uid="uid://xl5bwvpl57tr" path="res://audio/sfx/beepfx_samples/19_jet_burst.wav" id="4_oq14b"]
 [ext_resource type="AudioStream" uid="uid://dndku7cm8db4h" path="res://audio/sfx/beepfx_samples/02_jump_1.wav" id="5_3klsw"]
-[ext_resource type="PackedScene" uid="uid://bdmudihj1sun8" path="res://scenes/components/dance_component.tscn" id="5_6ccb7"]
-[ext_resource type="Texture2D" uid="uid://croknghq4wobr" path="res://art/fire.png" id="5_pkov0"]
-[ext_resource type="Texture2D" uid="uid://cotx833pt1llo" path="res://art/particle.png" id="5_yddrn"]
+[ext_resource type="PackedScene" uid="uid://ddrxve2tnukjm" path="res://scenes/rocket_launch_anim/rocket.tscn" id="6_6ccb7"]
 [ext_resource type="PackedScene" uid="uid://xsgcag185atq" path="res://scenes/mission_update_text_animation/mission_update_text_animation.tscn" id="15_ecxfy"]
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pkov0"]
-lifetime_randomness = 0.6
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(2.29, 1, 1)
-direction = Vector3(0, 1, 0)
-spread = 5.0
-initial_velocity_min = 75.0
-initial_velocity_max = 125.0
-gravity = Vector3(0, -150, 0)
-scale_min = 0.75
 
 [sub_resource type="Animation" id="Animation_yddrn"]
 length = 0.001
@@ -152,35 +137,9 @@ scale = Vector2(1, 0.9540115)
 polygon = PackedVector2Array(-1000, 32, -1000, -200000, 1000, -200000, 1000, 32)
 metadata/_edit_lock_ = true
 
-[node name="Rocket" type="Node2D" parent="RocketClipPolygon" unique_id=1086308626]
+[node name="Rocket" parent="RocketClipPolygon" unique_id=1905750930 instance=ExtResource("6_6ccb7")]
 unique_name_in_owner = true
-position = Vector2(0, 37)
-
-[node name="Fire" type="Sprite2D" parent="RocketClipPolygon/Rocket" unique_id=1860156719]
-modulate = Color(1, 0.58431375, 0, 1)
-position = Vector2(22, 20)
-scale = Vector2(1, -1)
-texture = ExtResource("5_pkov0")
-hframes = 2
-
-[node name="DanceComponent" parent="RocketClipPolygon/Rocket/Fire" unique_id=709328576 node_paths=PackedStringArray("sprite") instance=ExtResource("5_6ccb7")]
-sprite = NodePath("..")
-speed_scale = 12.0
-
-[node name="RocketSprite" type="Sprite2D" parent="RocketClipPolygon/Rocket" unique_id=1774581070]
-position = Vector2(22, 0.29346466)
-texture = ExtResource("3_yddrn")
-
-[node name="Smoke" type="GPUParticles2D" parent="RocketClipPolygon/Rocket" unique_id=2103907132]
-unique_name_in_owner = true
-modulate = Color(0.4351923, 0.43519226, 0.43519226, 1)
-position = Vector2(22, 28)
-scale = Vector2(4, 4)
-amount = 175
-texture = ExtResource("5_yddrn")
-lifetime = 2.0
-visibility_rect = Rect2(-100, -100, 1000, 1000)
-process_material = SubResource("ParticleProcessMaterial_pkov0")
+position = Vector2(22, 37)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=997337208]
 unique_name_in_owner = true

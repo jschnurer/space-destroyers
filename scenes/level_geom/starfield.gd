@@ -1,5 +1,6 @@
 @tool
 extends Node2D
+class_name Starfield
 
 @export var star_count: int = 100:
 	set(value):
@@ -11,9 +12,9 @@ extends Node2D
 	set(value):
 		star_size_min = value
 		_generate_stars()
-@export var start_size_max := 4:
+@export var star_size_max := 4:
 	set(value):
-		start_size_max = value
+		star_size_max = value
 		_generate_stars()
 
 @export_group("Animation")
@@ -21,6 +22,8 @@ extends Node2D
 ## they will respawn along the incoming edge somewhere.
 @export var animate_direction: Vector2 = Vector2.ZERO
 @export var animate_speed: float = 0.0
+@export var randomize_x_on_wrap := false
+@export var randomize_y_on_wrap := false
 
 @export_group("Scaling & Weight")
 @export_range(0.1, 5.0) var y_weight: float = 2.0:
@@ -71,24 +74,33 @@ func _generate_stars() -> void:
 			y_pos = pow(randf(), y_weight) * area_size.y
 		else:
 			y_pos = randf_range(0, area_size.y)
-			
+		
 		star.position = Vector2(randf_range(0, area_size.x), y_pos)
-		var initial_size := randf_range(star_size_min, start_size_max)
-		star.size = Vector2.ONE * (initial_size * (0.95 - star.position.y / area_size.y) if use_y_scaling \
-			else initial_size)
+		_size_star(star)
+		star.modulate.a = star.size.x / star_size_max
 		add_child(star)
 		_stars.append(star)
 
 func _process(delta: float) -> void:
 	if animate_direction == Vector2.ZERO or animate_speed == 0:
 		return
-	
-	var bounds := bounds_rect.get_global_rect()
-	
+
 	for star in _stars:
-		star.position += animate_direction * animate_speed * delta
+		star.position += animate_direction * animate_speed * delta * star.modulate.a
 		
-		star.global_position.x = fposmod(star.global_position.x - bounds.position.x, bounds.size.x) + bounds.position.x
-		star.global_position.y = fposmod(star.global_position.y - bounds.position.y, bounds.size.y) + bounds.position.y
-		#if !star.get_global_rect().intersects(bounds):
-			#pass
+		var off_x := star.position.x < 0 or star.position.x > bounds_rect.size.x
+		var off_y := star.position.y < 0 or star.position.y > bounds_rect.size.y
+		
+		star.position.x = fposmod(star.position.x - bounds_rect.position.x, bounds_rect.size.x) + bounds_rect.position.x
+		star.position.y = fposmod(star.position.y - bounds_rect.position.y, bounds_rect.size.y) + bounds_rect.position.y
+		
+		if off_y and randomize_x_on_wrap:
+			star.position.x = randf_range(0, bounds_rect.size.x)
+		if off_x and randomize_y_on_wrap:
+			star.position.y = randf_range(0, bounds_rect.size.y)
+			_size_star(star)
+
+func _size_star(star: ColorRect) -> void:
+	var initial_size := randf_range(star_size_min, star_size_max)
+	star.size = Vector2.ONE * (initial_size * (0.95 - star.position.y / bounds_rect.size.y) if use_y_scaling \
+		else initial_size)

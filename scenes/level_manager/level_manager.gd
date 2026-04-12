@@ -21,14 +21,16 @@ func _ready() -> void:
 	_max_enemies = _enemy_count
 	
 	# Add difficulty modifiers.
-	var level_bonus := GameManager.game_state.current_level - 1
+	var level_bonus := Game.game_state.current_level - 1
 	for en in enemies:
 		var e := en as Enemy
 		e.credit_value *= (1 + (.15 * level_bonus))
-		e.life = floori(e.life * (1 + (.2 * level_bonus)))
-		e.credit_count_multiplier *= (1 + (.15 * level_bonus))
-		# If this enemy has a shield, also set its life.
-		e.shield_life = e.life * 5
+		e.life = floori(e.life * (1 + (.125 * level_bonus)))
+		# Apply size scale to life & credit value.
+		e.life = roundi((e.life + e.scale.x) * pow(e.scale.x, 1.225))
+		e.credit_value = roundi((e.credit_value + e.scale.x) * pow(e.scale.x, 1.10))
+		# Derive shield value from life.
+		e.shield_life = floori(e.life * pow(3, 1.01))
 	
 	SignalBus.enemy_hit_screen_edge.connect(_on_enemy_hit_screen_edge)
 	SignalBus.enemy_died.connect(_on_enemy_died)

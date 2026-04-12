@@ -1,4 +1,5 @@
 extends Node
+class_name SignalBusType
 
 signal enemy_hit_screen_edge(edge: Enums.ScreenEdges)
 func emit_enemy_hit_screen_edge(edge: Enums.ScreenEdges) -> void:
@@ -71,6 +72,10 @@ func emit_fade_out_screen(instantly := false) -> void:
 signal fade_in_screen()
 func emit_fade_in_screen() -> void:
 	fade_in_screen.emit()
+
+signal flash_screen(color: Color, fade_dur: float)
+func emit_flash_screen(color: Color, fade_dur: float = 0.15) -> void:
+	flash_screen.emit(color, fade_dur)
 
 signal fade_out_screen_complete()
 func emit_fade_out_complete() -> void:

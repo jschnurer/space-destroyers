@@ -19,9 +19,9 @@ func _process(delta: float) -> void:
 				total_credits += od.get_total_credit_value()
 			en.queue_free()
 		
-		var mult := GameManager.get_stat_value(Enums.PlayerStats.CREDIT_MULTIPLIER)
+		var mult := Game.get_stat_value(Enums.PlayerStats.CREDIT_MULTIPLIER)
 		SignalBus.emit_credits_picked_up(total_credits * mult)
-		GameManager.load_next_level(!Input.is_action_just_pressed("pass_level_shop"))
+		Game.load_next_level(!Input.is_action_just_pressed("pass_level_shop"))
 	elif Input.is_action_just_pressed("credits"):
 		SignalBus.emit_credits_picked_up(99999999999)
 	elif Input.is_action_just_pressed("launch"):
@@ -39,7 +39,7 @@ func _input(event: InputEvent) -> void:
 			var lvl_num := e.as_text_keycode()
 			if lvl_num.is_valid_int():
 				var num := lvl_num.to_int()
-				GameManager.go_to_level(num)
+				Game.go_to_level(num)
 			
 
 func _launch() -> void:

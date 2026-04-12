@@ -10,9 +10,8 @@ extends Node2D
 @export var jet_burst_stream: AudioStream
 @export var open_doors_stream: AudioStream
 
-@onready var rocket: Node2D = %Rocket
+@onready var rocket: Rocket = %Rocket
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
-@onready var smoke: GPUParticles2D = %Smoke
 @onready var mission_update_text_animation: MissionUpdateTextAnimation = %MissionUpdateTextAnimation
 
 enum LaunchMode {
@@ -41,12 +40,9 @@ func _process(delta: float) -> void:
 		_fade_delay_time += delta
 		rocket.global_position += _rocket_velocity * delta
 		if rocket.global_position.y <= -200:
-			smoke.emitting = false
+			rocket.toggle_smoke_emission(false)
 		if _fade_delay_time >= delay_before_fade_out:
-			_mode = LaunchMode.FADING
-			SignalBus.emit_fade_out_bgm(1.0)
-			SignalBus.emit_fade_out_screen()
-			# TODO: Fade out screen, load new game mode, etc.
+			_fade_out()
 
 ## Begins applying rocket velocity.
 func _begin_moving_rocket() -> void:
@@ -57,3 +53,13 @@ func _begin_moving_rocket() -> void:
 	velocity_tween\
 		.tween_property(self, "_rocket_velocity", Vector2.UP * booster_speed, booster_time)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+
+func _fade_out() -> void:
+	_mode = LaunchMode.FADING
+	SignalBus.emit_fade_out_bgm(1.0)
+	SignalBus.emit_fade_out_screen()
+	await SignalBus.fade_out_screen_complete
+	SignalBus.emit_open_shop()
+	await SignalBus.shop_closed
+	get_tree().change_scene_to_file("res://scenes/rocket_docking_anim/rocket_docking_anim.tscn")
+	# TODO: Open shop, set game mode to vert scroller.

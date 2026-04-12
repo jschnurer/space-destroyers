@@ -1,12 +1,23 @@
 extends Node
+class_name GameManager
 
+## Folder containing all the levels_X.tscn files for invaders levels.
+static var invaders_levels_folder := "res://scenes/invaders_levels/"
+## Scene file for the main menu.
+static var main_menu_scene_path := "res://scenes/ui/main_menu/main_menu.tscn"
+
+## Level holder node to replace the current level in (from invaders_levels and shooter_levels).
 var level_holder: Node2D
-
+## The current game state data.
 var game_state: GameState
 
+## Emitted when the player's number of credits is changed (spent or picked up).
 signal credits_changed(new_credits: float)
+## Emitted when a player's stat changes (purchased).
 signal stat_changed(changed_stat: Stat)
+## Emitted when a player's upgrade changes (purchased).
 signal upgrade_changed(changed_upgrade: Upgrade)
+## Emitted when a player's current life changes (increased or damaged).
 signal current_life_changed(new_life: int)
 
 func _ready() -> void:
@@ -19,10 +30,11 @@ func _ready() -> void:
 	if get_tree().current_scene.name == "InvadersLevels":
 		call_deferred("restart_game")
 
-func load_initial_level(loaded_directly := false) -> void:
+## Loads the initial level of the invaders levels.
+func load_initial_level() -> void:
 	get_tree().paused = true
 	game_state.current_level = 1
-	var level_filename := "res://scenes/levels/level_" + str(game_state.current_level) + ".tscn"
+	var level_filename := _get_invaders_level_path(game_state.current_level)
 	if !FileAccess.file_exists(level_filename):
 		print("Level file not found! " + level_filename)
 		return
@@ -30,14 +42,6 @@ func load_initial_level(loaded_directly := false) -> void:
 	var next_level: PackedScene = load(level_filename)
 	if next_level:
 		level_holder.add_child(next_level.instantiate())
-		
-	if loaded_directly:
-		SignalBus.emit_play_bgm(load("res://audio/bgm/moonlight.mp3") as AudioStream)
-		SignalBus.emit_fade_in_screen()
-		await SignalBus.fade_in_screen_complete
-	
-	if loaded_directly:
-		get_tree().paused = false
 	
 	SignalBus.emit_new_level_loaded()
 
@@ -65,7 +69,7 @@ func load_next_level(instantly := false) -> void:
 		SignalBus.emit_open_shop()
 		await SignalBus.shop_closed
 	
-	var level_filename := "res://scenes/levels/level_" + str(game_state.current_level) + ".tscn"
+	var level_filename := _get_invaders_level_path(game_state.current_level)
 	if !FileAccess.file_exists(level_filename):
 		print("Level file not found! " + level_filename)
 		return
@@ -96,7 +100,7 @@ func load_next_level(instantly := false) -> void:
 ## Jumps to specified level.
 func go_to_level(lvl_num: int) -> void:
 	if get_tree().current_scene.name != "invaders_levels":
-		get_tree().change_scene_to_file("res://scenes/invaders_levels.tscn")
+		get_tree().change_scene_to_file(invaders_levels_folder + "invaders_levels.tscn")
 		await get_tree().scene_changed
 		SignalBus.emit_play_bgm(load("res://audio/bgm/moonlight.mp3") as AudioStream)
 	
@@ -169,13 +173,18 @@ func _on_game_over(_reason: Enums.GameOverReason) -> void:
 	for child in level_holder.get_children():
 		child.queue_free()
 
+## Fades out the screen, clears the game state, sends player to main menu.
 func restart_game() -> void:
-	game_state = GameState.new()
 	SignalBus.emit_fade_out_screen()
 	await SignalBus.fade_out_screen_complete
-	get_tree().change_scene_to_file("res://scenes/ui/main_menu/main_menu.tscn")
+	game_state = GameState.new()
+	get_tree().change_scene_to_file(main_menu_scene_path)
 
+## Updates the player's current life to the new value and emits current_life_changed.
 func set_current_life(new_life: int) -> void:
 	if game_state.current_life != new_life:
 		game_state.current_life = new_life
 		current_life_changed.emit(new_life)
+
+func _get_invaders_level_path(level_num: int) -> String:
+	return invaders_levels_folder + "level_" + str(level_num) + ".tscn"

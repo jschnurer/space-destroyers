@@ -19,40 +19,46 @@ https://opengameart.org/content/input-prompts
 
 ::::: AUDIO :::::
 
-==50 CC0 RETRO / SYNTH SFX==
+== 50 CC0 RETRO / SYNTH SFX ==
 Author: rubberduck
 License: CC0 Public Domain
 https://opengameart.org/content/50-cc0-retro-synth-sfx
 
-==8-bit Chiptune - Moonlight==
+== 8-bit Chiptune - Moonlight ==
 Author: shiru8bit
 License: CC-BY 3.0
 https://opengameart.org/content/8-bit-chiptune-moonlight
 Note: looped to 0:26.210
 
-==8-bit Chiptune - Megamix ==
+== 8-bit Chiptune - Megamix ==
 Author: shiru8bit
 License: CC-BY 3.0
 https://opengameart.org/content/8-bit-chiptune-megamix
 
-==8-bit Chiptune - Its Come From The Dark ==
+== 8-bit Chiptune - Its Come From The Dark ==
 Author: shiru8bit
 License: CC-BY 3.0
 https://opengameart.org/content/8-bit-chiptune-its-come-from-the-dark
 
-==8-bit Chiptune - Mehalanholia ==
+== 8-bit Chiptune - Mehalanholia ==
 Author: shiru8bit
 License: CC-BY 3.0
 https://opengameart.org/content/8-bit-chiptune-mehalanholia
 
-==8-bit Chiptune - Transmission ==
+== 8-bit Chiptune - Transmission ==
 Author: shiru8bit
 License: CC-BY 3.0
 https://opengameart.org/content/8-bit-chiptune-transmission
 Note: Looped to 0:03.198
 
-==8-bit Chiptune - After The Rain ==
+== 8-bit Chiptune - After The Rain ==
 Author: shiru8bit
 License: CC-BY 3.0
 https://opengameart.org/content/8-bit-chiptune-after-the-rain
 Note: Looped to beginning
+
+== 8-bit - Last Mission ==
+Author: HydroGene
+License: CC0 Public Domain
+https://opengameart.org/content/8-bit-last-mission
+Note: Loops at 13.77s

@@ -33,7 +33,7 @@ shape = SubResource("RectangleShape2D_f7qyl")
 
 [node name="DanceComponent" parent="Components" unique_id=709328576 node_paths=PackedStringArray("sprite") instance=ExtResource("6_jjgfi")]
 sprite = NodePath("../..")
-speed_scale = 6.0
+fps = 2.0
 
 [node name="TerrainDetector" type="Area2D" parent="." unique_id=452910968]
 collision_layer = 0

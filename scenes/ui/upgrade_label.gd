@@ -27,8 +27,8 @@ extends CenterContainer
 func _ready() -> void:
 	if !Engine.is_editor_hint():
 		visible = false
-		GameManager.upgrade_changed.connect(_on_upgrade_changed)
-		_on_upgrade_changed(GameManager.get_upgrade(upgrade.upgrade))
+		Game.upgrade_changed.connect(_on_upgrade_changed)
+		_on_upgrade_changed(Game.get_upgrade(upgrade.upgrade))
 
 func _on_upgrade_changed(upgr: Upgrade) -> void:
 	if upgr.upgrade == upgrade.upgrade and upgr.level > 0:

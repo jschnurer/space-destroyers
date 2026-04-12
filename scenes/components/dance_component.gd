@@ -1,10 +1,13 @@
+@tool
 extends Node
 class_name DanceComponent
 
 ## The sprite to animate.
 @export var sprite: Sprite2D
+## Number of frames.
+@export var frame_count := 2
 ## Speed scale of the animation.
-@export var speed_scale := 1.0
+@export var fps := 5.0
 ## Start animation on ready?
 @export var auto_play := true
 
@@ -26,15 +29,12 @@ func _process(delta: float) -> void:
 	if !_is_playing:
 		return
 	
-	_play_time += delta * speed_scale
+	_play_time += delta * fps
 	
-	if _play_time >= 2.0:
-		if current_frame != 1:
-			current_frame = 1
-		_play_time = 0.0
-	elif _play_time >= 1.0:
-		if current_frame != 0:
-			current_frame = 0
+	var new_frame := int(_play_time) % frame_count
+	
+	if new_frame != current_frame:
+		current_frame = new_frame
 
 ## Plays the animation from the first frame.
 func play() -> void:

@@ -11,11 +11,11 @@ var _clear_instructions_tween: Tween
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	GameManager.credits_changed.connect(_on_credits_changed)
-	GameManager.current_life_changed.connect(_on_current_life_changed)
-	GameManager.stat_changed.connect(_on_stat_changed)
-	_on_current_life_changed(GameManager.game_state.current_life)
-	_on_stat_changed(GameManager.get_stat(Enums.PlayerStats.LIFE))
+	Game.credits_changed.connect(_on_credits_changed)
+	Game.current_life_changed.connect(_on_current_life_changed)
+	Game.stat_changed.connect(_on_stat_changed)
+	_on_current_life_changed(Game.game_state.current_life)
+	_on_stat_changed(Game.get_stat(Enums.PlayerStats.LIFE))
 
 func _on_credits_changed(new_credits: float) -> void:
 	credits_display.text = "%.0f" % new_credits

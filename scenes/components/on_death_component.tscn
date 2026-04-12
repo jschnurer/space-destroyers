@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cpgio4mfyabx0" path="res://scenes/components/on_death_component.gd" id="1_ntq3d"]
 [ext_resource type="PackedScene" uid="uid://8th60kwk8o5f" path="res://scenes/items/credit.tscn" id="2_pdxpx"]
+[ext_resource type="PackedScene" uid="uid://buypeu55dbdg6" path="res://scenes/flak_explosion/flak_explosion.tscn" id="3_3g6rh"]
 
 [node name="OnDeathComponent" type="Node2D" unique_id=128414731]
 script = ExtResource("1_ntq3d")
 credit_scene = ExtResource("2_pdxpx")
+flak_scene = ExtResource("3_3g6rh")
