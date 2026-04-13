@@ -28,10 +28,11 @@ class_name OnDeathComponent
 @export var credit_scene: PackedScene
 ## How many credits is this enemy worth?
 @export var credit_value := 1.0
-## How many credits to spawn (applied AFTER lucky).
-@export var credit_count_multiplier := 1.0
 ## (Optional) Lucky component to check if credit is lucky.
 @export var lucky_component: LuckyComponent
+## (Optional, req if lucky_component) The curve for picking the random multiplier to credits
+## if the enemy is lucky. (Make the right side less likely!)
+@export var lucky_credit_mult_curve: Curve
 
 @export_group("Death Animation")
 @export var show_death_anim := true
@@ -122,15 +123,16 @@ func get_total_credit_value() -> float:
 	if !spawn_credit:
 		return 0.0
 	
-	var total_value := 0.0
-	var num_credits := 1 if !lucky_component.is_lucky else randi_range(4, 6)
-	num_credits = floor(num_credits * credit_count_multiplier)
-	for i in range(num_credits):
-		if lucky_component and lucky_component.is_lucky:
-			total_value += (credit_value * randf_range(1.5, 2.75))
-		else:
-			total_value += credit_value
-	return total_value
+	var credit_bonus := 0
+	var credit_mult := 1.0
+	
+	if lucky_component.is_lucky:
+		# Get random multiplier (weighted toward lower value).
+		credit_mult = lucky_credit_mult_curve.sample(randf())
+		# Add one extra credit before the multiplication.
+		credit_bonus = 1
+	
+	return credit_mult * (credit_value + credit_bonus)
 
 func _spawn_credit(credit_denomination: CreditDenomination) -> void:
 	var credit := credit_scene.instantiate() as Credit

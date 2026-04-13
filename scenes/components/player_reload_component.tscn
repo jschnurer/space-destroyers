@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bqhga0no81mbx"]
+
+[ext_resource type="Script" uid="uid://dqt4fy06q8h5g" path="res://scenes/components/player_reload_component.gd" id="1_u3dvb"]
+
+[node name="PlayerReloadComponent" type="Node" unique_id=1805562506]
+script = ExtResource("1_u3dvb")
+
+[node name="ReloadTimer" type="Timer" parent="." unique_id=1021515787]
+unique_name_in_owner = true
+one_shot = true
+
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]

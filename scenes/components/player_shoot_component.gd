@@ -1,0 +1,59 @@
+extends Node2D
+class_name PlayerShootComponent
+
+@export var bullet_scene: PackedScene
+@export var shot_sound: AudioStream
+@export var reload_component: PlayerReloadComponent
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("shoot"):
+		_try_shoot()
+	elif Game.has_upgrade(Enums.PlayerUpgrades.FULL_AUTO) and Input.is_action_pressed("shoot"):
+		_try_shoot()
+
+func _try_shoot() -> void:
+	if reload_component.is_reloading():
+		return
+	
+	# Shoot bullets.
+	var multi_level := Game.get_upgrade_level(Enums.PlayerUpgrades.MULTI_CANNON)
+	if multi_level > 0:
+		_spawn_bullet(-8.0, 0.0, Vector2.ONE, 0.6666)
+		_spawn_bullet(8.0, 0.0, Vector2.ONE, 0.6666)
+		if multi_level >= 2:
+			# Shoot one up left.
+			_spawn_bullet(-16.0, -4, Vector2.ONE * 0.5, 0.3333)
+		if multi_level >= 3:
+			# Shoot one up right.
+			_spawn_bullet(16, 4, Vector2.ONE * 0.5, 0.3333)
+	else:
+		_spawn_bullet(0)
+	
+	# Play sound.
+	SignalBus.emit_play_sfx(shot_sound)
+	
+	# Start reloading.
+	reload_component.reload()
+
+func _spawn_bullet(bullet_offset: float, angle_offset: float = 0.0, bullet_scale: Vector2 = Vector2.ONE, damage_scale: float = 1.0) -> void:
+	var bullet: Bullet = bullet_scene.instantiate()
+	bullet.global_position = global_position
+	bullet.global_position.x += bullet_offset
+	bullet.set_collision(1 << 3, 1 << 1)
+	
+	var dir := Vector2.UP
+	
+	if angle_offset != 0.0:
+		bullet.rotation = deg_to_rad(angle_offset)
+		dir = Vector2.from_angle(deg_to_rad(-90 + angle_offset))
+	
+	bullet.scale *= bullet_scale
+	
+	bullet.set_power_speed_direction(\
+		Game.get_stat_value(Enums.PlayerStats.DAMAGE) * damage_scale,
+		Game.get_stat_value(Enums.PlayerStats.SHOT_SPEED),
+		dir)
+	if Game.has_upgrade(Enums.PlayerUpgrades.FLAK_CANNON):
+		bullet.can_flak = true
+		
+	Utilities.call_deferred("add_child_to_level", bullet)

@@ -97,14 +97,13 @@ layout_mode = 2
 btn_text = "+Luck"
 is_player_stat = true
 player_stat = 7
-percentile_bonus_delta = 0.05
+percentile_bonus_delta = 0.03
 
 [node name="Credibux Value" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=29639636 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
 layout_mode = 2
 btn_text = "+Credibux Value"
 is_player_stat = true
 player_stat = 6
-bonus_delta = 0.05
 percentile_bonus_delta = 0.05
 
 [node name="Pickup" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=465462026 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]

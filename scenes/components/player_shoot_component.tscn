@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://iqyufmdbfs44"]
+
+[ext_resource type="Script" uid="uid://bluabjf4eg2ga" path="res://scenes/components/player_shoot_component.gd" id="1_dtskd"]
+[ext_resource type="PackedScene" uid="uid://d1jln5dps07ua" path="res://scenes/bullet/bullet.tscn" id="2_djjnm"]
+[ext_resource type="AudioStream" uid="uid://bnvh4nlk5v2us" path="res://audio/sfx/beepfx_samples/00_shot_1.wav" id="3_quqfq"]
+
+[node name="PlayerShootComponent" type="Node2D" unique_id=186616760]
+script = ExtResource("1_dtskd")
+bullet_scene = ExtResource("2_djjnm")
+shot_sound = ExtResource("3_quqfq")

@@ -28,4 +28,5 @@ shape = SubResource("CircleShape2D_4nouu")
 [node name="Components" type="Node2D" parent="." unique_id=1019852361]
 
 [node name="DeleteOffscreenComponent" parent="Components" unique_id=1973328041 node_paths=PackedStringArray("delete_node") instance=ExtResource("5_kdqey")]
+unique_name_in_owner = true
 delete_node = NodePath("../..")

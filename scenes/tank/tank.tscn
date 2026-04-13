@@ -1,38 +1,23 @@
 [gd_scene format=3 uid="uid://bpjt7iq22bpbu"]
 
 [ext_resource type="Texture2D" uid="uid://d7evvgsvgl6y" path="res://art/tank.png" id="1_gpcfw"]
-[ext_resource type="PackedScene" uid="uid://d1jln5dps07ua" path="res://scenes/bullet/bullet.tscn" id="2_0el1g"]
 [ext_resource type="Script" uid="uid://3nuocgrsgomy" path="res://scenes/tank/tank.gd" id="2_x633a"]
-[ext_resource type="AudioStream" uid="uid://bnvh4nlk5v2us" path="res://audio/sfx/beepfx_samples/00_shot_1.wav" id="3_n10so"]
+[ext_resource type="PackedScene" uid="uid://bqhga0no81mbx" path="res://scenes/components/player_reload_component.tscn" id="4_1pfma"]
 [ext_resource type="PackedScene" uid="uid://denivsfgmokeg" path="res://scenes/game_over_anim/game_over_anim.tscn" id="4_wyqxc"]
-[ext_resource type="PackedScene" uid="uid://0esplk3dg3yq" path="res://scenes/components/reload_component.tscn" id="6_ofcmh"]
 [ext_resource type="PackedScene" uid="uid://dgfuu1m46xmvo" path="res://scenes/components/reload_meter_component.tscn" id="7_valud"]
-[ext_resource type="Shader" uid="uid://hjo4sykpukcq" path="res://shaders/laser_sight_shader.gdshader" id="8_n10so"]
-[ext_resource type="Script" uid="uid://b55sn6fb0ullr" path="res://scenes/tank/laser_sight.gd" id="9_fscqu"]
+[ext_resource type="PackedScene" uid="uid://iqyufmdbfs44" path="res://scenes/components/player_shoot_component.tscn" id="9_1pfma"]
 [ext_resource type="PackedScene" uid="uid://b8unj7w73q0w3" path="res://scenes/components/hurtbox_component.tscn" id="9_t8nan"]
 [ext_resource type="PackedScene" uid="uid://d1xwwb4h1awsi" path="res://scenes/components/life_component.tscn" id="10_1pfma"]
 [ext_resource type="AudioStream" uid="uid://u61dg00ewpw8" path="res://audio/sfx/beepfx_samples/16_hit_2.wav" id="10_wyqxc"]
+[ext_resource type="PackedScene" uid="uid://bf2gbs3dw64vu" path="res://scenes/components/laser_sight_component.tscn" id="12_wyqxc"]
+[ext_resource type="PackedScene" uid="uid://b61r1anv0uuc" path="res://scenes/components/player_pickup_component.tscn" id="13_4g7yc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wyqxc"]
 size = Vector2(44, 32)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0el1g"]
-radius = 26.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fscqu"]
-shader = ExtResource("8_n10so")
-shader_parameter/dash_length = 10.0
-shader_parameter/gap_length = 8.0
-shader_parameter/scroll_offset = 0.0
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_n10so"]
-texture_repeat = 2
-
 [node name="Tank" type="CharacterBody2D" unique_id=1533795974]
 collision_mask = 128
 script = ExtResource("2_x633a")
-bullet_scene = ExtResource("2_0el1g")
-shot_sound = ExtResource("3_n10so")
 die_anim_scene = ExtResource("4_wyqxc")
 metadata/_edit_lock_ = true
 
@@ -46,41 +31,20 @@ texture = ExtResource("1_gpcfw")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="BulletSpawnPoint" type="Node2D" parent="." unique_id=2105820467]
-position = Vector2(22, -10)
-metadata/_edit_lock_ = true
-
-[node name="PickupArea" type="Area2D" parent="." unique_id=1203760869]
-position = Vector2(22, 16)
-collision_layer = 0
-collision_mask = 32
-
-[node name="PickupShape" type="CollisionShape2D" parent="PickupArea" unique_id=208911089]
-shape = SubResource("CircleShape2D_0el1g")
-metadata/_edit_lock_ = true
-
-[node name="LaserSight" type="Line2D" parent="." unique_id=207999444]
-material = SubResource("ShaderMaterial_fscqu")
-position = Vector2(22, -10)
-points = PackedVector2Array(0, 10, 0, -10000)
-width = 1.0
-default_color = Color(1, 0, 0, 0.78431374)
-texture = SubResource("CanvasTexture_n10so")
-texture_mode = 1
-script = ExtResource("9_fscqu")
-metadata/_edit_lock_ = true
-
-[node name="PickupPoint" type="Node2D" parent="." unique_id=1112266251]
-position = Vector2(22, 16)
-
 [node name="Components" type="Node2D" parent="." unique_id=903698524]
 metadata/_edit_lock_ = true
 
-[node name="ReloadComponent" parent="Components" unique_id=315688650 instance=ExtResource("6_ofcmh")]
-unique_name_in_owner = true
+[node name="PlayerPickupComponent" parent="Components" unique_id=2016039151 instance=ExtResource("13_4g7yc")]
+position = Vector2(22, 16)
+
+[node name="PlayerShootComponent" parent="Components" unique_id=186616760 node_paths=PackedStringArray("reload_component") instance=ExtResource("9_1pfma")]
+position = Vector2(22, -10)
+reload_component = NodePath("../PlayerReloadComponent")
+
+[node name="PlayerReloadComponent" parent="Components" unique_id=1805562506 instance=ExtResource("4_1pfma")]
 
 [node name="ReloadMeterComponent" parent="Components" unique_id=245575946 node_paths=PackedStringArray("reload_component") instance=ExtResource("7_valud")]
-reload_component = NodePath("../ReloadComponent")
+reload_component = NodePath("../PlayerReloadComponent")
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
@@ -100,5 +64,7 @@ metadata/_edit_lock_ = true
 [node name="LifeComponent" parent="Components" unique_id=759486464 instance=ExtResource("10_1pfma")]
 life = 1.0
 
-[connection signal="body_entered" from="PickupArea" to="." method="_on_pickup_area_body_entered"]
+[node name="LaserSightComponent" parent="Components" unique_id=1202097825 instance=ExtResource("12_wyqxc")]
+position = Vector2(22, -10)
+
 [connection signal="life_zeroed" from="Components/LifeComponent" to="." method="_on_life_component_life_zeroed"]

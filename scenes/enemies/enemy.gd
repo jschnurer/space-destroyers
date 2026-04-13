@@ -15,13 +15,6 @@ class_name Enemy
 		var comp: ShieldComponent = get_component(ShieldComponent)
 		if comp:
 			comp.life = value
-## Multiplier for how many credits to spawn on death.
-@export var credit_count_multiplier := 1.0:
-	set(value):
-		credit_count_multiplier = value
-		var on_death: OnDeathComponent = get_component(OnDeathComponent)
-		if on_death:
-			on_death.credit_count_multiplier = value
 ## Credit value.
 @export var credit_value := 1.0:
 	set(value):
@@ -36,7 +29,6 @@ func get_component(p_type: Variant) -> Variant:
 func _ready() -> void:
 	var on_death: OnDeathComponent = get_component(OnDeathComponent)
 	if on_death:
-		on_death.credit_count_multiplier = credit_count_multiplier
 		on_death.credit_value = credit_value
 	
 	var life_comp: LifeComponent = get_component(LifeComponent)

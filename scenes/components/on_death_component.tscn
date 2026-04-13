@@ -4,7 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://8th60kwk8o5f" path="res://scenes/items/credit.tscn" id="2_pdxpx"]
 [ext_resource type="PackedScene" uid="uid://buypeu55dbdg6" path="res://scenes/flak_explosion/flak_explosion.tscn" id="3_3g6rh"]
 
+[sub_resource type="Curve" id="Curve_3g6rh"]
+_limits = [2.5, 6.0, 0.0, 1.0]
+_data = [Vector2(0, 2.5), 0.0, 0.93275744, 0, 0, Vector2(0.9133126, 4.9059405), 7.08272, 7.08272, 0, 0, Vector2(1, 6), 22.86578, 0.0, 0, 0]
+point_count = 3
+
 [node name="OnDeathComponent" type="Node2D" unique_id=128414731]
 script = ExtResource("1_ntq3d")
 credit_scene = ExtResource("2_pdxpx")
+lucky_credit_mult_curve = SubResource("Curve_3g6rh")
 flak_scene = ExtResource("3_3g6rh")

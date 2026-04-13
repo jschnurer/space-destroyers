@@ -4,6 +4,7 @@ class_name Credit
 @export var value := 1.0
 @export var collection_move_speed := 800.0
 @export var credit_sound: AudioStream
+
 var denomination: CreditDenomination:
 	set(val):
 		denomination = val
@@ -18,6 +19,7 @@ var _is_pushing := false
 var _steer_force := 20.0
 
 @onready var sprite_2d: Sprite2D = %Sprite2D
+@onready var delete_offscreen_component: DieOffscreenComponent = %DeleteOffscreenComponent
 
 func _ready() -> void:
 	await get_tree().physics_frame
@@ -73,6 +75,9 @@ func _update_shader_color() -> void:
 func start_pickup_sequence(player_target: Node2D) -> void:
 	if _is_collecting:
 		return
+	
+	# Delete the off-screen component or the push will delete the credit!
+	delete_offscreen_component.queue_free()
 	
 	# Save the point to fly to.
 	_player_target = player_target

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bf2gbs3dw64vu"]
+
+[ext_resource type="Shader" uid="uid://hjo4sykpukcq" path="res://shaders/laser_sight_shader.gdshader" id="1_2kirj"]
+[ext_resource type="Script" uid="uid://b55sn6fb0ullr" path="res://scenes/tank/laser_sight.gd" id="2_dkn58"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fscqu"]
+shader = ExtResource("1_2kirj")
+shader_parameter/dash_length = 10.0
+shader_parameter/gap_length = 8.0
+shader_parameter/scroll_offset = 0.0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_n10so"]
+texture_repeat = 2
+
+[node name="LaserSightComponent" type="Line2D" unique_id=1202097825]
+material = SubResource("ShaderMaterial_fscqu")
+points = PackedVector2Array(0, 10, 0, -10000)
+width = 1.0
+default_color = Color(1, 0, 0, 0.78431374)
+texture = SubResource("CanvasTexture_n10so")
+texture_mode = 1
+script = ExtResource("2_dkn58")
+metadata/_edit_lock_ = true

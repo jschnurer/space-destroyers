@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b61r1anv0uuc"]
+
+[ext_resource type="Script" uid="uid://bhoa4fndheuxe" path="res://scenes/components/player_pickup_component.gd" id="1_bsloq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bsloq"]
+radius = 26.0
+
+[node name="PlayerPickupComponent" type="Node2D" unique_id=2016039151]
+script = ExtResource("1_bsloq")
+
+[node name="PickupArea" type="Area2D" parent="." unique_id=324732987]
+collision_layer = 0
+collision_mask = 32
+
+[node name="PickupShape" type="CollisionShape2D" parent="PickupArea" unique_id=2091825574]
+shape = SubResource("CircleShape2D_bsloq")
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="PickupArea" to="." method="_on_pickup_area_body_entered"]

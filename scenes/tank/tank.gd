@@ -1,22 +1,12 @@
 extends CharacterBody2D
 class_name Tank
 
-## The bullet to spawn when shooting.
-@export var bullet_scene: PackedScene
-@export var shot_sound: AudioStream
 @export var die_anim_scene: PackedScene
 
-@onready var bullet_spawn_point: Node2D = $BulletSpawnPoint
-@onready var reload_component: ReloadComponent = %ReloadComponent
-@onready var pickup_shape: CollisionShape2D = $PickupArea/PickupShape
-@onready var pickup_point: Node2D = $PickupPoint
 @onready var life_component: LifeComponent = $Components/LifeComponent
 @onready var sprite_2d: Sprite2D = %Sprite2D
 
 func _ready() -> void:
-	_update_reload_time(Game.get_stat_value(Enums.PlayerStats.RELOAD))
-	_update_pickup_area(Game.get_stat_value(Enums.PlayerStats.PICKUP_AREA))
-	
 	life_component.life = Game.get_stat(Enums.PlayerStats.LIFE).get_current_value_int()
 	life_component.life_changed.connect(_on_life_changed)
 	
@@ -24,82 +14,16 @@ func _ready() -> void:
 	Game.current_life_changed.connect(_on_game_manager_current_life_changed)
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("shoot"):
-		_try_shoot()
-	elif Game.has_upgrade(Enums.PlayerUpgrades.FULL_AUTO) and Input.is_action_pressed("shoot"):
-		_try_shoot()
-		
 	velocity = Vector2(Input.get_axis("move_left", "move_right") \
 		* Game.get_stat_value(Enums.PlayerStats.TANK_SPEED) \
 		* delta, 0)
 	
 	move_and_collide(velocity)
 
-func _try_shoot() -> void:
-	if reload_component.is_reloading():
-		return
-	
-	# Shoot bullets.
-	var multi_level := Game.get_upgrade_level(Enums.PlayerUpgrades.MULTI_CANNON)
-	if multi_level > 0:
-		_spawn_bullet(-8.0)
-		_spawn_bullet(8.0)
-		if multi_level >= 2:
-			# Shoot one up left.
-			_spawn_bullet(-16.0, -4, Vector2.ONE * 0.5)
-		if multi_level >= 3:
-			# Shoot one up right.
-			_spawn_bullet(16, 4, Vector2.ONE * 0.5)
-	else:
-		_spawn_bullet(0)
-	
-	# Play sound.
-	SignalBus.emit_play_sfx(shot_sound)
-	
-	# Start reloading.
-	reload_component.reload()
-
-func _on_pickup_area_body_entered(body: Node2D) -> void:
-	if body is Credit:
-		(body as Credit).start_pickup_sequence(pickup_point)
-
 func _on_stat_changed(stat: Stat) -> void:
 	match stat.player_stat:
-		Enums.PlayerStats.RELOAD: _update_reload_time(stat.get_current_value())
-		Enums.PlayerStats.PICKUP_AREA: _update_pickup_area(stat.get_current_value())
 		Enums.PlayerStats.LIFE: life_component.life = stat.get_current_value()
-
-func _update_reload_time(reload_time: float) -> void:
-	reload_component.set_reload_time(reload_time)
-
-func _update_pickup_area(pickup_size: float) -> void:
-	var shape := pickup_shape.shape as CircleShape2D
-	if shape:
-		shape.radius = pickup_size
-
-func _spawn_bullet(bullet_offset: float, angle_offset: float = 0.0, bullet_scale: Vector2 = Vector2.ONE) -> void:
-	var bullet: Bullet = bullet_scene.instantiate()
-	bullet.global_position = bullet_spawn_point.global_position
-	bullet.global_position.x += bullet_offset
-	bullet.set_collision(1 << 3, 1 << 1)
 	
-	var dir := Vector2.UP
-	
-	if angle_offset != 0.0:
-		bullet.rotation = deg_to_rad(angle_offset)
-		dir = Vector2.from_angle(deg_to_rad(-90 + angle_offset))
-	
-	bullet.scale *= bullet_scale
-	
-	bullet.set_power_speed_direction(\
-		Game.get_stat_value(Enums.PlayerStats.DAMAGE),
-		Game.get_stat_value(Enums.PlayerStats.SHOT_SPEED),
-		dir)
-	if Game.has_upgrade(Enums.PlayerUpgrades.FLAK_CANNON):
-		bullet.can_flak = true
-		
-	Utilities.call_deferred("add_child_to_level", bullet)
-
 func _on_life_changed(new_life: int, _hitbox: HitboxComponent) -> void:
 	Game.set_current_life(new_life)
 

@@ -24,11 +24,14 @@ func _ready() -> void:
 	var level_bonus := Game.game_state.current_level - 1
 	for en in enemies:
 		var e := en as Enemy
-		e.credit_value *= (1 + (.15 * level_bonus))
+		e.credit_value *= (1 + (.10 * level_bonus))
 		e.life = floori(e.life * (1 + (.125 * level_bonus)))
-		# Apply size scale to life & credit value.
-		e.life = roundi((e.life + e.scale.x) * pow(e.scale.x, 1.225))
-		e.credit_value = roundi((e.credit_value + e.scale.x) * pow(e.scale.x, 1.10))
+		
+		# Apply size scale to life & credit value for larger enemies.
+		if e.scale.x > 1:
+			e.life = roundi((e.life + e.scale.x) * pow(e.scale.x, 1.225))
+			e.credit_value = roundi((e.credit_value + e.scale.x) * pow(e.scale.x, 1.10))
+		
 		# Derive shield value from life.
 		e.shield_life = floori(e.life * 6.5)
 	
