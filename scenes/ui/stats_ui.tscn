@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b5saaj3w0vt7a" path="res://scenes/ui/stats_ui.gd" id="1_ky048"]
 [ext_resource type="Texture2D" uid="uid://cdyvlsr8w6mui" path="res://art/credit.png" id="3_yrqfn"]
 [ext_resource type="PackedScene" uid="uid://cufpjpgnyoers" path="res://scenes/ui/stat_label.tscn" id="4_gs80r"]
-[ext_resource type="Resource" uid="uid://dr6mj3cfwenny" path="res://resources/stats/tank_speed.tres" id="5_acfpo"]
+[ext_resource type="Resource" uid="uid://dr6mj3cfwenny" path="res://resources/stats/move_speed.tres" id="5_acfpo"]
 [ext_resource type="Resource" uid="uid://b256muf2l4s86" path="res://resources/upgrades/laser_sight.tres" id="5_u7ot7"]
 [ext_resource type="Texture2D" uid="uid://d4frx3bjg8ebp" path="res://art/shield_icon.png" id="5_yrqfn"]
 [ext_resource type="Theme" uid="uid://blgn547iw1k7d" path="res://themes/main_theme.tres" id="6_7pvy5"]

@@ -7,6 +7,9 @@ signal animation_complete
 
 @onready var tank: Sprite2D = %Tank
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
+@onready var gpu_particles_2d: GPUParticles2D = %GPUParticles2D
+@onready var in_particle_spawn_point: Node2D = %InParticleSpawnPoint
+@onready var out_particle_spawn_point: Node2D = %OutParticleSpawnPoint
 
 func _ready() -> void:
 	animation_player.animation_finished.connect(_on_animation_finished)

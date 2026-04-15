@@ -13,10 +13,6 @@ class_name ShopButton
 
 @export_group("Player Stat")
 @export var player_stat: Enums.PlayerStats
-@export var bonus_delta: float
-## If this is set, it will override everything else and just add this int point to the value.
-@export var bonus_delta_int: int
-@export var percentile_bonus_delta: float
 
 @export_group("Player Upgrade")
 @export var player_upgrade: Enums.PlayerUpgrades
@@ -35,10 +31,7 @@ func _on_pressed() -> void:
 		
 		if Game.pay_credits(upgrade_cost):
 			if is_player_stat:
-				if bonus_delta_int != 0:
-					Game.alter_stat_int(player_stat, bonus_delta_int)
-				else:
-					Game.alter_stat(player_stat, bonus_delta, percentile_bonus_delta)
+				Game.improve_stat(player_stat)
 			elif is_player_upgrade:
 				Game.alter_upgrade(player_upgrade, 1.0)
 			

@@ -24,6 +24,11 @@ class_name BaseStat
 @export var base_cost: float
 @export var power: float
 
+@export_group("Improvements")
+@export var value_per_level := 0.0
+@export var int_value_per_level := 0
+@export var pct_bonus_per_level := 0.0
+
 var level: int = 0
 ## Percent bonus used in APPROACHES formulas.
 var percent_bonus: float = 0.0

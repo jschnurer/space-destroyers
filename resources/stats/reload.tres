@@ -9,5 +9,6 @@ display_text = "Reload"
 description = "-Wait time between shots"
 approaches_zero_base = 1.0
 base_cost = 7.0
-power = 1.4849999999999999
+power = 1.485
+pct_bonus_per_level = 0.25
 metadata/_custom_type_script = "uid://rbsniqghf2h2"

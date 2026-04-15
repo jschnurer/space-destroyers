@@ -24,6 +24,8 @@ class_name InvaderBoss
 signal boss_killed
 
 var _tentacles_remaining := 0
+var _current_frame := 0
+var _pending_frame := 0
 
 func _ready() -> void:
 	dance_component.frame_changed.connect(_on_dance_frame_changed)
@@ -32,9 +34,17 @@ func _ready() -> void:
 	for t: InvaderBossTentacle in tens:
 		t.destroyed.connect(_on_tentacle_destroyed)
 
-func _on_dance_frame_changed(frame_index: int) -> void:
+func _physics_process(_delta: float) -> void:
+	if _pending_frame == _current_frame:
+		return
+	
 	for i in chunks_by_frame.size():
-		chunks_by_frame[i].toggle(frame_index == i)
+		chunks_by_frame[i].toggle(_pending_frame == i)
+	
+	_current_frame = _pending_frame
+
+func _on_dance_frame_changed(frame_index: int) -> void:
+	_pending_frame = frame_index
 
 func toggle_attacking(is_enabled: bool) -> void:
 	var children_nodes := find_children("*", "InvaderBossTentacle", true)

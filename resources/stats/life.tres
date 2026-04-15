@@ -12,4 +12,5 @@ value_rounding_type = 1
 base_value_int = 1
 base_cost = 75.0
 power = 2.8
+int_value_per_level = 1
 metadata/_custom_type_script = "uid://rbsniqghf2h2"

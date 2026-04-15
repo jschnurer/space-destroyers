@@ -128,25 +128,40 @@ func get_stat(stat: Enums.PlayerStats) -> Stat:
 func get_stat_value(stat: Enums.PlayerStats) -> float:
 	return get_stat(stat).get_current_value()
 
-## Adds the delta to the player stat.
-func alter_stat(p_stat: Enums.PlayerStats, point_delta: float, percent_bonus_delta: float) -> void:
-	var stat := game_state.stats[p_stat]
-	stat.point_bonus += point_delta
-	stat.percent_bonus += percent_bonus_delta
-	stat.level += 1
-	stat_changed.emit(stat)
+func improve_stat(p_stat: Enums.PlayerStats) -> void:
+	var stat := get_stat(p_stat)
 	
-## Adds the delta to the player int stat.
-func alter_stat_int(p_stat: Enums.PlayerStats, point_delta: int) -> void:
-	var stat := game_state.stats[p_stat]
-	stat.point_bonus_int += point_delta
 	stat.level += 1
-	stat_changed.emit(stat)
+	stat.point_bonus += stat.value_per_level
+	stat.point_bonus_int += stat.int_value_per_level
+	stat.percent_bonus += stat.pct_bonus_per_level
 	
 	# Special, for LIFE only. When increasing max life, also increase current life.
 	if p_stat == Enums.PlayerStats.LIFE:
-		game_state.current_life += point_delta
+		game_state.current_life += stat.int_value_per_level
 		current_life_changed.emit(game_state.current_life)
+	
+	stat_changed.emit(stat)
+
+### Adds the delta to the player stat.
+#func alter_stat(p_stat: Enums.PlayerStats, point_delta: float, percent_bonus_delta: float) -> void:
+	#var stat := game_state.stats[p_stat]
+	#stat.point_bonus += point_delta
+	#stat.percent_bonus += percent_bonus_delta
+	#stat.level += 1
+	#stat_changed.emit(stat)
+	#
+### Adds the delta to the player int stat.
+#func alter_stat_int(p_stat: Enums.PlayerStats, point_delta: int) -> void:
+	#var stat := game_state.stats[p_stat]
+	#stat.point_bonus_int += point_delta
+	#stat.level += 1
+	#stat_changed.emit(stat)
+	#
+	## Special, for LIFE only. When increasing max life, also increase current life.
+	#if p_stat == Enums.PlayerStats.LIFE:
+		#game_state.current_life += point_delta
+		#current_life_changed.emit(game_state.current_life)
 
 ## Returns the specified upgrade value.
 func get_upgrade(upgr: Enums.PlayerUpgrades) -> Upgrade:
