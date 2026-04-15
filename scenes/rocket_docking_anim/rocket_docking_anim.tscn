@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://ddrxve2tnukjm" path="res://scenes/rocket_launch_anim/rocket.tscn" id="2_vlukg"]
 [ext_resource type="AudioStream" uid="uid://djonplyn8hu4u" path="res://audio/sfx/50-CC0-retro-synth-SFX/synth_misc_03.ogg" id="3_3qsyk"]
 [ext_resource type="AudioStream" uid="uid://cmelkioyjjdho" path="res://audio/bgm/8-bit_last_mission_full.mp3" id="4_3qsyk"]
-[ext_resource type="Texture2D" uid="uid://cqt6y1s5tmy5a" path="res://art/spaceship/spaceship-half.png" id="4_32w13"]
 [ext_resource type="AudioStream" uid="uid://xl5bwvpl57tr" path="res://audio/sfx/beepfx_samples/19_jet_burst.wav" id="5_n11v0"]
 [ext_resource type="PackedScene" uid="uid://kw6ct5hy8kno" path="res://scenes/spaceship/spaceship.tscn" id="6_dhyg0"]
 
@@ -26,19 +25,6 @@ position = Vector2(960, 250)
 [node name="EmptyWings" type="Sprite2D" parent="AnimPosition" unique_id=1154964257]
 unique_name_in_owner = true
 texture = ExtResource("1_aitqc")
-
-[node name="RightHalf" type="Sprite2D" parent="AnimPosition" unique_id=526168362]
-unique_name_in_owner = true
-visible = false
-texture = ExtResource("4_32w13")
-offset = Vector2(17, 0)
-
-[node name="LeftHalf" type="Sprite2D" parent="AnimPosition" unique_id=1069763818]
-unique_name_in_owner = true
-visible = false
-scale = Vector2(-1, 1)
-texture = ExtResource("4_32w13")
-offset = Vector2(17, 0)
 
 [node name="Rocket" parent="AnimPosition" unique_id=1905750930 instance=ExtResource("2_vlukg")]
 unique_name_in_owner = true

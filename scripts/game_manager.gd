@@ -106,7 +106,7 @@ func go_to_level(lvl_num: int) -> void:
 	
 	# Decrement one because load_next_level increments.
 	game_state.current_level = lvl_num - 1
-	load_next_level(lvl_num == 1)
+	load_next_level(true)
 
 func _on_credits_picked_up(amt: float) -> void:
 	game_state.credits += (amt * get_stat_value(Enums.PlayerStats.CREDIT_MULTIPLIER))

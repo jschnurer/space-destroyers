@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://d17ivhblnnral"]
+
+[ext_resource type="Script" uid="uid://def0lgpipp6w0" path="res://scenes/invader_boss/invader_boss_tentacle.gd" id="1_bjv2t"]
+[ext_resource type="Texture2D" uid="uid://8uhqw2c0lt2j" path="res://art/invader_boss/invader_boss_tentacle.png" id="2_knnut"]
+[ext_resource type="Script" uid="uid://dgv2errilaeh1" path="res://scenes/components/dance_component.gd" id="3_2s6ql"]
+[ext_resource type="PackedScene" uid="uid://ce5s3klsvcdeq" path="res://scenes/invader_boss/invader_boss_body_chunk.tscn" id="3_ibeid"]
+[ext_resource type="PackedScene" uid="uid://b8unj7w73q0w3" path="res://scenes/components/hurtbox_component.tscn" id="4_knnut"]
+[ext_resource type="Script" uid="uid://dtyhv87xau72w" path="res://scenes/components/life_component.gd" id="5_2s6ql"]
+[ext_resource type="AudioStream" uid="uid://bc8kb36efgrbd" path="res://audio/sfx/beepfx_samples/15_hit_1.wav" id="5_qilv5"]
+[ext_resource type="PackedScene" uid="uid://mdxtaa55xkqh" path="res://scenes/components/on_death_component.tscn" id="7_bcdr8"]
+[ext_resource type="AudioStream" uid="uid://b5qskidv3rxbr" path="res://audio/sfx/beepfx_samples/26_boom_7.wav" id="8_bcdr8"]
+[ext_resource type="PackedScene" uid="uid://bqkgb4mpppgmt" path="res://scenes/components/auto_shoot_component.tscn" id="9_gi8d0"]
+[ext_resource type="PackedScene" uid="uid://b0rqtlww1es66" path="res://scenes/invader_death/invader_death.tscn" id="9_l73as"]
+[ext_resource type="PackedScene" uid="uid://0esplk3dg3yq" path="res://scenes/components/reload_component.tscn" id="10_3h2fd"]
+[ext_resource type="PackedScene" uid="uid://d1jln5dps07ua" path="res://scenes/bullet/bullet.tscn" id="10_cyek1"]
+[ext_resource type="Material" uid="uid://d0vxn0ewbmjii" path="res://shaders/enemy_shader_material.tres" id="11_cyek1"]
+
+[node name="InvaderBossTentacle" type="Node2D" unique_id=1670934688 groups=["ENEMY"]]
+script = ExtResource("1_bjv2t")
+
+[node name="BodyChunk" parent="." unique_id=712337160 instance=ExtResource("3_ibeid")]
+unique_name_in_owner = true
+
+[node name="Components" type="Node2D" parent="." unique_id=110520935]
+
+[node name="DanceComponent" type="Node" parent="Components" unique_id=1097908434 node_paths=PackedStringArray("sprite")]
+script = ExtResource("3_2s6ql")
+sprite = NodePath("../../Sprite2D")
+frame_count = 4
+fps = 7.0
+random_start_time = Vector2(0, 5)
+current_frame = 3
+metadata/_custom_type_script = "uid://dgv2errilaeh1"
+
+[node name="HurtboxComponent" parent="Components" unique_id=2122994445 node_paths=PackedStringArray("life_component", "sprite_2d") instance=ExtResource("4_knnut")]
+position = Vector2(0, 64)
+scale = Vector2(4, 4)
+collision_layer = 2
+collision_mask = 8
+life_component = NodePath("../LifeComponent")
+play_hit_sound = true
+hit_sound = ExtResource("5_qilv5")
+flash_damage = true
+sprite_2d = NodePath("../../Sprite2D")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Components/HurtboxComponent" unique_id=1484818698]
+polygon = PackedVector2Array(-2, -8, -3, -4, -5, -5, -7, -1, -2, -1, -3, 3, -7, 2, -4, 7, 0, 8, 2, 6, 0, 4, 5, 3, 2, 0, 1, -5, 5, -4, 3, -8)
+
+[node name="LifeComponent" type="Node" parent="Components" unique_id=1693388608]
+unique_name_in_owner = true
+script = ExtResource("5_2s6ql")
+life = 200.0
+metadata/_custom_type_script = "uid://dtyhv87xau72w"
+
+[node name="OnDeathComponent" parent="Components" unique_id=128414731 node_paths=PackedStringArray("life_component", "enemy_node") instance=ExtResource("7_bcdr8")]
+position = Vector2(0, 64)
+life_component = NodePath("../LifeComponent")
+death_sound = ExtResource("8_bcdr8")
+enemy_node = NodePath("../..")
+deletion = false
+spawn_credit = false
+death_anim_scene = ExtResource("9_l73as")
+can_spawn_flak = true
+
+[node name="AutoShootComponent" parent="Components" unique_id=523345871 node_paths=PackedStringArray("reload_component", "inherit_from_sprite") instance=ExtResource("9_gi8d0")]
+unique_name_in_owner = true
+position = Vector2(0, 102)
+reload_component = NodePath("../ReloadComponent")
+bullet_scene = ExtResource("10_cyek1")
+shot_modulate = Color(0.9411765, 0.5568628, 0.93333334, 1)
+shot_direction = Vector2(0, 1)
+shot_speed = 250.0
+shot_damage = 1.0
+shot_collision_layer = 64
+shot_collision_mask = 1
+max_delay = 1.75
+projectile_scale = 2.0
+inherit_from_sprite = NodePath("../../Sprite2D")
+
+[node name="ReloadComponent" parent="Components" unique_id=315688650 instance=ExtResource("10_3h2fd")]
+use_random_reload_time = true
+max_reload_time = 3.25
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=656556208]
+unique_name_in_owner = true
+modulate = Color(0.9411765, 0.5568628, 0.93333334, 1)
+material = ExtResource("11_cyek1")
+position = Vector2(0, 64)
+texture = ExtResource("2_knnut")
+hframes = 4
+frame = 3

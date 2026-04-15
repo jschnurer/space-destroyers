@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dp8lrhojwvfrc" path="res://scenes/components/auto_shoot_component.gd" id="1_j004q"]
 
-[node name="ShootComponent" type="Node2D" unique_id=523345871]
+[node name="AutoShootComponent" type="Node2D" unique_id=523345871]
 script = ExtResource("1_j004q")
 
 [node name="DelayTimer" type="Timer" parent="." unique_id=18802661]

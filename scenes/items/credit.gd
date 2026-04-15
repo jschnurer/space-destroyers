@@ -56,7 +56,7 @@ func collect() -> void:
 
 func _on_force_integration(_state: PhysicsDirectBodyState2D) -> void:
 	var side_motion := randf_range(-120.0, 120.0)
-	var up_motion := randf_range(0.0, 120.0)
+	var up_motion := randf_range(0.0, 250.0)
 
 	apply_impulse(Vector2(side_motion, -up_motion))
 	apply_torque_impulse(randf_range(0.15, 1.15) * side_motion)

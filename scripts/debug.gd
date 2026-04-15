@@ -8,7 +8,7 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("nuke"):
 		for en in get_tree().get_nodes_in_group(GroupNames.ENEMY):
-			var lc: LifeComponent = (en as Enemy).get_component(LifeComponent)
+			var lc: LifeComponent = Utilities.get_first_child_of_type(en, LifeComponent)
 			if lc:
 				lc.take_damage(99999999.0, null)
 	elif Input.is_action_just_pressed("pass_level") or Input.is_action_just_pressed("pass_level_shop"):

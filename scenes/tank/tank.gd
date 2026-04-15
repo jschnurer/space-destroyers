@@ -9,7 +9,6 @@ class_name Tank
 func _ready() -> void:
 	life_component.life = Game.get_stat(Enums.PlayerStats.LIFE).get_current_value_int()
 	life_component.life_changed.connect(_on_life_changed)
-	
 	Game.stat_changed.connect(_on_stat_changed)
 	Game.current_life_changed.connect(_on_game_manager_current_life_changed)
 

@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://hnx3q26wytxl"]
 
 [ext_resource type="Script" uid="uid://0epabh5cet8u" path="res://scenes/boss_loader/boss_loader.gd" id="1_shxs6"]
+[ext_resource type="AudioStream" uid="uid://crrkq7rrrf4qu" path="res://audio/bgm/confrontation.ogg" id="2_oi7oa"]
 [ext_resource type="PackedScene" uid="uid://xsgcag185atq" path="res://scenes/mission_update_text_animation/mission_update_text_animation.tscn" id="2_v2c4b"]
 
 [node name="BossLoader" type="Node" unique_id=1376262112]
+process_mode = 3
 script = ExtResource("1_shxs6")
+boss_bgm = ExtResource("2_oi7oa")
 
 [node name="MissionUpdateTextAnimation" parent="." unique_id=1668417129 instance=ExtResource("2_v2c4b")]
 title_text = "-- WARNING -- WARNING -- WARNING --"
@@ -15,10 +18,11 @@ INCOMING HIGH ENERGY SIGNATURE DETECTED!
 [p=0.5]
 CONTACT IMMINENT!
 [p=0.5]
-PREPARE TO ENGAGE!"
+PREPARE TO ENGAGE ENEMY!"
 autoplay = false
 require_player_confirm = false
 auto_confirm_time = 5.0
+allow_skipping = false
 bgm_fade_out_time = 0.0
 bgm_fade_in_time = 0.25
 

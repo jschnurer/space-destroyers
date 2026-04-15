@@ -1,6 +1,10 @@
 extends Node2D
+class_name RocketLaunchAnimation
 
+## Delay after launching rocket before fading out screen.
 @export var delay_before_fade_out := 5.4
+## Play as soon as ready?
+@export var autoplay := false
 
 @export_group("Booster")
 @export var booster_speed := 1200.0
@@ -28,6 +32,22 @@ var _fade_delay_time := 0.0
 
 func _ready() -> void:
 	mission_update_text_animation.player_dismissed.connect(_on_mission_update_text_done)
+	
+	if autoplay:
+		play()
+
+## Begins playing mission text then animation.
+func play() -> void:
+	reposition()
+	get_tree().paused = true
+	
+	mission_update_text_animation.play()
+
+## Aligns animation with player.
+func reposition() -> void:
+	var player_tank: Tank = get_tree().get_first_node_in_group("PLAYER")
+	global_position = player_tank.global_position
+	player_tank.visible = false
 
 func _on_mission_update_text_done() -> void:
 	mission_update_text_animation.queue_free()
@@ -61,5 +81,5 @@ func _fade_out() -> void:
 	await SignalBus.fade_out_screen_complete
 	SignalBus.emit_open_shop()
 	await SignalBus.shop_closed
-	get_tree().change_scene_to_file("res://scenes/rocket_docking_anim/rocket_docking_anim.tscn")
+	get_tree().change_scene_to_file("res://scenes/space_shooter_levels/space_shooter_levels.tscn")
 	# TODO: Open shop, set game mode to vert scroller.

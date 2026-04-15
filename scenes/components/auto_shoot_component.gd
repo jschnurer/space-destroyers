@@ -31,6 +31,8 @@ class_name AutoShootComponent
 @export_range(0.0, 60.0) var max_delay := 0.0
 
 @export_group("Projectile Size")
+## Overrides projectile scale (ignores inheritance if not 1.0).
+@export var projectile_scale: float = 1.0
 ## If true, bullet scene will have same scale as provided sprite.
 @export var inherit_sprite_scale: bool
 ## The sprite to inherit projectile scale from.
@@ -72,7 +74,9 @@ func _spawn_projectile(position_offset: float) -> void:
 		shot_direction)
 	projectile.modulate = shot_modulate
 	
-	if inherit_sprite_scale and inherit_from_sprite:
+	if projectile_scale != 1.0:
+		projectile.scale = Vector2.ONE * projectile_scale
+	elif inherit_sprite_scale and inherit_from_sprite:
 		projectile.scale = inherit_from_sprite.scale
 	
 	Utilities.call_deferred("add_child_to_level", projectile)

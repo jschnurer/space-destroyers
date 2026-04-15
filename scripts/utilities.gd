@@ -5,15 +5,22 @@ func is_in_layer(node_layer: int, check_layer: Enums.CollisionLayers) -> bool:
 
 func add_child_to_level(node: Node, deferred := false) -> void:
 	if !deferred:
-		get_tree().get_first_node_in_group("LEVEL_NODE").add_child(node)
+		var level_node: Node = get_tree().get_first_node_in_group("LEVEL_NODE")
+		if level_node:
+			level_node.add_child(node)
+		else:
+			get_tree().current_scene.add_child(node)
 	else:
 		call_deferred("add_child_to_level", node)
 
 func add_children_to_level(nodes: Array[Node], deferred := false) -> void:
 	if !deferred:
-		var parent_node := get_tree().get_first_node_in_group("LEVEL_NODE")
-		for n in nodes:
-			parent_node.add_child(n)
+		var level_node := get_tree().get_first_node_in_group("LEVEL_NODE")
+		for node in nodes:
+			if level_node:
+				level_node.add_child(node)
+			else:
+				get_tree().current_scene.add_child(node)
 	else:
 		call_deferred("add_children_to_level", nodes)
 

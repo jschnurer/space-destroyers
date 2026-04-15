@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cwatrl443s0oj"]
+
+[ext_resource type="Script" uid="uid://ch8qb0qenoho5" path="res://scenes/boss_killed_transition/boss_killed_transition.gd" id="1_lkmdr"]
+[ext_resource type="PackedScene" uid="uid://c55umwmkkb1ud" path="res://scenes/rocket_launch_anim/rocket_launch_animation.tscn" id="2_6ji7p"]
+
+[node name="BossKilledTransition" type="Node" unique_id=2083711863]
+process_mode = 3
+script = ExtResource("1_lkmdr")
+
+[node name="RocketLaunchAnimation" parent="." unique_id=1044592445 instance=ExtResource("2_6ji7p")]
+unique_name_in_owner = true
+visible = false

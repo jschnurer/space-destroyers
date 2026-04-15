@@ -14,6 +14,8 @@ class_name MissionUpdateTextAnimation
 @export var auto_confirm_time: float
 ## How many text characters appear per second.
 @export var typing_chars_per_second := 35.0
+## If true, player can press SHOOT to skip typing text.
+@export var allow_skipping := true
 
 @export_group("Audio")
 @export var bgm: AudioStream
@@ -63,19 +65,20 @@ func _process(delta: float) -> void:
 	if _mode == Mode.NONE:
 		return
 
-	if _mode == Mode.TITLE and Input.is_action_just_pressed("ui_accept"):
-		klaxon_player.stop()
-		if _title_blink_tween:
-			_title_blink_tween.stop()
-		title.visible = true
-		_type_mission_text()
-	elif _mode == Mode.TYPING and Input.is_action_just_pressed("ui_accept"):
-		mission_text_label.visible_characters = _mission_text_length
-		typing_audio_player.stop()
-		_show_continue_prompt()
-	elif _mode == Mode.PROMPT and Input.is_action_just_pressed("ui_accept"):
-		_mode = Mode.DONE
-		player_dismissed.emit()
+	if allow_skipping:
+		if _mode == Mode.TITLE and Input.is_action_just_pressed("ui_accept"):
+			klaxon_player.stop()
+			if _title_blink_tween:
+				_title_blink_tween.stop()
+			title.visible = true
+			_type_mission_text()
+		elif _mode == Mode.TYPING and Input.is_action_just_pressed("ui_accept"):
+			mission_text_label.visible_characters = _mission_text_length
+			typing_audio_player.stop()
+			_show_continue_prompt()
+		elif _mode == Mode.PROMPT and Input.is_action_just_pressed("ui_accept"):
+			_mode = Mode.DONE
+			player_dismissed.emit()
 	
 	if _mode == Mode.TYPING:
 		if !_typing_is_paused:

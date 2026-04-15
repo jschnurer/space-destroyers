@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://ce5s3klsvcdeq"]
+
+[ext_resource type="Texture2D" uid="uid://ctojs5o7t5emy" path="res://art/invader_boss/invader_body_chunk.png" id="1_1opkf"]
+[ext_resource type="Script" uid="uid://jeu7ogycu6mw" path="res://scenes/invader_boss/invader_boss_body_chunk.gd" id="1_f007t"]
+[ext_resource type="AudioStream" uid="uid://bca4f7jod5uw" path="res://audio/sfx/beepfx_samples/34_switch_1.wav" id="2_b1ryv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ibeid"]
+size = Vector2(64, 64)
+
+[node name="InvaderBossBodyChunk" type="Node2D" unique_id=712337160]
+script = ExtResource("1_f007t")
+plink_sound = ExtResource("2_b1ryv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1433939011]
+unique_name_in_owner = true
+modulate = Color(0.67058825, 0.16470589, 0.64705884, 1)
+texture = ExtResource("1_1opkf")
+hframes = 2
+
+[node name="BodyChunkArea" type="Area2D" parent="." unique_id=789477089]
+unique_name_in_owner = true
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyChunkArea" unique_id=391538852]
+shape = SubResource("RectangleShape2D_ibeid")
+
+[connection signal="area_entered" from="BodyChunkArea" to="." method="_on_body_chunk_area_area_entered"]

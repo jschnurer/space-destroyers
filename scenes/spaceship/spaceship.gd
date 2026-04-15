@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Spaceship
 
+@export var move_speed_multiplier := 50.0
 ## The time it takes to fully rotate between directions.
 @export var rotate_duration := 1.0
 @export var shot_sound: AudioStream
@@ -51,7 +52,7 @@ func _physics_process(delta: float) -> void:
 		Input.get_axis("move_up", "move_down")
 	)
 
-	var target_velocity := input_dir * speed * delta * 100
+	var target_velocity := input_dir * speed * delta * move_speed_multiplier
 	var buffer_y_top := 200.0
 	var buffer_y_bottom := 100.0
 	var buffer_x := 100.0

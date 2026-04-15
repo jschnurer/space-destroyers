@@ -62,3 +62,8 @@ Author: HydroGene
 License: CC0 Public Domain
 https://opengameart.org/content/8-bit-last-mission
 Note: Loops at 13.77s
+
+== Confrontation ==
+Author: Centurion_of_war
+License: CC0 Public Domain
+https://opengameart.org/content/confrontation-1

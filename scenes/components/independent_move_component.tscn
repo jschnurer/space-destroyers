@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cieq8axp6x0ds"]
+
+[ext_resource type="Script" uid="uid://ckhgs4aac7d12" path="res://scenes/components/independent_move_component.gd" id="1_4t68v"]
+
+[node name="IndependentMoveComponent" type="Area2D" unique_id=1689851735]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_4t68v")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

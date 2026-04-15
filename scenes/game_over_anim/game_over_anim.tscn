@@ -220,7 +220,8 @@ color = Color(0, 0, 0, 1)
 color_ramp = SubResource("GradientTexture1D_dj4gr")
 
 [node name="GameOverAnimation" type="Node2D" unique_id=524808331]
-process_mode = 2
+process_mode = 3
+z_index = 4096
 script = ExtResource("1_yfbkq")
 
 [node name="HorizontalBoom" type="ColorRect" parent="." unique_id=58797997]
@@ -307,6 +308,8 @@ color = Color(1, 1, 1, 0.5019608)
 libraries/ = SubResource("AnimationLibrary_amion")
 
 [node name="ScreenFade" type="ColorRect" parent="." unique_id=254100380]
+unique_name_in_owner = true
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -328,15 +331,12 @@ process_material = SubResource("ParticleProcessMaterial_7jwaw")
 
 [node name="Boom1" type="AudioStreamPlayer" parent="." unique_id=72866192]
 stream = ExtResource("2_ea0ey")
-autoplay = true
 
 [node name="Boom2" type="AudioStreamPlayer" parent="." unique_id=262251561]
 stream = ExtResource("3_iwa6m")
-autoplay = true
 
 [node name="GrrSound" type="AudioStreamPlayer" parent="." unique_id=1169482181]
 stream = ExtResource("5_8n0av")
-autoplay = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="finished" from="Boom1" to="." method="_on_boom_1_finished"]

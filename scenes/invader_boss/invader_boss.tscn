@@ -1,0 +1,377 @@
+[gd_scene format=3 uid="uid://c1u1sgqiskpxw"]
+
+[ext_resource type="Script" uid="uid://cbc43cu7g1q6y" path="res://scenes/invader_boss/invader_boss.gd" id="1_iwbvs"]
+[ext_resource type="Texture2D" uid="uid://d2kwfeo3t5x0x" path="res://art/invader_boss/invader_boss_body.png" id="1_s6yn3"]
+[ext_resource type="PackedScene" uid="uid://bdmudihj1sun8" path="res://scenes/components/dance_component.tscn" id="2_hmv8f"]
+[ext_resource type="AudioStream" uid="uid://b5yxshln5gwls" path="res://audio/sfx/50-CC0-retro-synth-SFX/retro_die_03.ogg" id="2_r5uy0"]
+[ext_resource type="PackedScene" uid="uid://d17ivhblnnral" path="res://scenes/invader_boss/invader_boss_tentacle.tscn" id="2_t38jh"]
+[ext_resource type="PackedScene" uid="uid://75ikciqfnp1j" path="res://scenes/invader_boss/invader_boss_disgorger.tscn" id="3_t38jh"]
+[ext_resource type="PackedScene" uid="uid://ce5s3klsvcdeq" path="res://scenes/invader_boss/invader_boss_body_chunk.tscn" id="4_ss6l2"]
+[ext_resource type="PackedScene" uid="uid://denivsfgmokeg" path="res://scenes/game_over_anim/game_over_anim.tscn" id="7_dhscd"]
+[ext_resource type="PackedScene" uid="uid://cieq8axp6x0ds" path="res://scenes/components/independent_move_component.tscn" id="7_j0fcu"]
+[ext_resource type="AudioStream" uid="uid://dga3ybrxm63ad" path="res://audio/sfx/beepfx_samples/23_boom_4.wav" id="9_rbnt5"]
+[ext_resource type="AudioStream" uid="uid://cjswi6ehew3gy" path="res://audio/sfx/beepfx_samples/20_boom_1.wav" id="10_wmor6"]
+[ext_resource type="Script" uid="uid://b6ece7dqrtvwd" path="res://scenes/invader_boss/explosion_handler.gd" id="12_5chgg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j0fcu"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ibeid"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ss6l2"]
+size = Vector2(64, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iwbvs"]
+size = Vector2(64, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dhscd"]
+size = Vector2(64, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rbnt5"]
+size = Vector2(64, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wmor6"]
+size = Vector2(192, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r5uy0"]
+size = Vector2(256, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5chgg"]
+size = Vector2(1152, 640)
+
+[node name="InvaderBoss" type="Node2D" unique_id=1194353505]
+script = ExtResource("1_iwbvs")
+
+[node name="MainBody" type="Sprite2D" parent="." unique_id=1468405910]
+modulate = Color(0.67058825, 0.16470589, 0.64705884, 1)
+texture = ExtResource("1_s6yn3")
+hframes = 4
+frame = 2
+
+[node name="Tentacles" type="Node2D" parent="." unique_id=876890160]
+unique_name_in_owner = true
+
+[node name="InvaderBossTentacle" parent="Tentacles" unique_id=1670934688 instance=ExtResource("2_t38jh")]
+position = Vector2(-416, 96)
+
+[node name="InvaderBossTentacle2" parent="Tentacles" unique_id=1517470593 instance=ExtResource("2_t38jh")]
+position = Vector2(-160, 96)
+
+[node name="InvaderBossTentacle3" parent="Tentacles" unique_id=642938254 instance=ExtResource("2_t38jh")]
+position = Vector2(-224, 96)
+
+[node name="InvaderBossTentacle4" parent="Tentacles" unique_id=778331186 instance=ExtResource("2_t38jh")]
+position = Vector2(-32, 96)
+
+[node name="InvaderBossTentacle5" parent="Tentacles" unique_id=1195206081 instance=ExtResource("2_t38jh")]
+position = Vector2(416, 96)
+
+[node name="InvaderBossTentacle6" parent="Tentacles" unique_id=1488348864 instance=ExtResource("2_t38jh")]
+position = Vector2(160, 96)
+
+[node name="InvaderBossTentacle7" parent="Tentacles" unique_id=1327927633 instance=ExtResource("2_t38jh")]
+position = Vector2(288, 96)
+
+[node name="InvaderBossTentacle8" parent="Tentacles" unique_id=920471292 instance=ExtResource("2_t38jh")]
+position = Vector2(224, 96)
+
+[node name="InvaderBossTentacle9" parent="Tentacles" unique_id=2037354491 instance=ExtResource("2_t38jh")]
+position = Vector2(32, 96)
+
+[node name="InvaderBossTentacle10" parent="Tentacles" unique_id=1555608336 instance=ExtResource("2_t38jh")]
+position = Vector2(-288, 96)
+
+[node name="InvaderBossTentacle11" parent="Tentacles" unique_id=732435923 instance=ExtResource("2_t38jh")]
+position = Vector2(-352, 96)
+
+[node name="InvaderBossTentacle12" parent="Tentacles" unique_id=768561381 instance=ExtResource("2_t38jh")]
+position = Vector2(352, 96)
+
+[node name="Disgorgers" type="Node2D" parent="." unique_id=618671296]
+unique_name_in_owner = true
+
+[node name="InvaderBossDisgorger" parent="Disgorgers" unique_id=531322723 instance=ExtResource("3_t38jh")]
+position = Vector2(-416, -32)
+rotation = 1.5707964
+
+[node name="InvaderBossDisgorger2" parent="Disgorgers" unique_id=1892467954 instance=ExtResource("3_t38jh")]
+position = Vector2(416, -32)
+rotation = -1.5707964
+
+[node name="ChunksByFrame" type="Node2D" parent="." unique_id=2023871077]
+
+[node name="ChunksAllFrames" parent="ChunksByFrame" unique_id=712337160 instance=ExtResource("4_ss6l2")]
+visible = false
+position = Vector2(-96, 32)
+
+[node name="CollisionShape2D" parent="ChunksByFrame/ChunksAllFrames/BodyChunkArea" parent_id_path=PackedInt32Array(712337160, 789477089) index="0" unique_id=391538852]
+shape = SubResource("RectangleShape2D_j0fcu")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="ChunksByFrame/ChunksAllFrames/BodyChunkArea" parent_id_path=PackedInt32Array(712337160, 789477089) index="1" unique_id=1566781351]
+position = Vector2(-384, 64)
+shape = SubResource("RectangleShape2D_ibeid")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="ChunksByFrame/ChunksAllFrames/BodyChunkArea" parent_id_path=PackedInt32Array(712337160, 789477089) index="2" unique_id=1367160804]
+position = Vector2(192, 0)
+shape = SubResource("RectangleShape2D_ibeid")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="ChunksByFrame/ChunksAllFrames/BodyChunkArea" parent_id_path=PackedInt32Array(712337160, 789477089) index="3" unique_id=324010430]
+position = Vector2(576, 64)
+shape = SubResource("RectangleShape2D_ibeid")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ChunksByFrame/ChunksAllFrames/BodyChunkArea" parent_id_path=PackedInt32Array(712337160, 789477089) index="4" unique_id=1285068223]
+position = Vector2(576, -160)
+shape = SubResource("RectangleShape2D_ss6l2")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="ChunksByFrame/ChunksAllFrames/BodyChunkArea" parent_id_path=PackedInt32Array(712337160, 789477089) index="5" unique_id=2124434418]
+position = Vector2(-384, -160)
+shape = SubResource("RectangleShape2D_iwbvs")
+
+[node name="ChunksFrame0" parent="ChunksByFrame" unique_id=1414938090 instance=ExtResource("4_ss6l2")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-544, 96)
+
+[node name="CollisionShape2D" parent="ChunksByFrame/ChunksFrame0/BodyChunkArea" parent_id_path=PackedInt32Array(1414938090, 789477089) index="0" unique_id=391538852]
+shape = SubResource("RectangleShape2D_j0fcu")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="ChunksByFrame/ChunksFrame0/BodyChunkArea" parent_id_path=PackedInt32Array(1414938090, 789477089) index="1" unique_id=144195664]
+position = Vector2(1088, 0)
+shape = SubResource("RectangleShape2D_ibeid")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="ChunksByFrame/ChunksFrame0/BodyChunkArea" parent_id_path=PackedInt32Array(1414938090, 789477089) index="2" unique_id=1226660764]
+position = Vector2(1024, -128)
+shape = SubResource("RectangleShape2D_ibeid")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="ChunksByFrame/ChunksFrame0/BodyChunkArea" parent_id_path=PackedInt32Array(1414938090, 789477089) index="3" unique_id=1975794620]
+position = Vector2(64, -128)
+shape = SubResource("RectangleShape2D_ibeid")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="ChunksByFrame/ChunksFrame0/BodyChunkArea" parent_id_path=PackedInt32Array(1414938090, 789477089) index="4" unique_id=2048990047]
+position = Vector2(0, -320)
+shape = SubResource("RectangleShape2D_ibeid")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="ChunksByFrame/ChunksFrame0/BodyChunkArea" parent_id_path=PackedInt32Array(1414938090, 789477089) index="5" unique_id=84048306]
+position = Vector2(1088, -320)
+shape = SubResource("RectangleShape2D_ibeid")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="ChunksByFrame/ChunksFrame0/BodyChunkArea" parent_id_path=PackedInt32Array(1414938090, 789477089) index="6" unique_id=744437066]
+position = Vector2(960, -64)
+shape = SubResource("RectangleShape2D_ibeid")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="ChunksByFrame/ChunksFrame0/BodyChunkArea" parent_id_path=PackedInt32Array(1414938090, 789477089) index="7" unique_id=911698364]
+position = Vector2(128, -64)
+shape = SubResource("RectangleShape2D_ibeid")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ChunksByFrame/ChunksFrame0/BodyChunkArea" parent_id_path=PackedInt32Array(1414938090, 789477089) index="8" unique_id=1468225593]
+position = Vector2(-64, 128)
+shape = SubResource("RectangleShape2D_dhscd")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="ChunksByFrame/ChunksFrame0/BodyChunkArea" parent_id_path=PackedInt32Array(1414938090, 789477089) index="9" unique_id=2039602950]
+position = Vector2(1152, 128)
+shape = SubResource("RectangleShape2D_dhscd")
+
+[node name="ChunksFrame1" parent="ChunksByFrame" unique_id=635267888 instance=ExtResource("4_ss6l2")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-544, -32)
+
+[node name="CollisionShape2D" parent="ChunksByFrame/ChunksFrame1/BodyChunkArea" parent_id_path=PackedInt32Array(635267888, 789477089) index="0" unique_id=391538852]
+shape = SubResource("RectangleShape2D_j0fcu")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ChunksByFrame/ChunksFrame1/BodyChunkArea" parent_id_path=PackedInt32Array(635267888, 789477089) index="1" unique_id=777212814]
+position = Vector2(64, -192)
+shape = SubResource("RectangleShape2D_j0fcu")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="ChunksByFrame/ChunksFrame1/BodyChunkArea" parent_id_path=PackedInt32Array(635267888, 789477089) index="2" unique_id=822779967]
+position = Vector2(1024, -192)
+shape = SubResource("RectangleShape2D_j0fcu")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="ChunksByFrame/ChunksFrame1/BodyChunkArea" parent_id_path=PackedInt32Array(635267888, 789477089) index="3" unique_id=276985074]
+position = Vector2(1088, 0)
+shape = SubResource("RectangleShape2D_j0fcu")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="ChunksByFrame/ChunksFrame1/BodyChunkArea" parent_id_path=PackedInt32Array(635267888, 789477089) index="4" unique_id=224128429]
+position = Vector2(1024, 320)
+shape = SubResource("RectangleShape2D_j0fcu")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="ChunksByFrame/ChunksFrame1/BodyChunkArea" parent_id_path=PackedInt32Array(635267888, 789477089) index="5" unique_id=1728792880]
+position = Vector2(64, 320)
+shape = SubResource("RectangleShape2D_j0fcu")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="ChunksByFrame/ChunksFrame1/BodyChunkArea" parent_id_path=PackedInt32Array(635267888, 789477089) index="6" unique_id=1051356654]
+position = Vector2(0, 224)
+shape = SubResource("RectangleShape2D_rbnt5")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="ChunksByFrame/ChunksFrame1/BodyChunkArea" parent_id_path=PackedInt32Array(635267888, 789477089) index="7" unique_id=1909776349]
+position = Vector2(1088, 224)
+shape = SubResource("RectangleShape2D_rbnt5")
+
+[node name="ChunksFrame2" parent="ChunksByFrame" unique_id=2140071316 instance=ExtResource("4_ss6l2")]
+unique_name_in_owner = true
+visible = false
+
+[node name="Sprite2D" parent="ChunksByFrame/ChunksFrame2" index="0" unique_id=1433939011]
+visible = false
+
+[node name="CollisionShape2D" parent="ChunksByFrame/ChunksFrame2/BodyChunkArea" parent_id_path=PackedInt32Array(2140071316, 789477089) index="0" unique_id=391538852]
+position = Vector2(544, -96)
+shape = SubResource("RectangleShape2D_j0fcu")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ChunksByFrame/ChunksFrame2/BodyChunkArea" parent_id_path=PackedInt32Array(2140071316, 789477089) index="1" unique_id=918623349]
+position = Vector2(-544, -96)
+shape = SubResource("RectangleShape2D_j0fcu")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="ChunksByFrame/ChunksFrame2/BodyChunkArea" parent_id_path=PackedInt32Array(2140071316, 789477089) index="2" unique_id=2135109265]
+position = Vector2(-480, 192)
+shape = SubResource("RectangleShape2D_rbnt5")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="ChunksByFrame/ChunksFrame2/BodyChunkArea" parent_id_path=PackedInt32Array(2140071316, 789477089) index="3" unique_id=910872657]
+position = Vector2(480, 192)
+shape = SubResource("RectangleShape2D_rbnt5")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="ChunksByFrame/ChunksFrame2/BodyChunkArea" parent_id_path=PackedInt32Array(2140071316, 789477089) index="4" unique_id=1931297826]
+position = Vector2(352, 288)
+shape = SubResource("RectangleShape2D_wmor6")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="ChunksByFrame/ChunksFrame2/BodyChunkArea" parent_id_path=PackedInt32Array(2140071316, 789477089) index="5" unique_id=1122063362]
+position = Vector2(-352, 288)
+shape = SubResource("RectangleShape2D_wmor6")
+
+[node name="ChunksFrame3" parent="ChunksByFrame" unique_id=283000556 instance=ExtResource("4_ss6l2")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-480, 160)
+
+[node name="CollisionShape2D" parent="ChunksByFrame/ChunksFrame3/BodyChunkArea" parent_id_path=PackedInt32Array(283000556, 789477089) index="0" unique_id=391538852]
+shape = SubResource("RectangleShape2D_j0fcu")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ChunksByFrame/ChunksFrame3/BodyChunkArea" parent_id_path=PackedInt32Array(283000556, 789477089) index="1" unique_id=1262666261]
+position = Vector2(64, 64)
+shape = SubResource("RectangleShape2D_j0fcu")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="ChunksByFrame/ChunksFrame3/BodyChunkArea" parent_id_path=PackedInt32Array(283000556, 789477089) index="2" unique_id=659382416]
+position = Vector2(384, 64)
+shape = SubResource("RectangleShape2D_j0fcu")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="ChunksByFrame/ChunksFrame3/BodyChunkArea" parent_id_path=PackedInt32Array(283000556, 789477089) index="3" unique_id=1037863071]
+position = Vector2(576, 64)
+shape = SubResource("RectangleShape2D_j0fcu")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="ChunksByFrame/ChunksFrame3/BodyChunkArea" parent_id_path=PackedInt32Array(283000556, 789477089) index="4" unique_id=1835501283]
+position = Vector2(896, 64)
+shape = SubResource("RectangleShape2D_j0fcu")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="ChunksByFrame/ChunksFrame3/BodyChunkArea" parent_id_path=PackedInt32Array(283000556, 789477089) index="5" unique_id=973763902]
+position = Vector2(960, 0)
+shape = SubResource("RectangleShape2D_j0fcu")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="ChunksByFrame/ChunksFrame3/BodyChunkArea" parent_id_path=PackedInt32Array(283000556, 789477089) index="6" unique_id=2057388333]
+position = Vector2(1024, -320)
+shape = SubResource("RectangleShape2D_j0fcu")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="ChunksByFrame/ChunksFrame3/BodyChunkArea" parent_id_path=PackedInt32Array(283000556, 789477089) index="7" unique_id=824484119]
+position = Vector2(-64, -320)
+shape = SubResource("RectangleShape2D_j0fcu")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="ChunksByFrame/ChunksFrame3/BodyChunkArea" parent_id_path=PackedInt32Array(283000556, 789477089) index="8" unique_id=1742849517]
+position = Vector2(224, 128)
+shape = SubResource("RectangleShape2D_r5uy0")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="ChunksByFrame/ChunksFrame3/BodyChunkArea" parent_id_path=PackedInt32Array(283000556, 789477089) index="9" unique_id=1507201920]
+position = Vector2(736, 128)
+shape = SubResource("RectangleShape2D_r5uy0")
+
+[node name="Components" type="Node2D" parent="." unique_id=1664109180]
+position = Vector2(0, -24)
+
+[node name="DanceComponent" parent="Components" unique_id=709328576 node_paths=PackedStringArray("sprite") instance=ExtResource("2_hmv8f")]
+unique_name_in_owner = true
+sprite = NodePath("../../MainBody")
+frame_count = 4
+fps = 2.25
+bounce = true
+current_frame = 2
+
+[node name="IndependentMoveComponent" parent="Components" unique_id=1689851735 node_paths=PackedStringArray("moving_node") instance=ExtResource("7_j0fcu")]
+unique_name_in_owner = true
+moving_node = NodePath("../..")
+initial_speed = 15.0
+percent_speed_bonus_on_dir_change = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/IndependentMoveComponent" unique_id=1444177067]
+visible = false
+position = Vector2(0, 24)
+shape = SubResource("RectangleShape2D_5chgg")
+
+[node name="ExplosionHandler" type="Node2D" parent="." unique_id=715564064 node_paths=PackedStringArray("invader_boss")]
+unique_name_in_owner = true
+process_mode = 3
+script = ExtResource("12_5chgg")
+invader_boss = NodePath("..")
+explosion_sound = ExtResource("2_r5uy0")
+
+[node name="Explosions" type="Node2D" parent="ExplosionHandler" unique_id=173680801]
+process_mode = 3
+
+[node name="GameOverAnimation" parent="ExplosionHandler/Explosions" unique_id=524808331 instance=ExtResource("7_dhscd")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-352, -96)
+auto_play = false
+play_sound = false
+go_to_game_over = false
+
+[node name="GameOverAnimation2" parent="ExplosionHandler/Explosions" unique_id=652261406 instance=ExtResource("7_dhscd")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(96, -160)
+auto_play = false
+play_sound = false
+go_to_game_over = false
+
+[node name="GameOverAnimation3" parent="ExplosionHandler/Explosions" unique_id=314077008 instance=ExtResource("7_dhscd")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-64, 32)
+auto_play = false
+play_sound = false
+go_to_game_over = false
+
+[node name="GameOverAnimation4" parent="ExplosionHandler/Explosions" unique_id=820854321 instance=ExtResource("7_dhscd")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(360, -32)
+auto_play = false
+play_sound = false
+go_to_game_over = false
+
+[node name="GameOverAnimation5" parent="ExplosionHandler/Explosions" unique_id=2080237605 instance=ExtResource("7_dhscd")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-224, 0)
+auto_play = false
+play_sound = false
+go_to_game_over = false
+
+[node name="BoomRoarSound" type="AudioStreamPlayer" parent="ExplosionHandler/Explosions" unique_id=1217037381]
+unique_name_in_owner = true
+process_mode = 3
+stream = ExtResource("9_rbnt5")
+volume_db = 6.0
+
+[node name="BoomRoarSound2" type="AudioStreamPlayer" parent="ExplosionHandler/Explosions" unique_id=1117022517]
+unique_name_in_owner = true
+process_mode = 3
+stream = ExtResource("10_wmor6")
+volume_db = 6.0
+
+[connection signal="finished" from="ExplosionHandler/Explosions/BoomRoarSound" to="ExplosionHandler" method="_on_boom_roar_sound_finished"]
+[connection signal="finished" from="ExplosionHandler/Explosions/BoomRoarSound2" to="ExplosionHandler" method="_on_boom_roar_sound_2_finished"]
+
+[editable path="ChunksByFrame/ChunksAllFrames"]
+[editable path="ChunksByFrame/ChunksFrame0"]
+[editable path="ChunksByFrame/ChunksFrame1"]
+[editable path="ChunksByFrame/ChunksFrame2"]
+[editable path="ChunksByFrame/ChunksFrame3"]

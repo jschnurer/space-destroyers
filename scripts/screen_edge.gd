@@ -1,4 +1,5 @@
 extends Area2D
+class_name ScreenEdge
 
 @export var edge: Enums.ScreenEdges
 @export var detection_cooldown := 0.25

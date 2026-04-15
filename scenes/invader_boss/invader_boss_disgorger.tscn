@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://75ikciqfnp1j"]
+
+[ext_resource type="Script" uid="uid://bmxbktscd378j" path="res://scenes/invader_boss/invader_boss_disgorger.gd" id="1_1jvti"]
+[ext_resource type="PackedScene" uid="uid://ce5s3klsvcdeq" path="res://scenes/invader_boss/invader_boss_body_chunk.tscn" id="1_ut17i"]
+[ext_resource type="PackedScene" uid="uid://ccxyg3h1o17tw" path="res://scenes/enemies/crab.tscn" id="2_1gtw1"]
+[ext_resource type="PackedScene" uid="uid://uu3ea6khn2cp" path="res://scenes/enemies/octopus.tscn" id="3_lmgfy"]
+[ext_resource type="PackedScene" uid="uid://b0dhb2mqp17n6" path="res://scenes/enemies/bone_fish.tscn" id="4_7hnd7"]
+[ext_resource type="PackedScene" uid="uid://dbxpocsd5xmim" path="res://scenes/enemies/blade_head.tscn" id="5_sefen"]
+[ext_resource type="PackedScene" uid="uid://cieq8axp6x0ds" path="res://scenes/components/independent_move_component.tscn" id="6_sefen"]
+[ext_resource type="Texture2D" uid="uid://fl8sp3dk6jmt" path="res://art/invader_boss/invader_boss_disgorger.png" id="7_7hnd7"]
+[ext_resource type="PackedScene" uid="uid://bdmudihj1sun8" path="res://scenes/components/dance_component.tscn" id="8_sefen"]
+
+[node name="InvaderBossDisgorger" type="Node2D" unique_id=531322723]
+script = ExtResource("1_1jvti")
+birthed_enemies = Array[PackedScene]([ExtResource("2_1gtw1"), ExtResource("3_lmgfy"), ExtResource("4_7hnd7"), ExtResource("5_sefen"), ExtResource("2_1gtw1")])
+independent_move_component_scene = ExtResource("6_sefen")
+
+[node name="InvaderBossBodyChunk" parent="." unique_id=712337160 instance=ExtResource("1_ut17i")]
+visible = false
+
+[node name="DisgorgerSprite2D" type="Sprite2D" parent="." unique_id=620345534]
+unique_name_in_owner = true
+modulate = Color(0.67058825, 0.16470589, 0.64705884, 1)
+texture = ExtResource("7_7hnd7")
+hframes = 4
+frame = 2
+
+[node name="DisgorgePoint" type="Node2D" parent="." unique_id=1576250508]
+unique_name_in_owner = true
+position = Vector2(0, 42)
+
+[node name="Components" type="Node2D" parent="." unique_id=1037034288]
+
+[node name="DanceComponent" parent="Components" unique_id=709328576 node_paths=PackedStringArray("sprite") instance=ExtResource("8_sefen")]
+unique_name_in_owner = true
+sprite = NodePath("../../DisgorgerSprite2D")
+frame_count = 4
+fps = 2.5
+bounce = true
+current_frame = 2

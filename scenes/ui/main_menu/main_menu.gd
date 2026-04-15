@@ -12,7 +12,7 @@ class_name MainMenu
 @onready var starfield: Node2D = %Starfield
 
 func _ready() -> void:
-	SignalBus.emit_fade_out_screen(true)
+	SignalBus.emit_fade_out_screen(0)
 	SignalBus.emit_fade_in_screen()
 	SignalBus.emit_toggle_mouse_visibility(true)
 	SignalBus.emit_play_bgm(menu_bgm)

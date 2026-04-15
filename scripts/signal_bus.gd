@@ -65,13 +65,13 @@ signal game_over(game_over_reason: Enums.GameOverReason)
 func emit_game_over(game_over_reason: Enums.GameOverReason) -> void:
 	game_over.emit(game_over_reason)
 
-signal fade_out_screen(instantly: bool)
-func emit_fade_out_screen(instantly := false) -> void:
-	fade_out_screen.emit(instantly)
+signal fade_out_screen(duration: float)
+func emit_fade_out_screen(duration: float = 1.0, color: Color = Color.BLACK) -> void:
+	fade_out_screen.emit(duration, color)
 
-signal fade_in_screen()
-func emit_fade_in_screen() -> void:
-	fade_in_screen.emit()
+signal fade_in_screen(duration: float)
+func emit_fade_in_screen(duration: float = 1) -> void:
+	fade_in_screen.emit(duration)
 
 signal flash_screen(color: Color, fade_dur: float)
 func emit_flash_screen(color: Color, fade_dur: float = 0.15) -> void:
@@ -88,3 +88,7 @@ func emit_fade_in_complete() -> void:
 signal toggle_mouse_visibility(allow_visible: bool)
 func emit_toggle_mouse_visibility(allow_visible: bool) -> void:
 	toggle_mouse_visibility.emit(allow_visible)
+
+signal toggle_player_shoot_ability(is_enabled: bool)
+func emit_toggle_player_shoot_ability(is_enabled: bool) -> void:
+	toggle_player_shoot_ability.emit(is_enabled)

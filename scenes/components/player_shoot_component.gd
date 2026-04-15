@@ -5,7 +5,17 @@ class_name PlayerShootComponent
 @export var shot_sound: AudioStream
 @export var reload_component: PlayerReloadComponent
 
+var _can_shoot := true
+
+func _ready() -> void:
+	SignalBus.toggle_player_shoot_ability.connect(func(is_enabled: bool) -> void:
+		_can_shoot = is_enabled
+	)
+
 func _process(_delta: float) -> void:
+	if !_can_shoot:
+		return
+
 	if Input.is_action_just_pressed("shoot"):
 		_try_shoot()
 	elif Game.has_upgrade(Enums.PlayerUpgrades.FULL_AUTO) and Input.is_action_pressed("shoot"):
