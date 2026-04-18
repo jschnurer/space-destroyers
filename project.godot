@@ -27,7 +27,6 @@ Enums="*uid://cesak2w7q0n2r"
 SignalBus="*uid://diwd7tamf3kow"
 Utilities="*uid://dec6kjver7jfk"
 Game="*uid://de8jitvyyy34i"
-Debug="*uid://dokquhjgjc4xe"
 GlobalScreenFader="*uid://dvexqvv2ecu72"
 GlobalScreenFlasher="*uid://bub0j62idf5lp"
 GlobalBgmPlayer="*uid://dbp7bcs4hsse3"
@@ -35,6 +34,8 @@ GlobalGameOver="*uid://csulh3wv2wpny"
 GlobalShopUi="*uid://qqwnyc0intca"
 GlobalMouseVisibilityManager="*uid://sxhe04dawedo"
 GlobalSfxPlayer="*uid://b4i7li1ujm3os"
+DebugMenu="*uid://drlsky7ctq0ve"
+PauseManager="*uid://wjleyfqt4u6s"
 
 [debug]
 
@@ -167,11 +168,6 @@ credits={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":67,"key_label":0,"unicode":99,"location":0,"echo":false,"script":null)
 ]
 }
-launch={
-"deadzone": 0.2,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":76,"key_label":0,"unicode":108,"location":0,"echo":false,"script":null)
-]
-}
 go_to_level={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":71,"key_label":0,"unicode":103,"location":0,"echo":false,"script":null)
@@ -197,6 +193,11 @@ move_down={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194322,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":12,"pressure":0.0,"pressed":true,"script":null)
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":1,"axis_value":1.0,"script":null)
+]
+}
+debug_console={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":96,"key_label":0,"unicode":96,"location":0,"echo":false,"script":null)
 ]
 }
 

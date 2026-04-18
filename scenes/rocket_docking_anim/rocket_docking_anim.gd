@@ -1,14 +1,25 @@
 extends Node2D
 class_name RocketDockingAnim
 
+## If true, just skip entire animation.
+@export var skip_play := false
+## Duration of whole animation.
 @export var dock_duration := 13.77
+## Scroll speed of fastest stars as animation starts.
 @export var max_star_speed := 100.0
+## Final starfield scroll speed at anim conclusion.
 @export var cruise_star_speed := 600.0
+## Distance from wings for rocket fire to stop.
 @export var rocket_cutoff_distance := 500.0
+## Sound to play when docking (plays twice, low-high).
 @export var dock_sound: AudioStream
+## Sound of engine charging up.
 @export var engine_charge_sound: AudioStream
+## Starfield node to animate.
 @export var starfield: Starfield
+## Music to play during anim.
 @export var bgm: AudioStream
+## Sound of jet burst firing.
 @export var jet_burst: AudioStream
 
 @onready var empty_wings: Sprite2D = %EmptyWings
@@ -36,6 +47,8 @@ func _ready() -> void:
 	SignalBus.emit_play_bgm(bgm,\
 		1.0, 1.0, 0.0, 2.0)
 	_animate_rocket_arriving()
+	if skip_play:
+		Engine.time_scale = 100
 
 func _process(_delta: float) -> void:
 	if rocket.position.y - empty_wings.position.y <= rocket_cutoff_distance and !_fire_off:
@@ -68,7 +81,6 @@ func _animate_rocket_arriving() -> void:
 
 func _animate_gleam() -> void:
 	_mode = Mode.GLEAM
-	# TODO: Big fullscreen gleam effect and sound.
 	empty_wings.visible = false
 	rocket.visible = false
 	spaceship.visible = true
@@ -78,6 +90,7 @@ func _animate_gleam() -> void:
 	
 	SignalBus.emit_play_sfx(jet_burst)
 	get_tree().paused = false
+	Engine.time_scale = 1.0
 	
 	if starfield:
 		# Animate star speed!

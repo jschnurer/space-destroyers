@@ -7,6 +7,10 @@
 [node name="BossLoader" type="Node" unique_id=1376262112]
 process_mode = 3
 script = ExtResource("1_shxs6")
+wait_time = null
+spawn_location = null
+final_position = null
+boss_animate_duration = null
 boss_bgm = ExtResource("2_oi7oa")
 
 [node name="MissionUpdateTextAnimation" parent="." unique_id=1668417129 instance=ExtResource("2_v2c4b")]

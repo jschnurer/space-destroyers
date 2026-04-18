@@ -5,6 +5,8 @@ class_name AutoShootComponent
 @export var reload_component: ReloadComponent
 ## The bullet scene to spawn.
 @export var bullet_scene: PackedScene
+## The name of the group to add the bullet to.
+@export var bullet_group: String
 ## The color to modulate the bullet.
 @export var shot_modulate: Color
 
@@ -73,6 +75,8 @@ func _spawn_projectile(position_offset: float) -> void:
 		shot_speed,
 		shot_direction)
 	projectile.modulate = shot_modulate
+	if bullet_group:
+		projectile.add_to_group(bullet_group)
 	
 	if projectile_scale != 1.0:
 		projectile.scale = Vector2.ONE * projectile_scale

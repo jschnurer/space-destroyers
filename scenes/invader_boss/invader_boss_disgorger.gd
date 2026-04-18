@@ -9,18 +9,27 @@ class_name InvaderBossDisgorger
 @export var pct_speed_bonus_on_drop := 0.0
 ## IndependentMoveComponent to add to birthed enemies.
 @export var independent_move_component_scene: PackedScene
+## The min-max number of seconds to delay after spawning an enemy, before continuing.
+@export var after_spawn_delay_range := Vector2.ZERO
 
 @onready var dance_component: DanceComponent = %DanceComponent
 @onready var disgorge_point: Node2D = %DisgorgePoint
 @onready var invader_boss_body_chunk: InvaderBossBodyChunk = $InvaderBossBodyChunk
 @onready var disgorger_sprite_2d: Sprite2D = %DisgorgerSprite2D
+@onready var spawn_delay_timer: Timer = %SpawnDelayTimer
 
 var enabled := true
+var _has_spawned := false
+var _is_spawn_delay := false
 
 func _ready() -> void:
 	dance_component.frame_changed.connect(_on_dance_frame_changed)
 
 func _on_dance_frame_changed(frame_index: int) -> void:
+	if frame_index == 0 and _has_spawned:
+		_delay_spawn()
+		return
+		
 	if frame_index != 3 or birthed_enemies.size() == 0:
 		return
 	
@@ -28,6 +37,14 @@ func _on_dance_frame_changed(frame_index: int) -> void:
 		# Spawn enemy.
 		var enemy_scene: PackedScene = birthed_enemies.pick_random()
 		_spawn_enemy(enemy_scene)
+		_has_spawned = true
+
+func _delay_spawn() -> void:
+	dance_component.pause()
+	_has_spawned = false
+	_is_spawn_delay = true
+	spawn_delay_timer.wait_time = randf_range(after_spawn_delay_range.x, after_spawn_delay_range.y)
+	spawn_delay_timer.start()
 
 func _spawn_enemy(enemy_scene: PackedScene) -> void:
 	var enemy: Node2D = enemy_scene.instantiate()
@@ -81,3 +98,7 @@ func toggle_destroyed(is_destroyed: bool) -> void:
 	invader_boss_body_chunk.toggle_destroyed(is_destroyed)
 	enabled = !is_destroyed
 	disgorger_sprite_2d.visible = !is_destroyed
+
+func _on_spawn_delay_timer_timeout() -> void:
+	_is_spawn_delay = false
+	dance_component.play()

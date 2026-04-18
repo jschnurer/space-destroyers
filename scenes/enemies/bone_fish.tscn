@@ -26,7 +26,6 @@ material = ExtResource("1_lai1n")
 texture = ExtResource("1_xlpdj")
 centered = false
 hframes = 2
-frame = 1
 script = ExtResource("2_1qvcp")
 type = 5
 enemy_sprite = NodePath(".")
@@ -40,7 +39,6 @@ life = 1.0
 [node name="DanceComponent" parent="Components" unique_id=709328576 node_paths=PackedStringArray("sprite") instance=ExtResource("3_1jt17")]
 sprite = NodePath("../..")
 fps = 1.0
-current_frame = 1
 
 [node name="FormationMoveComponent" parent="Components" unique_id=937630113 node_paths=PackedStringArray("enemy_node") instance=ExtResource("4_xh7mb")]
 enemy_node = NodePath("../..")
@@ -81,6 +79,7 @@ can_spawn_flak = true
 position = Vector2(22, 48)
 reload_component = NodePath("../ReloadComponent")
 bullet_scene = ExtResource("12_xh7mb")
+bullet_group = "ENEMY_ATTACK"
 shot_modulate = Color(0.89415276, 0.85486645, 0.85043997, 1)
 shot_direction = Vector2(0, 1)
 shot_speed = 275.0

@@ -92,3 +92,7 @@ func emit_toggle_mouse_visibility(allow_visible: bool) -> void:
 signal toggle_player_shoot_ability(is_enabled: bool)
 func emit_toggle_player_shoot_ability(is_enabled: bool) -> void:
 	toggle_player_shoot_ability.emit(is_enabled)
+
+signal clear_enemy_attacks()
+func emit_clear_enemy_attacks() -> void:
+	clear_enemy_attacks.emit()

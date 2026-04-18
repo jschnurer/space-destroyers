@@ -12,10 +12,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mt8sw"]
 size = Vector2(20, 21)
 
-[node name="bone_fish_bomb" type="Sprite2D" unique_id=90922862]
+[node name="bone_fish_bomb" type="Sprite2D" unique_id=90922862 groups=["ENEMY_ATTACK"]]
 z_index = 2
 texture = ExtResource("1_e7lhg")
 hframes = 2
+frame = 1
 script = ExtResource("2_mt8sw")
 bomb_fire_scene = ExtResource("3_p4f0h")
 
@@ -34,6 +35,7 @@ shape = SubResource("RectangleShape2D_f7qyl")
 [node name="DanceComponent" parent="Components" unique_id=709328576 node_paths=PackedStringArray("sprite") instance=ExtResource("6_jjgfi")]
 sprite = NodePath("../..")
 fps = 2.0
+current_frame = 1
 
 [node name="TerrainDetector" type="Area2D" parent="." unique_id=452910968]
 collision_layer = 0

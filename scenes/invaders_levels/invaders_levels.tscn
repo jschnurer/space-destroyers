@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cxprdbobghsuw" path="res://scenes/level_geom/screen_edge.tscn" id="4_isfar"]
 [ext_resource type="PackedScene" uid="uid://begc2jldio7ln" path="res://scenes/level_geom/terrain_bottom.tscn" id="5_y003m"]
 [ext_resource type="PackedScene" uid="uid://bpjt7iq22bpbu" path="res://scenes/tank/tank.tscn" id="6_ko710"]
-[ext_resource type="Script" uid="uid://bia4gleis3x01" path="res://scenes/level_holder.gd" id="7_ioxky"]
+[ext_resource type="PackedScene" uid="uid://yvu0kduqhohj" path="res://scenes/level_holder.tscn" id="6_rleg4"]
 [ext_resource type="PackedScene" uid="uid://iqoyhfigpopi" path="res://scenes/effects/teleport_animation.tscn" id="8_o11bu"]
 [ext_resource type="PackedScene" uid="uid://c2ejscy1w7qsh" path="res://scenes/ui/gameplay_ui/gameplay_ui.tscn" id="9_ivkc4"]
 [ext_resource type="PackedScene" uid="uid://coa4jrtx5c26o" path="res://scenes/towers/anti_air_tower_battery.tscn" id="12_55ttk"]
@@ -41,11 +41,8 @@ metadata/_edit_lock_ = true
 [node name="Tank" parent="." unique_id=1533795974 groups=["PLAYER"] instance=ExtResource("6_ko710")]
 position = Vector2(938, 980)
 
-[node name="LevelHolder" type="Node2D" parent="." unique_id=1108014533]
+[node name="LevelHolder" parent="." unique_id=614011244 instance=ExtResource("6_rleg4")]
 unique_name_in_owner = true
-texture_filter = 1
-script = ExtResource("7_ioxky")
-metadata/_edit_lock_ = true
 
 [node name="TeleportAnimation" parent="." unique_id=1938676921 groups=["TELEPORT_ANIM"] instance=ExtResource("8_o11bu")]
 visible = false

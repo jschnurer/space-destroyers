@@ -83,6 +83,7 @@ can_spawn_flak = true
 position = Vector2(24, 36)
 reload_component = NodePath("../ReloadComponent")
 bullet_scene = ExtResource("11_ofuak")
+bullet_group = "ENEMY_ATTACK"
 shot_modulate = Color(1, 1, 0.24313726, 1)
 shot_direction = Vector2(0, 1)
 shot_speed = 400.0

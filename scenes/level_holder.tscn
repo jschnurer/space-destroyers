@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://yvu0kduqhohj"]
+
+[ext_resource type="Script" uid="uid://bia4gleis3x01" path="res://scenes/level_holder.gd" id="1_bakn6"]
+
+[node name="LevelHolder" type="Node2D" unique_id=614011244]
+texture_filter = 1
+script = ExtResource("1_bakn6")
+metadata/_edit_lock_ = true

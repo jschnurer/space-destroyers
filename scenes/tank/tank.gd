@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_stat_changed(stat: Stat) -> void:
 	match stat.player_stat:
-		Enums.PlayerStats.LIFE: life_component.life = stat.get_current_value()
+		Enums.PlayerStats.LIFE: life_component.life = stat.get_current_value_int()
 	
 func _on_life_changed(new_life: int, _hitbox: HitboxComponent) -> void:
 	Game.set_current_life(new_life)

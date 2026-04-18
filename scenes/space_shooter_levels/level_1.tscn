@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://deh2etu4sbv4w"]
+
+[ext_resource type="PackedScene" uid="uid://6cfdogwf26vm" path="res://scenes/space_shooter_levels/space_shooter_level_manager.tscn" id="1_3xd4q"]
+[ext_resource type="Texture2D" uid="uid://c7l5rfc02wbxj" path="res://art/crab_4x.png" id="2_8hbmh"]
+[ext_resource type="Script" uid="uid://dg274sbdgypx3" path="res://scenes/space_shooter_levels/testenemy.gd" id="3_cvyx1"]
+
+[node name="Level_1" type="Node2D" unique_id=236372489 groups=["LEVEL_NODE"]]
+
+[node name="ScrollingArea" type="Node2D" parent="." unique_id=1117411061]
+
+[node name="Testenemy" type="Sprite2D" parent="ScrollingArea" unique_id=1808974240]
+position = Vector2(985, -495)
+texture = ExtResource("2_8hbmh")
+hframes = 2
+script = ExtResource("3_cvyx1")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="ScrollingArea/Testenemy" unique_id=728639360]
+position = Vector2(95, 14)
+rect = Rect2(-1121, -35, 2066, 174)
+
+[node name="SpaceShooterLevelManager" parent="." unique_id=675234762 node_paths=PackedStringArray("scrolling_area_node") instance=ExtResource("1_3xd4q")]
+scrolling_area_node = NodePath("../ScrollingArea")

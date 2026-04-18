@@ -21,6 +21,7 @@
 [ext_resource type="Resource" uid="uid://baojiq5de1hvd" path="res://resources/upgrades/right_wall.tres" id="11_in2ts"]
 [ext_resource type="Resource" uid="uid://dqbh3xj6tys8e" path="res://resources/stats/damage.tres" id="11_kvee4"]
 [ext_resource type="Resource" uid="uid://orj8nlvmab67" path="res://resources/stats/reload.tres" id="12_3be6a"]
+[ext_resource type="Resource" uid="uid://c57jca6ju4wq3" path="res://resources/upgrades/flak_cannon.tres" id="18_l446i"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_32a87"]
 bg_color = Color(0, 0, 0, 1)
@@ -218,6 +219,12 @@ show_level_number = true
 [node name="Auto Fire" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Upgrades" unique_id=1719253321 instance=ExtResource("6_lt1i3")]
 layout_mode = 2
 upgrade = ExtResource("7_2tmpj")
+
+[node name="Flak Cannon" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Upgrades" unique_id=826774928 instance=ExtResource("6_lt1i3")]
+layout_mode = 2
+upgrade = ExtResource("18_l446i")
+show_plus = true
+show_level_number = true
 
 [node name="Missiles" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Upgrades" unique_id=1607751322 instance=ExtResource("6_lt1i3")]
 layout_mode = 2

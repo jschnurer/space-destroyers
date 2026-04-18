@@ -25,6 +25,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	SignalBus.credits_picked_up.connect(_on_credits_picked_up)
 	SignalBus.game_over.connect(_on_game_over)
+	SignalBus.clear_enemy_attacks.connect(_on_clear_enemy_attacks)
 	
 	# TODO: Remove this and load first level via main menu instead.
 	if get_tree().current_scene.name == "InvadersLevels":
@@ -203,3 +204,8 @@ func set_current_life(new_life: int) -> void:
 
 func _get_invaders_level_path(level_num: int) -> String:
 	return invaders_levels_folder + "level_" + str(level_num) + ".tscn"
+
+func _on_clear_enemy_attacks() -> void:
+	var attack_nodes := get_tree().get_nodes_in_group("ENEMY_ATTACK")
+	for n in attack_nodes:
+		n.queue_free()

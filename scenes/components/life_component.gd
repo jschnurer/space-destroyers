@@ -8,7 +8,7 @@ signal life_changed(new_life: float, hitbox: HitboxComponent)
 
 ## Takes damage. Returns damage dealt.
 func take_damage(damage: float, hitbox: HitboxComponent) -> float:
-	var damage_dealt := damage if life >= damage else life
+	var damage_dealt := clampf(damage, 0, life)
 	if life > 0:
 		life -= damage
 		life_changed.emit(life, hitbox)

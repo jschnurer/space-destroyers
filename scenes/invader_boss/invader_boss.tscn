@@ -298,7 +298,7 @@ current_frame = 2
 unique_name_in_owner = true
 moving_node = NodePath("../..")
 initial_speed = 15.0
-percent_speed_bonus_on_dir_change = 1.0
+percent_speed_bonus_on_dir_change = 0.333
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Components/IndependentMoveComponent" unique_id=1444177067]
 visible = false

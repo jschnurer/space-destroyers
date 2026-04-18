@@ -28,6 +28,7 @@ func _ready() -> void:
 func _on_all_enemies_destroyed() -> void:
 	SignalBus.emit_fade_out_bgm(wait_time / 1.5)
 	await get_tree().create_timer(wait_time).timeout
+	SignalBus.emit_clear_enemy_attacks()
 	SignalBus.emit_toggle_player_shoot_ability(false)
 	mission_update_text_animation.play()
 	

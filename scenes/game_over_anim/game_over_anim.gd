@@ -8,12 +8,13 @@ class_name GameOverAnimation
 ## If true, when animation completes, go to game over. Otherwise, it deletes itself.
 @export var go_to_game_over := true
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var gpu_particles_2d: GPUParticles2D = $GPUParticles2D
-@onready var boom_1: AudioStreamPlayer = $Boom1
-@onready var boom_2: AudioStreamPlayer = $Boom2
-@onready var grr_sound: AudioStreamPlayer = $GrrSound
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
+@onready var gpu_particles_2d: GPUParticles2D = %GPUParticles2D
+@onready var boom_1: AudioStreamPlayer = %Boom1
+@onready var boom_2: AudioStreamPlayer = %Boom2
+@onready var grr_sound: AudioStreamPlayer = %GrrSound
 @onready var screen_fade: ColorRect = %ScreenFade
+@onready var canvas_layer: CanvasLayer = %CanvasLayer
 
 var game_over_reason: Enums.GameOverReason
 
@@ -24,6 +25,7 @@ func _ready() -> void:
 
 func play() -> void:
 	visible = true
+	canvas_layer.visible = true
 	animation_player.play("kaboom")
 	gpu_particles_2d.emitting = true
 	

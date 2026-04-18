@@ -13,7 +13,10 @@
 [node name="InvaderBossDisgorger" type="Node2D" unique_id=531322723]
 script = ExtResource("1_1jvti")
 birthed_enemies = Array[PackedScene]([ExtResource("2_1gtw1"), ExtResource("3_lmgfy"), ExtResource("4_7hnd7"), ExtResource("5_sefen"), ExtResource("2_1gtw1")])
+enemy_move_speed = 150.0
+pct_speed_bonus_on_drop = 0.1
 independent_move_component_scene = ExtResource("6_sefen")
+after_spawn_delay_range = Vector2(0.5, 3.5)
 
 [node name="InvaderBossBodyChunk" parent="." unique_id=712337160 instance=ExtResource("1_ut17i")]
 visible = false
@@ -23,7 +26,7 @@ unique_name_in_owner = true
 modulate = Color(0.67058825, 0.16470589, 0.64705884, 1)
 texture = ExtResource("7_7hnd7")
 hframes = 4
-frame = 2
+frame = 3
 
 [node name="DisgorgePoint" type="Node2D" parent="." unique_id=1576250508]
 unique_name_in_owner = true
@@ -37,4 +40,10 @@ sprite = NodePath("../../DisgorgerSprite2D")
 frame_count = 4
 fps = 2.5
 bounce = true
-current_frame = 2
+current_frame = 3
+
+[node name="SpawnDelayTimer" type="Timer" parent="." unique_id=801757235]
+unique_name_in_owner = true
+one_shot = true
+
+[connection signal="timeout" from="SpawnDelayTimer" to="." method="_on_spawn_delay_timer_timeout"]

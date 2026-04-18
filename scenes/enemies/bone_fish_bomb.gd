@@ -22,6 +22,8 @@ func _spawn_fire(impact_point: Vector2) -> void:
 	bomb_fire.scale = scale
 	bomb_fire.damage = bomb_fire_damage
 	bomb_fire.global_position = impact_point
+	bomb_fire.add_to_group("ENEMY_ATTACK")
+	
 	var smoke_emitter: GPUParticles2D = find_child("Smoke")
 	if smoke_emitter:
 		smoke_emitter.scale = scale

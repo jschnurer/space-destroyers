@@ -1,4 +1,5 @@
 extends Line2D
+class_name LaserSight
 
 @export var laser_scroll_speed := 100.0
 

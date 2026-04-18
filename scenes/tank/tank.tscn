@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://d7evvgsvgl6y" path="res://art/tank.png" id="1_gpcfw"]
 [ext_resource type="Script" uid="uid://3nuocgrsgomy" path="res://scenes/tank/tank.gd" id="2_x633a"]
+[ext_resource type="Material" uid="uid://d0vxn0ewbmjii" path="res://shaders/enemy_shader_material.tres" id="3_wyqxc"]
 [ext_resource type="PackedScene" uid="uid://bqhga0no81mbx" path="res://scenes/components/player_reload_component.tscn" id="4_1pfma"]
 [ext_resource type="PackedScene" uid="uid://denivsfgmokeg" path="res://scenes/game_over_anim/game_over_anim.tscn" id="4_wyqxc"]
 [ext_resource type="PackedScene" uid="uid://dgfuu1m46xmvo" path="res://scenes/components/reload_meter_component.tscn" id="7_valud"]
@@ -27,6 +28,7 @@ shape = SubResource("RectangleShape2D_wyqxc")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1951741099]
 unique_name_in_owner = true
+material = ExtResource("3_wyqxc")
 texture = ExtResource("1_gpcfw")
 centered = false
 metadata/_edit_lock_ = true
