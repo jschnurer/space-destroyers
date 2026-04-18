@@ -5,14 +5,14 @@ var _enabled := false
 @onready var debug_log: RichTextLabel = %DebugLog
 @onready var debug_input: LineEdit = %DebugInput
 
-const _help_text: String = "> collect: collects all visible credits
-> credits 0000: pick up specified number of credits (multiplier affects)
-> goto type num: skips to indicated level type/num (type: invader/space) (num: 1-9)
-> help: show this message
-> nuke: destroy all enemies
-> pass: destroy all enemies, collect their coins, go to next level immediately
-> resume: force-unpauses the game (in case you broke something with the debug console)
-> shop: as pass but show the show between levels"
+const _help_text: String = "[color=yellow]collect[/color]: collects all visible credits
+[color=yellow]credits 0000[/color]: pick up specified number of credits (multiplier affects)
+[color=yellow]goto type num[/color]: skips to indicated level type/num (type: invader/space) (num: 1-9)
+[color=yellow]help[/color]: show this message
+[color=yellow]nuke[/color]: destroy all enemies
+[color=yellow]pass[/color]: destroy all enemies, collect their coins, go to next level immediately
+[color=yellow]resume[/color]: force-unpauses the game (in case you broke something with the debug console)
+[color=yellow]shop[/color]: as pass but show the show between levels"
 
 func _ready() -> void:
 	visible = false
@@ -58,6 +58,7 @@ func _on_debug_input_text_submitted(new_text: String) -> void:
 		"credits": _add_credits(text_chunks)
 		"goto": _go_to_level(text_chunks)
 		"resume": PauseManager.resume(true)
+		_: _log("[color=red]Invalid command[/color]")
 
 ## Disable entering `.
 func _on_debug_input_text_changed(new_text: String) -> void:
@@ -90,14 +91,18 @@ func _pass_level(show_shop: bool) -> void:
 ## Picks up credits (multiplier is applied).
 func _add_credits(text_chunks: Array[String]) -> void:
 	if text_chunks.size() == 1:
-		_log("How many credits? (e.g. 'credits 0000')")
+		_log("[color=red]How many credits? (e.g. 'credits 0000')[/color]")
 	elif text_chunks[1].is_valid_float():
-		_log("Picked up %s credits" % str(text_chunks[1].to_float()))
-		SignalBus.emit_credits_picked_up(text_chunks[1].to_float())
+		var creds := text_chunks[1].to_float()
+		if creds <= 0.0:
+			_log("[color=red]Invalid credit amount.[/color]")
+			return
+		_log("Picked up %s credits" % str(creds))
+		SignalBus.emit_credits_picked_up(creds)
 
 ## Goes to a specific level.
 func _go_to_level(text_chunks: Array[String]) -> void:
-	var err_msg := "Go to which level? (e.g. 'goto invader 1', 'goto space 3')"
+	var err_msg := "[color=red]Go to which level? (e.g. 'goto invader 1', 'goto space 3')[/color]"
 	
 	if text_chunks.size() < 3:
 		_log(err_msg)

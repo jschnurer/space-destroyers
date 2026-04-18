@@ -77,7 +77,8 @@ func start_pickup_sequence(player_target: Node2D) -> void:
 		return
 	
 	# Delete the off-screen component or the push will delete the credit!
-	delete_offscreen_component.queue_free()
+	if is_instance_valid(delete_offscreen_component):
+		delete_offscreen_component.queue_free()
 	
 	# Save the point to fly to.
 	_player_target = player_target
