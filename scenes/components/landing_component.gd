@@ -14,7 +14,7 @@ func _handle_collision(_terrain_node: Node2D) -> void:
 	_spawn_explosion(impact_point)
 
 func _spawn_explosion(point: Vector2) -> void:
-	get_tree().paused = true
+	PauseManager.pause()
 	var game_over_anim: GameOverAnimation = game_over_anim_scene.instantiate()
 	game_over_anim.global_position = point
 	game_over_anim.game_over_reason = Enums.GameOverReason.ENEMY_LANDED

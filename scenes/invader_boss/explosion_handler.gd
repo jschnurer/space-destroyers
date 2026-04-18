@@ -15,7 +15,7 @@ class_name ExplosionHandler
 @onready var independent_move_component: IndependentMoveComponent = %IndependentMoveComponent
 
 func play() -> void:
-	get_tree().paused = true
+	PauseManager.pause()
 	SignalBus.emit_flash_screen(Color.WHITE)
 	SignalBus.emit_fade_out_bgm(3)
 	

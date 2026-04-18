@@ -39,7 +39,7 @@ func _ready() -> void:
 ## Begins playing mission text then animation.
 func play() -> void:
 	reposition()
-	get_tree().paused = true
+	PauseManager.pause()
 	
 	mission_update_text_animation.play()
 

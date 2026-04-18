@@ -41,7 +41,7 @@ enum Mode {
 }
 
 func _ready() -> void:
-	get_tree().paused = true
+	PauseManager.pause()
 	SignalBus.emit_fade_in_screen()
 	spaceship.toggle_smoke_emission(false)
 	SignalBus.emit_play_bgm(bgm,\
@@ -89,7 +89,7 @@ func _animate_gleam() -> void:
 	SignalBus.emit_flash_screen(Color.WHITE)
 	
 	SignalBus.emit_play_sfx(jet_burst)
-	get_tree().paused = false
+	PauseManager.resume()
 	Engine.time_scale = 1.0
 	
 	if starfield:

@@ -30,7 +30,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		mission_update_text_animation.play()
 
 func _on_mission_update_text_animation_player_dismissed() -> void:
-	get_tree().paused = true
+	PauseManager.pause()
 	
 	var tween := create_tween()
 	var mission_update_text_animation_node: Control = mission_update_text_animation.get_child(0)
@@ -80,5 +80,5 @@ func _scroll_screens(new_scene: Node2D, gameplay_ui: CanvasLayer) -> void:
 	tween.tween_callback(func() -> void: 
 		get_tree().current_scene = new_scene
 		old_scene.queue_free()
-		get_tree().paused = false
+		PauseManager.resume()
 	)

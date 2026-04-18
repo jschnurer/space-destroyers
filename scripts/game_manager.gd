@@ -33,7 +33,7 @@ func _ready() -> void:
 
 ## Loads the initial level of the invaders levels.
 func load_initial_level() -> void:
-	get_tree().paused = true
+	PauseManager.pause()
 	game_state.current_level = 1
 	var level_filename := _get_invaders_level_path(game_state.current_level)
 	if !FileAccess.file_exists(level_filename):
@@ -48,7 +48,7 @@ func load_initial_level() -> void:
 
 ## Loads the next level sequentially.
 func load_next_level(instantly := false) -> void:
-	get_tree().paused = true
+	PauseManager.pause()
 	game_state.current_level += 1
 	
 	for child in level_holder.get_children():
@@ -95,7 +95,7 @@ func load_next_level(instantly := false) -> void:
 		await teleport_anim.animation_complete
 		player_tank.visible = true
 	
-	get_tree().paused = false
+	PauseManager.resume()
 	SignalBus.emit_new_level_loaded()
 
 ## Jumps to specified level.

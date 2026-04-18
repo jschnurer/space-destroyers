@@ -2,3 +2,6 @@ extends Node
 
 const ENEMY := "ENEMY"
 const LEVEL_MANAGER := "LEVEL_MANAGER"
+const CREDIT := "CREDIT"
+const LEVEL_NODE := "LEVEL_NODE"
+const PLAYER := "PLAYER"

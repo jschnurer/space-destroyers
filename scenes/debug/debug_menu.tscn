@@ -11,7 +11,7 @@ script = ExtResource("1_4y4sk")
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=993218394]
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 250.0
+offset_bottom = 540.0
 grow_horizontal = 2
 theme = ExtResource("1_4udpp")
 
@@ -31,6 +31,8 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0.6706895, 0.6706895, 0.6706895, 1)
 text = "> Debug Console. Type command and press Enter."
+scroll_following = true
+shortcut_keys_enabled = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1560166841]
 layout_mode = 2

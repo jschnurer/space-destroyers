@@ -5,11 +5,13 @@ var _enabled := false
 @onready var debug_log: RichTextLabel = %DebugLog
 @onready var debug_input: LineEdit = %DebugInput
 
-const _help_text: String = "> credits 0000: pick up specified number of credits (multiplier affects)
+const _help_text: String = "> collect: collects all visible credits
+> credits 0000: pick up specified number of credits (multiplier affects)
 > goto type num: skips to indicated level type/num (type: invader/space) (num: 1-9)
 > help: show this message
 > nuke: destroy all enemies
 > pass: destroy all enemies, collect their coins, go to next level immediately
+> resume: force-unpauses the game (in case you broke something with the debug console)
 > shop: as pass but show the show between levels"
 
 func _ready() -> void:
@@ -26,8 +28,11 @@ func _toggle_enabled() -> void:
 	debug_input.editable = _enabled
 	
 	if _enabled:
+		PauseManager.pause()
 		debug_input.grab_focus()
 		debug_input.set_caret_column(debug_input.text.length())
+	else:
+		PauseManager.resume()
 
 func _log(msg: String) -> void:
 	debug_log.append_text("\n")
@@ -37,7 +42,7 @@ func _on_debug_input_text_submitted(new_text: String) -> void:
 	if new_text == "":
 		return
 	
-	_log("> " + new_text)
+	_log("> [color=white]" + new_text + "[/color]")
 	
 	debug_input.clear()
 	
@@ -45,12 +50,14 @@ func _on_debug_input_text_submitted(new_text: String) -> void:
 	var cmd := text_chunks[0]
 	
 	match cmd:
+		"collect": _collect_credits()
 		"help": _output_help()
 		"nuke": _nuke_enemies()
 		"pass": _pass_level(false)
 		"shop": _pass_level(true)
 		"credits": _add_credits(text_chunks)
 		"goto": _go_to_level(text_chunks)
+		"resume": PauseManager.resume(true)
 
 ## Disable entering `.
 func _on_debug_input_text_changed(new_text: String) -> void:
@@ -109,3 +116,11 @@ func _go_to_level(text_chunks: Array[String]) -> void:
 	var level_num := level_num_str.to_int()
 	# TODO: Make this handle invader / space levels!
 	Game.go_to_level(level_num)
+
+func _collect_credits() -> void:
+	var player := get_tree().get_first_node_in_group(GroupNames.PLAYER)
+	if !player:
+		return
+	
+	for c in get_tree().get_nodes_in_group(GroupNames.CREDIT):
+		(c as Credit).start_pickup_sequence(player as Node2D)

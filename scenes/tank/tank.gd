@@ -30,7 +30,7 @@ func _on_game_manager_current_life_changed(new_life: int) -> void:
 	life_component.life = new_life
 
 func _on_life_component_life_zeroed(_hitbox: HitboxComponent) -> void:
-	get_tree().paused = true
+	PauseManager.pause()
 	var die_anim: GameOverAnimation = die_anim_scene.instantiate()
 	die_anim.global_position = sprite_2d.to_global(sprite_2d.get_rect().get_center())
 	die_anim.game_over_reason = Enums.GameOverReason.TANK_DESTROYED
