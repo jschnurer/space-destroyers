@@ -33,7 +33,6 @@ func _ready() -> void:
 
 ## Loads the initial level of the invaders levels.
 func load_initial_level() -> void:
-	PauseManager.pause()
 	game_state.current_level = 1
 	var level_filename := _get_invaders_level_path(game_state.current_level)
 	if !FileAccess.file_exists(level_filename):
@@ -129,8 +128,12 @@ func get_stat(stat: Enums.PlayerStats) -> Stat:
 func get_stat_value(stat: Enums.PlayerStats) -> float:
 	return get_stat(stat).get_current_value()
 
+## Improves a stat 1 level.
 func improve_stat(p_stat: Enums.PlayerStats) -> void:
 	var stat := get_stat(p_stat)
+	
+	if stat.is_maxed():
+		return
 	
 	stat.level += 1
 	stat.point_bonus += stat.value_per_level
@@ -144,25 +147,21 @@ func improve_stat(p_stat: Enums.PlayerStats) -> void:
 	
 	stat_changed.emit(stat)
 
-### Adds the delta to the player stat.
-#func alter_stat(p_stat: Enums.PlayerStats, point_delta: float, percent_bonus_delta: float) -> void:
-	#var stat := game_state.stats[p_stat]
-	#stat.point_bonus += point_delta
-	#stat.percent_bonus += percent_bonus_delta
-	#stat.level += 1
-	#stat_changed.emit(stat)
-	#
-### Adds the delta to the player int stat.
-#func alter_stat_int(p_stat: Enums.PlayerStats, point_delta: int) -> void:
-	#var stat := game_state.stats[p_stat]
-	#stat.point_bonus_int += point_delta
-	#stat.level += 1
-	#stat_changed.emit(stat)
-	#
-	## Special, for LIFE only. When increasing max life, also increase current life.
-	#if p_stat == Enums.PlayerStats.LIFE:
-		#game_state.current_life += point_delta
-		#current_life_changed.emit(game_state.current_life)
+## Overrides a stat and updates it to a specific level.
+func set_stat(p_stat: Enums.PlayerStats, p_level: int) -> void:
+	var stat := get_stat(p_stat)
+	
+	stat.level = p_level
+	stat.point_bonus = stat.value_per_level * p_level
+	stat.point_bonus_int = stat.int_value_per_level * p_level
+	stat.percent_bonus = stat.pct_bonus_per_level * p_level
+	
+	# Special, for LIFE only. When increasing max life, also increase current life.
+	if p_stat == Enums.PlayerStats.LIFE:
+		game_state.current_life = 1 + (stat.int_value_per_level * p_level)
+		current_life_changed.emit(game_state.current_life)
+	
+	stat_changed.emit(stat)
 
 ## Returns the specified upgrade value.
 func get_upgrade(upgr: Enums.PlayerUpgrades) -> Upgrade:
@@ -183,6 +182,12 @@ func alter_upgrade(upgr: Enums.PlayerUpgrades, delta_points: float) -> void:
 	
 	game_state.upgrades[upgr].level += 1
 	game_state.upgrades[upgr].point_bonus += delta_points
+	upgrade_changed.emit(game_state.upgrades[upgr])
+
+## Overrides an upgrade and sets its level.
+func set_upgrade(upgr: Enums.PlayerUpgrades, level: int) -> void:
+	game_state.upgrades[upgr].level = clampi(level, 0, game_state.upgrades[upgr].max_level)
+	game_state.upgrades[upgr].point_bonus = level
 	upgrade_changed.emit(game_state.upgrades[upgr])
 
 func _on_game_over(_reason: Enums.GameOverReason) -> void:

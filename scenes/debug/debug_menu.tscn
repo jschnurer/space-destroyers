@@ -49,5 +49,6 @@ size_flags_horizontal = 3
 editable = false
 keep_editing_on_text_submit = true
 
+[connection signal="gui_input" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/DebugInput" to="." method="_on_debug_input_gui_input"]
 [connection signal="text_changed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/DebugInput" to="." method="_on_debug_input_text_changed"]
 [connection signal="text_submitted" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/DebugInput" to="." method="_on_debug_input_text_submitted"]

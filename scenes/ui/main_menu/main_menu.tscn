@@ -61,7 +61,7 @@ invaders_levels = ExtResource("4_5mqxt")
 
 [node name="Starfield" parent="." unique_id=2061530491 instance=ExtResource("1_fsom3")]
 unique_name_in_owner = true
-star_count = 6000
+star_count = 600
 star_size_min = 1
 animate_direction = Vector2(-1, 0)
 animate_speed = 10.0

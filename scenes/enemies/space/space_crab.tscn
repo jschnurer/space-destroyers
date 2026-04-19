@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://dhu2elw6nf7l5"]
+
+[ext_resource type="Texture2D" uid="uid://c7l5rfc02wbxj" path="res://art/crab_4x.png" id="1_b1ine"]
+[ext_resource type="Material" uid="uid://d0vxn0ewbmjii" path="res://shaders/enemy_shader_material.tres" id="1_c61q7"]
+[ext_resource type="PackedScene" uid="uid://d1xwwb4h1awsi" path="res://scenes/components/life_component.tscn" id="1_xccq3"]
+[ext_resource type="PackedScene" uid="uid://bdmudihj1sun8" path="res://scenes/components/dance_component.tscn" id="2_c61q7"]
+[ext_resource type="Script" uid="uid://dbtrrcm6y3ioy" path="res://scenes/enemies/enemy.gd" id="2_xccq3"]
+[ext_resource type="PackedScene" uid="uid://b8unj7w73q0w3" path="res://scenes/components/hurtbox_component.tscn" id="4_mci8y"]
+[ext_resource type="PackedScene" uid="uid://cmoknedm8lvnp" path="res://scenes/components/lucky_component.tscn" id="5_7r5gs"]
+[ext_resource type="PackedScene" uid="uid://mdxtaa55xkqh" path="res://scenes/components/on_death_component.tscn" id="7_ewo4y"]
+[ext_resource type="AudioStream" uid="uid://65516pmqed0c" path="res://audio/sfx/beepfx_samples/22_boom_3.wav" id="8_681wy"]
+[ext_resource type="PackedScene" uid="uid://b0rqtlww1es66" path="res://scenes/invader_death/invader_death.tscn" id="9_6v11r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_of053"]
+size = Vector2(44, 32)
+
+[node name="SpaceCrab" type="Sprite2D" unique_id=1822881906 node_paths=PackedStringArray("enemy_sprite") groups=["ENEMY"]]
+material = ExtResource("1_c61q7")
+texture = ExtResource("1_b1ine")
+hframes = 2
+frame = 1
+script = ExtResource("2_xccq3")
+enemy_sprite = NodePath(".")
+life = 30
+
+[node name="Components" type="Node2D" parent="." unique_id=1767824331]
+
+[node name="LifeComponent" parent="Components" unique_id=759486464 instance=ExtResource("1_xccq3")]
+life = 1.0
+
+[node name="DanceComponent" parent="Components" unique_id=709328576 node_paths=PackedStringArray("sprite") instance=ExtResource("2_c61q7")]
+sprite = NodePath("../..")
+current_frame = 1
+
+[node name="HurtboxComponent" parent="Components" unique_id=2122994445 node_paths=PackedStringArray("life_component", "sprite_2d") instance=ExtResource("4_mci8y")]
+collision_layer = 2
+collision_mask = 8
+life_component = NodePath("../LifeComponent")
+flash_damage = true
+sprite_2d = NodePath("../..")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Components/HurtboxComponent" unique_id=1502621372]
+visible = false
+position = Vector2(22, 16)
+shape = SubResource("RectangleShape2D_of053")
+
+[node name="LuckyComponent" parent="Components" unique_id=1751092268 node_paths=PackedStringArray("sprite") instance=ExtResource("5_7r5gs")]
+unique_name_in_owner = true
+sprite = NodePath("../..")
+
+[node name="OnDeathComponent" parent="Components" unique_id=128414731 node_paths=PackedStringArray("life_component", "enemy_node", "deletion_node", "lucky_component") instance=ExtResource("7_ewo4y")]
+position = Vector2(22, 17)
+life_component = NodePath("../LifeComponent")
+death_sound = ExtResource("8_681wy")
+enemy_node = NodePath("../..")
+deletion_node = NodePath("../..")
+lucky_component = NodePath("../LuckyComponent")
+death_anim_scene = ExtResource("9_6v11r")
+can_spawn_flak = true

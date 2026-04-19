@@ -1,0 +1,206 @@
+[gd_scene format=3 uid="uid://qqwnyc0intca"]
+
+[ext_resource type="Script" uid="uid://b36gwpw2ne1a6" path="res://scenes/ui/shop_ui.gd" id="1_nwxdi"]
+[ext_resource type="AudioStream" uid="uid://c5m0qfva2s0di" path="res://audio/bgm/megamix.mp3" id="2_sawmr"]
+[ext_resource type="PackedScene" uid="uid://tdtvpwguick7" path="res://scenes/ui/shop_button.tscn" id="3_a65e2"]
+[ext_resource type="AudioStream" uid="uid://cdnc4pgyphaxp" path="res://audio/bgm/moonlight.mp3" id="3_se4pl"]
+[ext_resource type="Theme" uid="uid://blgn547iw1k7d" path="res://themes/main_theme.tres" id="4_fbehl"]
+[ext_resource type="PackedScene" uid="uid://b1sxbmhh6261m" path="res://scenes/input_prompt/input_prompt.tscn" id="7_30c1b"]
+[ext_resource type="PackedScene" uid="uid://dvc1ybiwavk54" path="res://scenes/ui/stats_ui.tscn" id="7_se4pl"]
+[ext_resource type="Texture2D" uid="uid://c5em4qbjr2anu" path="res://art/input/kb/keyboard_escape.png" id="8_fbehl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ygcrn"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 12
+border_width_top = 12
+border_width_right = 12
+border_width_bottom = 12
+border_color = Color(1, 1, 1, 1)
+
+[node name="ShopUI" type="CanvasLayer" unique_id=401719951]
+process_mode = 3
+script = ExtResource("1_nwxdi")
+shop_bgm = ExtResource("2_sawmr")
+level_bgm = ExtResource("3_se4pl")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=495132562]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 398.0
+offset_right = -396.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1729388229]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=54561861]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ygcrn")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer" unique_id=1948297207]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer" unique_id=2122108532]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=261138685]
+layout_mode = 2
+theme = ExtResource("4_fbehl")
+theme_type_variation = &"TitleLabel"
+text = "SOPHIA 0 UPGRADES"
+horizontal_alignment = 1
+
+[node name="PurchaseDescription" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1745356537]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 71)
+layout_mode = 2
+theme = ExtResource("4_fbehl")
+theme_override_font_sizes/font_size = 28
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ButtonContainer" type="GridContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1787940483]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 3
+
+[node name="MaxLife" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=1890730274 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
+layout_mode = 2
+btn_text = "+Max Life"
+is_player_stat = true
+player_stat = 8
+
+[node name="Speed" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=29397967 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
+layout_mode = 2
+btn_text = "+Speed"
+is_player_stat = true
+
+[node name="Luck" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=1958245463 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
+layout_mode = 2
+btn_text = "+Luck"
+is_player_stat = true
+player_stat = 7
+
+[node name="Credibux Value" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=29639636 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
+layout_mode = 2
+btn_text = "+Credibux Value"
+is_player_stat = true
+player_stat = 6
+
+[node name="Pickup" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=465462026 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
+layout_mode = 2
+btn_text = "+Pickup Area"
+is_player_stat = true
+player_stat = 5
+
+[node name="Damage" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=315851921 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
+layout_mode = 2
+btn_text = "+Shot Power"
+is_player_stat = true
+player_stat = 3
+
+[node name="Shot Speed" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=232779556 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
+layout_mode = 2
+btn_text = "+Shot Speed"
+is_player_stat = true
+player_stat = 4
+
+[node name="Reload" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=1954780166 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
+layout_mode = 2
+btn_text = "+Reload"
+is_player_stat = true
+player_stat = 2
+
+[node name="Laser Sight" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=776057343 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
+layout_mode = 2
+btn_text = "Laser Sight"
+is_player_upgrade = true
+player_upgrade = 2
+
+[node name="Multi Cannon" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=999333814 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
+layout_mode = 2
+btn_text = "Multi Cannon"
+is_player_upgrade = true
+player_upgrade = 3
+
+[node name="Full Auto" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=1910026014 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
+layout_mode = 2
+btn_text = "Full Auto"
+is_player_upgrade = true
+
+[node name="Missiles" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=78837581 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
+visible = false
+layout_mode = 2
+btn_text = "Seeking Missiles"
+is_player_upgrade = true
+player_upgrade = 1
+
+[node name="Anti-Air Tower" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=561967771 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
+layout_mode = 2
+btn_text = "Anti-Air Tower"
+is_player_upgrade = true
+player_upgrade = 4
+
+[node name="Flak Cannon" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=925314407 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
+layout_mode = 2
+btn_text = "Flak Cannon"
+is_player_upgrade = true
+player_upgrade = 9
+
+[node name="Left Wall" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=1459959674 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
+layout_mode = 2
+btn_text = "Left Wall"
+is_player_upgrade = true
+player_upgrade = 7
+
+[node name="Right Wall" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=337299482 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
+layout_mode = 2
+btn_text = "Right Wall"
+is_player_upgrade = true
+player_upgrade = 8
+
+[node name="Button" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1590123149]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button" unique_id=89439313]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="InputPromptLabel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button/HBoxContainer" unique_id=50002874 instance=ExtResource("7_30c1b")]
+layout_mode = 2
+texture = ExtResource("8_fbehl")
+action = 1
+
+[node name="CloseShop" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button/HBoxContainer" unique_id=265741125]
+layout_mode = 2
+theme = ExtResource("4_fbehl")
+theme_override_font_sizes/font_size = 24
+text = "Exit shop"
+horizontal_alignment = 1
+
+[node name="StatsUI" parent="." unique_id=1966520918 instance=ExtResource("7_se4pl")]
+unique_name_in_owner = true
+visible = false
+
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

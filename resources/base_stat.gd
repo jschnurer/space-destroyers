@@ -67,6 +67,9 @@ func get_current_value_int() -> int:
 	
 	return floori(val)
 
+func is_maxed() -> bool:
+	return level >= max_level
+
 ## [b]APPROACHES_ZERO[/b]: approaches_zero_base / (1.0 + percent_bonus) + point_bonus[br][br]
 ## [b]APPROACHES_CONST[/b]: approaches_const - (approaches_const_base / (1.0 + percent_bonus)) + point_bonus[br][br]
 ## [b]NO_CURVE[/b]: (base_value + point_bonus) * (1 + percent_bonus)

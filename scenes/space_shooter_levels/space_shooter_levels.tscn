@@ -8,7 +8,7 @@
 [node name="SpaceShooterLevels" type="Node2D" unique_id=1940226276]
 
 [node name="Starfield" parent="." unique_id=2061530491 instance=ExtResource("1_0hnfl")]
-star_count = 2000
+star_count = 200
 star_size_min = 1
 star_size_max = 2
 animate_direction = Vector2(0, 1)

@@ -7,6 +7,7 @@ script = ExtResource("1_4tpm5")
 player_stat = 4
 display_text = "Shot Speed"
 description = "+Move speed of fired shots"
+max_level = 50
 value_curve_type = 1
 const_start_value = 900.0
 approaches_const = 1600.0

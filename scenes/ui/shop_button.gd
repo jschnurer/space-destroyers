@@ -55,8 +55,12 @@ func update_label_and_cost() -> void:
 		label.text = "%s\n[$%s]" % [btn_text, "00000"]
 	else:
 		if is_player_stat:
-			upgrade_cost = Game.get_stat(player_stat).get_upgrade_cost()
-			label.text = "%s\n[$%s]" % [btn_text, str(upgrade_cost)]
+			var stat := Game.get_stat(player_stat)
+			if stat.is_maxed():
+				label.text = "%s\n[SOLD OUT]" % btn_text
+			else:
+				upgrade_cost = stat.get_upgrade_cost()
+				label.text = "%s\n[$%s]" % [btn_text, str(upgrade_cost)]
 		elif is_player_upgrade:
 			var pu := Game.get_upgrade(player_upgrade)
 			upgrade_cost = pu.get_upgrade_cost()
@@ -71,12 +75,7 @@ func update_label_and_cost() -> void:
 		(label as ShopButtonLabel).update_font_size()
 	
 	if !Engine.is_editor_hint():
-		if is_player_stat:
-			disabled = upgrade_cost > Game.game_state.credits
-		elif is_player_upgrade:
-			disabled = Game.get_upgrade(player_upgrade).is_maxed()\
-				or upgrade_cost > Game.game_state.credits
-		else:
-			disabled = false
+		disabled = Game.get_upgrade(player_upgrade).is_maxed()\
+			or upgrade_cost > Game.game_state.credits
 	else:
 		disabled = false

@@ -6,6 +6,7 @@
 script = ExtResource("1_0k50w")
 display_text = "Tank Speed"
 description = "+Movement speed"
+max_level = 50
 value_curve_type = 1
 const_start_value = 200.0
 approaches_const = 1000.0

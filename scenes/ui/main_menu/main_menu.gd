@@ -79,6 +79,6 @@ func _scroll_screens(new_scene: Node2D, gameplay_ui: CanvasLayer) -> void:
 	# Free the old scene and tell the engine that the loaded scene is now the current one.
 	tween.tween_callback(func() -> void: 
 		get_tree().current_scene = new_scene
-		old_scene.queue_free()
 		PauseManager.resume()
+		old_scene.queue_free()
 	)

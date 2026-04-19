@@ -7,6 +7,7 @@ script = ExtResource("1_fqbmw")
 player_stat = 8
 display_text = "Life"
 description = "Take more damage before destruction"
+max_level = 49
 value_curve_type = 2
 value_rounding_type = 1
 base_value_int = 1

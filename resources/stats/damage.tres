@@ -7,6 +7,7 @@ script = ExtResource("1_vsfdd")
 player_stat = 3
 display_text = "Damage"
 description = "+Shot damage dealt to enemies"
+max_level = 50
 value_curve_type = 2
 base_value = 11.0
 base_cost = 12.0

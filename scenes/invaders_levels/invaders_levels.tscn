@@ -14,7 +14,7 @@
 texture_filter = 1
 
 [node name="Starfield" parent="." unique_id=2061530491 instance=ExtResource("2_8v7q3")]
-star_count = 2000
+star_count = 200
 star_size_min = 2
 y_weight = 1.2000000000000002
 metadata/_edit_lock_ = true

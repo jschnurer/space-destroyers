@@ -6,6 +6,7 @@
 script = ExtResource("1_8cvxy")
 player_stat = 1
 display_text = "Max Shots"
+max_level = 50
 value_curve_type = 2
 base_value = 50.0
 base_cost = 10.0
