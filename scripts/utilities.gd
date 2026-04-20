@@ -3,6 +3,16 @@ extends Node
 func is_in_layer(node_layer: int, check_layer: Enums.CollisionLayers) -> bool:
 	return (node_layer & (1 << check_layer)) != 0
 
+func add_child_to_group_node(node: Node, grp_name: String, deferred := false) -> void:
+	if !deferred:
+		var level_node: Node = get_tree().get_first_node_in_group(grp_name)
+		if level_node:
+			level_node.add_child(node)
+		else:
+			get_tree().current_scene.add_child(node)
+	else:
+		call_deferred("add_child_to_group_node", node, grp_name)
+
 func add_child_to_level(node: Node, deferred := false) -> void:
 	if !deferred:
 		var level_node: Node = get_tree().get_first_node_in_group("LEVEL_NODE")

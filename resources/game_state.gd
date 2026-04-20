@@ -2,6 +2,7 @@ extends Resource
 class_name GameState
 
 var credits := 0.0
+var current_level_type := Enums.LevelTypes.NONE
 var current_level := 0
 var current_life := 1
 

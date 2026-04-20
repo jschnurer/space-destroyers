@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dvhyw5wxlqgl7"]
+
+[ext_resource type="Script" uid="uid://dn27qlitvq2a6" path="res://scenes/components/position_history_component.gd" id="1_e8bxa"]
+
+[node name="PositionHistoryComponent" type="Node" unique_id=857927283]
+script = ExtResource("1_e8bxa")

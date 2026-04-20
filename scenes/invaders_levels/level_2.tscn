@@ -768,7 +768,7 @@ position = Vector2(806, 160)
 material = SubResource("ShaderMaterial_sdy4n")
 position = Vector2(894, 160)
 
-[node name="Invader15" parent="EnemyFormation" unique_id=1932672860 instance=ExtResource("1_g2h2n")]
+[node name="Invader15" parent="EnemyFormation" unique_id=1932672860 groups=["CREDIT_PARENT"] instance=ExtResource("1_g2h2n")]
 material = SubResource("ShaderMaterial_1phfa")
 position = Vector2(938, 160)
 
@@ -927,32 +927,26 @@ position = Vector2(1070, 64)
 [node name="Octopus" parent="EnemyFormation" unique_id=130954596 instance=ExtResource("4_l37oo")]
 material = SubResource("ShaderMaterial_lu5p0")
 position = Vector2(804, 0)
-frame = 0
 
 [node name="Octopus2" parent="EnemyFormation" unique_id=606606242 instance=ExtResource("4_l37oo")]
 material = SubResource("ShaderMaterial_t5i3l")
 position = Vector2(892, 0)
-frame = 0
 
 [node name="Octopus3" parent="EnemyFormation" unique_id=1892593131 instance=ExtResource("4_l37oo")]
 material = SubResource("ShaderMaterial_lge0w")
 position = Vector2(980, 0)
-frame = 0
 
 [node name="Octopus4" parent="EnemyFormation" unique_id=1814330381 instance=ExtResource("4_l37oo")]
 material = SubResource("ShaderMaterial_pxi4y")
 position = Vector2(1068, 0)
-frame = 0
 
 [node name="Octopus5" parent="EnemyFormation" unique_id=617686526 instance=ExtResource("4_l37oo")]
 material = SubResource("ShaderMaterial_bdrnx")
 position = Vector2(1540, 192)
-frame = 0
 
 [node name="Octopus6" parent="EnemyFormation" unique_id=295446508 instance=ExtResource("4_l37oo")]
 material = SubResource("ShaderMaterial_pf1lk")
 position = Vector2(352, 192)
-frame = 0
 
 [node name="LevelManager" parent="." unique_id=1578700785 groups=["LEVEL_MANAGER"] instance=ExtResource("2_ra442")]
 enemy_start_speed = 30.0

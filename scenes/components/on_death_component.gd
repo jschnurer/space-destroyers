@@ -116,7 +116,7 @@ func _try_spawn_credit() -> void:
 	coins_to_spawn.shuffle()
 	
 	for i in coins_to_spawn:
-		_spawn_credit(i)
+		call_deferred("_spawn_credit", i)
 
 ## Simulates spawning credits and calculates their total value (without counting user stats).
 func get_total_credit_value() -> float:
@@ -136,10 +136,10 @@ func get_total_credit_value() -> float:
 
 func _spawn_credit(credit_denomination: CreditDenomination) -> void:
 	var credit := credit_scene.instantiate() as Credit
+	Utilities.add_child_to_group_node(credit, GroupNames.CREDIT_PARENT)
 	credit.global_position = global_position + Vector2(randf_range(-1, 1), randf_range(-1, 1))
 	credit.value = credit_denomination.value
 	credit.denomination = credit_denomination
-	Utilities.call_deferred("add_child_to_level", credit)
 
 func _try_death_anim() -> void:
 	if !show_death_anim or !death_anim_scene:

@@ -1,10 +1,13 @@
+@tool
 extends Node2D
 class_name EnemyPathFormation
 
 ## The list of enemies that will spawn and follow the path (in order).
 @export var enemy_scenes: Array[SceneCount]
-## The delay after spawning each enemy, before the next one spawns in.
-@export var spawn_delay := 0.5
+## Level Manager (to get scroll speed and update editor display).
+@export var level_manager: SpaceShooterLevelManager
+## Total time it takes to spawn all enemies.
+@export var spawn_duration: float = 5.0
 ## The speed the enemies should follow the path.
 @export var enemy_path_speed := 50.0
 ## If true, enemies rotate to follow path.
@@ -15,21 +18,46 @@ class_name EnemyPathFormation
 
 var _spawn_index := 0
 var _spawn_index_count := 0
-var _lvl_manager: SpaceShooterLevelManager
 
 func _ready() -> void:
-	_lvl_manager = get_tree().get_first_node_in_group("LEVEL_MANAGER_SPACE") as SpaceShooterLevelManager
-	spawn_timer.wait_time = spawn_delay
-	spawn_timer.start()
+	_update_timer()
+	
+	if !Engine.is_editor_hint():
+		# Spawn the first enemy immediately, then use the timer to wait between each.
+		_on_spawn_timer_timeout()
 
 func _process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
+	
 	# Stop scrolling downward!
-	position.y -= _lvl_manager.scroll_speed * delta
+	position.y -= level_manager.scroll_speed * delta
 	
 	for follower: PathFollow2D in path_2d.get_children():
 		follower.progress += enemy_path_speed * delta
 		if follower.progress_ratio >= 1.0:
 			follower.queue_free()
+
+func _draw() -> void:
+	if Engine.is_editor_hint() and level_manager:
+		var height := spawn_duration * level_manager.scroll_speed
+		var fill_color := Color.RED
+		fill_color.a = 0.5
+		draw_rect(Rect2(Vector2(-20, -height), Vector2(40, height)), fill_color)
+
+func _get_enemy_spawn_count_total() -> int:
+	var en_count := 0
+	for g in enemy_scenes:
+		en_count += g.count
+	return en_count
+
+func _update_timer() -> void:
+	var en_count := _get_enemy_spawn_count_total()
+		
+	if en_count == 0:
+		return
+		
+	(%SpawnTimer as Timer).wait_time = spawn_duration / (en_count - 1)
 
 func _on_spawn_timer_timeout() -> void:
 	if _spawn_enemy():

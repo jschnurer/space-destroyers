@@ -47,7 +47,7 @@ func _on_mission_update_text_animation_player_dismissed() -> void:
 	get_tree().root.add_child(new_scene)
 
 	# Load level 1.
-	Game.load_initial_level()
+	Game.start_game()
 	
 	# Start some background music.
 	SignalBus.emit_play_bgm(main_bgm as AudioStream, 1, 1, scroll_animation_duration / 2.0, scroll_animation_duration / 2.0)

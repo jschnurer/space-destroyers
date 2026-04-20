@@ -124,10 +124,12 @@ func _go_to_level(text_chunks: Array[String]) -> void:
 		_log(err_msg)
 		return
 	
-	var level_type := text_chunks[1]
-	if level_type != "invader" and level_type != "space":
-		_log(err_msg)
+	var level_type := text_chunks[1].to_upper()
+	if level_type not in Enums.LevelTypes:
+		var keys := Enums.LevelTypes.keys()
+		_log("[color=red]Invalid level type. Valid types: %s[/color]" % str(keys))
 		return
+	var lvl_type: int = Enums.LevelTypes[level_type]
 	
 	var level_num_str := text_chunks[2]
 	if !level_num_str.is_valid_int():
@@ -135,8 +137,7 @@ func _go_to_level(text_chunks: Array[String]) -> void:
 		return
 	
 	var level_num := level_num_str.to_int()
-	# TODO: Make this handle invader / space levels!
-	Game.go_to_level(level_num)
+	Game.go_to_level(lvl_type, level_num)
 
 func _collect_credits() -> void:
 	var player := get_tree().get_first_node_in_group(GroupNames.PLAYER)

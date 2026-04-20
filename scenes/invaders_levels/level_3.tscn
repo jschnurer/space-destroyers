@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://uu3ea6khn2cp" path="res://scenes/enemies/octopus.tscn" id="3_0qepi"]
 [ext_resource type="Shader" uid="uid://dairmqngktiej" path="res://shaders/enemy_shader.tres" id="3_fmg3e"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fmg3e"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wmbbd"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -20,7 +20,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ftfob"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_865fi"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -34,7 +34,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fkk1g"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5h8ym"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -48,7 +48,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ugcn1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bpo0o"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -62,7 +62,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pimnq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nailu"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -76,7 +76,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2bnyt"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rck7m"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -90,7 +90,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_n6eey"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_55ley"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -104,7 +104,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qi5uv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mjtt5"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -118,7 +118,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f6egh"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a7qyt"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -132,7 +132,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_t4txi"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pb80u"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -146,7 +146,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_apo5x"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tw3qj"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -160,7 +160,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_josfm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ln0iu"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -174,7 +174,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lgrx1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_swiur"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -188,7 +188,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fhpes"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_12d1l"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -202,7 +202,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vmg1d"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bvhgd"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -216,7 +216,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1nwmf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sca7a"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -230,7 +230,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5f5xw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8du1u"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -244,7 +244,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o3ttr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ttvbn"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -258,7 +258,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kdsi4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_air1k"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -272,7 +272,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kva3v"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1pdhe"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -286,7 +286,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jql0x"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_un6ol"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -300,7 +300,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_do6pa"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f8sfo"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -314,7 +314,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_n8qcm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g6d5o"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -328,7 +328,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_aey3y"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f0dr3"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -342,7 +342,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k0dme"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0yvtn"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -356,7 +356,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o5em7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hpsxb"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -370,7 +370,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_22mqa"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yt0tu"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -384,7 +384,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6c6bd"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n2b6w"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -398,7 +398,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2qmps"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h86w5"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -412,7 +412,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gtyp3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h2wu7"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -426,7 +426,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_n7m6w"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s2mew"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -440,7 +440,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ju8vr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2xxmb"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -454,7 +454,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tio2m"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nuto5"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -468,7 +468,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_p0p7o"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pipq6"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -482,7 +482,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jnyl3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7uclo"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -496,7 +496,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2gq65"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ec8u1"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -510,7 +510,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fk6jg"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r8qec"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -524,7 +524,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_v1m6f"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w8kpc"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -538,7 +538,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vn4iy"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ndklr"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -552,7 +552,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y7n6r"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5b43c"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -566,7 +566,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ly8gl"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_27cyb"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -580,7 +580,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_30ben"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y60ml"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -594,7 +594,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xlt7h"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ol10u"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -608,7 +608,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0y66q"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vfbsb"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -622,7 +622,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ovq3l"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hd8dt"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -636,7 +636,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tki50"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a5cu5"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -650,7 +650,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_p5qcu"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tunxq"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -664,7 +664,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mqy1c"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kdd0k"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -678,7 +678,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1lucq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7dmoc"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -692,7 +692,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0qj75"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8jbma"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -706,7 +706,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r6hjj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t8emh"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -720,7 +720,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_q6vlo"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aibsj"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -734,7 +734,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_m7ofi"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f1n7o"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -748,7 +748,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_apiyn"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kc66v"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -762,7 +762,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xvbt6"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lefgk"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -776,7 +776,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wm3e5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3qx2u"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -790,7 +790,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i0mny"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tpqlu"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -804,7 +804,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_07vog"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n28ga"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -818,7 +818,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rkjuh"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_atm3n"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -832,7 +832,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_60f7k"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2g7by"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -846,7 +846,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_urpbc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rl1vd"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -860,7 +860,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yxhsx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vi1at"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -874,7 +874,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k1q4s"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pd6fp"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -888,7 +888,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_n37he"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_28pur"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -902,7 +902,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ro10o"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k2jmm"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -916,7 +916,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l1xkm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ykan3"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -930,7 +930,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_au27u"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ffpnj"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -944,7 +944,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fbh0l"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3fn0t"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -958,7 +958,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_knm1b"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_belcx"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -972,7 +972,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k1o6y"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nk187"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -986,7 +986,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i6kwn"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_53ka1"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -1000,7 +1000,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_twpg0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8iemd"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -1014,7 +1014,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ascjx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gx133"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -1028,7 +1028,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_e8bj0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wy81q"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -1042,7 +1042,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pphix"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cst05"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -1056,7 +1056,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_avbao"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vqgkr"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -1070,7 +1070,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7xqdk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_avnh4"]
 resource_local_to_scene = true
 shader = ExtResource("3_fmg3e")
 shader_parameter/time = 0.0
@@ -1084,325 +1084,325 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[node name="Level_3" type="Node2D" unique_id=756359994 groups=["LEVEL_NODE"]]
+[node name="Level_3" type="Node2D" unique_id=756359994 groups=["CREDIT_PARENT", "LEVEL_NODE"]]
 metadata/_edit_lock_ = true
 
 [node name="EnemyFormation" parent="." unique_id=965894497 instance=ExtResource("2_fmg3e")]
 metadata/_edit_lock_ = true
 
 [node name="Crab" parent="EnemyFormation" unique_id=1961314000 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_fmg3e")
+material = SubResource("ShaderMaterial_wmbbd")
 position = Vector2(810, 608)
 
 [node name="Crab4" parent="EnemyFormation" unique_id=639119212 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_ftfob")
+material = SubResource("ShaderMaterial_865fi")
 position = Vector2(810, 544)
 
 [node name="Crab5" parent="EnemyFormation" unique_id=1129448657 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_fkk1g")
+material = SubResource("ShaderMaterial_5h8ym")
 position = Vector2(874, 544)
 
 [node name="Crab6" parent="EnemyFormation" unique_id=391517867 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_ugcn1")
+material = SubResource("ShaderMaterial_bpo0o")
 position = Vector2(938, 544)
 
 [node name="Crab7" parent="EnemyFormation" unique_id=32486201 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_pimnq")
+material = SubResource("ShaderMaterial_nailu")
 position = Vector2(1002, 544)
 
 [node name="Crab9" parent="EnemyFormation" unique_id=2068597568 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_2bnyt")
+material = SubResource("ShaderMaterial_rck7m")
 position = Vector2(874, 352)
 
 [node name="Crab26" parent="EnemyFormation" unique_id=1255993762 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_n6eey")
+material = SubResource("ShaderMaterial_55ley")
 position = Vector2(938, 416)
 
 [node name="Crab28" parent="EnemyFormation" unique_id=325460041 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_qi5uv")
+material = SubResource("ShaderMaterial_mjtt5")
 position = Vector2(938, 352)
 
 [node name="Crab29" parent="EnemyFormation" unique_id=1784611424 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_f6egh")
+material = SubResource("ShaderMaterial_a7qyt")
 position = Vector2(938, 288)
 
 [node name="Crab30" parent="EnemyFormation" unique_id=1118412462 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_t4txi")
+material = SubResource("ShaderMaterial_pb80u")
 position = Vector2(938, 224)
 
 [node name="Crab27" parent="EnemyFormation" unique_id=994456532 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_apo5x")
+material = SubResource("ShaderMaterial_tw3qj")
 position = Vector2(1002, 352)
 
 [node name="Crab8" parent="EnemyFormation" unique_id=821208256 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_josfm")
+material = SubResource("ShaderMaterial_ln0iu")
 position = Vector2(1066, 544)
 
 [node name="Crab10" parent="EnemyFormation" unique_id=45083364 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_lgrx1")
+material = SubResource("ShaderMaterial_swiur")
 position = Vector2(682, 480)
 
 [node name="Crab11" parent="EnemyFormation" unique_id=617350181 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_fhpes")
+material = SubResource("ShaderMaterial_12d1l")
 position = Vector2(746, 480)
 
 [node name="Crab12" parent="EnemyFormation" unique_id=192098367 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_vmg1d")
+material = SubResource("ShaderMaterial_bvhgd")
 position = Vector2(810, 480)
 
 [node name="Crab13" parent="EnemyFormation" unique_id=209419650 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_1nwmf")
+material = SubResource("ShaderMaterial_sca7a")
 position = Vector2(874, 480)
 
 [node name="Crab14" parent="EnemyFormation" unique_id=235690047 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_5f5xw")
+material = SubResource("ShaderMaterial_8du1u")
 position = Vector2(1002, 480)
 
 [node name="Crab15" parent="EnemyFormation" unique_id=1029175264 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_o3ttr")
+material = SubResource("ShaderMaterial_ttvbn")
 position = Vector2(1066, 480)
 
 [node name="Crab16" parent="EnemyFormation" unique_id=1416138082 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_kdsi4")
+material = SubResource("ShaderMaterial_air1k")
 position = Vector2(1130, 480)
 
 [node name="Crab17" parent="EnemyFormation" unique_id=67448910 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_kva3v")
+material = SubResource("ShaderMaterial_1pdhe")
 position = Vector2(1194, 480)
 
 [node name="Crab18" parent="EnemyFormation" unique_id=1728568581 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_jql0x")
+material = SubResource("ShaderMaterial_un6ol")
 position = Vector2(682, 416)
 
 [node name="Crab19" parent="EnemyFormation" unique_id=1735031693 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_do6pa")
+material = SubResource("ShaderMaterial_f8sfo")
 position = Vector2(746, 416)
 
 [node name="Crab31" parent="EnemyFormation" unique_id=2071454376 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_n8qcm")
+material = SubResource("ShaderMaterial_g6d5o")
 position = Vector2(618, 352)
 
 [node name="Crab32" parent="EnemyFormation" unique_id=634025004 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_aey3y")
+material = SubResource("ShaderMaterial_f0dr3")
 position = Vector2(682, 352)
 
 [node name="Crab33" parent="EnemyFormation" unique_id=720400439 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_k0dme")
+material = SubResource("ShaderMaterial_0yvtn")
 position = Vector2(618, 288)
 
 [node name="Crab34" parent="EnemyFormation" unique_id=1582855607 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_o5em7")
+material = SubResource("ShaderMaterial_hpsxb")
 position = Vector2(682, 288)
 
 [node name="Crab35" parent="EnemyFormation" unique_id=1139451902 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_22mqa")
+material = SubResource("ShaderMaterial_yt0tu")
 position = Vector2(618, 224)
 
 [node name="Crab36" parent="EnemyFormation" unique_id=802253676 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_6c6bd")
+material = SubResource("ShaderMaterial_n2b6w")
 position = Vector2(682, 224)
 
 [node name="Crab37" parent="EnemyFormation" unique_id=233305677 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_2qmps")
+material = SubResource("ShaderMaterial_h86w5")
 position = Vector2(746, 224)
 
 [node name="Crab20" parent="EnemyFormation" unique_id=647842396 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_gtyp3")
+material = SubResource("ShaderMaterial_h2wu7")
 position = Vector2(810, 416)
 
 [node name="Crab21" parent="EnemyFormation" unique_id=1088684566 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_n7m6w")
+material = SubResource("ShaderMaterial_s2mew")
 position = Vector2(874, 416)
 
 [node name="Crab22" parent="EnemyFormation" unique_id=1959372886 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_ju8vr")
+material = SubResource("ShaderMaterial_2xxmb")
 position = Vector2(1002, 416)
 
 [node name="Crab23" parent="EnemyFormation" unique_id=942760222 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_tio2m")
+material = SubResource("ShaderMaterial_nuto5")
 position = Vector2(1066, 416)
 
 [node name="Crab24" parent="EnemyFormation" unique_id=930816285 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_p0p7o")
+material = SubResource("ShaderMaterial_pipq6")
 position = Vector2(1130, 416)
 
 [node name="Crab25" parent="EnemyFormation" unique_id=901874063 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_jnyl3")
+material = SubResource("ShaderMaterial_7uclo")
 position = Vector2(1194, 416)
 
 [node name="Crab45" parent="EnemyFormation" unique_id=357521794 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_2gq65")
+material = SubResource("ShaderMaterial_ec8u1")
 position = Vector2(938, 160)
 
 [node name="Crab46" parent="EnemyFormation" unique_id=734033784 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_fk6jg")
+material = SubResource("ShaderMaterial_r8qec")
 position = Vector2(682, 160)
 
 [node name="Crab47" parent="EnemyFormation" unique_id=697120682 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_v1m6f")
+material = SubResource("ShaderMaterial_w8kpc")
 position = Vector2(746, 160)
 
 [node name="Crab48" parent="EnemyFormation" unique_id=333442279 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_vn4iy")
+material = SubResource("ShaderMaterial_ndklr")
 position = Vector2(810, 160)
 
 [node name="Crab49" parent="EnemyFormation" unique_id=3288732 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_y7n6r")
+material = SubResource("ShaderMaterial_5b43c")
 position = Vector2(874, 160)
 
 [node name="Crab50" parent="EnemyFormation" unique_id=726976955 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_ly8gl")
+material = SubResource("ShaderMaterial_27cyb")
 position = Vector2(1002, 160)
 
 [node name="Crab51" parent="EnemyFormation" unique_id=691755227 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_30ben")
+material = SubResource("ShaderMaterial_y60ml")
 position = Vector2(1066, 160)
 
 [node name="Crab52" parent="EnemyFormation" unique_id=748428783 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_xlt7h")
+material = SubResource("ShaderMaterial_ol10u")
 position = Vector2(1130, 160)
 
 [node name="Crab53" parent="EnemyFormation" unique_id=366009914 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_0y66q")
+material = SubResource("ShaderMaterial_vfbsb")
 position = Vector2(1194, 160)
 
 [node name="Crab54" parent="EnemyFormation" unique_id=838151320 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_ovq3l")
+material = SubResource("ShaderMaterial_hd8dt")
 position = Vector2(938, 96)
 
 [node name="Crab55" parent="EnemyFormation" unique_id=1151529641 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_tki50")
+material = SubResource("ShaderMaterial_a5cu5")
 position = Vector2(682, 96)
 
 [node name="Crab56" parent="EnemyFormation" unique_id=1456139165 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_p5qcu")
+material = SubResource("ShaderMaterial_tunxq")
 position = Vector2(746, 96)
 
 [node name="Crab57" parent="EnemyFormation" unique_id=386144062 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_mqy1c")
+material = SubResource("ShaderMaterial_kdd0k")
 position = Vector2(810, 96)
 
 [node name="Crab58" parent="EnemyFormation" unique_id=492025754 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_1lucq")
+material = SubResource("ShaderMaterial_7dmoc")
 position = Vector2(874, 96)
 
 [node name="Crab59" parent="EnemyFormation" unique_id=612596200 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_0qj75")
+material = SubResource("ShaderMaterial_8jbma")
 position = Vector2(1002, 96)
 
 [node name="Crab60" parent="EnemyFormation" unique_id=1363426280 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_r6hjj")
+material = SubResource("ShaderMaterial_t8emh")
 position = Vector2(1066, 96)
 
 [node name="Crab61" parent="EnemyFormation" unique_id=1122075333 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_q6vlo")
+material = SubResource("ShaderMaterial_aibsj")
 position = Vector2(1130, 96)
 
 [node name="Crab62" parent="EnemyFormation" unique_id=919211268 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_m7ofi")
+material = SubResource("ShaderMaterial_f1n7o")
 position = Vector2(1194, 96)
 
 [node name="Crab63" parent="EnemyFormation" unique_id=2121985997 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_apiyn")
+material = SubResource("ShaderMaterial_kc66v")
 position = Vector2(938, 32)
 
 [node name="Crab65" parent="EnemyFormation" unique_id=941576237 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_xvbt6")
+material = SubResource("ShaderMaterial_lefgk")
 position = Vector2(746, 32)
 
 [node name="Crab66" parent="EnemyFormation" unique_id=1955978770 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_wm3e5")
+material = SubResource("ShaderMaterial_3qx2u")
 position = Vector2(810, 32)
 
 [node name="Crab67" parent="EnemyFormation" unique_id=825422312 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_i0mny")
+material = SubResource("ShaderMaterial_tpqlu")
 position = Vector2(874, 32)
 
 [node name="Crab68" parent="EnemyFormation" unique_id=1332766703 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_07vog")
+material = SubResource("ShaderMaterial_n28ga")
 position = Vector2(1002, 32)
 
 [node name="Crab69" parent="EnemyFormation" unique_id=901463471 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_rkjuh")
+material = SubResource("ShaderMaterial_atm3n")
 position = Vector2(1066, 32)
 
 [node name="Crab70" parent="EnemyFormation" unique_id=1610396242 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_60f7k")
+material = SubResource("ShaderMaterial_2g7by")
 position = Vector2(1130, 32)
 
 [node name="Crab38" parent="EnemyFormation" unique_id=714979448 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_urpbc")
+material = SubResource("ShaderMaterial_rl1vd")
 position = Vector2(1194, 352)
 
 [node name="Crab39" parent="EnemyFormation" unique_id=909718573 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_yxhsx")
+material = SubResource("ShaderMaterial_vi1at")
 position = Vector2(1258, 352)
 
 [node name="Crab40" parent="EnemyFormation" unique_id=183867343 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_k1q4s")
+material = SubResource("ShaderMaterial_pd6fp")
 position = Vector2(1194, 288)
 
 [node name="Crab41" parent="EnemyFormation" unique_id=128662038 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_n37he")
+material = SubResource("ShaderMaterial_28pur")
 position = Vector2(1258, 288)
 
 [node name="Crab42" parent="EnemyFormation" unique_id=2001468934 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_ro10o")
+material = SubResource("ShaderMaterial_k2jmm")
 position = Vector2(1194, 224)
 
 [node name="Crab43" parent="EnemyFormation" unique_id=1304066034 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_l1xkm")
+material = SubResource("ShaderMaterial_ykan3")
 position = Vector2(1258, 224)
 
 [node name="Crab44" parent="EnemyFormation" unique_id=865871382 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_au27u")
+material = SubResource("ShaderMaterial_ffpnj")
 position = Vector2(1130, 224)
 
 [node name="Crab2" parent="EnemyFormation" unique_id=1976456050 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_fbh0l")
+material = SubResource("ShaderMaterial_3fn0t")
 position = Vector2(938, 608)
 
 [node name="Crab3" parent="EnemyFormation" unique_id=669944665 instance=ExtResource("1_44gv1")]
-material = SubResource("ShaderMaterial_knm1b")
+material = SubResource("ShaderMaterial_belcx")
 position = Vector2(1066, 608)
 
 [node name="Octopus" parent="EnemyFormation" unique_id=130954596 instance=ExtResource("3_0qepi")]
-material = SubResource("ShaderMaterial_k1o6y")
+material = SubResource("ShaderMaterial_nk187")
 position = Vector2(778, 288)
 credit_value = 3.0
 
 [node name="Octopus3" parent="EnemyFormation" unique_id=1754620240 instance=ExtResource("3_0qepi")]
-material = SubResource("ShaderMaterial_i6kwn")
+material = SubResource("ShaderMaterial_53ka1")
 position = Vector2(842, 224)
 credit_value = 3.0
 
 [node name="Octopus7" parent="EnemyFormation" unique_id=1464890714 instance=ExtResource("3_0qepi")]
-material = SubResource("ShaderMaterial_twpg0")
+material = SubResource("ShaderMaterial_8iemd")
 position = Vector2(842, 288)
 credit_value = 3.0
 
 [node name="Octopus4" parent="EnemyFormation" unique_id=682773848 instance=ExtResource("3_0qepi")]
-material = SubResource("ShaderMaterial_ascjx")
+material = SubResource("ShaderMaterial_gx133")
 position = Vector2(1034, 224)
 credit_value = 3.0
 
 [node name="Octopus8" parent="EnemyFormation" unique_id=1747067320 instance=ExtResource("3_0qepi")]
-material = SubResource("ShaderMaterial_e8bj0")
+material = SubResource("ShaderMaterial_wy81q")
 position = Vector2(1034, 288)
 credit_value = 3.0
 
 [node name="Octopus5" parent="EnemyFormation" unique_id=82066831 instance=ExtResource("3_0qepi")]
-material = SubResource("ShaderMaterial_pphix")
+material = SubResource("ShaderMaterial_cst05")
 position = Vector2(1098, 288)
 credit_value = 3.0
 
 [node name="Octopus6" parent="EnemyFormation" unique_id=1748483481 instance=ExtResource("3_0qepi")]
-material = SubResource("ShaderMaterial_avbao")
+material = SubResource("ShaderMaterial_vqgkr")
 position = Vector2(1098, 352)
 credit_value = 3.0
 
 [node name="Octopus2" parent="EnemyFormation" unique_id=548804226 instance=ExtResource("3_0qepi")]
-material = SubResource("ShaderMaterial_7xqdk")
+material = SubResource("ShaderMaterial_avnh4")
 position = Vector2(778, 352)
 credit_value = 3.0
 

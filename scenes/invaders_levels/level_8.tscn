@@ -2097,7 +2097,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[node name="level_8" type="Node2D" unique_id=814587516 groups=["LEVEL_NODE"]]
+[node name="level_8" type="Node2D" unique_id=814587516 groups=["CREDIT_PARENT", "LEVEL_NODE"]]
 metadata/_edit_lock_ = true
 
 [node name="EnemyFormation" parent="." unique_id=965894497 instance=ExtResource("1_07ctq")]
@@ -2350,460 +2350,378 @@ frame = 1
 [node name="Crab" parent="EnemyFormation" unique_id=639119212 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_0vr0j")
 position = Vector2(518, 96)
-frame = 1
 
 [node name="Crab7" parent="EnemyFormation" unique_id=1909391075 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_jtfm7")
 position = Vector2(518, 128)
-frame = 1
 
 [node name="Crab2" parent="EnemyFormation" unique_id=1476443802 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_bmlpa")
 position = Vector2(686, 96)
-frame = 1
 
 [node name="Crab3" parent="EnemyFormation" unique_id=453512831 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_jq1kr")
 position = Vector2(854, 96)
-frame = 1
 
 [node name="Crab4" parent="EnemyFormation" unique_id=716272387 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_e1bex")
 position = Vector2(1022, 96)
-frame = 1
 
 [node name="Crab5" parent="EnemyFormation" unique_id=187145165 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_iumpp")
 position = Vector2(1190, 96)
-frame = 1
 
 [node name="Crab6" parent="EnemyFormation" unique_id=344365391 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_0kiue")
 position = Vector2(1358, 96)
-frame = 1
 
 [node name="Crab8" parent="EnemyFormation" unique_id=1336141344 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_n62xq")
 position = Vector2(686, 128)
-frame = 1
 
 [node name="Crab9" parent="EnemyFormation" unique_id=2101230827 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_70d1l")
 position = Vector2(854, 128)
-frame = 1
 
 [node name="Crab10" parent="EnemyFormation" unique_id=1834511907 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_pspo6")
 position = Vector2(1022, 128)
-frame = 1
 
 [node name="Crab11" parent="EnemyFormation" unique_id=1578743384 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_lcrhf")
 position = Vector2(1190, 128)
-frame = 1
 
 [node name="Crab12" parent="EnemyFormation" unique_id=410141147 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_o1s3c")
 position = Vector2(1358, 128)
-frame = 1
 
 [node name="bone_fish" parent="EnemyFormation" unique_id=417046175 instance=ExtResource("6_u1w5x")]
 material = SubResource("ShaderMaterial_2ib7r")
 position = Vector2(388, 176)
+frame = 1
 
 [node name="bone_fish2" parent="EnemyFormation" unique_id=979953040 instance=ExtResource("6_u1w5x")]
 material = SubResource("ShaderMaterial_ftqai")
 position = Vector2(1488, 176)
+frame = 1
 
 [node name="bone_fish3" parent="EnemyFormation" unique_id=960934944 instance=ExtResource("6_u1w5x")]
 material = SubResource("ShaderMaterial_5ar66")
 position = Vector2(696, 176)
+frame = 1
 
 [node name="bone_fish5" parent="EnemyFormation" unique_id=585204856 instance=ExtResource("6_u1w5x")]
 material = SubResource("ShaderMaterial_fhg1d")
 position = Vector2(894, 176)
 scale = Vector2(3, 3)
+frame = 1
 
 [node name="bone_fish4" parent="EnemyFormation" unique_id=897070426 instance=ExtResource("6_u1w5x")]
 material = SubResource("ShaderMaterial_j3a5y")
 position = Vector2(1180, 176)
+frame = 1
 
 [node name="Crab13" parent="EnemyFormation" unique_id=1199984613 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_c42ue")
 position = Vector2(344, 256)
-frame = 1
 
 [node name="Crab14" parent="EnemyFormation" unique_id=1891071840 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_qn3mv")
 position = Vector2(388, 256)
-frame = 1
 
 [node name="Crab15" parent="EnemyFormation" unique_id=1684344201 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_v7d4m")
 position = Vector2(432, 256)
-frame = 1
 
 [node name="Crab16" parent="EnemyFormation" unique_id=776369979 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_osi55")
 position = Vector2(344, 288)
-frame = 1
 
 [node name="Crab22" parent="EnemyFormation" unique_id=1347614849 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_ntequ")
 position = Vector2(476, 256)
-frame = 1
 
 [node name="Crab24" parent="EnemyFormation" unique_id=1607522073 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_j0gga")
 position = Vector2(564, 256)
-frame = 1
 
 [node name="Crab68" parent="EnemyFormation" unique_id=375816408 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_dekrh")
 position = Vector2(476, 224)
-frame = 1
 
 [node name="Crab69" parent="EnemyFormation" unique_id=1044963316 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_swspm")
 position = Vector2(520, 224)
-frame = 1
 
 [node name="Crab72" parent="EnemyFormation" unique_id=839364011 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_egsaq")
 position = Vector2(520, 192)
-frame = 1
 
 [node name="Crab71" parent="EnemyFormation" unique_id=144186173 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_kdl4c")
 position = Vector2(564, 224)
-frame = 1
 
 [node name="Crab73" parent="EnemyFormation" unique_id=1925945107 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_belss")
 position = Vector2(1312, 224)
-frame = 1
 
 [node name="Crab74" parent="EnemyFormation" unique_id=1987263695 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_33qdv")
 position = Vector2(1356, 224)
-frame = 1
 
 [node name="Crab75" parent="EnemyFormation" unique_id=1752947998 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_s48wu")
 position = Vector2(1356, 192)
-frame = 1
 
 [node name="Crab76" parent="EnemyFormation" unique_id=390376215 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_xmm6i")
 position = Vector2(1400, 224)
-frame = 1
 
 [node name="Crab25" parent="EnemyFormation" unique_id=1106515555 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_38m0n")
 position = Vector2(608, 256)
-frame = 1
 
 [node name="Crab26" parent="EnemyFormation" unique_id=1153516731 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_0dlwo")
 position = Vector2(652, 256)
-frame = 1
 
 [node name="Crab27" parent="EnemyFormation" unique_id=195079609 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_h5spy")
 position = Vector2(696, 256)
-frame = 1
 
 [node name="Crab34" parent="EnemyFormation" unique_id=1212724911 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_cqxaf")
 position = Vector2(740, 256)
-frame = 1
 
 [node name="Crab35" parent="EnemyFormation" unique_id=1030603471 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_k80kf")
 position = Vector2(784, 256)
-frame = 1
 
 [node name="Crab36" parent="EnemyFormation" unique_id=320690885 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_ygk6g")
 position = Vector2(828, 256)
-frame = 1
 
 [node name="Crab37" parent="EnemyFormation" unique_id=1384184597 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_j3llx")
 position = Vector2(872, 320)
-frame = 1
 
 [node name="Crab77" parent="EnemyFormation" unique_id=62152495 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_xo8vh")
 position = Vector2(784, 224)
-frame = 1
 
 [node name="Crab78" parent="EnemyFormation" unique_id=976913291 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_igjy4")
 position = Vector2(828, 288)
-frame = 1
 
 [node name="Crab48" parent="EnemyFormation" unique_id=1416043317 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_3ta8m")
 position = Vector2(1092, 256)
-frame = 1
 
 [node name="Crab81" parent="EnemyFormation" unique_id=353464208 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_33s66")
 position = Vector2(1004, 320)
-frame = 1
 
 [node name="Crab82" parent="EnemyFormation" unique_id=566121514 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_m23do")
 position = Vector2(1048, 288)
-frame = 1
 
 [node name="Crab84" parent="EnemyFormation" unique_id=1850391416 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_ts0nx")
 position = Vector2(1048, 256)
-frame = 1
 
 [node name="Crab83" parent="EnemyFormation" unique_id=799915507 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_k6nmb")
 position = Vector2(1092, 224)
-frame = 1
 
 [node name="Crab49" parent="EnemyFormation" unique_id=465258276 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_3gtq2")
 position = Vector2(1136, 256)
-frame = 1
 
 [node name="Crab50" parent="EnemyFormation" unique_id=1621524023 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_02sd4")
 position = Vector2(1180, 256)
-frame = 1
 
 [node name="Crab51" parent="EnemyFormation" unique_id=1648008385 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_odh1o")
 position = Vector2(1224, 256)
-frame = 1
 
 [node name="Crab58" parent="EnemyFormation" unique_id=1347579664 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_bhscy")
 position = Vector2(1268, 256)
-frame = 1
 
 [node name="Crab59" parent="EnemyFormation" unique_id=771559630 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_updu6")
 position = Vector2(1312, 256)
-frame = 1
 
 [node name="Crab61" parent="EnemyFormation" unique_id=1090415745 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_j82ea")
 position = Vector2(1400, 256)
-frame = 1
 
 [node name="Crab62" parent="EnemyFormation" unique_id=1428673433 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_whpf8")
 position = Vector2(1444, 256)
-frame = 1
 
 [node name="Crab63" parent="EnemyFormation" unique_id=133938263 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_645wc")
 position = Vector2(1488, 256)
-frame = 1
 
 [node name="Crab67" parent="EnemyFormation" unique_id=30528507 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_jyj53")
 position = Vector2(1532, 288)
-frame = 1
 
 [node name="Crab86" parent="EnemyFormation" unique_id=2050033363 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_wjnpq")
 position = Vector2(388, 320)
-frame = 1
 
 [node name="Crab96" parent="EnemyFormation" unique_id=2000624879 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_dy46g")
 position = Vector2(828, 320)
-frame = 1
 
 [node name="Crab101" parent="EnemyFormation" unique_id=464956810 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_djv2b")
 position = Vector2(1048, 320)
-frame = 1
 
 [node name="Crab113" parent="EnemyFormation" unique_id=1581745055 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_0n5x1")
 position = Vector2(388, 352)
-frame = 1
 
 [node name="Crab121" parent="EnemyFormation" unique_id=94550252 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_gre60")
 position = Vector2(828, 352)
-frame = 1
 
 [node name="Crab122" parent="EnemyFormation" unique_id=1762605983 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_xcowl")
 position = Vector2(872, 352)
-frame = 1
 
 [node name="Crab125" parent="EnemyFormation" unique_id=2040807850 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_anvs0")
 position = Vector2(1004, 352)
-frame = 1
 
 [node name="Crab126" parent="EnemyFormation" unique_id=249478466 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_ve8ue")
 position = Vector2(1048, 352)
-frame = 1
 
 [node name="Crab136" parent="EnemyFormation" unique_id=1808681916 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_l7otp")
 position = Vector2(388, 384)
-frame = 1
 
 [node name="Crab144" parent="EnemyFormation" unique_id=770371995 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_jgimi")
 position = Vector2(828, 384)
-frame = 1
 
 [node name="Crab145" parent="EnemyFormation" unique_id=263130578 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_ntcjm")
 position = Vector2(872, 384)
-frame = 1
 
 [node name="Crab146" parent="EnemyFormation" unique_id=1163300537 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_kg2df")
 position = Vector2(916, 384)
-frame = 1
 
 [node name="Crab147" parent="EnemyFormation" unique_id=1691680864 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_p3ui3")
 position = Vector2(960, 384)
-frame = 1
 
 [node name="Crab148" parent="EnemyFormation" unique_id=951351507 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_enqss")
 position = Vector2(1004, 384)
-frame = 1
 
 [node name="Crab149" parent="EnemyFormation" unique_id=1903090387 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_vww3k")
 position = Vector2(1048, 384)
-frame = 1
 
 [node name="Crab215" parent="EnemyFormation" unique_id=306969750 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_3wwcu")
 position = Vector2(388, 448)
-frame = 1
 
 [node name="Crab159" parent="EnemyFormation" unique_id=228951351 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_m3hf5")
 position = Vector2(564, 416)
-frame = 1
 
 [node name="Crab165" parent="EnemyFormation" unique_id=1424822506 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_108af")
 position = Vector2(828, 416)
-frame = 1
 
 [node name="Crab167" parent="EnemyFormation" unique_id=1579602952 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_ph077")
 position = Vector2(916, 416)
-frame = 1
 
 [node name="Crab168" parent="EnemyFormation" unique_id=34942315 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_ntfkx")
 position = Vector2(960, 416)
-frame = 1
 
 [node name="Crab170" parent="EnemyFormation" unique_id=1149905920 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_se7yt")
 position = Vector2(1048, 416)
-frame = 1
 
 [node name="Crab179" parent="EnemyFormation" unique_id=1340659928 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_plg1o")
 position = Vector2(476.00003, 288.00006)
 scale = Vector2(7, 7)
-frame = 1
 
 [node name="Crab180" parent="EnemyFormation" unique_id=1372174397 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_kliq5")
 position = Vector2(1136.0001, 288.00006)
 scale = Vector2(7, 7)
-frame = 1
 
 [node name="Crab183" parent="EnemyFormation" unique_id=1060706897 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_f0ahy")
 position = Vector2(828, 448)
-frame = 1
 
 [node name="Crab188" parent="EnemyFormation" unique_id=237458359 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_eik0f")
 position = Vector2(1048, 448)
-frame = 1
 
 [node name="Crab197" parent="EnemyFormation" unique_id=2029256234 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_hnrng")
 position = Vector2(828, 480)
-frame = 1
 
 [node name="Crab198" parent="EnemyFormation" unique_id=1733242719 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_bo44w")
 position = Vector2(872, 480)
-frame = 1
 
 [node name="Crab201" parent="EnemyFormation" unique_id=1935822256 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_27lke")
 position = Vector2(1004, 480)
-frame = 1
 
 [node name="Crab202" parent="EnemyFormation" unique_id=2047948574 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_vxi6s")
 position = Vector2(1048, 480)
-frame = 1
 
 [node name="Crab206" parent="EnemyFormation" unique_id=1897680758 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_xgbh6")
 position = Vector2(828, 512)
-frame = 1
 
 [node name="Crab207" parent="EnemyFormation" unique_id=1854603620 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_gwgpu")
 position = Vector2(872, 512)
-frame = 1
 
 [node name="Crab210" parent="EnemyFormation" unique_id=38546881 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_ha2l1")
 position = Vector2(1004, 512)
-frame = 1
 
 [node name="Crab211" parent="EnemyFormation" unique_id=1950798101 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_ah0rc")
 position = Vector2(1048, 512)
-frame = 1
 
 [node name="Crab224" parent="EnemyFormation" unique_id=1073793052 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_et7vu")
 position = Vector2(1488, 448)
-frame = 1
 
 [node name="Crab225" parent="EnemyFormation" unique_id=1821574319 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_swyow")
 position = Vector2(1488, 384)
-frame = 1
 
 [node name="Crab226" parent="EnemyFormation" unique_id=1393228123 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_jgsfq")
 position = Vector2(1488, 352)
-frame = 1
 
 [node name="Crab111" parent="EnemyFormation" unique_id=2089389232 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_14emk")
 position = Vector2(1488, 320)
-frame = 1
 
 [node name="Crab70" parent="EnemyFormation" unique_id=548570805 instance=ExtResource("5_sjq8i")]
 material = SubResource("ShaderMaterial_xv13s")
 position = Vector2(1532, 256)
-frame = 1
 
 [node name="LevelManager" parent="." unique_id=1578700785 instance=ExtResource("2_bl61q")]
 enemy_start_speed = 75.0

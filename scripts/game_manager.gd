@@ -1,8 +1,22 @@
 extends Node
 class_name GameManager
 
-## Folder containing all the levels_X.tscn files for invaders levels.
-static var invaders_levels_folder := "res://scenes/invaders_levels/"
+## Folders containing the levels of each game mode.
+const level_folders: Dictionary[Enums.LevelTypes, String] = {
+	Enums.LevelTypes.INVADERS: "res://scenes/invaders_levels/",
+	Enums.LevelTypes.SPACE: "res://scenes/space_shooter_levels/",
+}
+
+const level_type_base_scenes: Dictionary[Enums.LevelTypes, String] = {
+	Enums.LevelTypes.INVADERS: "res://scenes/invaders_levels/invaders_levels.tscn",
+	Enums.LevelTypes.SPACE: "res://scenes/space_shooter_levels/space_shooter_levels.tscn",
+}
+
+const level_bgms: Dictionary[Enums.LevelTypes, String] = {
+	Enums.LevelTypes.INVADERS: "res://audio/bgm/moonlight.mp3",
+	Enums.LevelTypes.SPACE: "res://audio/bgm/8bit-spaceshooter.mp3",
+}
+
 ## Scene file for the main menu.
 static var main_menu_scene_path := "res://scenes/ui/main_menu/main_menu.tscn"
 
@@ -26,15 +40,15 @@ func _ready() -> void:
 	SignalBus.credits_picked_up.connect(_on_credits_picked_up)
 	SignalBus.game_over.connect(_on_game_over)
 	SignalBus.clear_enemy_attacks.connect(_on_clear_enemy_attacks)
-	
-	# TODO: Remove this and load first level via main menu instead.
-	if get_tree().current_scene.name == "InvadersLevels":
-		call_deferred("restart_game")
 
-## Loads the initial level of the invaders levels.
-func load_initial_level() -> void:
+## Called from Main Menu. Loads the first level of invaders.
+func start_game() -> void:
+	game_state.current_level_type = Enums.LevelTypes.INVADERS
 	game_state.current_level = 1
-	var level_filename := _get_invaders_level_path(game_state.current_level)
+	
+	_ensure_base_scene_loaded(game_state.current_level_type)
+	
+	var level_filename := _get_level_path(game_state.current_level)
 	if !FileAccess.file_exists(level_filename):
 		print("Level file not found! " + level_filename)
 		return
@@ -44,6 +58,14 @@ func load_initial_level() -> void:
 		level_holder.add_child(next_level.instantiate())
 	
 	SignalBus.emit_new_level_loaded()
+
+## Ensures the base scene needed for the various game types is loaded.
+func _ensure_base_scene_loaded(lvl_type: Enums.LevelTypes) -> void:
+	var base_file := level_type_base_scenes[lvl_type]
+	
+	if get_tree().current_scene.scene_file_path != base_file:
+		get_tree().change_scene_to_file(base_file)
+		await get_tree().scene_changed
 
 ## Loads the next level sequentially.
 func load_next_level(instantly := false) -> void:
@@ -53,23 +75,28 @@ func load_next_level(instantly := false) -> void:
 	for child in level_holder.get_children():
 		child.queue_free()
 	
-	var player_tank: Tank = get_tree().get_first_node_in_group("PLAYER")
-	var teleport_anim: TeleportAnimation = get_tree().get_first_node_in_group("TELEPORT_ANIM")
+	var player_tank: Tank
+	var teleport_anim: TeleportAnimation
+	
+	if game_state.current_level_type == Enums.LevelTypes.INVADERS:
+		player_tank = get_tree().get_first_node_in_group("PLAYER")
+		teleport_anim = get_tree().get_first_node_in_group("TELEPORT_ANIM")
+		
+		if !instantly:
+			# Play the animation and then wait for it to complete.
+			teleport_anim.global_position = player_tank.global_position
+			teleport_anim.teleport_out()
+			await teleport_anim.animation_complete
+			
+			SignalBus.emit_fade_out_screen()
+			await SignalBus.fade_out_screen_complete
+			SignalBus.emit_level_transition_screen_faded()
 	
 	if !instantly:
-		# Play the animation and then wait for it to complete.
-		teleport_anim.global_position = player_tank.global_position
-		teleport_anim.teleport_out()
-		await teleport_anim.animation_complete
-		
-		SignalBus.emit_fade_out_screen()
-		await SignalBus.fade_out_screen_complete
-		SignalBus.emit_level_transition_screen_faded()
-		
 		SignalBus.emit_open_shop()
 		await SignalBus.shop_closed
 	
-	var level_filename := _get_invaders_level_path(game_state.current_level)
+	var level_filename := _get_level_path(game_state.current_level)
 	if !FileAccess.file_exists(level_filename):
 		print("Level file not found! " + level_filename)
 		return
@@ -78,33 +105,39 @@ func load_next_level(instantly := false) -> void:
 	if next_level:
 		level_holder.add_child(next_level.instantiate())
 	
-	# Snap player back to center.
-	var tank_sprite_rect := player_tank.get_scaled_sprite_rect()
-	player_tank.global_position.x = Global.PLAYABLE_AREA_RECT.size.x / 2.0 \
-		+ Global.PLAYABLE_AREA_RECT.position.x\
-		- tank_sprite_rect.size.x / 2.0
-	
-	if !instantly:
+	if game_state.current_level_type == Enums.LevelTypes.INVADERS:
+		# Snap player back to center.
+		var tank_sprite_rect := player_tank.get_scaled_sprite_rect()
+		player_tank.global_position.x = Global.PLAYABLE_AREA_RECT.size.x / 2.0 \
+			+ Global.PLAYABLE_AREA_RECT.position.x\
+			- tank_sprite_rect.size.x / 2.0
+		
+		if !instantly:
 			teleport_anim.global_position = player_tank.global_position
-			SignalBus.emit_fade_in_screen()
 	
 	if !instantly:
-		# Play the animation and then wait for it to complete.
-		teleport_anim.teleport_in()
-		await teleport_anim.animation_complete
-		player_tank.visible = true
+		SignalBus.emit_fade_in_screen()
+	
+	if game_state.current_level_type == Enums.LevelTypes.INVADERS:
+		if !instantly:
+			# Play the animation and then wait for it to complete.
+			teleport_anim.teleport_in()
+			await teleport_anim.animation_complete
+			player_tank.visible = true
 	
 	PauseManager.resume()
 	SignalBus.emit_new_level_loaded()
 
 ## Jumps to specified level.
-func go_to_level(lvl_num: int) -> void:
-	if get_tree().current_scene.name != "invaders_levels":
-		get_tree().change_scene_to_file(invaders_levels_folder + "invaders_levels.tscn")
-		await get_tree().scene_changed
-		SignalBus.emit_play_bgm(load("res://audio/bgm/moonlight.mp3") as AudioStream)
+func go_to_level(lvl_type: Enums.LevelTypes, lvl_num: int) -> void:
+	# Load the base scene if needed.
+	game_state.current_level_type = lvl_type
+	await _ensure_base_scene_loaded(lvl_type)
 	
-	# Decrement one because load_next_level increments.
+	# Start the correct bgm for the level type.
+	SignalBus.emit_play_bgm(load(level_bgms[lvl_type]) as AudioStream)
+	
+	# Decrement level by 1 (because load_next_level increments).
 	game_state.current_level = lvl_num - 1
 	load_next_level(true)
 
@@ -207,8 +240,8 @@ func set_current_life(new_life: int) -> void:
 		game_state.current_life = new_life
 		current_life_changed.emit(new_life)
 
-func _get_invaders_level_path(level_num: int) -> String:
-	return invaders_levels_folder + "level_" + str(level_num) + ".tscn"
+func _get_level_path(level_num: int) -> String:
+	return level_folders[game_state.current_level_type].path_join("level_" + str(level_num) + ".tscn")
 
 func _on_clear_enemy_attacks() -> void:
 	var attack_nodes := get_tree().get_nodes_in_group("ENEMY_ATTACK")

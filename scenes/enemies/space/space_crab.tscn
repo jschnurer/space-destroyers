@@ -15,6 +15,7 @@
 size = Vector2(44, 32)
 
 [node name="SpaceCrab" type="Sprite2D" unique_id=1822881906 node_paths=PackedStringArray("enemy_sprite") groups=["ENEMY"]]
+modulate = Color(0.06666667, 0.99215686, 0.99215686, 1)
 material = ExtResource("1_c61q7")
 texture = ExtResource("1_b1ine")
 hframes = 2

@@ -51,3 +51,9 @@ enum GameOverReason {
 	ENEMY_LANDED = 0,
 	TANK_DESTROYED = 1,
 }
+
+enum LevelTypes {
+	NONE = 0,
+	INVADERS = 1,
+	SPACE = 2,
+}
