@@ -6,20 +6,14 @@ class_name BaseProjectile
 		damage = value
 		if has_node("Components/HitboxComponent"):
 			($Components/HitboxComponent as HitboxComponent).damage = value
-
 var speed := 400.0
-var power: float:
-	set(value):
-		power = value
-		if has_node("Components/HitboxComponent"):
-			($Components/HitboxComponent as HitboxComponent).damage = value
 var direction := Vector2.UP
 
 func _process(delta: float) -> void:
 	position += direction * speed * delta
 
-func set_power_speed_direction(pwr: float, spd: float, dir: Vector2) -> void:
-	power = pwr
+func set_damage_speed_direction(dmg: float, spd: float, dir: Vector2) -> void:
+	damage = dmg
 	speed = spd
 	direction = dir
 

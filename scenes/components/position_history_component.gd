@@ -6,26 +6,30 @@ class_name PositionHistoryComponent
 ## The number of pixels the node must move to record a historical entry.
 @export var deadzone: float
 ## The length of the position history in milliseconds.
-@export var history_lifespan_ms := 3000.0
+@export var max_positions_remembered := 200
 
 ## The historical positions of the node.
-var _position_history: Array[PositionHistoryEntry]
+var _position_history: Array[Vector2]
 
 func _physics_process(_delta: float) -> void:
 	if !watch_node:
 		return
 	
+	var added := false
 	if !_position_history.size():
-		_position_history.push_front(PositionHistoryEntry.new(watch_node.global_position, Time.get_ticks_msec()))
-	elif _position_history[0].position.distance_to(watch_node.global_position) > deadzone:
-		_position_history.push_front(PositionHistoryEntry.new(watch_node.global_position, Time.get_ticks_msec()))
+		_position_history.push_front(watch_node.global_position)
+		added = true
+	elif _position_history[0].distance_to(watch_node.global_position) > deadzone:
+		_position_history.push_front(watch_node.global_position)
+		added = true
 	
-	# TODO: Truncate history to history_lifespan_ms.
+	if added and _position_history.size() > max_positions_remembered:
+		_position_history.resize(max_positions_remembered)
 
-class PositionHistoryEntry:
-	@export var position: Vector2
-	@export var time: int
-	
-	func _init(p_position: Vector2, p_time: int) -> void:
-		position = p_position
-		time = p_time
+func get_position_at_history_index(index: int) -> Vector2:
+	if _position_history.size() <= index:
+		if _position_history.size() > 0:
+			return _position_history[_position_history.size() - 1]
+		else:
+			return watch_node.global_position
+	return _position_history[index]

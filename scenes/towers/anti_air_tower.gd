@@ -67,7 +67,7 @@ func _get_bullet_direction() -> Vector2:
 
 func _shoot() -> void:
 	var shot := bullet_scene.instantiate() as Bullet
-	shot.set_power_speed_direction(10.0,\
+	shot.set_damage_speed_direction(10.0,\
 		400.0,
 		_get_bullet_direction())
 	shot.global_position = bullet_spawn_point.global_position

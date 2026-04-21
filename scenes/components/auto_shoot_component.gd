@@ -70,7 +70,7 @@ func _spawn_projectile(position_offset: float) -> void:
 	projectile.global_position = global_position
 	projectile.global_position.x += position_offset
 	projectile.set_collision(shot_collision_layer, shot_collision_mask)
-	projectile.set_power_speed_direction(\
+	projectile.set_damage_speed_direction(\
 		shot_damage,
 		shot_speed,
 		shot_direction)

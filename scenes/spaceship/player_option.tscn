@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c11shgt1stvew"]
+
+[ext_resource type="Script" uid="uid://btlxb6lfssdvg" path="res://scenes/spaceship/player_option.gd" id="1_pu8qh"]
+[ext_resource type="PackedScene" uid="uid://d1jln5dps07ua" path="res://scenes/bullet/bullet.tscn" id="2_biamv"]
+[ext_resource type="Texture2D" uid="uid://bem3ae7ur3ij0" path="res://icon.svg" id="2_m77eo"]
+[ext_resource type="PackedScene" uid="uid://dogvh288ee54f" path="res://scenes/components/position_history_follow_component.tscn" id="3_6wuql"]
+
+[node name="PlayerOption" type="Node2D" unique_id=1520615064]
+script = ExtResource("1_pu8qh")
+projectile_scene = ExtResource("2_biamv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=640469105]
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("2_m77eo")
+
+[node name="BulletSpawnPoint" type="Node2D" parent="." unique_id=1089642674]
+position = Vector2(0, -30)
+
+[node name="Components" type="Node2D" parent="." unique_id=1891546119]
+
+[node name="PositionHistoryFollowComponent" parent="Components" unique_id=1466536004 node_paths=PackedStringArray("following_node") instance=ExtResource("3_6wuql")]
+following_node = NodePath("../..")

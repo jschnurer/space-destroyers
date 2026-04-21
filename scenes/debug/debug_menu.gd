@@ -13,9 +13,12 @@ const _help_text: String = \
 [color=yellow]goto type num[/color]: skips to indicated level type/num (type: invader/space) (num: 1-9)
 [color=yellow]help[/color]: show this message
 [color=yellow]max[/color]: maxes all stats and upgrades
+[color=yellow]maxstats[/color]: maxes all stats
+[color=yellow]maxupgrades[/color]: maxes all upgrades
 [color=yellow]nuke[/color]: destroy all enemies
 [color=yellow]pass[/color]: destroy all enemies, collect their coins, go to next level immediately
 [color=yellow]resume[/color]: force-unpauses the game (in case you broke something with the debug console)
+[color=yellow]setallstats 0[/color]: sets all stats to a level
 [color=yellow]setstat STAT 0[/color]: sets a stat to a level
 [color=yellow]setupgrade UPGRADE 0[/color]: sets an upgrade to a level
 [color=yellow]shop[/color]: as pass but show the show between levels"
@@ -71,9 +74,12 @@ func _on_debug_input_text_submitted(new_text: String) -> void:
 		"resume": PauseManager.resume(true)
 		"addstat": _add_stat(text_chunks)
 		"setstat": _set_stat(text_chunks)
+		"setallstats": _set_all_stats(text_chunks)
 		"addupgrade": _add_upgrade(text_chunks)
 		"setupgrade": _set_upgrade(text_chunks)
-		"max": _max_out()
+		"max": _max_out(true, true)
+		"maxstats": _max_out(true, false)
+		"maxupgrades": _max_out(false, true)
 		_: _log("[color=red]Invalid command[/color]")
 
 ## Disable entering `.
@@ -199,6 +205,25 @@ func _set_stat(text_chunks: Array[String]) -> void:
 	
 	_log("%s set to level %s" % [text_chunks[2].to_int(), stat_name])
 
+func _set_all_stats(text_chunks: Array[String]) -> void:
+	if text_chunks.size() < 2:
+		_log("[color=red]Invalid arguments. (e.g. 'setallstats 10')[/color]")
+		return
+	
+	if !text_chunks[1].is_valid_int():
+		_log("[color=red]Invalid stat level (1 or higher only).[/color]")
+		return
+	
+	var amt := text_chunks[1].to_int()
+	if amt <= 0:
+		_log("[color=red]Invalid stat level (1 or higher only).[/color]")
+		return
+	
+	var stat_values := Enums.PlayerStats.values()
+	for s: int in stat_values:
+		Game.set_stat(s, amt)
+	
+	_log("All stats set to level %s" % amt)
 
 func _add_upgrade(text_chunks: Array[String]) -> void:
 	if text_chunks.size() < 3:
@@ -250,18 +275,20 @@ func _set_upgrade(text_chunks: Array[String]) -> void:
 	
 	_log("%s set to level %s" % [text_chunks[2].to_int(), upgr_name])
 
-func _max_out() -> void:
-	var upgr_keys := Enums.PlayerUpgrades.keys()
-	for key: String in upgr_keys:
-		var upgr: int = Enums.PlayerUpgrades[key]
-		Game.set_upgrade(upgr, Game.get_upgrade(upgr).max_level)
+func _max_out(max_stats: bool, max_upgrades: bool) -> void:
+	if max_stats:
+		var stat_keys := Enums.PlayerStats.keys()
+		for key: String in stat_keys:
+			var stat: int = Enums.PlayerStats[key]
+			Game.set_stat(stat, Game.get_stat(stat).max_level)
+		_log("All stats maxed out!")
 	
-	var stat_keys := Enums.PlayerStats.keys()
-	for key: String in stat_keys:
-		var stat: int = Enums.PlayerStats[key]
-		Game.set_stat(stat, Game.get_stat(stat).max_level)
-	
-	_log("All stats and upgrades maxed out! POWER OVERWHELMING!")
+	if max_upgrades:
+		var upgr_keys := Enums.PlayerUpgrades.keys()
+		for key: String in upgr_keys:
+			var upgr: int = Enums.PlayerUpgrades[key]
+			Game.set_upgrade(upgr, Game.get_upgrade(upgr).max_level)
+		_log("All upgrades maxed out!")
 
 func _prepend_command_history(cmd: String) -> void:
 	_valid_input_history.push_front(cmd)

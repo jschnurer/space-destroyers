@@ -5,6 +5,8 @@ class_name PlayerShootComponent
 @export var shot_sound: AudioStream
 @export var reload_component: PlayerReloadComponent
 
+signal shot_fired
+
 var _can_shoot := true
 
 func _ready() -> void:
@@ -26,21 +28,21 @@ func _try_shoot() -> void:
 		return
 	
 	# Shoot bullets.
-	var multi_level := Game.get_upgrade_level(Enums.PlayerUpgrades.MULTI_CANNON)
+	var multi_level := Game.get_upgrade_level  (Enums.PlayerUpgrades.MULTI_CANNON)
 	if multi_level > 0:
-		_spawn_bullet(-8.0, 0.0, Vector2.ONE, 0.6666)
-		_spawn_bullet(8.0, 0.0, Vector2.ONE, 0.6666)
+		_spawn_bullet(-8.0, 0.0, Vector2.ONE, 0.55)
+		_spawn_bullet(8.0, 0.0, Vector2.ONE, 0.55)
 		if multi_level >= 2:
-			# Shoot one up left.
-			_spawn_bullet(-16.0, -4, Vector2.ONE * 0.5, 0.3333)
+			_spawn_bullet(-24.0, 0, Vector2.ONE * 0.5, 0.225)
 		if multi_level >= 3:
-			# Shoot one up right.
-			_spawn_bullet(16, 4, Vector2.ONE * 0.5, 0.3333)
+			_spawn_bullet(24, 0, Vector2.ONE * 0.5, 0.225)
 	else:
 		_spawn_bullet(0)
 	
 	# Play sound.
 	SignalBus.emit_play_sfx(shot_sound)
+	
+	shot_fired.emit()
 	
 	# Start reloading.
 	reload_component.reload()
@@ -59,7 +61,7 @@ func _spawn_bullet(bullet_offset: float, angle_offset: float = 0.0, bullet_scale
 	
 	bullet.scale *= bullet_scale
 	
-	bullet.set_power_speed_direction(\
+	bullet.set_damage_speed_direction(\
 		Game.get_stat_value(Enums.PlayerStats.DAMAGE) * damage_scale,
 		Game.get_stat_value(Enums.PlayerStats.SHOT_SPEED),
 		dir)

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://um6ysbnx1w0"]
+
+[ext_resource type="Script" uid="uid://c1gsb38ld5h1w" path="res://scenes/components/option_spawn_component.gd" id="1_o2rp2"]
+
+[node name="OptionSpawnComponent" type="Node" unique_id=3628961]
+script = ExtResource("1_o2rp2")

@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://iqyufmdbfs44" path="res://scenes/components/player_shoot_component.tscn" id="9_gr3ny"]
 [ext_resource type="PackedScene" uid="uid://bqhga0no81mbx" path="res://scenes/components/player_reload_component.tscn" id="10_cjlj8"]
 [ext_resource type="PackedScene" uid="uid://dvhyw5wxlqgl7" path="res://scenes/components/position_history_component.tscn" id="11_cjlj8"]
+[ext_resource type="PackedScene" uid="uid://um6ysbnx1w0" path="res://scenes/components/option_spawn_component.tscn" id="12_vh5ma"]
+[ext_resource type="PackedScene" uid="uid://c11shgt1stvew" path="res://scenes/spaceship/player_option.tscn" id="13_prjj7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rga66"]
 radius = 28.01785
@@ -34,7 +36,7 @@ shader_parameter/shadow_intensity = 0.0
 shader_parameter/shadow_side = 0
 shader_parameter/shadow_steps = 8.0
 
-[node name="Spaceship" type="CharacterBody2D" unique_id=564671516]
+[node name="Spaceship" type="CharacterBody2D" unique_id=564671516 groups=["PLAYER"]]
 process_mode = 1
 script = ExtResource("1_6nyhl")
 shot_sound = ExtResource("2_cours")
@@ -62,11 +64,13 @@ position = Vector2(0, 35.5)
 scale = Vector2(1, -2.65)
 texture = ExtResource("1_rga66")
 hframes = 3
+frame = 1
 
 [node name="DanceComponent" parent="Fire" unique_id=709328576 node_paths=PackedStringArray("sprite") instance=ExtResource("2_6nyhl")]
 sprite = NodePath("..")
 frame_count = 3
 fps = 12.0
+current_frame = 1
 
 [node name="ShipSprite" type="Sprite2D" parent="." unique_id=515595434]
 unique_name_in_owner = true
@@ -86,4 +90,10 @@ reload_component = NodePath("../PlayerReloadComponent")
 
 [node name="PositionHistoryComponent" parent="Components" unique_id=857927283 node_paths=PackedStringArray("watch_node") instance=ExtResource("11_cjlj8")]
 watch_node = NodePath("../..")
-deadzone = 5.0
+deadzone = 2.0
+
+[node name="OptionSpawnComponent" parent="Components" unique_id=3628961 node_paths=PackedStringArray("spawn_position", "position_history_comp") instance=ExtResource("12_vh5ma")]
+spawn_position = NodePath("../..")
+option_scene = ExtResource("13_prjj7")
+position_history_comp = NodePath("../PositionHistoryComponent")
+option_position_spacing = 15

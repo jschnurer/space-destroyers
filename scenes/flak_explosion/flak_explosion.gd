@@ -33,7 +33,7 @@ func _spawn_bullet(damage: float) -> void:
 	bullet.rotation = angle + PI / 2.0
 	bullet.global_position = global_position
 	bullet.set_collision(1 << 3, 1 << 1)
-	bullet.set_power_speed_direction(\
+	bullet.set_damage_speed_direction(\
 		damage,
 		1350.0,
 		Vector2.from_angle(angle))
