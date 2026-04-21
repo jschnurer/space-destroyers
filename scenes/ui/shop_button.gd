@@ -75,7 +75,11 @@ func update_label_and_cost() -> void:
 		(label as ShopButtonLabel).update_font_size()
 	
 	if !Engine.is_editor_hint():
-		disabled = Game.get_upgrade(player_upgrade).is_maxed()\
-			or upgrade_cost > Game.game_state.credits
+		if is_player_upgrade:
+			disabled = Game.get_upgrade(player_upgrade).is_maxed()\
+				or upgrade_cost > Game.game_state.credits
+		elif is_player_stat:
+			disabled = Game.get_stat(player_stat).is_maxed()\
+				or upgrade_cost > Game.game_state.credits
 	else:
 		disabled = false

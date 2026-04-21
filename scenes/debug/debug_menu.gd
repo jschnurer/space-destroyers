@@ -150,8 +150,13 @@ func _collect_credits() -> void:
 	if !player:
 		return
 	
+	var pickup := Utilities.get_first_child_of_type(player, PlayerPickupComponent)
+	
 	for c in get_tree().get_nodes_in_group(GroupNames.CREDIT):
-		(c as Credit).start_pickup_sequence(player as Node2D)
+		if pickup:
+			(c as Credit).start_pickup_sequence(pickup as Node2D)
+		else:
+			(c as Credit).start_pickup_sequence(player as Node2D)
 
 func _add_stat(text_chunks: Array[String]) -> void:
 	if text_chunks.size() < 3:

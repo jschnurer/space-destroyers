@@ -7,8 +7,8 @@ const ENEMY_DROP_DISTANCE: float = 64.0
 # Credit denomination types.
 var CREDIT_DENOMINATIONS: Array[CreditDenomination] = [
 	CreditDenomination.new(1.0, Color.from_rgba8(153, 80, 50), 0),
-	CreditDenomination.new(5.0, Color.SILVER, 1),
-	CreditDenomination.new(10.0, Color.LIGHT_SLATE_GRAY, 2),
+	CreditDenomination.new(5.0, Color.LIGHT_SLATE_GRAY, 1),
+	CreditDenomination.new(10.0, Color.SILVER, 2),
 	CreditDenomination.new(50.0, Color.GOLDENROD, 3),
 	CreditDenomination.new(100.0, Color.AQUA, 4),
 ]

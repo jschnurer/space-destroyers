@@ -142,7 +142,7 @@ func go_to_level(lvl_type: Enums.LevelTypes, lvl_num: int) -> void:
 	load_next_level(true)
 
 func _on_credits_picked_up(amt: float) -> void:
-	game_state.credits += (amt * get_stat_value(Enums.PlayerStats.CREDIT_MULTIPLIER))
+	game_state.credits += amt
 	credits_changed.emit(game_state.credits)
 
 ## If the player has enough credits, decrement the credits and return true. Otherwise, return false.

@@ -3,10 +3,10 @@ extends Node2D
 func _ready() -> void:
 	Game.upgrade_changed.connect(_on_upgrade_changed)
 	_disable_all_towers()
-	_enable_towers(Game.get_upgrade_level(Enums.PlayerUpgrades.ANTI_AIR_TOWER))
+	_enable_towers(Game.get_upgrade_level(Enums.PlayerUpgrades.OPTION))
 
 func _on_upgrade_changed(upgrade: Upgrade) -> void:
-	if upgrade.upgrade != Enums.PlayerUpgrades.ANTI_AIR_TOWER:
+	if upgrade.upgrade != Enums.PlayerUpgrades.OPTION:
 		return
 	_enable_towers(upgrade.level)
 

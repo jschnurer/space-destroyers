@@ -48,9 +48,7 @@ func _process(delta: float) -> void:
 		collect()
 
 func collect() -> void:
-	var mult := Game.get_stat_value(Enums.PlayerStats.CREDIT_MULTIPLIER)
-	var pickup_amt := value * mult
-	SignalBus.emit_credits_picked_up(pickup_amt)
+	SignalBus.emit_credits_picked_up(value)
 	SignalBus.emit_play_sfx(credit_sound, 0.5)
 	queue_free()
 

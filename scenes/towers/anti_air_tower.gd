@@ -66,8 +66,10 @@ func _get_bullet_direction() -> Vector2:
 	return Vector2.from_angle(cannon.rotation - PI/2.0)
 
 func _shoot() -> void:
+	var base_damage := Game.get_stat_value(Enums.PlayerStats.DAMAGE)
+	var option_level := Game.get_upgrade_level(Enums.PlayerUpgrades.OPTION)
 	var shot := bullet_scene.instantiate() as Bullet
-	shot.set_damage_speed_direction(10.0,\
+	shot.set_damage_speed_direction(base_damage * (1 + .10 * option_level),\
 		400.0,
 		_get_bullet_direction())
 	shot.global_position = bullet_spawn_point.global_position

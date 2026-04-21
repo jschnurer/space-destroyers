@@ -734,7 +734,7 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[node name="Level_2" type="Node2D" unique_id=756359994 groups=["LEVEL_NODE"]]
+[node name="Level_2" type="Node2D" unique_id=756359994 groups=["CREDIT_PARENT", "LEVEL_NODE"]]
 metadata/_edit_lock_ = true
 
 [node name="EnemyFormation" parent="." unique_id=965894497 instance=ExtResource("3_l37oo")]

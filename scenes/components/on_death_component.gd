@@ -125,6 +125,7 @@ func get_total_credit_value() -> float:
 	
 	var credit_bonus := 0
 	var credit_mult := 1.0
+	var play_multiplier := Game.get_stat_value(Enums.PlayerStats.CREDIT_MULTIPLIER)
 	
 	if lucky_component.is_lucky:
 		# Get random multiplier (weighted toward lower value).
@@ -132,7 +133,7 @@ func get_total_credit_value() -> float:
 		# Add one extra credit before the multiplication.
 		credit_bonus = 1
 	
-	return credit_mult * (credit_value + credit_bonus)
+	return (credit_mult * (credit_value + credit_bonus)) * play_multiplier
 
 func _spawn_credit(credit_denomination: CreditDenomination) -> void:
 	var credit := credit_scene.instantiate() as Credit

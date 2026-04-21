@@ -23,7 +23,7 @@ var upgrades: Dictionary[Enums.PlayerUpgrades, Upgrade] = {
 	Enums.PlayerUpgrades.MISSILES: load("res://resources/upgrades/missiles.tres"),
 	Enums.PlayerUpgrades.LASER_SIGHT: load("res://resources/upgrades/laser_sight.tres"),
 	Enums.PlayerUpgrades.MULTI_CANNON: load("res://resources/upgrades/multi_cannon.tres"),
-	Enums.PlayerUpgrades.ANTI_AIR_TOWER: load("res://resources/upgrades/anti_air_tower.tres"),
+	Enums.PlayerUpgrades.OPTION: load("res://resources/upgrades/option.tres"),
 	Enums.PlayerUpgrades.BARRICADE: load("res://resources/upgrades/barricade.tres"),
 	Enums.PlayerUpgrades.LIGHTNING_TOWER: load("res://resources/upgrades/lightning_tower.tres"),
 	Enums.PlayerUpgrades.RETAINING_WALL_LEFT: load("res://resources/upgrades/left_wall.tres"),

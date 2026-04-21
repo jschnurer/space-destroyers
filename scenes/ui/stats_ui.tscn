@@ -14,7 +14,7 @@
 [ext_resource type="Resource" uid="uid://deth2a6xbyti4" path="res://resources/stats/luck.tres" id="7_gdn6w"]
 [ext_resource type="Resource" uid="uid://ddamaseu66h74" path="res://resources/stats/credit_multiplier.tres" id="8_dlw7e"]
 [ext_resource type="Resource" uid="uid://c53dppwom54ei" path="res://resources/upgrades/missiles.tres" id="8_gs80r"]
-[ext_resource type="Resource" uid="uid://bs1r2nfyeldf8" path="res://resources/upgrades/anti_air_tower.tres" id="9_acfpo"]
+[ext_resource type="Resource" uid="uid://bs1r2nfyeldf8" path="res://resources/upgrades/option.tres" id="9_acfpo"]
 [ext_resource type="Resource" uid="uid://c5u36nqewaty4" path="res://resources/stats/max_shots.tres" id="9_dlw7e"]
 [ext_resource type="Resource" uid="uid://bibjincev0qtl" path="res://resources/upgrades/left_wall.tres" id="10_nr7cs"]
 [ext_resource type="Resource" uid="uid://dfxua6fksbyf8" path="res://resources/stats/shot_speed.tres" id="10_xp64m"]
