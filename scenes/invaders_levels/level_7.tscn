@@ -1550,4 +1550,3 @@ frame = 0
 [node name="LevelManager" parent="." unique_id=1578700785 instance=ExtResource("7_gmveq")]
 enemy_start_speed = 70.0
 enemy_max_speed = 190.0
-auto_load_next_level = false

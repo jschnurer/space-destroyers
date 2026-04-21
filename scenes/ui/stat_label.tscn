@@ -10,14 +10,14 @@ script = ExtResource("1_6xov7")
 [node name="Label" type="Label" parent="." unique_id=685103038]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 0
+size_flags_vertical = 8
 theme = ExtResource("2_4tfmd")
 theme_type_variation = &"StatLabel"
 text = "Stat"
 
 [node name="ValueLabel" type="Label" parent="." unique_id=1325937401]
 layout_mode = 2
-size_flags_vertical = 0
+size_flags_vertical = 8
 theme = ExtResource("2_4tfmd")
 theme_type_variation = &"StatLabelValue"
 text = "0.0"

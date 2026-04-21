@@ -48,3 +48,4 @@ func _on_enemy_died(_enemy: Node2D) -> void:
 		if auto_load_next_level:
 			# All enemies slain. Start teleporting to next level!
 			SignalBus.emit_start_teleporting()
+			SignalBus.emit_toggle_options(false)

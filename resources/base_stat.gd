@@ -27,6 +27,7 @@ class_name BaseStat
 @export_group("Improvements")
 @export var value_per_level := 0.0
 @export var int_value_per_level := 0
+## Represented as a float. (e.g. 1.25 = 125%)
 @export var pct_bonus_per_level := 0.0
 
 var level: int = 0

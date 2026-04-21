@@ -137,10 +137,18 @@ func get_total_credit_value() -> float:
 
 func _spawn_credit(credit_denomination: CreditDenomination) -> void:
 	var credit := credit_scene.instantiate() as Credit
-	Utilities.add_child_to_group_node(credit, GroupNames.CREDIT_PARENT)
+	
+	Utilities.add_child_to_level(credit)
+	#Utilities.add_child_to_group_node(credit, GroupNames.CREDIT_PARENT)
+	
 	credit.global_position = global_position + Vector2(randf_range(-1, 1), randf_range(-1, 1))
 	credit.value = credit_denomination.value
 	credit.denomination = credit_denomination
+	
+	if Game.game_state.current_level_type == Enums.LevelTypes.SPACE:
+		credit.gravity_scale = 0
+		credit.linear_damp_mode = RigidBody2D.DAMP_MODE_REPLACE
+		credit.linear_velocity = Vector2(0, 400)
 
 func _try_death_anim() -> void:
 	if !show_death_anim or !death_anim_scene:

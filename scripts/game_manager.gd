@@ -127,6 +127,7 @@ func load_next_level(instantly := false) -> void:
 	
 	PauseManager.resume()
 	SignalBus.emit_new_level_loaded()
+	SignalBus.emit_toggle_options(true)
 
 ## Jumps to specified level.
 func go_to_level(lvl_type: Enums.LevelTypes, lvl_num: int) -> void:

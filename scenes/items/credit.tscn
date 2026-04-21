@@ -13,7 +13,6 @@ radius = 13.0
 collision_layer = 32
 collision_mask = 52
 gravity_scale = 1.5
-can_sleep = false
 script = ExtResource("1_4nouu")
 credit_sound = ExtResource("2_jkw83")
 

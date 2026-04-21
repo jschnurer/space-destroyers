@@ -96,3 +96,7 @@ func emit_toggle_player_shoot_ability(is_enabled: bool) -> void:
 signal clear_enemy_attacks()
 func emit_clear_enemy_attacks() -> void:
 	clear_enemy_attacks.emit()
+
+signal toggle_options(enabled: bool)
+func emit_toggle_options(enabled: bool) -> void:
+	toggle_options.emit(enabled)

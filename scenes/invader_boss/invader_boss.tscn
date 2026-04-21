@@ -47,7 +47,7 @@ script = ExtResource("1_iwbvs")
 modulate = Color(0.67058825, 0.16470589, 0.64705884, 1)
 texture = ExtResource("1_s6yn3")
 hframes = 4
-frame = 2
+frame = 1
 
 [node name="Tentacles" type="Node2D" parent="." unique_id=876890160]
 unique_name_in_owner = true
@@ -292,7 +292,7 @@ sprite = NodePath("../../MainBody")
 frame_count = 4
 fps = 2.25
 bounce = true
-current_frame = 2
+current_frame = 1
 
 [node name="IndependentMoveComponent" parent="Components" unique_id=1689851735 node_paths=PackedStringArray("moving_node") instance=ExtResource("7_j0fcu")]
 unique_name_in_owner = true

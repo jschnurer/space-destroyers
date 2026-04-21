@@ -95,3 +95,6 @@ func _lock_and_push() -> void:
 	var push_dir := (global_position - _player_target.global_position).normalized()
 	_collection_velocity = push_dir * _collection_push_strength
 	_is_pushing = true
+
+func _set_gravity_scale(p_gravity_scale: float = 1.5) -> void:
+	gravity_scale = p_gravity_scale

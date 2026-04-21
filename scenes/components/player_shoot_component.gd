@@ -30,12 +30,12 @@ func _try_shoot() -> void:
 	# Shoot bullets.
 	var multi_level := Game.get_upgrade_level  (Enums.PlayerUpgrades.MULTI_CANNON)
 	if multi_level > 0:
-		_spawn_bullet(-8.0, 0.0, Vector2.ONE, 0.55)
-		_spawn_bullet(8.0, 0.0, Vector2.ONE, 0.55)
+		_spawn_bullet(-8.0, 0.0, 1, 0.55)
+		_spawn_bullet(8.0, 0.0, 1, 0.55)
 		if multi_level >= 2:
-			_spawn_bullet(-24.0, 0, Vector2.ONE * 0.5, 0.225)
+			_spawn_bullet(-24, -4, 0.5, 0.225)
 		if multi_level >= 3:
-			_spawn_bullet(24, 0, Vector2.ONE * 0.5, 0.225)
+			_spawn_bullet(24, 4, 0.5, 0.225)
 	else:
 		_spawn_bullet(0)
 	
@@ -47,7 +47,7 @@ func _try_shoot() -> void:
 	# Start reloading.
 	reload_component.reload()
 
-func _spawn_bullet(bullet_offset: float, angle_offset: float = 0.0, bullet_scale: Vector2 = Vector2.ONE, damage_scale: float = 1.0) -> void:
+func _spawn_bullet(bullet_offset: float, angle_offset: float = 0.0, bullet_scale: float = 1.0, damage_scale: float = 1.0) -> void:
 	var bullet: Bullet = bullet_scene.instantiate()
 	bullet.global_position = global_position
 	bullet.global_position.x += bullet_offset
@@ -59,7 +59,9 @@ func _spawn_bullet(bullet_offset: float, angle_offset: float = 0.0, bullet_scale
 		bullet.rotation = deg_to_rad(angle_offset)
 		dir = Vector2.from_angle(deg_to_rad(-90 + angle_offset))
 	
-	bullet.scale *= bullet_scale
+	if bullet_scale != 1.0:
+		bullet.scale_hitbox(bullet_scale)
+		bullet.scale_sprite(bullet_scale)
 	
 	bullet.set_damage_speed_direction(\
 		Game.get_stat_value(Enums.PlayerStats.DAMAGE) * damage_scale,

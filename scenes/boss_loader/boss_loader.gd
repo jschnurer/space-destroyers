@@ -26,6 +26,7 @@ func _ready() -> void:
 		level_manager.all_enemies_destroyed.connect(_on_all_enemies_destroyed)
 
 func _on_all_enemies_destroyed() -> void:
+	SignalBus.emit_toggle_options(false)
 	SignalBus.emit_fade_out_bgm(wait_time / 1.5)
 	await get_tree().create_timer(wait_time).timeout
 	SignalBus.emit_clear_enemy_attacks()
@@ -61,6 +62,7 @@ func _spawn_boss() -> void:
 	tween.tween_property(boss, "global_position", final_position, boss_animate_duration)
 	tween.tween_callback(func() -> void:
 		SignalBus.emit_toggle_player_shoot_ability(true)
+		SignalBus.emit_toggle_options(true)
 		if boss.has_method("toggle_attacking"):
 			boss.call("toggle_attacking", true)
 	)

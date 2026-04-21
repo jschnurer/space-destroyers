@@ -67,7 +67,11 @@ func play() -> void:
 	tween.tween_callback(game_over_animation_5.play)
 	tween.tween_callback(_play_explosion_sound)
 	tween.tween_interval(7)
-	tween.tween_callback(func() -> void: invader_boss.emit_boss_killed())
+	tween.tween_callback(func() -> void:
+		SignalBus.emit_toggle_options(false)
+		PauseManager.resume()
+		invader_boss.emit_boss_killed()
+	)
 
 func _play_explosion_sound() -> void:
 	SignalBus.emit_play_sfx(explosion_sound, 1, 0.5)

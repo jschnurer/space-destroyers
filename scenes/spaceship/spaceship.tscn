@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dvhyw5wxlqgl7" path="res://scenes/components/position_history_component.tscn" id="11_cjlj8"]
 [ext_resource type="PackedScene" uid="uid://um6ysbnx1w0" path="res://scenes/components/option_spawn_component.tscn" id="12_vh5ma"]
 [ext_resource type="PackedScene" uid="uid://c11shgt1stvew" path="res://scenes/spaceship/player_option.tscn" id="13_prjj7"]
+[ext_resource type="PackedScene" uid="uid://b61r1anv0uuc" path="res://scenes/components/player_pickup_component.tscn" id="14_ebil8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rga66"]
 radius = 28.01785
@@ -64,13 +65,13 @@ position = Vector2(0, 35.5)
 scale = Vector2(1, -2.65)
 texture = ExtResource("1_rga66")
 hframes = 3
-frame = 1
+frame = 2
 
 [node name="DanceComponent" parent="Fire" unique_id=709328576 node_paths=PackedStringArray("sprite") instance=ExtResource("2_6nyhl")]
 sprite = NodePath("..")
 frame_count = 3
 fps = 12.0
-current_frame = 1
+current_frame = 2
 
 [node name="ShipSprite" type="Sprite2D" parent="." unique_id=515595434]
 unique_name_in_owner = true
@@ -97,3 +98,5 @@ spawn_position = NodePath("../..")
 option_scene = ExtResource("13_prjj7")
 position_history_comp = NodePath("../PositionHistoryComponent")
 option_position_spacing = 15
+
+[node name="PlayerPickupComponent" parent="Components" unique_id=2016039151 instance=ExtResource("14_ebil8")]

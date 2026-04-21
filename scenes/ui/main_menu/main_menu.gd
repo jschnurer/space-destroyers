@@ -46,15 +46,17 @@ func _on_mission_update_text_animation_player_dismissed() -> void:
 	# Load the main placeholder for levels to load into.
 	get_tree().root.add_child(new_scene)
 
+	var old_scene: Control = get_tree().current_scene
+	get_tree().current_scene = new_scene
+
 	# Load level 1.
 	Game.start_game()
 	
 	# Start some background music.
 	SignalBus.emit_play_bgm(main_bgm as AudioStream, 1, 1, scroll_animation_duration / 2.0, scroll_animation_duration / 2.0)
-	_scroll_screens(new_scene, gameplay_ui)
+	_scroll_screens(old_scene, new_scene, gameplay_ui)
 
-func _scroll_screens(new_scene: Node2D, gameplay_ui: CanvasLayer) -> void:
-	var old_scene := get_tree().current_scene
+func _scroll_screens(old_scene: Control, new_scene: Node2D, gameplay_ui: CanvasLayer) -> void:
 	var tween := create_tween()
 	
 	# Hide the GameplayUI element.

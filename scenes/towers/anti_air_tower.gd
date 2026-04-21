@@ -17,6 +17,7 @@ class_name AntiAirTower
 
 var _rotation_dir := 1
 var editor_guide_length: float = 1000.0
+var _can_shoot := true
 
 @onready var cannon: Sprite2D = $Cannon
 @onready var reload_component: ReloadComponent = %ReloadComponent
@@ -29,6 +30,7 @@ func _ready() -> void:
 	if !Engine.is_editor_hint():
 		SignalBus.level_transition_screen_faded.connect(_randomize_cannon)
 		SignalBus.new_level_loaded.connect(_on_level_loaded)
+		SignalBus.toggle_options.connect(_on_toggle_options)		
 		reload_component.reload_complete.connect(_shoot)
 		_start_initial_shot()
 
@@ -66,6 +68,10 @@ func _get_bullet_direction() -> Vector2:
 	return Vector2.from_angle(cannon.rotation - PI/2.0)
 
 func _shoot() -> void:
+	if !_can_shoot:
+		reload_component.reload()
+		return
+	
 	var base_damage := Game.get_stat_value(Enums.PlayerStats.DAMAGE)
 	var option_level := Game.get_upgrade_level(Enums.PlayerUpgrades.OPTION)
 	var shot := bullet_scene.instantiate() as Bullet
@@ -89,3 +95,6 @@ func _start_initial_shot() -> void:
 
 func _on_level_loaded() -> void:
 	_start_initial_shot()
+
+func _on_toggle_options(is_enabled: bool) -> void:
+	_can_shoot = is_enabled

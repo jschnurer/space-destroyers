@@ -9,6 +9,7 @@ const _help_text: String = \
 "[color=yellow]addstat STAT 0[/color]: adds the specified levels to a stat
 [color=yellow]addupgrade UPGRADE 0[/color]: adds the specified levels to an upgrade
 [color=yellow]collect[/color]: collects all visible credits
+[color=yellow]collision show/hide[/color]: toggles visible collision shapes
 [color=yellow]credits 0000[/color]: pick up specified number of credits (multiplier affects)
 [color=yellow]goto type num[/color]: skips to indicated level type/num (type: invader/space) (num: 1-9)
 [color=yellow]help[/color]: show this message
@@ -21,7 +22,8 @@ const _help_text: String = \
 [color=yellow]setallstats 0[/color]: sets all stats to a level
 [color=yellow]setstat STAT 0[/color]: sets a stat to a level
 [color=yellow]setupgrade UPGRADE 0[/color]: sets an upgrade to a level
-[color=yellow]shop[/color]: as pass but show the show between levels"
+[color=yellow]shop[/color]: as pass but show the show between levels
+[color=yellow]timescale 1[/color]: sets global speed scale"
 
 var _valid_input_history: Array[String]
 var _history_index := -1
@@ -65,10 +67,12 @@ func _on_debug_input_text_submitted(new_text: String) -> void:
 	
 	match cmd:
 		"collect": _collect_credits()
+		"collision": _toggle_collision_visibility(text_chunks)
 		"help": _output_help()
 		"nuke": _nuke_enemies()
 		"pass": _pass_level(false)
 		"shop": _pass_level(true)
+		"timescale": _time_scale(text_chunks)
 		"credits": _add_credits(text_chunks)
 		"goto": _go_to_level(text_chunks)
 		"resume": PauseManager.resume(true)
@@ -319,3 +323,53 @@ func _alter_history_ix(delta: int) -> void:
 		debug_input.clear()
 	else:
 		debug_input.text = _valid_input_history[_history_index]
+
+func _time_scale(text_chunks: Array[String]) -> void:
+	if text_chunks.size() < 2:
+		_log("[color=red]Invalid arguments. (e.g. 'timescale 1.23')[/color]")
+		return
+	
+	if !text_chunks[1].is_valid_float():
+		_log("[color=red]Invalid speed scale (must be float).[/color]")
+		return
+	
+	var time_scale := text_chunks[1].to_float()
+	
+	Engine.time_scale = time_scale
+	
+	_log("Time scale set to %s" % time_scale)
+
+func _toggle_collision_visibility(text_chunks: Array[String]) -> void:
+	if text_chunks.size() < 2:
+		_log("[color=red]Invalid arguments. (e.g. 'collision show' or 'collision hide')[/color]")
+		return
+	
+	var arg := text_chunks[1].to_upper()
+	
+	if arg != "SHOW" and arg != "HIDE":
+		_log("[color=red]Invalid arguments. (e.g. 'collision show' or 'collision hide')[/color]")
+		return
+	
+	get_tree().debug_collisions_hint = arg == "SHOW"
+	_find_and_refresh_collisions(get_tree().root)
+
+	_log("Collision visibility set to %s" % arg)
+
+func _find_and_refresh_collisions(node: Node) -> void:
+	if node.name == "Crab":
+		print("CRAB")
+		
+	if node is CollisionShape2D:
+		_refresh_node(node as CollisionShape2D)
+	
+	
+	for child in node.get_children():
+		_find_and_refresh_collisions(child)
+
+func _refresh_node(node: CollisionShape2D) -> void:
+	var parent := node.get_parent()
+	var pos := node.get_index()
+	parent.remove_child(node)
+	parent.add_child(node)
+	parent.move_child(node, pos)
+	node.visible = true
