@@ -23,7 +23,7 @@ offset_bottom = 1080.0
 metadata/_edit_use_anchors_ = true
 
 [node name="RocketDockingAnim" parent="." unique_id=1753536332 node_paths=PackedStringArray("starfield") instance=ExtResource("2_bl0i2")]
-skip_play = true
+rocket_cutoff_distance = 325.0
 starfield = NodePath("../Starfield")
 
 [node name="LevelHolder" parent="." unique_id=614011244 instance=ExtResource("3_muc2s")]

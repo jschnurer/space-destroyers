@@ -13,6 +13,7 @@ func _ready() -> void:
 
 func _fade_out_screen(duration: float, color: Color) -> void:
 	color_rect.color = color
+	color_rect.color.a = 0
 	if duration == 0:
 		SignalBus.emit_fade_out_complete()
 	else:

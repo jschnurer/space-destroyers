@@ -1,9 +1,7 @@
 [gd_scene format=3 uid="uid://qqwnyc0intca"]
 
 [ext_resource type="Script" uid="uid://b36gwpw2ne1a6" path="res://scenes/ui/shop_ui.gd" id="1_nwxdi"]
-[ext_resource type="AudioStream" uid="uid://c5m0qfva2s0di" path="res://audio/bgm/megamix.mp3" id="2_sawmr"]
 [ext_resource type="PackedScene" uid="uid://tdtvpwguick7" path="res://scenes/ui/shop_button.tscn" id="3_a65e2"]
-[ext_resource type="AudioStream" uid="uid://cdnc4pgyphaxp" path="res://audio/bgm/moonlight.mp3" id="3_se4pl"]
 [ext_resource type="Theme" uid="uid://blgn547iw1k7d" path="res://themes/main_theme.tres" id="4_fbehl"]
 [ext_resource type="PackedScene" uid="uid://b1sxbmhh6261m" path="res://scenes/input_prompt/input_prompt.tscn" id="7_30c1b"]
 [ext_resource type="PackedScene" uid="uid://dvc1ybiwavk54" path="res://scenes/ui/stats_ui.tscn" id="7_se4pl"]
@@ -20,8 +18,6 @@ border_color = Color(1, 1, 1, 1)
 [node name="ShopUI" type="CanvasLayer" unique_id=401719951]
 process_mode = 3
 script = ExtResource("1_nwxdi")
-shop_bgm = ExtResource("2_sawmr")
-level_bgm = ExtResource("3_se4pl")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=495132562]
 anchors_preset = 15

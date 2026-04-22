@@ -5,17 +5,20 @@
 [ext_resource type="AudioStream" uid="uid://c2w7558n07ium" path="res://audio/sfx/50-CC0-retro-synth-SFX/shot_01.ogg" id="2_1mq86"]
 [ext_resource type="PackedScene" uid="uid://ddrxve2tnukjm" path="res://scenes/rocket_launch_anim/rocket.tscn" id="2_vlukg"]
 [ext_resource type="AudioStream" uid="uid://djonplyn8hu4u" path="res://audio/sfx/50-CC0-retro-synth-SFX/synth_misc_03.ogg" id="3_3qsyk"]
-[ext_resource type="AudioStream" uid="uid://cmelkioyjjdho" path="res://audio/bgm/8-bit_last_mission_full.mp3" id="4_3qsyk"]
+[ext_resource type="AudioStream" uid="uid://dlnlvqat06u32" path="res://audio/bgm/Juhani Junkala/Juhani Junkala [Retro Game Music Pack] Ending.ogg" id="4_1mq86"]
+[ext_resource type="AudioStream" uid="uid://bq8ia2tk43jbl" path="res://audio/bgm/Juhani Junkala/Juhani Junkala [Retro Game Music Pack] Level 1.ogg" id="5_3qsyk"]
 [ext_resource type="AudioStream" uid="uid://xl5bwvpl57tr" path="res://audio/sfx/beepfx_samples/19_jet_burst.wav" id="5_n11v0"]
 [ext_resource type="PackedScene" uid="uid://kw6ct5hy8kno" path="res://scenes/spaceship/spaceship.tscn" id="6_dhyg0"]
 
 [node name="RocketDockingAnim" type="Node2D" unique_id=1753536332]
 process_mode = 3
 script = ExtResource("1_7qbpf")
+dock_duration = 22.0
 rocket_cutoff_distance = 400.0
 dock_sound = ExtResource("2_1mq86")
 engine_charge_sound = ExtResource("3_3qsyk")
-bgm = ExtResource("4_3qsyk")
+bgm = ExtResource("4_1mq86")
+level_bgm = ExtResource("5_3qsyk")
 jet_burst = ExtResource("5_n11v0")
 
 [node name="AnimPosition" type="Node2D" parent="." unique_id=1734454305]

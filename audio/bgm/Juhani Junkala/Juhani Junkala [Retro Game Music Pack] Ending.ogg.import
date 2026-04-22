@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dlnlvqat06u32"
+path="res://.godot/imported/Juhani Junkala [Retro Game Music Pack] Ending.ogg-70c920e996fc274c5aa5709e8191e85b.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/bgm/Juhani Junkala/Juhani Junkala [Retro Game Music Pack] Ending.ogg"
+dest_files=["res://.godot/imported/Juhani Junkala [Retro Game Music Pack] Ending.ogg-70c920e996fc274c5aa5709e8191e85b.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

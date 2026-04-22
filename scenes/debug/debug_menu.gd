@@ -11,6 +11,7 @@ const _help_text: String = \
 [color=yellow]collect[/color]: collects all visible credits
 [color=yellow]collision show/hide[/color]: toggles visible collision shapes
 [color=yellow]credits 0000[/color]: pick up specified number of credits (multiplier affects)
+[color=yellow]die[/color]: destroys the player, triggering a game over
 [color=yellow]goto type num[/color]: skips to indicated level type/num (type: invader/space) (num: 1-9)
 [color=yellow]help[/color]: show this message
 [color=yellow]max[/color]: maxes all stats and upgrades
@@ -18,6 +19,7 @@ const _help_text: String = \
 [color=yellow]maxupgrades[/color]: maxes all upgrades
 [color=yellow]nuke[/color]: destroy all enemies
 [color=yellow]pass[/color]: destroy all enemies, collect their coins, go to next level immediately
+[color=yellow]quit[/color]: force-exits the game
 [color=yellow]resume[/color]: force-unpauses the game (in case you broke something with the debug console)
 [color=yellow]setallstats 0[/color]: sets all stats to a level
 [color=yellow]setstat STAT 0[/color]: sets a stat to a level
@@ -72,11 +74,13 @@ func _on_debug_input_text_submitted(new_text: String) -> void:
 		"nuke": _nuke_enemies()
 		"pass": _pass_level(false)
 		"shop": _pass_level(true)
+		"die": _die()
 		"timescale": _time_scale(text_chunks)
 		"credits": _add_credits(text_chunks)
 		"goto": _go_to_level(text_chunks)
 		"resume": PauseManager.resume(true)
 		"addstat": _add_stat(text_chunks)
+		"quit": get_tree().quit()
 		"setstat": _set_stat(text_chunks)
 		"setallstats": _set_all_stats(text_chunks)
 		"addupgrade": _add_upgrade(text_chunks)
@@ -373,3 +377,10 @@ func _refresh_node(node: CollisionShape2D) -> void:
 	parent.add_child(node)
 	parent.move_child(node, pos)
 	node.visible = true
+
+func _die() -> void:
+	var player := get_tree().get_first_node_in_group(GroupNames.PLAYER)
+	if player:
+		var life := Utilities.get_first_child_of_type(player, LifeComponent)
+		if life:
+			(life as LifeComponent).take_damage(9999999, null)

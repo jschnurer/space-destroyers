@@ -65,13 +65,13 @@ position = Vector2(0, 35.5)
 scale = Vector2(1, -2.65)
 texture = ExtResource("1_rga66")
 hframes = 3
-frame = 2
+frame = 1
 
 [node name="DanceComponent" parent="Fire" unique_id=709328576 node_paths=PackedStringArray("sprite") instance=ExtResource("2_6nyhl")]
 sprite = NodePath("..")
 frame_count = 3
 fps = 12.0
-current_frame = 2
+current_frame = 1
 
 [node name="ShipSprite" type="Sprite2D" parent="." unique_id=515595434]
 unique_name_in_owner = true
@@ -92,6 +92,7 @@ reload_component = NodePath("../PlayerReloadComponent")
 [node name="PositionHistoryComponent" parent="Components" unique_id=857927283 node_paths=PackedStringArray("watch_node") instance=ExtResource("11_cjlj8")]
 watch_node = NodePath("../..")
 deadzone = 2.0
+record_history_with_input = true
 
 [node name="OptionSpawnComponent" parent="Components" unique_id=3628961 node_paths=PackedStringArray("spawn_position", "position_history_comp") instance=ExtResource("12_vh5ma")]
 spawn_position = NodePath("../..")

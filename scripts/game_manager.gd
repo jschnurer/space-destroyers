@@ -14,7 +14,12 @@ const level_type_base_scenes: Dictionary[Enums.LevelTypes, String] = {
 
 const level_bgms: Dictionary[Enums.LevelTypes, String] = {
 	Enums.LevelTypes.INVADERS: "res://audio/bgm/moonlight.mp3",
-	Enums.LevelTypes.SPACE: "res://audio/bgm/8bit-spaceshooter.mp3",
+	Enums.LevelTypes.SPACE: "res://audio/bgm/Juhani Junkala/Juhani Junkala [Retro Game Music Pack] Level 1.ogg",
+}
+
+const shop_bgms: Dictionary[Enums.LevelTypes, String] = {
+	Enums.LevelTypes.INVADERS: "res://audio/bgm/megamix.mp3",
+	Enums.LevelTypes.SPACE: "res://audio/bgm/Juhani Junkala/Juhani Junkala [Retro Game Music Pack] Title Screen.ogg",
 }
 
 ## Scene file for the main menu.
@@ -95,6 +100,7 @@ func load_next_level(instantly := false) -> void:
 	if !instantly:
 		SignalBus.emit_open_shop()
 		await SignalBus.shop_closed
+		SignalBus.emit_play_bgm(load(level_bgms[game_state.current_level_type]) as AudioStream)
 	
 	var level_filename := _get_level_path(game_state.current_level)
 	if !FileAccess.file_exists(level_filename):
@@ -228,10 +234,8 @@ func _on_game_over(_reason: Enums.GameOverReason) -> void:
 	for child in level_holder.get_children():
 		child.queue_free()
 
-## Fades out the screen, clears the game state, sends player to main menu.
+## Clears the game state, sends player to main menu.
 func restart_game() -> void:
-	SignalBus.emit_fade_out_screen()
-	await SignalBus.fade_out_screen_complete
 	game_state = GameState.new()
 	get_tree().change_scene_to_file(main_menu_scene_path)
 
@@ -248,3 +252,6 @@ func _on_clear_enemy_attacks() -> void:
 	var attack_nodes := get_tree().get_nodes_in_group("ENEMY_ATTACK")
 	for n in attack_nodes:
 		n.queue_free()
+
+func get_shop_bgm() -> AudioStream:
+	return load(shop_bgms[game_state.current_level_type]) as AudioStream

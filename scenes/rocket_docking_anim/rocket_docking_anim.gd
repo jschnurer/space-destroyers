@@ -19,6 +19,8 @@ class_name RocketDockingAnim
 @export var starfield: Starfield
 ## Music to play during anim.
 @export var bgm: AudioStream
+## Music to play when bgm ends.
+@export var level_bgm: AudioStream
 ## Sound of jet burst firing.
 @export var jet_burst: AudioStream
 
@@ -44,11 +46,12 @@ func _ready() -> void:
 	PauseManager.pause()
 	SignalBus.emit_fade_in_screen()
 	spaceship.toggle_smoke_emission(false)
-	SignalBus.emit_play_bgm(bgm,\
-		1.0, 1.0, 0.0, 2.0)
 	_animate_rocket_arriving()
 	if skip_play:
 		Engine.time_scale = 100
+	else:
+		await get_tree().process_frame
+		SignalBus.emit_play_bgm(bgm, 1.0, 1.0, 0.0, 2.0)
 
 func _process(_delta: float) -> void:
 	if rocket.position.y - empty_wings.position.y <= rocket_cutoff_distance and !_fire_off:
@@ -89,6 +92,7 @@ func _animate_gleam() -> void:
 	SignalBus.emit_flash_screen(Color.WHITE)
 	
 	SignalBus.emit_play_sfx(jet_burst)
+	SignalBus.emit_play_bgm(level_bgm)
 	PauseManager.resume()
 	Engine.time_scale = 1.0
 	

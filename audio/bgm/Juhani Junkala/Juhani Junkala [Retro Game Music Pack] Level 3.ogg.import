@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dkd73g37lvi3o"
+path="res://.godot/imported/Juhani Junkala [Retro Game Music Pack] Level 3.ogg-30bd74c035865d6a301da06994965f83.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/bgm/Juhani Junkala/Juhani Junkala [Retro Game Music Pack] Level 3.ogg"
+dest_files=["res://.godot/imported/Juhani Junkala [Retro Game Music Pack] Level 3.ogg-30bd74c035865d6a301da06994965f83.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

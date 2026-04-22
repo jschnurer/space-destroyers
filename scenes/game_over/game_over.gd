@@ -39,6 +39,6 @@ func _fade_out_restart() -> void:
 	
 	SignalBus.emit_fade_out_screen()
 	await SignalBus.fade_out_screen_complete
+	visible = false
 	
 	Game.restart_game()
-	visible = false

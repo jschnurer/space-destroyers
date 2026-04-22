@@ -72,3 +72,8 @@ https://opengameart.org/content/confrontation-1
 Author: orsi
 License: CC0 Public Domain
 https://opengameart.org/content/arrival-0
+
+== Action Chiptunes music pack ==
+Author: Juhani Junkala
+License: CC0 Public Domain
+https://opengameart.org/content/5-chiptunes-action
