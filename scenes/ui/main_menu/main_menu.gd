@@ -10,13 +10,15 @@ class_name MainMenu
 @onready var mission_update_text_animation: MissionUpdateTextAnimation = $MissionUpdateTextAnimation
 @onready var start_game: Button = %"Start Game"
 @onready var starfield: Node2D = %Starfield
+@onready var settings_ui: SettingsUI = %SettingsUI
+@onready var menu_items: VBoxContainer = %MenuItems
 
 func _ready() -> void:
 	SignalBus.emit_fade_out_screen(0)
 	SignalBus.emit_fade_in_screen()
 	SignalBus.emit_toggle_mouse_visibility(true)
 	SignalBus.emit_play_bgm(menu_bgm)
-	start_game.grab_focus()
+	_toggle_settings(false)
 
 func _on_start_game_pressed() -> void:
 	start_game.disabled = true
@@ -84,3 +86,22 @@ func _scroll_screens(old_scene: Control, new_scene: Node2D, gameplay_ui: CanvasL
 		PauseManager.resume()
 		old_scene.queue_free()
 	)
+
+func _on_settings_pressed() -> void:
+	_toggle_settings(true)
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()
+
+func _toggle_settings(is_settings: bool) -> void:
+	menu_items.process_mode = Node.PROCESS_MODE_DISABLED if is_settings == true else Node.PROCESS_MODE_PAUSABLE
+	menu_items.visible = !is_settings
+	settings_ui.process_mode = Node.PROCESS_MODE_PAUSABLE if is_settings == true else Node.PROCESS_MODE_DISABLED
+	settings_ui.visible = is_settings
+	if !is_settings:
+		start_game.grab_focus()
+	else:
+		settings_ui.toggle(true)
+
+func _on_settings_ui_settings_closed() -> void:
+	_toggle_settings(false)

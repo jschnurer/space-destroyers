@@ -5,9 +5,12 @@
 [node name="Starfield" type="Node2D" unique_id=2061530491]
 process_mode = 3
 script = ExtResource("1_mtvj3")
+star_count = 500
+use_y_weight = false
+use_y_scaling = false
 
 [node name="ReferenceRect" type="ReferenceRect" parent="." unique_id=674209285]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 border_color = Color(1, 0.76862746, 0, 0.43137255)
 border_width = 4.0

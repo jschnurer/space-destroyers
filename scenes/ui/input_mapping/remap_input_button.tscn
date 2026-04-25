@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://i5m4krdiyxby"]
+
+[ext_resource type="Script" uid="uid://bufgg06chofoq" path="res://scenes/ui/input_mapping/remap_input_button.gd" id="1_6bdak"]
+[ext_resource type="PackedScene" uid="uid://cki2remba7pld" path="res://scenes/ui/input_mapping/kenney_kb_input_texture_rect.tscn" id="1_li015"]
+[ext_resource type="PackedScene" uid="uid://imfuacid04c" path="res://scenes/ui/input_mapping/remap_input_popup.tscn" id="2_ploc2"]
+
+[node name="RemapInputButton" type="Button" unique_id=283702541]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_6bdak")
+key_name = null
+is_keyboard = null
+remap_popup_scene = ExtResource("2_ploc2")
+
+[node name="Icon" parent="." unique_id=1157806388 instance=ExtResource("1_li015")]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+key_name = null
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

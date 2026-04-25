@@ -76,6 +76,7 @@ func _ensure_base_scene_loaded(lvl_type: Enums.LevelTypes) -> void:
 func load_next_level(instantly := false) -> void:
 	PauseManager.pause()
 	game_state.current_level += 1
+	game_state.current_difficulty += 1
 	
 	for child in level_holder.get_children():
 		child.queue_free()

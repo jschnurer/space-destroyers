@@ -9,13 +9,15 @@ class_name PlayerOptionSpawnComponent
 @export var position_history_comp: PositionHistoryComponent
 ## The index the first option should follow and the spacing of each option thereafter.
 @export var option_position_spacing := 20
+## The number of options to spawn.
+@export var spawn_count := 0
 
 var _spawned_options: Array[Node2D] = []
 
 func _ready() -> void:
 	# TODO: Debugging; remove this.
-	if option_scene:
-		for i in range(3):
+	if option_scene and spawn_count > 0:
+		for i in range(spawn_count - 1):
 			var opt: Node2D = option_scene.instantiate()
 			opt.global_position = spawn_position.global_position
 			var pos_follow: PositionHistoryFollowComponent = Utilities.get_first_child_of_type(opt, PositionHistoryFollowComponent)

@@ -36,9 +36,9 @@ func _ready() -> void:
 		life_comp.life = life
 
 func apply_level_bonus() -> void:
-	var level_bonus := Game.game_state.current_level - 1
-	credit_value *= (1 + (.5 * level_bonus))
-	life = floori(life * (1 + (.125 * level_bonus)))
+	var difficulty_bonus := Game.game_state.current_difficulty
+	credit_value *= (1 + (.5 * difficulty_bonus))
+	life = floori(life * (1 + (.125 * difficulty_bonus)))
 	
 	# Apply size scale to life & credit value for larger enemies.
 	if scale.x > 1:
@@ -46,4 +46,4 @@ func apply_level_bonus() -> void:
 		credit_value = roundi((credit_value + scale.x) * pow(scale.x, 1.22))
 	
 	# Derive shield value from life.
-	shield_life = floori(life * 6.5)
+	shield_life = floori(life * 12)

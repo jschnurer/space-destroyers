@@ -47,11 +47,9 @@ func _ready() -> void:
 	SignalBus.emit_fade_in_screen()
 	spaceship.toggle_smoke_emission(false)
 	_animate_rocket_arriving()
-	if skip_play:
-		Engine.time_scale = 100
-	else:
-		await get_tree().process_frame
-		SignalBus.emit_play_bgm(bgm, 1.0, 1.0, 0.0, 2.0)
+	# Wait a frame then start the new bgm to override the GameManager's bgm.
+	await get_tree().process_frame
+	SignalBus.emit_play_bgm(bgm, 1.0, 1.0, 0.0, 2.0)
 
 func _process(_delta: float) -> void:
 	if rocket.position.y - empty_wings.position.y <= rocket_cutoff_distance and !_fire_off:

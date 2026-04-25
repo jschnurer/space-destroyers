@@ -16,7 +16,7 @@ func _process(_delta: float) -> void:
 	if !_input_enabled:
 		return
 	
-	if Input.is_action_just_pressed("ui_cancel"):
+	if Input.is_action_just_pressed("cancel"):
 		_toggle_shop(false)
 
 func _toggle_shop(p_visible: bool) -> void:

@@ -15,6 +15,7 @@ texture = ExtResource("6_k7qsd")
 expand_mode = 3
 stretch_mode = 5
 script = ExtResource("2_3dag5")
+auto_change_on_input = null
 controller_images = Dictionary[int, Texture2D]({
 0: ExtResource("3_nf2qb"),
 1: ExtResource("4_nhfr4"),

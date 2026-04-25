@@ -1,0 +1,249 @@
+[gd_scene format=3 uid="uid://drlnnoqxrqcm3"]
+
+[ext_resource type="Script" uid="uid://c0g8jtnx7jvca" path="res://scenes/ui/input_mapping/input_mapping_ui.gd" id="1_cytnn"]
+[ext_resource type="Theme" uid="uid://blgn547iw1k7d" path="res://themes/main_theme.tres" id="1_i80u8"]
+[ext_resource type="Texture2D" uid="uid://j16btt7qs8nk" path="res://art/input/keyboard.png" id="2_vk6qy"]
+[ext_resource type="Texture2D" uid="uid://duqd701xdobts" path="res://art/input/controller_xboxone.png" id="3_32at5"]
+[ext_resource type="PackedScene" uid="uid://i5m4krdiyxby" path="res://scenes/ui/input_mapping/remap_input_button.tscn" id="5_cytnn"]
+
+[node name="InputMappingUI" type="Control" unique_id=1538032895]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cytnn")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1602150332]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2053793895]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 32
+
+[node name="Settings" type="Label" parent="MarginContainer/VBoxContainer" unique_id=114751037]
+layout_mode = 2
+theme = ExtResource("1_i80u8")
+theme_type_variation = &"TitleLabel"
+text = "INPUT MAPPING"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer" unique_id=2038982604]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer" unique_id=386489370]
+layout_mode = 2
+theme_override_constants/h_separation = 64
+theme_override_constants/v_separation = 24
+columns = 3
+
+[node name="Action" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1154953111]
+layout_mode = 2
+theme = ExtResource("1_i80u8")
+theme_type_variation = &"StatLabel"
+theme_override_font_sizes/font_size = 48
+text = "ACTION"
+
+[node name="Keyboard" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=401718027]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("2_vk6qy")
+expand_mode = 5
+
+[node name="Gamepad" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=474428857]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("3_32at5")
+expand_mode = 5
+
+[node name="Up" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1749913336]
+layout_mode = 2
+theme = ExtResource("1_i80u8")
+theme_override_font_sizes/font_size = 32
+text = "UP"
+
+[node name="UpKB" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=283702541 node_paths=PackedStringArray("display_label") groups=["REMAP_BUTTONS"] instance=ExtResource("5_cytnn")]
+layout_mode = 2
+action_name = "move_up"
+key_name = "W"
+is_keyboard = true
+display_label = NodePath("../Up")
+
+[node name="Placeholder" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=534973855]
+layout_mode = 2
+theme = ExtResource("1_i80u8")
+theme_override_font_sizes/font_size = 32
+text = "?"
+horizontal_alignment = 1
+
+[node name="Down" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1231244874]
+layout_mode = 2
+theme = ExtResource("1_i80u8")
+theme_override_font_sizes/font_size = 32
+text = "DOWN"
+
+[node name="DownKB" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=367553044 node_paths=PackedStringArray("display_label") groups=["REMAP_BUTTONS"] instance=ExtResource("5_cytnn")]
+layout_mode = 2
+action_name = "move_down"
+key_name = "S"
+is_keyboard = true
+display_label = NodePath("../Down")
+
+[node name="Placeholder2" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1161594418]
+layout_mode = 2
+theme = ExtResource("1_i80u8")
+theme_override_font_sizes/font_size = 32
+text = "?"
+horizontal_alignment = 1
+
+[node name="Left" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=269579872]
+layout_mode = 2
+theme = ExtResource("1_i80u8")
+theme_override_font_sizes/font_size = 32
+text = "LEFT"
+
+[node name="LeftKB" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=128302360 node_paths=PackedStringArray("display_label") groups=["REMAP_BUTTONS"] instance=ExtResource("5_cytnn")]
+layout_mode = 2
+action_name = "move_left"
+key_name = "A"
+is_keyboard = true
+display_label = NodePath("../Left")
+
+[node name="Placeholder3" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=165833620]
+layout_mode = 2
+theme = ExtResource("1_i80u8")
+theme_override_font_sizes/font_size = 32
+text = "?"
+horizontal_alignment = 1
+
+[node name="Right" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=589193038]
+layout_mode = 2
+theme = ExtResource("1_i80u8")
+theme_override_font_sizes/font_size = 32
+text = "RIGHT"
+
+[node name="RightKB" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=354722809 node_paths=PackedStringArray("display_label") groups=["REMAP_BUTTONS"] instance=ExtResource("5_cytnn")]
+layout_mode = 2
+action_name = "move_right"
+key_name = "D"
+is_keyboard = true
+display_label = NodePath("../Right")
+
+[node name="Placeholder4" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1589793023]
+layout_mode = 2
+theme = ExtResource("1_i80u8")
+theme_override_font_sizes/font_size = 32
+text = "?"
+horizontal_alignment = 1
+
+[node name="Confirm" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=954327665]
+layout_mode = 2
+theme = ExtResource("1_i80u8")
+theme_override_font_sizes/font_size = 32
+text = "CONFIRM"
+
+[node name="ConfirmKB" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=296678893 node_paths=PackedStringArray("display_label") groups=["REMAP_BUTTONS"] instance=ExtResource("5_cytnn")]
+layout_mode = 2
+action_name = "ui_accept"
+key_name = "Space"
+is_keyboard = true
+display_label = NodePath("../Confirm")
+
+[node name="Placeholder5" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=835741140]
+layout_mode = 2
+theme = ExtResource("1_i80u8")
+theme_override_font_sizes/font_size = 32
+text = "?"
+horizontal_alignment = 1
+
+[node name="Cancel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1074029349]
+layout_mode = 2
+theme = ExtResource("1_i80u8")
+theme_override_font_sizes/font_size = 32
+text = "CANCEL"
+
+[node name="CancelKB" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1047273024 node_paths=PackedStringArray("display_label") groups=["REMAP_BUTTONS"] instance=ExtResource("5_cytnn")]
+layout_mode = 2
+action_name = "cancel"
+key_name = "Escape"
+is_keyboard = true
+display_label = NodePath("../Cancel")
+
+[node name="Placeholder7" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=647731969]
+layout_mode = 2
+theme = ExtResource("1_i80u8")
+theme_override_font_sizes/font_size = 32
+text = "?"
+horizontal_alignment = 1
+
+[node name="Shoot" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1953698358]
+layout_mode = 2
+theme = ExtResource("1_i80u8")
+theme_override_font_sizes/font_size = 32
+text = "SHOOT"
+
+[node name="ShootKB" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1688723864 node_paths=PackedStringArray("display_label") groups=["REMAP_BUTTONS"] instance=ExtResource("5_cytnn")]
+layout_mode = 2
+action_name = "shoot"
+key_name = "Space"
+is_keyboard = true
+display_label = NodePath("../Shoot")
+
+[node name="Placeholder6" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=2061962817]
+layout_mode = 2
+theme = ExtResource("1_i80u8")
+theme_override_font_sizes/font_size = 32
+text = "?"
+horizontal_alignment = 1
+
+[node name="Fast Forward" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=671767191]
+layout_mode = 2
+theme = ExtResource("1_i80u8")
+theme_override_font_sizes/font_size = 32
+text = "FAST FORWARD (HOLD)"
+
+[node name="FastForwardKB" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=2058749862 node_paths=PackedStringArray("display_label") groups=["REMAP_BUTTONS"] instance=ExtResource("5_cytnn")]
+layout_mode = 2
+action_name = "fast_forward"
+key_name = "F"
+is_keyboard = true
+display_label = NodePath("../Fast Forward")
+
+[node name="Placeholder8" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1537786047]
+layout_mode = 2
+theme = ExtResource("1_i80u8")
+theme_override_font_sizes/font_size = 32
+text = "?"
+horizontal_alignment = 1
+
+[node name="Spacer2" type="Control" parent="MarginContainer/VBoxContainer" unique_id=574551632]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer" unique_id=2013628561]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_i80u8")
+theme_override_font_sizes/font_size = 32
+text = "BACK
+"
+
+[connection signal="remap_input" from="MarginContainer/VBoxContainer/GridContainer/UpKB" to="." method="_on_remap_input_button_2_remap_input"]
+[connection signal="remap_input" from="MarginContainer/VBoxContainer/GridContainer/DownKB" to="." method="_on_remap_input_button_2_remap_input"]
+[connection signal="remap_input" from="MarginContainer/VBoxContainer/GridContainer/LeftKB" to="." method="_on_remap_input_button_2_remap_input"]
+[connection signal="remap_input" from="MarginContainer/VBoxContainer/GridContainer/RightKB" to="." method="_on_remap_input_button_2_remap_input"]
+[connection signal="remap_input" from="MarginContainer/VBoxContainer/GridContainer/ConfirmKB" to="." method="_on_remap_input_button_2_remap_input"]
+[connection signal="remap_input" from="MarginContainer/VBoxContainer/GridContainer/CancelKB" to="." method="_on_remap_input_button_2_remap_input"]
+[connection signal="remap_input" from="MarginContainer/VBoxContainer/GridContainer/ShootKB" to="." method="_on_remap_input_button_2_remap_input"]
+[connection signal="remap_input" from="MarginContainer/VBoxContainer/GridContainer/FastForwardKB" to="." method="_on_remap_input_button_2_remap_input"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

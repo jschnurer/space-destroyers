@@ -14,12 +14,8 @@ star_size_max = 2
 animate_direction = Vector2(0, 1)
 animate_speed = 2.0
 randomize_x_on_wrap = true
-use_y_weight = false
-use_y_scaling = false
 
 [node name="ReferenceRect" parent="Starfield" index="0" unique_id=674209285]
-offset_right = 1920.0
-offset_bottom = 1080.0
 metadata/_edit_use_anchors_ = true
 
 [node name="RocketDockingAnim" parent="." unique_id=1753536332 node_paths=PackedStringArray("starfield") instance=ExtResource("2_bl0i2")]

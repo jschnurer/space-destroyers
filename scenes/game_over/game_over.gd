@@ -15,7 +15,7 @@ func _process(_delta: float) -> void:
 	if !_input_enabled:
 		return
 	
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("shoot"):
 		_input_enabled = false
 		_fade_out_restart()
 

@@ -12,6 +12,38 @@ var CREDIT_DENOMINATIONS: Array[CreditDenomination] = [
 	CreditDenomination.new(50.0, Color.GOLDENROD, 3),
 	CreditDenomination.new(100.0, Color.AQUA, 4),
 ]
+const KENNEY_REMAP_KB_IMAGES_FOLDER_PATH := "res://art/input/kb/remap_icons"
+const KENNEY_INPUT_FN_TRANSLATION: Dictionary[String,String] = {
+	"Slash": "slash_forward",
+	"BackSlash": "slash_back",
+	"BracketLeft": "bracket_open",
+	"BracketRight": "bracket_close",
+	"PageUp": "page_up",
+	"PageDown": "page_down",
+	"Left": "arrow_left",
+	"Right": "arrow_right",
+	"Up": "arrow_up",
+	"Down": "arrow_down",
+}
+
+## Attempts to get the file path to the kenney keyboard key icon. Returns null if no icon found.
+func get_kenney_file_path_for_input(e: InputEventKey) -> String:
+	var key_name := OS.get_keycode_string(e.physical_keycode)
+	return get_kenney_file_path_for_key_name(key_name)
+
+## Attempts to get the file path to the kenney keyboard key icon. Returns null if no icon found.
+func get_kenney_file_path_for_key_name(key_name: String) -> String:
+	var full_path := KENNEY_REMAP_KB_IMAGES_FOLDER_PATH.path_join("keyboard_" + key_name + ".png")
+	var image_path: String
+	
+	if FileAccess.file_exists(full_path):
+		image_path = full_path
+	else:
+		var trans: Variant = KENNEY_INPUT_FN_TRANSLATION.get(key_name)
+		if trans:
+			image_path = KENNEY_REMAP_KB_IMAGES_FOLDER_PATH.path_join("keyboard_" + str(trans) + ".png")
+	
+	return image_path
 
 func _enter_tree() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS

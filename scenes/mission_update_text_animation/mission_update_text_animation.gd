@@ -66,17 +66,17 @@ func _process(delta: float) -> void:
 		return
 
 	if allow_skipping:
-		if _mode == Mode.TITLE and Input.is_action_just_pressed("ui_accept"):
+		if _mode == Mode.TITLE and Input.is_action_just_pressed("shoot"):
 			klaxon_player.stop()
 			if _title_blink_tween:
 				_title_blink_tween.stop()
 			title.visible = true
 			_type_mission_text()
-		elif _mode == Mode.TYPING and Input.is_action_just_pressed("ui_accept"):
+		elif _mode == Mode.TYPING and Input.is_action_just_pressed("shoot"):
 			mission_text_label.visible_characters = _mission_text_length
 			typing_audio_player.stop()
 			_show_continue_prompt()
-		elif _mode == Mode.PROMPT and Input.is_action_just_pressed("ui_accept"):
+		elif _mode == Mode.PROMPT and Input.is_action_just_pressed("shoot"):
 			_mode = Mode.DONE
 			player_dismissed.emit()
 	

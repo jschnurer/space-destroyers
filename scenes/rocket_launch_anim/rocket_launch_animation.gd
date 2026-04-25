@@ -82,5 +82,4 @@ func _fade_out() -> void:
 	SignalBus.emit_open_shop()
 	await SignalBus.shop_closed
 	PauseManager.resume()
-	get_tree().change_scene_to_file("res://scenes/space_shooter_levels/space_shooter_levels.tscn")
-	# TODO: Open shop, set game mode to vert scroller.
+	Game.go_to_level(Enums.LevelTypes.SPACE, 1)

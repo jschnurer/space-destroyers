@@ -6,6 +6,11 @@ enum InputAction {
 	CONFIRM,
 	CANCEL,
 	MOVEMENT,
+	UP,
+	DOWN,
+	LEFT,
+	RIGHT,
+	FAST_FORWARD,
 }
 
 @export var is_controller_testing: bool:
@@ -19,12 +24,17 @@ enum InputAction {
 		action = value
 		_update_icon()
 
+@export var auto_change_on_input := true
+
 @export var controller_images: Dictionary[InputAction, Texture2D]
 @export var keyboard_images: Dictionary[InputAction, Texture2D]
 
 var _is_using_controller: bool = false
 
 func _input(event: InputEvent) -> void:
+	if !auto_change_on_input:
+		return
+		
 	var is_controller := false
 	
 	if event is InputEventJoypadButton or event is InputEventJoypadMotion:

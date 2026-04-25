@@ -24,6 +24,7 @@ material = ExtResource("1_rs4dl")
 texture = ExtResource("1_ha781")
 centered = false
 hframes = 2
+frame = 1
 script = ExtResource("2_whitt")
 type = 4
 enemy_sprite = NodePath(".")
@@ -38,6 +39,7 @@ life = 7.0
 [node name="DanceComponent" parent="Components" unique_id=709328576 node_paths=PackedStringArray("sprite") instance=ExtResource("2_d7wub")]
 sprite = NodePath("../..")
 fps = 1.0
+current_frame = 1
 
 [node name="FormationMoveComponent" parent="Components" unique_id=937630113 node_paths=PackedStringArray("enemy_node") instance=ExtResource("3_whitt")]
 enemy_node = NodePath("../..")

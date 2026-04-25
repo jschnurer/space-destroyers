@@ -5,6 +5,7 @@ var credits := 0.0
 var current_level_type := Enums.LevelTypes.NONE
 var current_level := 0
 var current_life := 1
+var current_difficulty := 0
 
 var stats: Dictionary[Enums.PlayerStats, Stat] = {
 	Enums.PlayerStats.TANK_SPEED: load("res://resources/stats/move_speed.tres"),

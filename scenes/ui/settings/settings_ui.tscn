@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://b86gipfv3gwbs"]
+
+[ext_resource type="Script" uid="uid://cdywd73rrtvdq" path="res://scenes/ui/settings/settings_ui.gd" id="1_6xy4m"]
+[ext_resource type="Theme" uid="uid://blgn547iw1k7d" path="res://themes/main_theme.tres" id="1_v461p"]
+[ext_resource type="PackedScene" uid="uid://drlnnoqxrqcm3" path="res://scenes/ui/input_mapping/input_mapping_ui.tscn" id="3_dmrhn"]
+
+[node name="SettingsUI" type="Control" unique_id=2081907031]
+process_mode = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6xy4m")
+
+[node name="SettingsMenuInput" type="MarginContainer" parent="." unique_id=1571001269]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsMenuInput" unique_id=1061602328]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 32
+
+[node name="Settings" type="Label" parent="SettingsMenuInput/VBoxContainer" unique_id=1557335663]
+layout_mode = 2
+theme = ExtResource("1_v461p")
+theme_type_variation = &"TitleLabel"
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="SettingsMenuInput/VBoxContainer" unique_id=1680920754]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Input Mapping" type="Button" parent="SettingsMenuInput/VBoxContainer" unique_id=1824128517]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_v461p")
+theme_override_font_sizes/font_size = 32
+text = "INPUT MAPPING"
+
+[node name="SpeedEntry" type="HBoxContainer" parent="SettingsMenuInput/VBoxContainer" unique_id=2034971293]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="Fast Forward Speed Label" type="Label" parent="SettingsMenuInput/VBoxContainer/SpeedEntry" unique_id=1569483536]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_v461p")
+theme_override_font_sizes/font_size = 32
+text = "FAST FORWARD SPEED"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsMenuInput/VBoxContainer/SpeedEntry" unique_id=676192670]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="FFWDMinus" type="Button" parent="SettingsMenuInput/VBoxContainer/SpeedEntry/HBoxContainer" unique_id=2119352399]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("1_v461p")
+theme_override_font_sizes/font_size = 32
+text = "<"
+
+[node name="FFWDSpeed" type="Label" parent="SettingsMenuInput/VBoxContainer/SpeedEntry/HBoxContainer" unique_id=1588848575]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../../Input Mapping")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../../Back")
+focus_next = NodePath("../../../Back")
+focus_previous = NodePath("../../../Input Mapping")
+focus_mode = 2
+theme = ExtResource("1_v461p")
+theme_override_font_sizes/font_size = 32
+text = "10x"
+
+[node name="FFWDPlus" type="Button" parent="SettingsMenuInput/VBoxContainer/SpeedEntry/HBoxContainer" unique_id=1609080565]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("1_v461p")
+theme_override_font_sizes/font_size = 32
+text = ">"
+
+[node name="Back" type="Button" parent="SettingsMenuInput/VBoxContainer" unique_id=1914638547]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_v461p")
+theme_override_font_sizes/font_size = 32
+text = "BACK
+"
+
+[node name="InputMappingUI" parent="." unique_id=1538032895 instance=ExtResource("3_dmrhn")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="SettingsMenuInput/VBoxContainer/Input Mapping" to="." method="_on_input_mapping_pressed"]
+[connection signal="pressed" from="SettingsMenuInput/VBoxContainer/SpeedEntry/HBoxContainer/FFWDMinus" to="." method="_on_ffwd_minus_pressed"]
+[connection signal="gui_input" from="SettingsMenuInput/VBoxContainer/SpeedEntry/HBoxContainer/FFWDSpeed" to="." method="_on_ffwd_speed_gui_input"]
+[connection signal="pressed" from="SettingsMenuInput/VBoxContainer/SpeedEntry/HBoxContainer/FFWDPlus" to="." method="_on_ffwd_plus_pressed"]
+[connection signal="pressed" from="SettingsMenuInput/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="closed" from="InputMappingUI" to="." method="_on_input_mapping_ui_closed"]

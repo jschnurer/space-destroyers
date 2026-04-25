@@ -12,7 +12,7 @@ position = Vector2(1730, -104)
 level_manager = NodePath("../../SpaceShooterLevelManager")
 
 [node name="EnemyPathFormation2" parent="ScrollingArea" unique_id=298844592 node_paths=PackedStringArray("level_manager") instance=ExtResource("1_8ascr")]
-position = Vector2(1731, -643)
+position = Vector2(1731, -1000)
 level_manager = NodePath("../../SpaceShooterLevelManager")
 
 [node name="SpaceShooterLevelManager" parent="." unique_id=675234762 node_paths=PackedStringArray("scrolling_area_node") groups=["LEVEL_MANAGER_SPACE"] instance=ExtResource("1_3xd4q")]

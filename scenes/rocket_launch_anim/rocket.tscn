@@ -27,13 +27,13 @@ position = Vector2(0, 20)
 scale = Vector2(1, -1)
 texture = ExtResource("1_stcxb")
 hframes = 3
-frame = 2
+frame = 1
 
 [node name="DanceComponent" parent="Fire" unique_id=709328576 node_paths=PackedStringArray("sprite") instance=ExtResource("2_ahoqy")]
 sprite = NodePath("..")
 frame_count = 3
 fps = 10.0
-current_frame = 2
+current_frame = 1
 
 [node name="RocketSprite" type="Sprite2D" parent="." unique_id=2086288273]
 texture = ExtResource("3_ss16f")
