@@ -30,6 +30,9 @@ func _ready() -> void:
 		timer.call_deferred("start")
 
 func _process(_delta: float) -> void:
+	if not sprite:
+		return
+	
 	var sprite_mat := (sprite.material as ShaderMaterial)
 	if not sprite_mat:
 		return

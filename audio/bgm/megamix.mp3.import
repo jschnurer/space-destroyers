@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/megamix.mp3-0a44b42b6eb0e5f7759de16697246373.
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

@@ -13,6 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6xy4m")
+show_input_mapping = false
 
 [node name="SettingsMenuInput" type="MarginContainer" parent="." unique_id=1571001269]
 unique_name_in_owner = true
@@ -60,7 +61,7 @@ unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("1_v461p")
 theme_override_font_sizes/font_size = 32
-text = "FAST FORWARD SPEED"
+text = "FFWD SPEED (HOLD F)"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SettingsMenuInput/VBoxContainer/SpeedEntry" unique_id=676192670]
 layout_mode = 2

@@ -6,13 +6,13 @@ var _enabled := false
 @onready var debug_input: LineEdit = %DebugInput
 
 const _help_text: String = \
-"[color=yellow]addstat STAT 0[/color]: adds the specified levels to a stat
-[color=yellow]addupgrade UPGRADE 0[/color]: adds the specified levels to an upgrade
+"[color=yellow]addstat STAT #[/color]: adds the specified levels to a stat
+[color=yellow]addupgrade UPGRADE #[/color]: adds the specified levels to an upgrade
 [color=yellow]collect[/color]: collects all visible credits
 [color=yellow]collision show/hide[/color]: toggles visible collision shapes
-[color=yellow]credits 0000[/color]: pick up specified number of credits (multiplier affects)
+[color=yellow]credits ####[/color]: pick up specified number of credits (multiplier affects)
 [color=yellow]die[/color]: destroys the player, triggering a game over
-[color=yellow]goto type num[/color]: skips to indicated level type/num (type: invader/space) (num: 1-9)
+[color=yellow]goto type #[/color]: skips to indicated level type/# (type: invader/space) (#: 1-8)
 [color=yellow]help[/color]: show this message
 [color=yellow]max[/color]: maxes all stats and upgrades
 [color=yellow]maxstats[/color]: maxes all stats
@@ -21,9 +21,10 @@ const _help_text: String = \
 [color=yellow]pass[/color]: destroy all enemies, collect their coins, go to next level immediately
 [color=yellow]quit[/color]: force-exits the game
 [color=yellow]resume[/color]: force-unpauses the game (in case you broke something with the debug console)
-[color=yellow]setallstats 0[/color]: sets all stats to a level
-[color=yellow]setstat STAT 0[/color]: sets a stat to a level
-[color=yellow]setupgrade UPGRADE 0[/color]: sets an upgrade to a level
+[color=yellow]setallstats #[/color]: sets all stats to a level
+[color=yellow]setdifficulty #[/color]: sets game difficulty to a level (#: 0+)
+[color=yellow]setstat STAT #[/color]: sets a stat to a level
+[color=yellow]setupgrade UPGRADE #[/color]: sets an upgrade to a level
 [color=yellow]shop[/color]: as pass but show the show between levels
 [color=yellow]timescale 1[/color]: sets global speed scale"
 
@@ -88,6 +89,7 @@ func _on_debug_input_text_submitted(new_text: String) -> void:
 		"max": _max_out(true, true)
 		"maxstats": _max_out(true, false)
 		"maxupgrades": _max_out(false, true)
+		"setdifficulty": _set_difficulty(text_chunks)
 		_: _log("[color=red]Invalid command[/color]")
 
 ## Disable entering `.
@@ -121,7 +123,7 @@ func _pass_level(show_shop: bool) -> void:
 ## Picks up credits (multiplier is applied).
 func _add_credits(text_chunks: Array[String]) -> void:
 	if text_chunks.size() == 1:
-		_log("[color=red]How many credits? (e.g. 'credits 0000')[/color]")
+		_log("[color=red]How many credits? (e.g. 'credits ####')[/color]")
 	elif text_chunks[1].is_valid_float():
 		var creds := text_chunks[1].to_float()
 		if creds <= 0.0:
@@ -384,3 +386,22 @@ func _die() -> void:
 		var life := Utilities.get_first_child_of_type(player, LifeComponent)
 		if life:
 			(life as LifeComponent).take_damage(9999999, null)
+
+func _set_difficulty(text_chunks: Array[String]) -> void:
+	if text_chunks.size() < 2:
+		_log("[color=red]Invalid arguments. (e.g. 'setdifficulty ###')[/color]")
+		return
+	
+	var arg := text_chunks[1].to_upper()
+	if !arg.is_valid_int():
+		_log("[color=red]Invalid arguments. (e.g. 'setdifficulty ###')[/color]")
+		return
+	
+	var diff := arg.to_int()
+	if diff < 0:
+		_log("[color=red]Difficulty must be 0+.[/color]")
+		return
+	
+	Game.set_difficulty(diff)
+	
+	_log("Game difficulty level set to %s" % arg)

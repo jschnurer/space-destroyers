@@ -11,7 +11,6 @@ class_name Spaceship
 @onready var ship_sprite: Sprite2D = %ShipSprite
 @onready var ship_mat: ShaderMaterial = (%ShipSprite as Sprite2D).material
 @onready var fire: Sprite2D = %Fire
-@onready var bullet_spawn_point: Node2D = %BulletSpawnPoint
 
 var _bank_speed := 2.5
 var _max_bank := 0.7

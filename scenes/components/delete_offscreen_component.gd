@@ -1,5 +1,5 @@
 extends VisibleOnScreenNotifier2D
-class_name DieOffscreenComponent
+class_name DeleteOffscreenComponent
 
 ## The node to delete if it goes offscreen.
 @export var delete_node: Node

@@ -12,38 +12,65 @@ class_name EnemyPathFormation
 @export var enemy_path_speed := 50.0
 ## If true, enemies rotate to follow path.
 @export var rotate_enemies := false
+## The PathFollower scene.
+@export var path_follower_scene: PackedScene
 
-@onready var path_2d: Path2D = %Path2D
+@export_group("Editor Hints")
+## Show a meter upward for total time for spawns followed by the time for the last enemy to reach
+## the end of the path.
+@export var editor_show_time_hint: bool = true:
+	set(value):
+		editor_show_time_hint = value
+		queue_redraw()
+
 @onready var spawn_timer: Timer = %SpawnTimer
 
 var _spawn_index := 0
 var _spawn_index_count := 0
+var _enemy_path: Path2D
 
 func _ready() -> void:
+	if !Engine.is_editor_hint():
+		_find_path()
+	
 	_update_timer()
 	
-	if !Engine.is_editor_hint():
+	if !Engine.is_editor_hint() and _enemy_path:
 		# Spawn the first enemy immediately, then use the timer to wait between each.
 		_on_spawn_timer_timeout()
 
 func _process(delta: float) -> void:
-	if Engine.is_editor_hint():
+	if Engine.is_editor_hint() or !_enemy_path:
 		return
 	
 	# Stop scrolling downward!
 	position.y -= level_manager.scroll_speed * delta
 	
-	for follower: PathFollow2D in path_2d.get_children():
+	for follower: PathFollow2D in _enemy_path.get_children():
 		follower.progress += enemy_path_speed * delta
 		if follower.progress_ratio >= 1.0:
 			follower.queue_free()
 
 func _draw() -> void:
+	if !editor_show_time_hint:
+		return
+	
 	if Engine.is_editor_hint() and level_manager:
 		var height := spawn_duration * level_manager.scroll_speed
 		var fill_color := Color.RED
 		fill_color.a = 0.5
 		draw_rect(Rect2(Vector2(-20, -height), Vector2(40, height)), fill_color)
+		
+		var path: Path2D
+		for child in find_children("*", "Path2D", true):
+			path = child as Path2D
+		
+		if path:
+			var length := path.curve.get_baked_length()
+			var move_time_height := (length / enemy_path_speed) * level_manager.scroll_speed
+			var path_time_fill_color := Color.YELLOW
+			path_time_fill_color.a = 0.5
+			draw_rect(Rect2(Vector2(-20, -move_time_height - height), Vector2(40, move_time_height)), path_time_fill_color)
 
 func _get_enemy_spawn_count_total() -> int:
 	var en_count := 0
@@ -60,26 +87,29 @@ func _update_timer() -> void:
 	(%SpawnTimer as Timer).wait_time = spawn_duration / (en_count - 1)
 
 func _on_spawn_timer_timeout() -> void:
-	if _spawn_enemy():
-		spawn_timer.start()
+	call_deferred("_spawn_enemy")
 
 ## Spawns the next enemy. Returns false when the last enemy is spawned.
-func _spawn_enemy() -> bool:
+func _spawn_enemy() -> void:
 	# Advance the spawn index/counter/etc. If false, no more enemies to spawn.
 	if !_advance_spawn_counter():
-		return false
+		return
 	
-	var follower := PathFollow2D.new()
+	var follower := path_follower_scene.instantiate() as PathFollow2D
 	follower.loop = false
 	follower.rotates = rotate_enemies
 	
 	var enemy: Node2D = enemy_scenes[_spawn_index].scene.instantiate()
-	follower.add_child(enemy)
-	path_2d.add_child(follower)
+	Utilities.add_child_to_level(enemy)
+	
+	var transformer: RemoteTransform2D = Utilities.get_first_child_of_type(follower, RemoteTransform2D)
+	transformer.remote_path = enemy.get_path()
+	
+	_enemy_path.add_child(follower)
 	
 	_spawn_index_count += 1
 	
-	return true
+	spawn_timer.start()
 
 func _advance_spawn_counter() -> bool:
 	# Safety check.
@@ -95,3 +125,11 @@ func _advance_spawn_counter() -> bool:
 			return false
 	
 	return true
+
+func _find_path() -> void:
+	var first_path := Utilities.get_first_child_of_type(self, Path2D)
+	if first_path == null:
+		printerr(self.name + " has no child Path2D!")
+		queue_free()
+	else:
+		_enemy_path = first_path

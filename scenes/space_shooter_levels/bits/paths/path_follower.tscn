@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://c27mqld5evu4j"]
+
+[node name="PathFollower" type="PathFollow2D" unique_id=795860632]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=1562248809]

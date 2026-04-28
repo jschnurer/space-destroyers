@@ -19,7 +19,7 @@ var _is_pushing := false
 var _steer_force := 20.0
 
 @onready var sprite_2d: Sprite2D = %Sprite2D
-@onready var delete_offscreen_component: DieOffscreenComponent = %DeleteOffscreenComponent
+@onready var delete_offscreen_component: DeleteOffscreenComponent = %DeleteOffscreenComponent
 
 func _ready() -> void:
 	await get_tree().physics_frame

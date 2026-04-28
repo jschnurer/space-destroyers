@@ -35,6 +35,7 @@ RichTextLabel/fonts/mono_font = ExtResource("1_vu6l5")
 RichTextLabel/fonts/normal_font = ExtResource("1_vu6l5")
 SettingsNumberInput/base_type = &"Label"
 SettingsNumberInput/styles/focus = SubResource("StyleBoxFlat_g21io")
+ShopButton/base_type = &"Button"
 ShopButton/styles/disabled = SubResource("StyleBoxFlat_8gw6x")
 ShopButton/styles/hover = SubResource("StyleBoxFlat_ydht1")
 ShopButton/styles/normal = SubResource("StyleBoxFlat_vu6l5")

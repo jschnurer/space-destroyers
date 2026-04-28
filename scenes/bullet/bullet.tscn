@@ -21,11 +21,14 @@ texture = ExtResource("1_0vdx3")
 delete_node = NodePath("../..")
 
 [node name="HitboxComponent" parent="Components" unique_id=428100613 instance=ExtResource("4_0vdx3")]
+unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HitboxComponent" unique_id=1696332541]
+[node name="HitboxShape" type="CollisionShape2D" parent="Components/HitboxComponent" unique_id=1696332541]
+unique_name_in_owner = true
 scale = Vector2(4, 4)
 shape = SubResource("RectangleShape2D_7c8un")
+debug_color = Color(1, 0, 0, 0.753)
 
 [connection signal="dealt_damage" from="Components/HitboxComponent" to="." method="_on_hitbox_component_dealt_damage"]

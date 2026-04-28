@@ -4,12 +4,15 @@ class_name PlayerShootComponent
 @export var bullet_scene: PackedScene
 @export var shot_sound: AudioStream
 @export var reload_component: PlayerReloadComponent
+@export var bullet_pool_size := 50
 
 signal shot_fired
 
 var _can_shoot := true
+var _bullet_pool: Array[Bullet] = []
 
 func _ready() -> void:
+	_init_bullet_pool()
 	SignalBus.toggle_player_shoot_ability.connect(func(is_enabled: bool) -> void:
 		_can_shoot = is_enabled
 	)
@@ -48,26 +51,73 @@ func _try_shoot() -> void:
 	reload_component.reload()
 
 func _spawn_bullet(bullet_offset: float, angle_offset: float = 0.0, bullet_scale: float = 1.0, damage_scale: float = 1.0) -> void:
-	var bullet: Bullet = bullet_scene.instantiate()
+	var bullet := _get_first_available_bullet()
+	
+	if !bullet:
+		push_warning("No available bullet found in player bullet pool! (pool size: %s)" % bullet_pool_size)
+		return
+	
 	bullet.global_position = global_position
 	bullet.global_position.x += bullet_offset
-	bullet.set_collision(1 << 3, 1 << 1)
 	
-	var dir := Vector2.UP
-	
-	if angle_offset != 0.0:
-		bullet.rotation = deg_to_rad(angle_offset)
-		dir = Vector2.from_angle(deg_to_rad(-90 + angle_offset))
-	
-	if bullet_scale != 1.0:
-		bullet.scale_hitbox(bullet_scale)
-		bullet.scale_sprite(bullet_scale)
+	bullet.rotation = deg_to_rad(angle_offset)
+	bullet.scale_hitbox(bullet_scale)
+	bullet.scale_sprite(bullet_scale)
 	
 	bullet.set_damage_speed_direction(\
 		Game.get_stat_value(Enums.PlayerStats.DAMAGE) * damage_scale,
 		Game.get_stat_value(Enums.PlayerStats.SHOT_SPEED),
-		dir)
+		Vector2.from_angle(deg_to_rad(-90 + angle_offset)))
 	if Game.has_upgrade(Enums.PlayerUpgrades.FLAK_CANNON):
 		bullet.can_flak = true
+	
+	bullet.toggle_bullet(true)
+
+## Initializes the bullet pool, creates the bullets, disables them.
+func _init_bullet_pool() -> void:
+	if !bullet_scene or bullet_pool_size <= 0:
+		return
+	
+	_bullet_pool.resize(bullet_pool_size)
+	
+	var player_parent := get_tree().get_first_node_in_group(GroupNames.PLAYER).get_parent()
+	
+	for i in range(bullet_pool_size):
+		var bullet: Bullet = bullet_scene.instantiate()
 		
-	Utilities.call_deferred("add_child_to_level", bullet)
+		# Add to player bullet group so it won't be deleted on impact.
+		bullet.add_to_group(GroupNames.PLAYER_BULLET, true)
+		
+		# Set collision.
+		bullet.set_collision(1 << 3, 1 << 1)
+		
+		# Don't want to delete when it leaves the screen! Remove the "delete offscreen" component.
+		var comp := Utilities.get_first_child_of_type(bullet, DeleteOffscreenComponent)
+		if comp:
+			comp.free()
+		
+		# Add a trigger to detect when it leaves the screen to disable it.
+		var vis := VisibleOnScreenNotifier2D.new()
+		vis.rect = Rect2(-.5, -2, 1, 4)
+		vis.screen_exited.connect(_on_bullet_screen_exited.bind(bullet))
+		bullet.find_child("Components").add_child(vis)
+		
+		# Save it to the bullet pool.
+		_bullet_pool[i] = bullet
+		
+		# Add to the scene.
+		player_parent.add_child.call_deferred(bullet)
+		
+		# Disable and hide it.
+		bullet.toggle_bullet(false)
+
+## Triggered when a player bullet exits the screen.
+func _on_bullet_screen_exited(bullet: Bullet) -> void:
+	bullet.toggle_bullet(false)
+
+## Finds the first available bullet that is in the pool and disabled so it can be used.
+func _get_first_available_bullet() -> Bullet:
+	for bullet in _bullet_pool:
+		if bullet.process_mode == ProcessMode.PROCESS_MODE_DISABLED:
+			return bullet
+	return null

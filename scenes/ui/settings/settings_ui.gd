@@ -1,6 +1,8 @@
 extends Control
 class_name SettingsUI
 
+@export var show_input_mapping := true
+
 signal settings_closed
 
 @onready var ffwd_speed: Label = %FFWDSpeed
@@ -10,6 +12,7 @@ signal settings_closed
 @onready var settings_menu_input: MarginContainer = %SettingsMenuInput
 
 func _ready() -> void:
+	input_mapping.visible = show_input_mapping
 	_update_ffwd_label()
 	_toggle_input_map(false)
 	input_mapping_ui.process_mode = Node.PROCESS_MODE_DISABLED
@@ -19,7 +22,10 @@ func toggle(is_enabled: bool) -> void:
 	if !is_enabled:
 		settings_closed.emit()
 	else:
-		input_mapping.grab_focus()
+		if show_input_mapping:
+			input_mapping.grab_focus()
+		else:
+			ffwd_speed.grab_focus()
 
 func _on_ffwd_plus_pressed() -> void:
 	FastForward.ffwd_time_scale = clampf(FastForward.ffwd_time_scale + 1, 2, 10)

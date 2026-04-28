@@ -6,7 +6,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _process(_delta: float) -> void:
-	if Input.is_action_pressed("fast_forward"):
+	if Input.is_action_just_pressed("fast_forward"):
 		Engine.time_scale = ffwd_time_scale
-	elif Engine.time_scale != 1:
+	elif Input.is_action_just_released("fast_forward"):
 		Engine.time_scale = 1

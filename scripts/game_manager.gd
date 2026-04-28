@@ -256,3 +256,6 @@ func _on_clear_enemy_attacks() -> void:
 
 func get_shop_bgm() -> AudioStream:
 	return load(shop_bgms[game_state.current_level_type]) as AudioStream
+
+func set_difficulty(difficulty_level: int) -> void:
+	game_state.current_difficulty = difficulty_level

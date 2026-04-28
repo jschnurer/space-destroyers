@@ -163,8 +163,9 @@ round_to_int = true
 layout_mode = 2
 mouse_filter = 2
 stat = ExtResource("8_dlw7e")
-interpolate_str = "%sx"
-format_str = "%.2f"
+interpolate_str = "+%s%%"
+show_only_percent_bonus = true
+round_to_int = true
 
 [node name="Max Shots" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Stats" unique_id=1518888019 instance=ExtResource("4_gs80r")]
 visible = false

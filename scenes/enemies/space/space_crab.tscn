@@ -10,8 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://mdxtaa55xkqh" path="res://scenes/components/on_death_component.tscn" id="7_ewo4y"]
 [ext_resource type="AudioStream" uid="uid://65516pmqed0c" path="res://audio/sfx/beepfx_samples/22_boom_3.wav" id="8_681wy"]
 [ext_resource type="PackedScene" uid="uid://b0rqtlww1es66" path="res://scenes/invader_death/invader_death.tscn" id="9_6v11r"]
+[ext_resource type="PackedScene" uid="uid://ce38u6nauhq7y" path="res://scenes/components/hitbox_component.tscn" id="11_g5xs7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_of053"]
+size = Vector2(44, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mci8y"]
 size = Vector2(44, 32)
 
 [node name="SpaceCrab" type="Sprite2D" unique_id=1822881906 node_paths=PackedStringArray("enemy_sprite") groups=["ENEMY"]]
@@ -58,3 +62,10 @@ deletion_node = NodePath("../..")
 lucky_component = NodePath("../LuckyComponent")
 death_anim_scene = ExtResource("9_6v11r")
 can_spawn_flak = true
+
+[node name="HitboxComponent" parent="Components" unique_id=428100613 instance=ExtResource("11_g5xs7")]
+collision_layer = 64
+damage = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HitboxComponent" unique_id=1170699534]
+shape = SubResource("RectangleShape2D_mci8y")

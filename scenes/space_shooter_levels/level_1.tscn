@@ -2,6 +2,93 @@
 
 [ext_resource type="PackedScene" uid="uid://6cfdogwf26vm" path="res://scenes/space_shooter_levels/space_shooter_level_manager.tscn" id="1_3xd4q"]
 [ext_resource type="PackedScene" uid="uid://ifucrn57xmal" path="res://scenes/space_shooter_levels/bits/enemy_path_formation.tscn" id="1_8ascr"]
+[ext_resource type="PackedScene" uid="uid://rupg4t0evk1g" path="res://scenes/space_shooter_levels/bits/paths/snaking_path_1.tscn" id="2_cvyx1"]
+[ext_resource type="PackedScene" uid="uid://owvblgld0bxd" path="res://scenes/enemies/space/space_octopus.tscn" id="3_8ascr"]
+[ext_resource type="Shader" uid="uid://dairmqngktiej" path="res://shaders/enemy_shader.tres" id="4_rk137"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ascr"]
+resource_local_to_scene = true
+shader = ExtResource("4_rk137")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rk137"]
+resource_local_to_scene = true
+shader = ExtResource("4_rk137")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gvetg"]
+resource_local_to_scene = true
+shader = ExtResource("4_rk137")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uv2n3"]
+resource_local_to_scene = true
+shader = ExtResource("4_rk137")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g6hb0"]
+resource_local_to_scene = true
+shader = ExtResource("4_rk137")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f7bkm"]
+resource_local_to_scene = true
+shader = ExtResource("4_rk137")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
 
 [node name="Level_1" type="Node2D" unique_id=236372489 groups=["LEVEL_NODE"]]
 
@@ -11,9 +98,38 @@
 position = Vector2(1730, -104)
 level_manager = NodePath("../../SpaceShooterLevelManager")
 
+[node name="SnakingPath1" parent="ScrollingArea/EnemyPathFormation" unique_id=766471940 instance=ExtResource("2_cvyx1")]
+
 [node name="EnemyPathFormation2" parent="ScrollingArea" unique_id=298844592 node_paths=PackedStringArray("level_manager") instance=ExtResource("1_8ascr")]
-position = Vector2(1731, -1000)
+position = Vector2(189, -4000)
 level_manager = NodePath("../../SpaceShooterLevelManager")
+
+[node name="SnakingPath2" parent="ScrollingArea/EnemyPathFormation2" unique_id=8110574 instance=ExtResource("2_cvyx1")]
+scale = Vector2(-1, 1)
+
+[node name="SpaceOctopus" parent="ScrollingArea" unique_id=559603659 instance=ExtResource("3_8ascr")]
+material = SubResource("ShaderMaterial_8ascr")
+position = Vector2(864, -2000)
+
+[node name="SpaceOctopus2" parent="ScrollingArea" unique_id=1364255275 instance=ExtResource("3_8ascr")]
+material = SubResource("ShaderMaterial_rk137")
+position = Vector2(960, -2000)
+
+[node name="SpaceOctopus3" parent="ScrollingArea" unique_id=160682573 instance=ExtResource("3_8ascr")]
+material = SubResource("ShaderMaterial_gvetg")
+position = Vector2(864, -2096)
+
+[node name="SpaceOctopus4" parent="ScrollingArea" unique_id=956650247 instance=ExtResource("3_8ascr")]
+material = SubResource("ShaderMaterial_uv2n3")
+position = Vector2(960, -2096)
+
+[node name="SpaceOctopus5" parent="ScrollingArea" unique_id=1073047346 instance=ExtResource("3_8ascr")]
+material = SubResource("ShaderMaterial_g6hb0")
+position = Vector2(864, -2192)
+
+[node name="SpaceOctopus6" parent="ScrollingArea" unique_id=1895056637 instance=ExtResource("3_8ascr")]
+material = SubResource("ShaderMaterial_f7bkm")
+position = Vector2(960, -2192)
 
 [node name="SpaceShooterLevelManager" parent="." unique_id=675234762 node_paths=PackedStringArray("scrolling_area_node") groups=["LEVEL_MANAGER_SPACE"] instance=ExtResource("1_3xd4q")]
 scrolling_area_node = NodePath("../ScrollingArea")
