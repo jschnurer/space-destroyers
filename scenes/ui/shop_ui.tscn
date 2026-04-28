@@ -146,9 +146,9 @@ btn_text = "Seeking Missiles"
 is_player_upgrade = true
 player_upgrade = 1
 
-[node name="Anti-Air Tower" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=561967771 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
+[node name="Option" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonContainer" unique_id=561967771 groups=["SHOP_BUTTON"] instance=ExtResource("3_a65e2")]
 layout_mode = 2
-btn_text = "Anti-Air Tower"
+btn_text = "Option"
 is_player_upgrade = true
 player_upgrade = 4
 
@@ -187,6 +187,7 @@ alignment = 1
 layout_mode = 2
 texture = ExtResource("8_fbehl")
 action = 1
+auto_change_on_input = true
 
 [node name="CloseShop" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button/HBoxContainer" unique_id=265741125]
 layout_mode = 2

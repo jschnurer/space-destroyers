@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c0y57xromu46c"]
+
+[ext_resource type="Script" uid="uid://bses54bppt0wd" path="res://scenes/space_shooter_levels/bits/asteroids/asteroid_1.gd" id="1_3v2q4"]
+[ext_resource type="Texture2D" uid="uid://dojehin04r480" path="res://art/asteroids/asteroid_1.png" id="1_rqkbf"]
+[ext_resource type="PackedScene" uid="uid://ce38u6nauhq7y" path="res://scenes/components/hitbox_component.tscn" id="2_3v2q4"]
+
+[node name="Asteroid" type="Node2D" unique_id=1727459073]
+script = ExtResource("1_3v2q4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=125481001]
+modulate = Color(0.31061712, 0.31061712, 0.3106171, 1)
+scale = Vector2(4, 4)
+texture = ExtResource("1_rqkbf")
+
+[node name="HitboxComponent" parent="." unique_id=428100613 instance=ExtResource("2_3v2q4")]
+visible = false
+scale = Vector2(4, 4)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitboxComponent" unique_id=1083104271]
+polygon = PackedVector2Array(-3, -8, -5, -7, -6, -6, -6, -4, -8, -4, -8, 4, -7, 4, -6.25, 5, -7, 6, -7, 8, -1, 8, -1, 7, 4, 7, 5.5, 5, 7, 5, 8, 4, 8, -1, 6, -2.5, 7, -3.25, 7, -4.75, 8, -5.25, 8, -6.75, 6.75, -8, -2, -8)
