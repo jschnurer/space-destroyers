@@ -1,11 +1,13 @@
 extends Node
 
 const CONTROLS_PATH := "user://controls.cfg"
+const OPTIONS_PATH := "user://options.cfg"
 
 func _enter_tree() -> void:
-	load_from_file()
+	load_controls()
+	load_options()
 
-func load_from_file() -> void:
+func load_controls() -> void:
 	var config := ConfigFile.new()
 	if config.load(CONTROLS_PATH) != OK:
 		return
@@ -29,7 +31,7 @@ func load_from_file() -> void:
 			joy_mov.axis_value = config.get_value(action, "joy_axis_value")
 			InputMap.action_add_event(action, joy_mov)
 
-func save_to_file() -> void:
+func save_controls() -> void:
 	var config := ConfigFile.new()
 	for action in InputMap.get_actions():
 		if action.begins_with("ui_"):
@@ -45,3 +47,14 @@ func save_to_file() -> void:
 				config.set_value(action, "joy_axis_value", (event as InputEventJoypadMotion).axis_value)
 	
 	config.save(CONTROLS_PATH)
+
+func load_options() -> void:
+	var config := ConfigFile.new()
+	if config.load(OPTIONS_PATH) != OK:
+		return
+	FastForward.ffwd_time_scale = config.get_value("ffwd", "speed", 6)
+
+func save_options() -> void:
+	var config := ConfigFile.new()
+	config.set_value("ffwd", "speed", FastForward.ffwd_time_scale)
+	config.save(OPTIONS_PATH)

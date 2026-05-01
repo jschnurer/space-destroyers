@@ -35,7 +35,7 @@ func _on_remap_input(action_name: String, input_event: InputEvent, \
 	InputMap.action_add_event(action_name, input_event)
 	
 	remap_button.key_name = key_name
-	UserConfig.save_to_file()
+	UserConfig.save_controls()
 
 func _update_button_display(button: RemapInputButton) -> void:
 	var events := InputMap.action_get_events(button.action_name)

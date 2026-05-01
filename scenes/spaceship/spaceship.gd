@@ -72,6 +72,7 @@ func _physics_process(delta: float) -> void:
 
 	velocity = target_velocity
 	move_and_slide()
+	global_position = global_position.clamp(_player_move_bounds.position, _player_move_bounds.end)
 
 func toggle_smoke_emission(emitting: bool) -> void:
 	smoke.emitting = emitting

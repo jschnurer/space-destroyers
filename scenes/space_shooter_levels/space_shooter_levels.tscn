@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://ld7c4owsibhw" path="res://scenes/level_geom/starfield.tscn" id="1_0hnfl"]
 [ext_resource type="PackedScene" uid="uid://c1d0q60eo05na" path="res://scenes/rocket_docking_anim/rocket_docking_anim.tscn" id="2_bl0i2"]
 [ext_resource type="PackedScene" uid="uid://yvu0kduqhohj" path="res://scenes/level_holder.tscn" id="3_muc2s"]
-[ext_resource type="PackedScene" uid="uid://deh2etu4sbv4w" path="res://scenes/space_shooter_levels/level_1.tscn" id="4_np5t5"]
 
 [node name="SpaceShooterLevels" type="Node2D" unique_id=1940226276]
 
@@ -23,8 +22,6 @@ rocket_cutoff_distance = 325.0
 starfield = NodePath("../Starfield")
 
 [node name="LevelHolder" parent="." unique_id=614011244 instance=ExtResource("3_muc2s")]
-
-[node name="Level_1" parent="LevelHolder" unique_id=236372489 instance=ExtResource("4_np5t5")]
 
 [node name="PlayerBulletPool" type="Node2D" parent="." unique_id=1617472053 groups=["PLAYER_BULLET_POOL"]]
 

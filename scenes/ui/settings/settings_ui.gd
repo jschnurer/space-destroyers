@@ -2,6 +2,7 @@ extends Control
 class_name SettingsUI
 
 @export var show_input_mapping := true
+@export var max_ffwd_speed := 20
 
 signal settings_closed
 
@@ -28,12 +29,14 @@ func toggle(is_enabled: bool) -> void:
 			ffwd_speed.grab_focus()
 
 func _on_ffwd_plus_pressed() -> void:
-	FastForward.ffwd_time_scale = clampf(FastForward.ffwd_time_scale + 1, 2, 10)
+	FastForward.ffwd_time_scale = clampf(FastForward.ffwd_time_scale + 1, 2, max_ffwd_speed)
 	_update_ffwd_label()
+	UserConfig.save_options()
 
 func _on_ffwd_minus_pressed() -> void:
-	FastForward.ffwd_time_scale = clampf(FastForward.ffwd_time_scale - 1, 2, 10)
+	FastForward.ffwd_time_scale = clampf(FastForward.ffwd_time_scale - 1, 2, max_ffwd_speed)
 	_update_ffwd_label()
+	UserConfig.save_options()
 
 func _update_ffwd_label() -> void:
 	ffwd_speed.text = "%.0f" % FastForward.ffwd_time_scale + "x"

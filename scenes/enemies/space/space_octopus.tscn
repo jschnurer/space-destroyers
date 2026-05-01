@@ -30,7 +30,7 @@ frame = 1
 script = ExtResource("3_uxf1w")
 type = 1
 enemy_sprite = NodePath(".")
-life = 50
+life = 35
 
 [node name="Components" type="Node2D" parent="." unique_id=202961834]
 

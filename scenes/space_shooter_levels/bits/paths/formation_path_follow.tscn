@@ -1,12 +1,16 @@
 [gd_scene format=3 uid="uid://cq045jfgn54ii"]
 
 [ext_resource type="Script" uid="uid://cjrjjgumbka27" path="res://scenes/space_shooter_levels/bits/paths/formation_path_follow.gd" id="1_f267b"]
-[ext_resource type="PackedScene" uid="uid://c27mqld5evu4j" path="res://scenes/space_shooter_levels/bits/paths/path_follower.tscn" id="2_gvyly"]
 
 [node name="FormationPathFollow" type="Node2D" unique_id=534433363]
 script = ExtResource("1_f267b")
-path_follower_scene = ExtResource("2_gvyly")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=872971480]
 position = Vector2(0, 25)
 rect = Rect2(-467, -10, 2741, 20)
+
+[node name="PathWaitTimer" type="Timer" parent="." unique_id=1441823584]
+unique_name_in_owner = true
+one_shot = true
+
+[connection signal="timeout" from="PathWaitTimer" to="." method="_on_path_wait_timer_timeout"]
