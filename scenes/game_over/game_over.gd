@@ -32,7 +32,7 @@ func _update_labels(game_over_reason: Enums.GameOverReason) -> void:
 		Enums.GameOverReason.ENEMY_LANDED:
 			game_over_reason_text.text = "You failed to prevent the destroyers from reaching Earth. The citizens of the planet aren't mad. They're just disappointed."
 		Enums.GameOverReason.TANK_DESTROYED:
-			game_over_reason_text.text = "During your valiant battle, your tank was destroyed. Unopposed, the destroyers from space conquered the Earth. The citizens of the planet aren't mad. They're just disappointed."
+			game_over_reason_text.text = "During your valiant battle, SOPHIA 0 was destroyed. Unopposed, the destroyers from space conquered the Earth. The citizens of the planet aren't mad. They're just disappointed."
 
 func _fade_out_restart() -> void:
 	_input_enabled = false

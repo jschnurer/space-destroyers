@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Spaceship
 
-@export var move_speed_multiplier := 50.0
+@export var move_speed_multiplier := 100.0
 ## The time it takes to fully rotate between directions.
 @export var rotate_duration := 1.0
 @export var shot_sound: AudioStream
@@ -22,9 +22,9 @@ func _ready() -> void:
 	var width := sprite_size.size.x
 	var height := sprite_size.size.y
 	_player_move_bounds = Rect2(width / 2.0, \
-		Global.PLAYABLE_AREA_RECT.size.y * 0.33, \
+		height / 2.0, \
 		Global.PLAYABLE_AREA_RECT.size.x - width, \
-		Global.PLAYABLE_AREA_RECT.size.y - height - Global.PLAYABLE_AREA_RECT.size.y * 0.33)
+		Global.PLAYABLE_AREA_RECT.size.y - height)
 
 func _process(delta: float) -> void:
 	var move_x: float = Input.get_axis("move_left", "move_right")
@@ -75,3 +75,8 @@ func _physics_process(delta: float) -> void:
 
 func toggle_smoke_emission(emitting: bool) -> void:
 	smoke.emitting = emitting
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	# TODO: If the player leaves the visible area (such as pushed by asteroid), destroy them.
+	# TODO: Be sure to disable this if they're in a cutscene of flying off the screen, etc.
+	pass

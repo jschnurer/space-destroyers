@@ -22,16 +22,19 @@ signal on_hurtbox_hit(hitbox: HitboxComponent)
 var _flash_tween: Tween
 
 func _on_area_entered(area: Area2D) -> void:
-	if area is HitboxComponent and life_component:
+	if area is HitboxComponent:
 		var hitbox := area as HitboxComponent
 		
 		if !hitbox.is_active:
 			return
 		
-		# Attempt to reduce life.
-		var dmg_dealt := life_component.take_damage(hitbox.damage, hitbox)
-		if dmg_dealt > 0:
-			_on_took_damage(dmg_dealt, hitbox)
+		if life_component:
+			# Attempt to reduce life.
+			var dmg_dealt := life_component.take_damage(hitbox.damage, hitbox)
+			if dmg_dealt > 0:
+				_on_took_damage(dmg_dealt, hitbox)
+		else:
+			_on_took_damage(0, hitbox)
 		
 		# Always play "hit sound".
 		_try_play_hit_sound()
@@ -41,7 +44,7 @@ func _on_area_entered(area: Area2D) -> void:
 
 func _on_took_damage(dmg_dealt: float, hitbox: HitboxComponent) -> void:
 	hitbox.notify_dealt_damage(self, dmg_dealt)
-	if life_component.life > 0 and flash_damage:
+	if life_component and life_component.life > 0 and flash_damage:
 		_flash_damage()
 
 func _flash_damage() -> void:
@@ -59,5 +62,5 @@ func _set_flash_color(color: Color) -> void:
 	sprite_mat.set_shader_parameter("flash_color", color)
 
 func _try_play_hit_sound() -> void:
-	if play_hit_sound and hit_sound and (play_on_death or life_component.life > 0):
+	if play_hit_sound and hit_sound and (play_on_death or (life_component and life_component.life > 0)):
 		SignalBus.emit_play_sfx(hit_sound, 0.8)

@@ -20,7 +20,6 @@ y_weight = 1.2000000000000002
 metadata/_edit_lock_ = true
 
 [node name="ReferenceRect" parent="Starfield" index="0" unique_id=674209285]
-offset_right = 1920.0
 offset_bottom = 1015.0
 metadata/_edit_lock_ = true
 
@@ -52,5 +51,7 @@ metadata/_edit_lock_ = true
 
 [node name="AntiAirTowerBattery" parent="." unique_id=1385625833 instance=ExtResource("12_55ttk")]
 position = Vector2(960, 1012)
+
+[node name="PlayerBulletPool" type="Node2D" parent="." unique_id=73316276 groups=["PLAYER_BULLET_POOL"]]
 
 [editable path="Starfield"]

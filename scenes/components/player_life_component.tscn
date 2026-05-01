@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b4vsu845v0n51"]
+
+[ext_resource type="Script" uid="uid://hmognkj3nd0y" path="res://scenes/components/player_life_component.gd" id="1_nrl7o"]
+[ext_resource type="PackedScene" uid="uid://denivsfgmokeg" path="res://scenes/game_over_anim/game_over_anim.tscn" id="2_cuh4v"]
+[ext_resource type="PackedScene" uid="uid://d1xwwb4h1awsi" path="res://scenes/components/life_component.tscn" id="2_pr0fo"]
+
+[node name="PlayerLifeComponent" type="Node" unique_id=771249613]
+script = ExtResource("1_nrl7o")
+die_anim_scene = ExtResource("2_cuh4v")
+
+[node name="LifeComponent" parent="." unique_id=759486464 instance=ExtResource("2_pr0fo")]
+life = 1.0
+
+[connection signal="life_changed" from="LifeComponent" to="." method="_on_life_component_life_changed"]
+[connection signal="life_zeroed" from="LifeComponent" to="." method="_on_life_component_life_zeroed"]

@@ -14,9 +14,12 @@
 [ext_resource type="PackedScene" uid="uid://um6ysbnx1w0" path="res://scenes/components/option_spawn_component.tscn" id="12_vh5ma"]
 [ext_resource type="PackedScene" uid="uid://c11shgt1stvew" path="res://scenes/spaceship/player_option.tscn" id="13_prjj7"]
 [ext_resource type="PackedScene" uid="uid://b61r1anv0uuc" path="res://scenes/components/player_pickup_component.tscn" id="14_ebil8"]
+[ext_resource type="PackedScene" uid="uid://b8unj7w73q0w3" path="res://scenes/components/hurtbox_component.tscn" id="16_2qnxw"]
+[ext_resource type="AudioStream" uid="uid://u61dg00ewpw8" path="res://audio/sfx/beepfx_samples/16_hit_2.wav" id="17_e7ge4"]
+[ext_resource type="PackedScene" uid="uid://b4vsu845v0n51" path="res://scenes/components/player_life_component.tscn" id="17_vd7yq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rga66"]
-radius = 28.01785
+radius = 30.016663
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yl4tl"]
 lifetime_randomness = 0.6
@@ -36,15 +39,58 @@ shader = ExtResource("5_fu1d6")
 shader_parameter/shadow_intensity = 0.0
 shader_parameter/shadow_side = 0
 shader_parameter/shadow_steps = 8.0
+shader_parameter/flash_color = Color(0, 0, 0, 0)
 
 [node name="Spaceship" type="CharacterBody2D" unique_id=564671516 groups=["PLAYER"]]
 process_mode = 1
+collision_mask = 16
 script = ExtResource("1_6nyhl")
 shot_sound = ExtResource("2_cours")
 bullet_scene = ExtResource("2_oedjh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2032204974]
 shape = SubResource("CircleShape2D_rga66")
+
+[node name="Components" type="Node2D" parent="." unique_id=957829650]
+
+[node name="PlayerShootComponent" parent="Components" unique_id=186616760 node_paths=PackedStringArray("reload_component") instance=ExtResource("9_gr3ny")]
+reload_component = NodePath("../PlayerReloadComponent")
+
+[node name="PlayerReloadComponent" parent="Components" unique_id=1805562506 instance=ExtResource("10_cjlj8")]
+
+[node name="PositionHistoryComponent" parent="Components" unique_id=857927283 node_paths=PackedStringArray("watch_node") instance=ExtResource("11_cjlj8")]
+watch_node = NodePath("../..")
+deadzone = 2.0
+record_history_with_input = true
+
+[node name="OptionSpawnComponent" parent="Components" unique_id=3628961 node_paths=PackedStringArray("spawn_position", "position_history_comp") instance=ExtResource("12_vh5ma")]
+spawn_position = NodePath("../..")
+option_scene = ExtResource("13_prjj7")
+position_history_comp = NodePath("../PositionHistoryComponent")
+option_position_spacing = 15
+
+[node name="PlayerPickupComponent" parent="Components" unique_id=2016039151 instance=ExtResource("14_ebil8")]
+visible = false
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Components" unique_id=1631827236]
+visible = false
+rect = Rect2(-34, -32, 68, 94)
+
+[node name="HurtboxComponent" parent="Components" unique_id=2122994445 node_paths=PackedStringArray("life_component", "sprite_2d") instance=ExtResource("16_2qnxw")]
+visible = false
+collision_layer = 1
+collision_mask = 64
+life_component = NodePath("../PlayerLifeComponent/LifeComponent")
+play_hit_sound = true
+hit_sound = ExtResource("17_e7ge4")
+flash_damage = true
+sprite_2d = NodePath("../../ShipSprite")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Components/HurtboxComponent" unique_id=2080714047]
+shape = SubResource("CircleShape2D_rga66")
+
+[node name="PlayerLifeComponent" parent="Components" unique_id=771249613 node_paths=PackedStringArray("player_sprite") instance=ExtResource("17_vd7yq")]
+player_sprite = NodePath("../../ShipSprite")
 
 [node name="Smoke" type="GPUParticles2D" parent="." unique_id=1664217093]
 unique_name_in_owner = true
@@ -82,22 +128,6 @@ texture = ExtResource("1_4vs15")
 unique_name_in_owner = true
 position = Vector2(0, -36)
 
-[node name="Components" type="Node2D" parent="." unique_id=957829650]
+[connection signal="screen_exited" from="Components/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 
-[node name="PlayerShootComponent" parent="Components" unique_id=186616760 node_paths=PackedStringArray("reload_component") instance=ExtResource("9_gr3ny")]
-reload_component = NodePath("../PlayerReloadComponent")
-
-[node name="PlayerReloadComponent" parent="Components" unique_id=1805562506 instance=ExtResource("10_cjlj8")]
-
-[node name="PositionHistoryComponent" parent="Components" unique_id=857927283 node_paths=PackedStringArray("watch_node") instance=ExtResource("11_cjlj8")]
-watch_node = NodePath("../..")
-deadzone = 2.0
-record_history_with_input = true
-
-[node name="OptionSpawnComponent" parent="Components" unique_id=3628961 node_paths=PackedStringArray("spawn_position", "position_history_comp") instance=ExtResource("12_vh5ma")]
-spawn_position = NodePath("../..")
-option_scene = ExtResource("13_prjj7")
-position_history_comp = NodePath("../PositionHistoryComponent")
-option_position_spacing = 15
-
-[node name="PlayerPickupComponent" parent="Components" unique_id=2016039151 instance=ExtResource("14_ebil8")]
+[editable path="Components/PlayerLifeComponent"]

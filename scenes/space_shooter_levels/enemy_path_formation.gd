@@ -39,7 +39,7 @@ func _ready() -> void:
 		# Spawn the first enemy immediately, then use the timer to wait between each.
 		_on_spawn_timer_timeout()
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint() or !_enemy_path:
 		return
 	

@@ -11,5 +11,5 @@ func _ready() -> void:
 	for enemy in enemies:
 		enemy.process_mode = Node.PROCESS_MODE_DISABLED
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	scrolling_area_node.global_position.y += scroll_speed * delta

@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://bbo560qlstfg8"]
+
+[ext_resource type="Texture2D" uid="uid://ba776yoj1jow0" path="res://art/asteroids/asteroid_2.png" id="1_8ehh5"]
+[ext_resource type="Script" uid="uid://bses54bppt0wd" path="res://scenes/space_shooter_levels/bits/asteroids/asteroid.gd" id="1_86oko"]
+[ext_resource type="PackedScene" uid="uid://ce38u6nauhq7y" path="res://scenes/components/hitbox_component.tscn" id="2_dypwd"]
+[ext_resource type="Script" uid="uid://ccjacsbwwfwox" path="res://scenes/components/hurtbox_component.gd" id="3_wk2tg"]
+[ext_resource type="AudioStream" uid="uid://bca4f7jod5uw" path="res://audio/sfx/beepfx_samples/34_switch_1.wav" id="4_86oko"]
+
+[node name="Asteroid2" type="Node2D" unique_id=1343381401]
+script = ExtResource("1_86oko")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1712444905]
+modulate = Color(0.31061712, 0.31061712, 0.3106171, 1)
+scale = Vector2(4, 4)
+texture = ExtResource("1_8ehh5")
+
+[node name="HitboxComponent" parent="." unique_id=428100613 instance=ExtResource("2_dypwd")]
+visible = false
+scale = Vector2(4, 4)
+collision_layer = 81
+damage = 1.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitboxComponent" unique_id=1086571831]
+polygon = PackedVector2Array(-1.75, -8, -5, -7, -8, -2.75, -7.75, 2, -6.5, 5, -5, 7, -1.25, 8, 1.75, 7, 5.25, 8, 8, 6, 7.75, 3.25, 7, 2, 8, 0.5, 8, -4.75, 6, -6, 3.75, -8)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=638707850]
+visible = false
+collision_layer = 16
+collision_mask = 9
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1024437227]
+scale = Vector2(4, 4)
+polygon = PackedVector2Array(-1.75, -8, -5, -7, -8, -2.75, -7.75, 2, -6.5, 5, -5, 7, -1.25, 8, 1.75, 7, 5.25, 8, 8, 6, 7.75, 3.25, 7, 2, 8, 0.5, 8, -4.75, 6, -6, 3.75, -8)
+
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=979842939]
+visible = false
+collision_layer = 18
+collision_mask = 8
+script = ExtResource("3_wk2tg")
+play_hit_sound = true
+hit_sound = ExtResource("4_86oko")
+metadata/_custom_type_script = "uid://ccjacsbwwfwox"
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="HurtboxComponent" unique_id=1885553908]
+scale = Vector2(4, 4)
+polygon = PackedVector2Array(-1.75, -8, -5, -7, -8, -2.75, -7.75, 2, -6.5, 5, -5, 7, -1.25, 8, 1.75, 7, 5.25, 8, 8, 6, 7.75, 3.25, 7, 2, 8, 0.5, 8, -4.75, 6, -6, 3.75, -8)

@@ -6,8 +6,17 @@ uniform int shadow_side = 0;
 // Number of steps for shadow.
 uniform float shadow_steps = 3.0;
 
+uniform vec4 flash_color: source_color = vec4(0.0, 0.0, 0.0, 0.0);
+
+void handle_flash(sampler2D base_tex, vec2 base_uv, inout vec4 current_color) {
+	vec4 tex = texture(base_tex, base_uv);
+    current_color = vec4(flash_color.rgb * tex.a, tex.a);
+}
+
 void fragment() {
-	if (shadow_side != 0) {
+	if (flash_color.a != 0.0) {
+		handle_flash(TEXTURE, UV, COLOR);
+	} else if (shadow_side != 0) {
 		int pixel_side = UV.x < 0.5 ? -1 : 1;
 		
 		if (pixel_side == shadow_side) {

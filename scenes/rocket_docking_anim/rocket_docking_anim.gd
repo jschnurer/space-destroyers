@@ -92,7 +92,8 @@ func _animate_gleam() -> void:
 	SignalBus.emit_play_sfx(jet_burst)
 	SignalBus.emit_play_bgm(level_bgm)
 	PauseManager.resume()
-	Engine.time_scale = 1.0
+	if skip_play:
+		Engine.time_scale = 1.0
 	
 	if starfield:
 		# Animate star speed!

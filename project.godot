@@ -65,6 +65,8 @@ TERRAIN_BOTTOM=""
 CREDIT=""
 LEVEL_MANAGER_SPACE=""
 CREDIT_PARENT=""
+PLAYER_BULLET_POOL=""
+ENEMY_BULLET_POOL=""
 
 [input]
 
@@ -211,6 +213,7 @@ cancel={
 
 [physics]
 
+common/physics_ticks_per_second=120
 3d/physics_engine="Jolt Physics"
 2d/default_gravity=300.0
 

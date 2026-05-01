@@ -11,7 +11,7 @@ func _ready() -> void:
 	SignalBus.enemy_direction_change.connect(_on_enemy_direction_change)
 	SignalBus.enemy_speed_change.connect(_on_enemy_speed_change)
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if enemy_node:
 		enemy_node.position += _direction * _speed * delta
 

@@ -56,6 +56,7 @@ alignment = 1
 
 [node name="InputPromptLabel" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=50002874 instance=ExtResource("4_vtso4")]
 layout_mode = 2
+auto_change_on_input = true
 
 [node name="Try Again" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=561678754]
 layout_mode = 2

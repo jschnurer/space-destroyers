@@ -41,7 +41,6 @@ sprite = NodePath("../..")
 current_frame = 1
 
 [node name="HurtboxComponent" parent="Components" unique_id=2122994445 node_paths=PackedStringArray("life_component", "sprite_2d") instance=ExtResource("7_6ok4c")]
-visible = false
 collision_layer = 2
 collision_mask = 8
 life_component = NodePath("../LifeComponent")
@@ -49,7 +48,6 @@ flash_damage = true
 sprite_2d = NodePath("../..")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Components/HurtboxComponent" unique_id=1121575589]
-position = Vector2(24, 16)
 shape = SubResource("RectangleShape2D_5jqga")
 
 [node name="LuckyComponent" parent="Components" unique_id=1751092268 node_paths=PackedStringArray("sprite") instance=ExtResource("8_1d815")]

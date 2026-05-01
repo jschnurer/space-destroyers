@@ -4,7 +4,7 @@ class_name PlayerShootComponent
 @export var bullet_scene: PackedScene
 @export var shot_sound: AudioStream
 @export var reload_component: PlayerReloadComponent
-@export var bullet_pool_size := 50
+@export var bullet_pool_size := 100
 
 signal shot_fired
 
@@ -33,12 +33,12 @@ func _try_shoot() -> void:
 	# Shoot bullets.
 	var multi_level := Game.get_upgrade_level  (Enums.PlayerUpgrades.MULTI_CANNON)
 	if multi_level > 0:
-		_spawn_bullet(-8.0, 0.0, 1, 0.55)
-		_spawn_bullet(8.0, 0.0, 1, 0.55)
+		_spawn_bullet(-8.0, 0.0, 0.55, Color.SILVER)
+		_spawn_bullet(8.0, 0.0, 0.55, Color.SILVER)
 		if multi_level >= 2:
-			_spawn_bullet(-24, -4, 0.5, 0.225)
+			_spawn_bullet(-24, -4, 0.225, Color.GRAY)
 		if multi_level >= 3:
-			_spawn_bullet(24, 4, 0.5, 0.225)
+			_spawn_bullet(24, 4, 0.225, Color.GRAY)
 	else:
 		_spawn_bullet(0)
 	
@@ -50,7 +50,7 @@ func _try_shoot() -> void:
 	# Start reloading.
 	reload_component.reload()
 
-func _spawn_bullet(bullet_offset: float, angle_offset: float = 0.0, bullet_scale: float = 1.0, damage_scale: float = 1.0) -> void:
+func _spawn_bullet(bullet_offset: float, angle_offset: float = 0.0, damage_scale: float = 1.0, bullet_modulate: Color = Color.WHITE) -> void:
 	var bullet := _get_first_available_bullet()
 	
 	if !bullet:
@@ -61,8 +61,8 @@ func _spawn_bullet(bullet_offset: float, angle_offset: float = 0.0, bullet_scale
 	bullet.global_position.x += bullet_offset
 	
 	bullet.rotation = deg_to_rad(angle_offset)
-	bullet.scale_hitbox(bullet_scale)
-	bullet.scale_sprite(bullet_scale)
+	
+	bullet.modulate = bullet_modulate
 	
 	bullet.set_damage_speed_direction(\
 		Game.get_stat_value(Enums.PlayerStats.DAMAGE) * damage_scale,
@@ -80,7 +80,7 @@ func _init_bullet_pool() -> void:
 	
 	_bullet_pool.resize(bullet_pool_size)
 	
-	var player_parent := get_tree().get_first_node_in_group(GroupNames.PLAYER).get_parent()
+	var pool_node := get_tree().get_first_node_in_group(GroupNames.PLAYER_BULLET_POOL)
 	
 	for i in range(bullet_pool_size):
 		var bullet: Bullet = bullet_scene.instantiate()
@@ -106,7 +106,7 @@ func _init_bullet_pool() -> void:
 		_bullet_pool[i] = bullet
 		
 		# Add to the scene.
-		player_parent.add_child.call_deferred(bullet)
+		pool_node.add_child.call_deferred(bullet)
 		
 		# Disable and hide it.
 		bullet.toggle_bullet(false)

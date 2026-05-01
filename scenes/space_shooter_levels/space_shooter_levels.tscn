@@ -26,4 +26,6 @@ starfield = NodePath("../Starfield")
 
 [node name="Level_1" parent="LevelHolder" unique_id=236372489 instance=ExtResource("4_np5t5")]
 
+[node name="PlayerBulletPool" type="Node2D" parent="." unique_id=1617472053 groups=["PLAYER_BULLET_POOL"]]
+
 [editable path="Starfield"]

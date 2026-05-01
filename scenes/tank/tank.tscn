@@ -8,9 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://dgfuu1m46xmvo" path="res://scenes/components/reload_meter_component.tscn" id="7_valud"]
 [ext_resource type="PackedScene" uid="uid://iqyufmdbfs44" path="res://scenes/components/player_shoot_component.tscn" id="9_1pfma"]
 [ext_resource type="PackedScene" uid="uid://b8unj7w73q0w3" path="res://scenes/components/hurtbox_component.tscn" id="9_t8nan"]
-[ext_resource type="PackedScene" uid="uid://d1xwwb4h1awsi" path="res://scenes/components/life_component.tscn" id="10_1pfma"]
 [ext_resource type="AudioStream" uid="uid://u61dg00ewpw8" path="res://audio/sfx/beepfx_samples/16_hit_2.wav" id="10_wyqxc"]
 [ext_resource type="PackedScene" uid="uid://bf2gbs3dw64vu" path="res://scenes/components/laser_sight_component.tscn" id="12_wyqxc"]
+[ext_resource type="PackedScene" uid="uid://b4vsu845v0n51" path="res://scenes/components/player_life_component.tscn" id="13_1ncvr"]
 [ext_resource type="PackedScene" uid="uid://b61r1anv0uuc" path="res://scenes/components/player_pickup_component.tscn" id="13_4g7yc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wyqxc"]
@@ -53,7 +53,7 @@ metadata/_edit_lock_ = true
 [node name="HurtboxComponent" parent="Components" unique_id=2122994445 node_paths=PackedStringArray("life_component", "sprite_2d") instance=ExtResource("9_t8nan")]
 collision_layer = 1
 collision_mask = 64
-life_component = NodePath("../LifeComponent")
+life_component = NodePath("../PlayerLifeComponent/LifeComponent")
 play_hit_sound = true
 hit_sound = ExtResource("10_wyqxc")
 flash_damage = true
@@ -63,10 +63,10 @@ sprite_2d = NodePath("../../Sprite2D")
 polygon = PackedVector2Array(20, 0, 24, 0, 44, 16, 44, 32, 0, 32, 0, 16)
 metadata/_edit_lock_ = true
 
-[node name="LifeComponent" parent="Components" unique_id=759486464 instance=ExtResource("10_1pfma")]
-life = 1.0
-
 [node name="LaserSightComponent" parent="Components" unique_id=1202097825 instance=ExtResource("12_wyqxc")]
 position = Vector2(22, -10)
 
-[connection signal="life_zeroed" from="Components/LifeComponent" to="." method="_on_life_component_life_zeroed"]
+[node name="PlayerLifeComponent" parent="Components" unique_id=771249613 node_paths=PackedStringArray("player_sprite") instance=ExtResource("13_1ncvr")]
+player_sprite = NodePath("../../Sprite2D")
+
+[editable path="Components/PlayerLifeComponent"]
