@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cq045jfgn54ii"]
 
-[ext_resource type="Script" uid="uid://cjrjjgumbka27" path="res://scenes/space_shooter_levels/bits/paths/formation_path_follow.gd" id="1_f267b"]
+[ext_resource type="Script" uid="uid://cjrjjgumbka27" path="res://scenes/space_shooter_levels/bits/paths/behavior_orchestrator.gd" id="1_f267b"]
 
-[node name="FormationPathFollow" type="Node2D" unique_id=534433363]
+[node name="BehaviorOrchestrator" type="Node2D" unique_id=534433363]
 script = ExtResource("1_f267b")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=872971480]

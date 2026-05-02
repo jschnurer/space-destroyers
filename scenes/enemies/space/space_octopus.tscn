@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://ce38u6nauhq7y" path="res://scenes/components/hitbox_component.tscn" id="14_2sesk"]
 [ext_resource type="PackedScene" uid="uid://d1jln5dps07ua" path="res://scenes/bullet/bullet.tscn" id="14_jgwmf"]
 [ext_resource type="PackedScene" uid="uid://0esplk3dg3yq" path="res://scenes/components/reload_component.tscn" id="15_kjpkb"]
+[ext_resource type="PackedScene" uid="uid://dddchihkt36mp" path="res://scenes/components/delete_offscreen_component.tscn" id="15_qh4jw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5jqga"]
 size = Vector2(48, 32)
@@ -79,8 +80,7 @@ inherit_sprite_scale = true
 inherit_from_sprite = NodePath("../..")
 
 [node name="ReloadComponent" parent="Components" unique_id=315688650 instance=ExtResource("15_kjpkb")]
-use_random_reload_time = true
-max_reload_time = 3.0
+reload_time = 1.5
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Components" unique_id=592611382]
 rect = Rect2(-24, -16, 48, 32)
@@ -93,3 +93,6 @@ damage = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HitboxComponent" unique_id=183247342]
 shape = SubResource("RectangleShape2D_2sesk")
+
+[node name="DeleteOffscreenComponent" parent="Components" unique_id=1973328041 node_paths=PackedStringArray("delete_node") instance=ExtResource("15_qh4jw")]
+delete_node = NodePath("../..")

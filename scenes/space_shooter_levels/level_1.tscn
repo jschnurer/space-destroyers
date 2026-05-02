@@ -5,38 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://rupg4t0evk1g" path="res://scenes/space_shooter_levels/bits/paths/snaking_path_1.tscn" id="2_cvyx1"]
 [ext_resource type="PackedScene" uid="uid://owvblgld0bxd" path="res://scenes/enemies/space/space_octopus.tscn" id="3_8ascr"]
 [ext_resource type="Shader" uid="uid://dairmqngktiej" path="res://shaders/enemy_shader.tres" id="4_rk137"]
-[ext_resource type="PackedScene" uid="uid://cq045jfgn54ii" path="res://scenes/space_shooter_levels/bits/paths/formation_path_follow.tscn" id="5_gvetg"]
+[ext_resource type="PackedScene" uid="uid://cq045jfgn54ii" path="res://scenes/space_shooter_levels/bits/paths/behavior_orchestrator.tscn" id="5_gvetg"]
 [ext_resource type="PackedScene" uid="uid://dc824wyrsonji" path="res://scenes/space_shooter_levels/bits/paths/swoop_arrive_path.tscn" id="6_gvetg"]
-[ext_resource type="PackedScene" uid="uid://c27mqld5evu4j" path="res://scenes/space_shooter_levels/bits/paths/path_follower.tscn" id="7_uv2n3"]
-[ext_resource type="Script" uid="uid://brs7lenqdruyf" path="res://scripts/path_step.gd" id="9_g6hb0"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uv2n3"]
-resource_local_to_scene = true
-shader = ExtResource("4_rk137")
-shader_parameter/time = 0.0
-shader_parameter/is_lucky = false
-shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
-shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
-shader_parameter/rotation = 0.0
-shader_parameter/hframes = 2.0
-shader_parameter/vframes = 1.0
-shader_parameter/band_width = 0.30000001355148
-shader_parameter/sharpness = 0.02
-shader_parameter/flash_color = Color(0, 0, 0, 0)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_g6hb0"]
-resource_local_to_scene = true
-shader = ExtResource("4_rk137")
-shader_parameter/time = 0.0
-shader_parameter/is_lucky = false
-shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
-shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
-shader_parameter/rotation = 0.0
-shader_parameter/hframes = 2.0
-shader_parameter/vframes = 1.0
-shader_parameter/band_width = 0.30000001355148
-shader_parameter/sharpness = 0.02
-shader_parameter/flash_color = Color(0, 0, 0, 0)
+[ext_resource type="Script" uid="uid://dhqfsna2crfbs" path="res://scripts/behaviors/toggle_autoshoot_behavior.gd" id="8_f7bkm"]
+[ext_resource type="Script" uid="uid://brs7lenqdruyf" path="res://scripts/behaviors/follow_path_behavior.gd" id="9_g6hb0"]
+[ext_resource type="Script" uid="uid://cjqv40xmldbto" path="res://scripts/behaviors/wait_behavior.gd" id="11_faq1n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f7bkm"]
 resource_local_to_scene = true
@@ -122,11 +95,19 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="Curve2D" id="Curve2D_08dt3"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 334, 280, -104.060005, -24.2, 104.060005, 24.2, 526, 481, -82.28, 1.21, 82.28, -1.21, 790, 497, -135.52, -30.25, 135.52, 30.25, 976, 522, -93.170006, -130.68001, 93.170006, 130.68001, 1205, 689, 0, 0, 0, 0, 1432, 1356)
-}
-point_count = 6
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_08dt3"]
+resource_local_to_scene = true
+shader = ExtResource("4_rk137")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_victv"]
 resource_local_to_scene = true
@@ -141,6 +122,12 @@ shader_parameter/vframes = 1.0
 shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="Curve2D" id="Curve2D_08dt3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 334, 280, -104.060005, -24.2, 104.060005, 24.2, 526, 481, -82.28, 1.21, 82.28, -1.21, 790, 497, -135.52, -30.25, 135.52, 30.25, 976, 522, -93.170006, -130.68001, 93.170006, 130.68001, 1205, 689, 0, 0, 0, 0, 1432, 1356)
+}
+point_count = 6
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ean1a"]
 resource_local_to_scene = true
@@ -184,6 +171,20 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y338x"]
+resource_local_to_scene = true
+shader = ExtResource("4_rk137")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
 [node name="Level_1" type="Node2D" unique_id=236372489 groups=["LEVEL_NODE"]]
 
 [node name="SpaceShooterLevelManager" parent="." unique_id=675234762 node_paths=PackedStringArray("scrolling_area_node") groups=["LEVEL_MANAGER_SPACE"] instance=ExtResource("1_3xd4q")]
@@ -196,6 +197,7 @@ position = Vector2(1730, -104)
 level_manager = NodePath("../../SpaceShooterLevelManager")
 
 [node name="SnakingPath1" parent="ScrollingArea/EnemyPathFormation" unique_id=766471940 instance=ExtResource("2_cvyx1")]
+metadata/_edit_lock_ = true
 
 [node name="EnemyPathFormation2" parent="ScrollingArea" unique_id=298844592 node_paths=PackedStringArray("level_manager") instance=ExtResource("1_8ascr")]
 position = Vector2(189, -3000)
@@ -205,95 +207,103 @@ level_manager = NodePath("../../SpaceShooterLevelManager")
 scale = Vector2(-1, 1)
 
 [node name="SpaceOctopus" parent="ScrollingArea" unique_id=559603659 instance=ExtResource("3_8ascr")]
-material = SubResource("ShaderMaterial_uv2n3")
+material = SubResource("ShaderMaterial_f7bkm")
 position = Vector2(864, -2000)
-frame = 0
 
 [node name="SpaceOctopus2" parent="ScrollingArea" unique_id=1364255275 instance=ExtResource("3_8ascr")]
-material = SubResource("ShaderMaterial_g6hb0")
+material = SubResource("ShaderMaterial_faq1n")
 position = Vector2(960, -2000)
-frame = 0
 
 [node name="SpaceOctopus3" parent="ScrollingArea" unique_id=160682573 instance=ExtResource("3_8ascr")]
-material = SubResource("ShaderMaterial_f7bkm")
+material = SubResource("ShaderMaterial_txkhk")
 position = Vector2(864, -2096)
-frame = 0
 
 [node name="SpaceOctopus4" parent="ScrollingArea" unique_id=956650247 instance=ExtResource("3_8ascr")]
-material = SubResource("ShaderMaterial_faq1n")
+material = SubResource("ShaderMaterial_wjmby")
 position = Vector2(960, -2096)
-frame = 0
 
 [node name="SpaceOctopus5" parent="ScrollingArea" unique_id=1475276676 instance=ExtResource("3_8ascr")]
-material = SubResource("ShaderMaterial_txkhk")
-position = Vector2(1416, -698)
-frame = 0
+material = SubResource("ShaderMaterial_h54y1")
+position = Vector2(1109, -840)
 
 [node name="SpaceOctopus6" parent="ScrollingArea" unique_id=1891211041 instance=ExtResource("3_8ascr")]
-material = SubResource("ShaderMaterial_wjmby")
-position = Vector2(1512, -698)
-frame = 0
+material = SubResource("ShaderMaterial_gg5u0")
+position = Vector2(1205, -840)
 
 [node name="SpaceOctopus7" parent="ScrollingArea" unique_id=288886625 instance=ExtResource("3_8ascr")]
-material = SubResource("ShaderMaterial_h54y1")
-position = Vector2(1416, -794)
-frame = 0
+material = SubResource("ShaderMaterial_08dt3")
+position = Vector2(1109, -936)
 
 [node name="SpaceOctopus8" parent="ScrollingArea" unique_id=426236 instance=ExtResource("3_8ascr")]
-material = SubResource("ShaderMaterial_gg5u0")
-position = Vector2(1512, -794)
-frame = 0
+material = SubResource("ShaderMaterial_victv")
+position = Vector2(1205, -936)
 
-[node name="FormationPathFollow" parent="ScrollingArea" unique_id=534433363 node_paths=PackedStringArray("node_to_move", "path_steps") instance=ExtResource("5_gvetg")]
+[node name="BehaviorOrchestrator" parent="ScrollingArea" unique_id=534433363 node_paths=PackedStringArray("behaviors") instance=ExtResource("5_gvetg")]
 position = Vector2(0, -100)
-node_to_move = NodePath("EnemyFormation")
-path_follower_scene = ExtResource("7_uv2n3")
-path_steps = [NodePath("PathStepArrive"), NodePath("PathStepExit")]
+behaviors = [NodePath("AutoShoot_Off"), NodePath("FollowPath_Arrive"), NodePath("AutoShoot_On"), NodePath("Wait"), NodePath("AutoShoot_Off_2"), NodePath("FollowPath_Exit")]
 
-[node name="PathStepArrive" type="Node2D" parent="ScrollingArea/FormationPathFollow" unique_id=2002003168 node_paths=PackedStringArray("path")]
+[node name="AutoShoot_Off" type="Node2D" parent="ScrollingArea/BehaviorOrchestrator" unique_id=336847127 node_paths=PackedStringArray("nodes_with_autoshoot")]
+script = ExtResource("8_f7bkm")
+nodes_with_autoshoot = [NodePath("../EnemyFormation/SpaceOctopus"), NodePath("../EnemyFormation/SpaceOctopus2"), NodePath("../EnemyFormation/SpaceOctopus3"), NodePath("../EnemyFormation/SpaceOctopus4")]
+metadata/_custom_type_script = "uid://dhqfsna2crfbs"
+
+[node name="FollowPath_Arrive" type="Node2D" parent="ScrollingArea/BehaviorOrchestrator" unique_id=2002003168 node_paths=PackedStringArray("path", "node_to_move")]
 script = ExtResource("9_g6hb0")
 path = NodePath("SwoopArrivePath")
+node_to_move = NodePath("../EnemyFormation")
 path_speed = 250.0
 path_use_transition = true
 path_transition = 1
 path_use_easing = true
 path_easing = 1
-wait_time_at_end = 5.0
 metadata/_custom_type_script = "uid://brs7lenqdruyf"
 
-[node name="SwoopArrivePath" parent="ScrollingArea/FormationPathFollow/PathStepArrive" unique_id=1480646937 instance=ExtResource("6_gvetg")]
+[node name="SwoopArrivePath" parent="ScrollingArea/BehaviorOrchestrator/FollowPath_Arrive" unique_id=1480646937 instance=ExtResource("6_gvetg")]
 
-[node name="PathStepExit" type="Node2D" parent="ScrollingArea/FormationPathFollow" unique_id=1825396506 node_paths=PackedStringArray("path")]
+[node name="AutoShoot_On" type="Node2D" parent="ScrollingArea/BehaviorOrchestrator" unique_id=1775896924 node_paths=PackedStringArray("nodes_with_autoshoot")]
+script = ExtResource("8_f7bkm")
+autoshoot_enabled = true
+nodes_with_autoshoot = [NodePath("../EnemyFormation/SpaceOctopus"), NodePath("../EnemyFormation/SpaceOctopus2"), NodePath("../EnemyFormation/SpaceOctopus3"), NodePath("../EnemyFormation/SpaceOctopus4")]
+metadata/_custom_type_script = "uid://dhqfsna2crfbs"
+
+[node name="Wait" type="Node2D" parent="ScrollingArea/BehaviorOrchestrator" unique_id=1739608124]
+script = ExtResource("11_faq1n")
+wait_time = 5.0
+metadata/_custom_type_script = "uid://cjqv40xmldbto"
+
+[node name="AutoShoot_Off_2" type="Node2D" parent="ScrollingArea/BehaviorOrchestrator" unique_id=390120647 node_paths=PackedStringArray("nodes_with_autoshoot")]
+script = ExtResource("8_f7bkm")
+nodes_with_autoshoot = [NodePath("../EnemyFormation/SpaceOctopus"), NodePath("../EnemyFormation/SpaceOctopus2"), NodePath("../EnemyFormation/SpaceOctopus3"), NodePath("../EnemyFormation/SpaceOctopus4")]
+metadata/_custom_type_script = "uid://dhqfsna2crfbs"
+
+[node name="FollowPath_Exit" type="Node2D" parent="ScrollingArea/BehaviorOrchestrator" unique_id=1825396506 node_paths=PackedStringArray("path", "node_to_move")]
 script = ExtResource("9_g6hb0")
 path = NodePath("ExitPath")
+node_to_move = NodePath("../EnemyFormation")
 path_speed = 350.0
 path_use_transition = true
 path_transition = 4
 path_use_easing = true
-free_at_end = true
 metadata/_custom_type_script = "uid://brs7lenqdruyf"
 
-[node name="ExitPath" type="Path2D" parent="ScrollingArea/FormationPathFollow/PathStepExit" unique_id=1750476465]
+[node name="ExitPath" type="Path2D" parent="ScrollingArea/BehaviorOrchestrator/FollowPath_Exit" unique_id=1750476465]
 curve = SubResource("Curve2D_08dt3")
 
-[node name="EnemyFormation" type="Node2D" parent="ScrollingArea/FormationPathFollow" unique_id=2126328630]
+[node name="EnemyFormation" type="Node2D" parent="ScrollingArea/BehaviorOrchestrator" unique_id=2126328630]
+position = Vector2(0, -76)
 
-[node name="SpaceOctopus" parent="ScrollingArea/FormationPathFollow/EnemyFormation" unique_id=1573088333 instance=ExtResource("3_8ascr")]
-material = SubResource("ShaderMaterial_victv")
-position = Vector2(-48, -48)
-frame = 0
-
-[node name="SpaceOctopus2" parent="ScrollingArea/FormationPathFollow/EnemyFormation" unique_id=244748889 instance=ExtResource("3_8ascr")]
+[node name="SpaceOctopus" parent="ScrollingArea/BehaviorOrchestrator/EnemyFormation" unique_id=1573088333 instance=ExtResource("3_8ascr")]
 material = SubResource("ShaderMaterial_ean1a")
-position = Vector2(48, -48)
-frame = 0
+position = Vector2(-48, -48)
 
-[node name="SpaceOctopus3" parent="ScrollingArea/FormationPathFollow/EnemyFormation" unique_id=1605537323 instance=ExtResource("3_8ascr")]
+[node name="SpaceOctopus2" parent="ScrollingArea/BehaviorOrchestrator/EnemyFormation" unique_id=1447993890 instance=ExtResource("3_8ascr")]
 material = SubResource("ShaderMaterial_heebk")
-position = Vector2(-48, 48)
-frame = 0
+position = Vector2(48, -48)
 
-[node name="SpaceOctopus4" parent="ScrollingArea/FormationPathFollow/EnemyFormation" unique_id=1636973436 instance=ExtResource("3_8ascr")]
+[node name="SpaceOctopus3" parent="ScrollingArea/BehaviorOrchestrator/EnemyFormation" unique_id=732964929 instance=ExtResource("3_8ascr")]
 material = SubResource("ShaderMaterial_8h6i8")
+position = Vector2(-48, 48)
+
+[node name="SpaceOctopus4" parent="ScrollingArea/BehaviorOrchestrator/EnemyFormation" unique_id=754769384 instance=ExtResource("3_8ascr")]
+material = SubResource("ShaderMaterial_y338x")
 position = Vector2(48, 48)
-frame = 0

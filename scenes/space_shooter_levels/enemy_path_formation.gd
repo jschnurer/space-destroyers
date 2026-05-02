@@ -14,6 +14,8 @@ class_name EnemyPathFormation
 @export var rotate_enemies := false
 ## The PathFollower scene.
 @export var path_follower_scene: PackedScene
+## If true, enemy is freed upon reaching path end.
+@export var free_enemy_at_path_end: bool = true
 
 @export_group("Editor Hints")
 ## Show a meter upward for total time for spawns followed by the time for the last enemy to reach
@@ -50,6 +52,12 @@ func _physics_process(delta: float) -> void:
 		follower.progress += enemy_path_speed * delta
 		if follower.progress_ratio >= 1.0:
 			follower.queue_free()
+			if free_enemy_at_path_end:
+				var rt := follower.get_child(0) as RemoteTransform2D
+				if rt:
+					var enemy := get_node(rt.remote_path)
+					if enemy:
+						enemy.queue_free()
 
 func _draw() -> void:
 	if !editor_show_time_hint:

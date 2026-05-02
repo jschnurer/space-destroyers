@@ -40,6 +40,8 @@ class_name AutoShootComponent
 ## The sprite to inherit projectile scale from.
 @export var inherit_from_sprite: Sprite2D
 
+var _is_enabled := true
+
 @onready var delay_timer: Timer = $DelayTimer
 
 func _ready() -> void:
@@ -84,3 +86,11 @@ func _spawn_projectile(position_offset: float) -> void:
 		projectile.scale = inherit_from_sprite.scale
 	
 	Utilities.call_deferred("add_child_to_level", projectile)
+
+func toggle(is_enabled: bool) -> void:
+	_is_enabled = is_enabled
+	# Pause the delay timer.
+	delay_timer.paused = !is_enabled
+	# Pause the reload component.
+	if reload_component:
+		reload_component.toggle(is_enabled)

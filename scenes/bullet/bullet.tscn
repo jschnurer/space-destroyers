@@ -18,6 +18,7 @@ texture = ExtResource("1_0vdx3")
 [node name="Components" type="Node2D" parent="." unique_id=95617124]
 
 [node name="DeleteOffscreenComponent" parent="Components" unique_id=1973328041 node_paths=PackedStringArray("delete_node") instance=ExtResource("3_c6pnf")]
+rect = Rect2(-1, -2.5, 2, 5)
 delete_node = NodePath("../..")
 
 [node name="HitboxComponent" parent="Components" unique_id=428100613 instance=ExtResource("4_0vdx3")]

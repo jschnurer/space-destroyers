@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://65516pmqed0c" path="res://audio/sfx/beepfx_samples/22_boom_3.wav" id="8_681wy"]
 [ext_resource type="PackedScene" uid="uid://b0rqtlww1es66" path="res://scenes/invader_death/invader_death.tscn" id="9_6v11r"]
 [ext_resource type="PackedScene" uid="uid://ce38u6nauhq7y" path="res://scenes/components/hitbox_component.tscn" id="11_g5xs7"]
+[ext_resource type="Script" uid="uid://sve2r7gbvck6" path="res://scenes/components/delete_offscreen_component.gd" id="12_mci8y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_of053"]
 size = Vector2(44, 32)
@@ -67,3 +68,8 @@ damage = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HitboxComponent" unique_id=1170699534]
 shape = SubResource("RectangleShape2D_mci8y")
+
+[node name="DeleteOffscreenComponent" type="VisibleOnScreenNotifier2D" parent="Components" unique_id=1734246751 node_paths=PackedStringArray("delete_node")]
+script = ExtResource("12_mci8y")
+delete_node = NodePath("../..")
+metadata/_custom_type_script = "uid://sve2r7gbvck6"

@@ -18,10 +18,6 @@ signal reload_complete
 
 var _is_reloading := false
 
-func _process(_delta: float) -> void:
-	if !_is_reloading:
-		return
-
 ## Updates the reload wait time.
 func set_reload_time(value: float) -> void:
 	reload_time = value
@@ -64,3 +60,7 @@ func _on_reload_timer_timeout() -> void:
 	reload_complete.emit()
 	if use_random_reload_time:
 		reload_timer.wait_time = randf_range(min_reload_time, max_reload_time)
+
+func toggle(is_enabled: bool) -> void:
+	# Pause the delay timer.
+	reload_timer.paused = !is_enabled
