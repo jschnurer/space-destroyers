@@ -40,6 +40,8 @@ shader_parameter/shadow_intensity = 0.0
 shader_parameter/shadow_side = 0
 shader_parameter/shadow_steps = 8.0
 shader_parameter/flash_color = Color(0, 0, 0, 0)
+shader_parameter/shield_thickness = 3.0
+shader_parameter/shield_color = Color(0, 0.8724542, 1, 0.54800004)
 
 [node name="Spaceship" type="CharacterBody2D" unique_id=564671516 groups=["PLAYER"]]
 process_mode = 1
@@ -47,6 +49,7 @@ collision_mask = 16
 script = ExtResource("1_6nyhl")
 shot_sound = ExtResource("2_cours")
 bullet_scene = ExtResource("2_oedjh")
+shield_base_color = Color(0, 0.8724542, 1, 0.54800004)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2032204974]
 shape = SubResource("CircleShape2D_rga66")

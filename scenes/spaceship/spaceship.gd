@@ -6,6 +6,8 @@ class_name Spaceship
 @export var rotate_duration := 1.0
 @export var shot_sound: AudioStream
 @export var bullet_scene: PackedScene
+@export var shield_base_color: Color
+@export var show_shield: bool = true
 
 @onready var smoke: GPUParticles2D = %Smoke
 @onready var ship_sprite: Sprite2D = %ShipSprite
@@ -16,6 +18,7 @@ var _bank_speed := 2.5
 var _max_bank := 0.7
 var _lean_amount: float = 0.0
 var _player_move_bounds: Rect2
+var _shield_pulse_time := 0.0
 
 func _ready() -> void:
 	var sprite_size := ship_sprite.get_rect()
@@ -43,6 +46,25 @@ func _process(delta: float) -> void:
 	
 	ship_mat.set_shader_parameter("shadow_side", shadow_side)
 	ship_mat.set_shader_parameter("shadow_intensity", absf(_lean_amount * 0.85))
+	
+	if show_shield:
+		_process_shield(delta)
+
+func _process_shield(delta: float) -> void:
+	_shield_pulse_time += delta
+	
+	var pulse := (sin(_shield_pulse_time * 4) + 1) / 2.0
+	
+	var life := Game.game_state.current_life
+	var max_life := Game.get_stat(Enums.PlayerStats.LIFE).level + 1
+	var life_percent: float = float(life) / float(max_life)
+	
+	var shield_thickness: float = lerp(3.0, 4.0 * life_percent, pulse)
+	ship_mat.set_shader_parameter("shield_thickness", shield_thickness)
+	
+	var shield_color := shield_base_color
+	shield_color.a = lerp(.33, shield_base_color.a, life_percent)
+	ship_mat.set_shader_parameter("shield_color", shield_color)
 
 func _physics_process(delta: float) -> void:
 	var speed := Game.get_stat_value(Enums.PlayerStats.TANK_SPEED)
