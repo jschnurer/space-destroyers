@@ -26,7 +26,6 @@ func _begin_next_behavior() -> void:
 		all_steps_complete.emit()
 		if free_on_complete:
 			queue_free()
-			print("freed orchestrator")
 		return
 	
 	# Handle the current behavior and wait for it to complete. When it does,

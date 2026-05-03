@@ -6,6 +6,8 @@ class_name ToggleAutoShootBehavior
 
 func handle() -> Signal:
 	for n in nodes_with_autoshoot:
+		if !n:
+			continue
 		var comp: AutoShootComponent = Utilities.get_first_child_of_type(n, AutoShootComponent)
 		if comp:
 			comp.toggle(autoshoot_enabled)

@@ -10,20 +10,7 @@
 [ext_resource type="Script" uid="uid://dhqfsna2crfbs" path="res://scripts/behaviors/toggle_autoshoot_behavior.gd" id="8_f7bkm"]
 [ext_resource type="Script" uid="uid://brs7lenqdruyf" path="res://scripts/behaviors/follow_path_behavior.gd" id="9_g6hb0"]
 [ext_resource type="Script" uid="uid://cjqv40xmldbto" path="res://scripts/behaviors/wait_behavior.gd" id="11_faq1n"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f7bkm"]
-resource_local_to_scene = true
-shader = ExtResource("4_rk137")
-shader_parameter/time = 0.0
-shader_parameter/is_lucky = false
-shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
-shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
-shader_parameter/rotation = 0.0
-shader_parameter/hframes = 2.0
-shader_parameter/vframes = 1.0
-shader_parameter/band_width = 0.30000001355148
-shader_parameter/sharpness = 0.02
-shader_parameter/flash_color = Color(0, 0, 0, 0)
+[ext_resource type="PackedScene" uid="uid://c0y57xromu46c" path="res://scenes/space_shooter_levels/bits/asteroids/asteroid1.tscn" id="11_txkhk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_faq1n"]
 resource_local_to_scene = true
@@ -123,12 +110,6 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
-[sub_resource type="Curve2D" id="Curve2D_08dt3"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 334, 280, -104.060005, -24.2, 104.060005, 24.2, 526, 481, -82.28, 1.21, 82.28, -1.21, 790, 497, -135.52, -30.25, 135.52, 30.25, 976, 522, -93.170006, -130.68001, 93.170006, 130.68001, 1205, 689, 0, 0, 0, 0, 1432, 1356)
-}
-point_count = 6
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ean1a"]
 resource_local_to_scene = true
 shader = ExtResource("4_rk137")
@@ -142,6 +123,12 @@ shader_parameter/vframes = 1.0
 shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="Curve2D" id="Curve2D_08dt3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 334, 280, -104.060005, -24.2, 104.060005, 24.2, 526, 481, -82.28, 1.21, 82.28, -1.21, 790, 497, -135.52, -30.25, 135.52, 30.25, 976, 522, -93.170006, -130.68001, 93.170006, 130.68001, 1205, 689, 0, 0, 0, 0, 1432, 1356)
+}
+point_count = 6
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_heebk"]
 resource_local_to_scene = true
@@ -185,6 +172,20 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g1rft"]
+resource_local_to_scene = true
+shader = ExtResource("4_rk137")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
 [node name="Level_1" type="Node2D" unique_id=236372489 groups=["LEVEL_NODE"]]
 
 [node name="SpaceShooterLevelManager" parent="." unique_id=675234762 node_paths=PackedStringArray("scrolling_area_node") groups=["LEVEL_MANAGER_SPACE"] instance=ExtResource("1_3xd4q")]
@@ -207,39 +208,47 @@ level_manager = NodePath("../../SpaceShooterLevelManager")
 scale = Vector2(-1, 1)
 
 [node name="SpaceOctopus" parent="ScrollingArea" unique_id=559603659 instance=ExtResource("3_8ascr")]
-material = SubResource("ShaderMaterial_f7bkm")
+material = SubResource("ShaderMaterial_faq1n")
 position = Vector2(864, -2000)
+frame = 0
 
 [node name="SpaceOctopus2" parent="ScrollingArea" unique_id=1364255275 instance=ExtResource("3_8ascr")]
-material = SubResource("ShaderMaterial_faq1n")
+material = SubResource("ShaderMaterial_txkhk")
 position = Vector2(960, -2000)
+frame = 0
 
 [node name="SpaceOctopus3" parent="ScrollingArea" unique_id=160682573 instance=ExtResource("3_8ascr")]
-material = SubResource("ShaderMaterial_txkhk")
+material = SubResource("ShaderMaterial_wjmby")
 position = Vector2(864, -2096)
+frame = 0
 
 [node name="SpaceOctopus4" parent="ScrollingArea" unique_id=956650247 instance=ExtResource("3_8ascr")]
-material = SubResource("ShaderMaterial_wjmby")
+material = SubResource("ShaderMaterial_h54y1")
 position = Vector2(960, -2096)
+frame = 0
 
 [node name="SpaceOctopus5" parent="ScrollingArea" unique_id=1475276676 instance=ExtResource("3_8ascr")]
-material = SubResource("ShaderMaterial_h54y1")
+material = SubResource("ShaderMaterial_gg5u0")
 position = Vector2(1109, -840)
+frame = 0
 
 [node name="SpaceOctopus6" parent="ScrollingArea" unique_id=1891211041 instance=ExtResource("3_8ascr")]
-material = SubResource("ShaderMaterial_gg5u0")
+material = SubResource("ShaderMaterial_08dt3")
 position = Vector2(1205, -840)
+frame = 0
 
 [node name="SpaceOctopus7" parent="ScrollingArea" unique_id=288886625 instance=ExtResource("3_8ascr")]
-material = SubResource("ShaderMaterial_08dt3")
+material = SubResource("ShaderMaterial_victv")
 position = Vector2(1109, -936)
+frame = 0
 
 [node name="SpaceOctopus8" parent="ScrollingArea" unique_id=426236 instance=ExtResource("3_8ascr")]
-material = SubResource("ShaderMaterial_victv")
+material = SubResource("ShaderMaterial_ean1a")
 position = Vector2(1205, -936)
+frame = 0
 
 [node name="BehaviorOrchestrator" parent="ScrollingArea" unique_id=534433363 node_paths=PackedStringArray("behaviors") instance=ExtResource("5_gvetg")]
-position = Vector2(0, -100)
+position = Vector2(0, -99)
 behaviors = [NodePath("AutoShoot_Off"), NodePath("FollowPath_Arrive"), NodePath("AutoShoot_On"), NodePath("Wait"), NodePath("AutoShoot_Off_2"), NodePath("FollowPath_Exit")]
 
 [node name="AutoShoot_Off" type="Node2D" parent="ScrollingArea/BehaviorOrchestrator" unique_id=336847127 node_paths=PackedStringArray("nodes_with_autoshoot")]
@@ -293,17 +302,24 @@ curve = SubResource("Curve2D_08dt3")
 position = Vector2(0, -76)
 
 [node name="SpaceOctopus" parent="ScrollingArea/BehaviorOrchestrator/EnemyFormation" unique_id=1573088333 instance=ExtResource("3_8ascr")]
-material = SubResource("ShaderMaterial_ean1a")
+material = SubResource("ShaderMaterial_heebk")
 position = Vector2(-48, -48)
+frame = 0
 
 [node name="SpaceOctopus2" parent="ScrollingArea/BehaviorOrchestrator/EnemyFormation" unique_id=1447993890 instance=ExtResource("3_8ascr")]
-material = SubResource("ShaderMaterial_heebk")
+material = SubResource("ShaderMaterial_8h6i8")
 position = Vector2(48, -48)
+frame = 0
 
 [node name="SpaceOctopus3" parent="ScrollingArea/BehaviorOrchestrator/EnemyFormation" unique_id=732964929 instance=ExtResource("3_8ascr")]
-material = SubResource("ShaderMaterial_8h6i8")
+material = SubResource("ShaderMaterial_y338x")
 position = Vector2(-48, 48)
+frame = 0
 
 [node name="SpaceOctopus4" parent="ScrollingArea/BehaviorOrchestrator/EnemyFormation" unique_id=754769384 instance=ExtResource("3_8ascr")]
-material = SubResource("ShaderMaterial_y338x")
+material = SubResource("ShaderMaterial_g1rft")
 position = Vector2(48, 48)
+frame = 0
+
+[node name="Asteroid" parent="ScrollingArea" unique_id=1727459073 instance=ExtResource("11_txkhk")]
+position = Vector2(900, 72)

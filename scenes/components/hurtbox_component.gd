@@ -62,5 +62,10 @@ func _set_flash_color(color: Color) -> void:
 	sprite_mat.set_shader_parameter("flash_color", color)
 
 func _try_play_hit_sound() -> void:
-	if play_hit_sound and hit_sound and (play_on_death or (life_component and life_component.life > 0)):
+	if !play_hit_sound or !hit_sound:
+		return
+	
+	var life := 0.0 if !life_component else life_component.life
+	
+	if (!play_on_death and life > 0) or (play_on_death and life == 0):
 		SignalBus.emit_play_sfx(hit_sound, 0.8)

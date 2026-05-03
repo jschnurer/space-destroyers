@@ -27,4 +27,3 @@ func _on_life_component_life_zeroed(_hitbox: HitboxComponent) -> void:
 
 func _on_life_component_life_changed(new_life: float, _hitbox: HitboxComponent) -> void:
 	Game.set_current_life(ceili(new_life))
-	print ("player life changed to %s" % new_life)

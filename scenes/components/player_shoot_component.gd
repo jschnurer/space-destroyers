@@ -82,6 +82,9 @@ func _init_bullet_pool() -> void:
 	
 	var pool_node := get_tree().get_first_node_in_group(GroupNames.PLAYER_BULLET_POOL)
 	
+	if !pool_node:
+		return
+	
 	for i in range(bullet_pool_size):
 		var bullet: Bullet = bullet_scene.instantiate()
 		

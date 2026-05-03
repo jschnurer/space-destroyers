@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dqrxe1migmoq2"]
+
+[ext_resource type="PackedScene" uid="uid://kw6ct5hy8kno" path="res://scenes/spaceship/spaceship.tscn" id="1_j8ivh"]
+[ext_resource type="PackedScene" uid="uid://c0y57xromu46c" path="res://scenes/space_shooter_levels/bits/asteroids/asteroid1.tscn" id="2_nd71p"]
+[ext_resource type="PackedScene" uid="uid://bbo560qlstfg8" path="res://scenes/space_shooter_levels/bits/asteroids/asteroid2.tscn" id="3_7ddre"]
+[ext_resource type="PackedScene" uid="uid://cvy8o2178opxm" path="res://scenes/space_shooter_levels/bits/asteroids/asteroid3.tscn" id="4_qjeyg"]
+
+[node name="TestScene" type="Node2D" unique_id=1625908978]
+
+[node name="Spaceship" parent="." unique_id=564671516 instance=ExtResource("1_j8ivh")]
+position = Vector2(1100, 816)
+
+[node name="Asteroid" parent="." unique_id=1727459073 instance=ExtResource("2_nd71p")]
+position = Vector2(1174, 165)
+
+[node name="bulletpool" type="Node2D" parent="." unique_id=423966189 groups=["PLAYER_BULLET_POOL"]]
+
+[node name="Asteroid2" parent="." unique_id=1665983298 instance=ExtResource("2_nd71p")]
+position = Vector2(920, 347)
+rotation = 0.7853982
+scale = Vector2(4, 4)
+
+[node name="Asteroid3" parent="." unique_id=1343381401 instance=ExtResource("3_7ddre")]
+position = Vector2(1211.9999, 555)
+rotation = -1.3089969
+scale = Vector2(2.5, 2.5)
+
+[node name="Asteroid5" parent="." unique_id=1002289224 instance=ExtResource("3_7ddre")]
+position = Vector2(730, 553.00006)
+rotation = -2.8797934
+scale = Vector2(1.5, 1.5)
+
+[node name="Asteroid4" parent="." unique_id=1086223391 instance=ExtResource("4_qjeyg")]
+position = Vector2(948.00006, 682.00006)
+rotation = -2.3561945
+scale = Vector2(3.5, 3.5)
+
+[node name="Asteroid6" parent="." unique_id=1767986445 instance=ExtResource("4_qjeyg")]
+position = Vector2(1248, 328.99997)
+rotation = -0.2617994
+scale = Vector2(2.2, 2.2)

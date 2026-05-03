@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://hjbit4yvduhl" path="res://art/asteroids/asteroid_3.png" id="1_8ryka"]
 [ext_resource type="Script" uid="uid://bses54bppt0wd" path="res://scenes/space_shooter_levels/bits/asteroids/asteroid.gd" id="1_pq0qs"]
 [ext_resource type="PackedScene" uid="uid://ce38u6nauhq7y" path="res://scenes/components/hitbox_component.tscn" id="2_1kyja"]
-[ext_resource type="Script" uid="uid://ccjacsbwwfwox" path="res://scenes/components/hurtbox_component.gd" id="3_1kyja"]
-[ext_resource type="AudioStream" uid="uid://bca4f7jod5uw" path="res://audio/sfx/beepfx_samples/34_switch_1.wav" id="4_hiql7"]
+[ext_resource type="PackedScene" uid="uid://b8unj7w73q0w3" path="res://scenes/components/hurtbox_component.tscn" id="4_hiql7"]
+[ext_resource type="AudioStream" uid="uid://bca4f7jod5uw" path="res://audio/sfx/beepfx_samples/34_switch_1.wav" id="5_pq0qs"]
 
 [node name="Asteroid3" type="Node2D" unique_id=1086223391]
 script = ExtResource("1_pq0qs")
@@ -15,32 +15,29 @@ scale = Vector2(4, 4)
 texture = ExtResource("1_8ryka")
 
 [node name="HitboxComponent" parent="." unique_id=428100613 instance=ExtResource("2_1kyja")]
-visible = false
 scale = Vector2(4, 4)
 collision_layer = 81
 damage = 1.0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitboxComponent" unique_id=430137370]
-polygon = PackedVector2Array(-1.75, -8, -3.75, -4.75, -5.75, -1.75, -6, 0.75, -3, 3.25, -2.25, 5.75, -0.75, 8, 2, 8, 3, 7, 3, 4.25, 4, 3.25, 4, 1.25, 4.75, 0.5, 5, -0.75, 4, -1.75, 6.25, -4.25, 6, -6, 4.5, -7, 2.5, -5, 1.75, -7, 0.25, -8)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitboxComponent" unique_id=1615719797]
+polygon = PackedVector2Array(-2, -8, -2, -7, -3, -7, -3, -5, -4, -5, -4, -3, -5, -3, -5, -2, -6, -2, -6, 1, -5, 1, -5, 2, -4, 2, -4, 3, -3, 3, -3, 5, -2, 5, -2, 7, -1, 7, -1, 8, 2, 8, 2, 7, 3, 7, 3, 4, 4, 4, 4, 1, 5, 1, 5, -1, 4, -1, 4, -2, 5, -2, 5, -4, 6, -4, 6, -6, 5, -6, 5, -7, 4, -7, 4, -6, 3, -6, 3, -5, 2, -5, 2, -7, 1, -7, 1, -8)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1016364627]
-visible = false
+scale = Vector2(0.95, 0.95)
 collision_layer = 16
 collision_mask = 9
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1414007282]
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1100632666]
 scale = Vector2(4, 4)
-polygon = PackedVector2Array(-1.75, -8, -3.75, -4.75, -5.75, -1.75, -6, 0.75, -3, 3.25, -2.25, 5.75, -0.75, 8, 2, 8, 3, 7, 3, 4.25, 4, 3.25, 4, 1.25, 4.75, 0.5, 5, -0.75, 4, -1.75, 6.25, -4.25, 6, -6, 4.5, -7, 2.5, -5, 1.75, -7, 0.25, -8)
+polygon = PackedVector2Array(-2, -8, -2, -7, -3, -7, -3, -5, -4, -5, -4, -3, -5, -3, -5, -2, -6, -2, -6, 1, -5, 1, -5, 2, -4, 2, -4, 3, -3, 3, -3, 5, -2, 5, -2, 7, -1, 7, -1, 8, 2, 8, 2, 7, 3, 7, 3, 4, 4, 4, 4, 1, 5, 1, 5, -1, 4, -1, 4, -2, 5, -2, 5, -4, 6, -4, 6, -6, 5, -6, 5, -7, 4, -7, 4, -6, 3, -6, 3, -5, 2, -5, 2, -7, 1, -7, 1, -8)
 
-[node name="HurtboxComponent" type="Area2D" parent="." unique_id=233868555]
-visible = false
-collision_layer = 18
+[node name="HurtboxComponent2" parent="." unique_id=2122994445 instance=ExtResource("4_hiql7")]
+collision_layer = 2
 collision_mask = 8
-script = ExtResource("3_1kyja")
 play_hit_sound = true
-hit_sound = ExtResource("4_hiql7")
-metadata/_custom_type_script = "uid://ccjacsbwwfwox"
+hit_sound = ExtResource("5_pq0qs")
+play_on_death = true
 
-[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="HurtboxComponent" unique_id=764864138]
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="HurtboxComponent2" unique_id=246011507]
 scale = Vector2(4, 4)
-polygon = PackedVector2Array(-1.75, -8, -3.75, -4.75, -5.75, -1.75, -6, 0.75, -3, 3.25, -2.25, 5.75, -0.75, 8, 2, 8, 3, 7, 3, 4.25, 4, 3.25, 4, 1.25, 4.75, 0.5, 5, -0.75, 4, -1.75, 6.25, -4.25, 6, -6, 4.5, -7, 2.5, -5, 1.75, -7, 0.25, -8)
+polygon = PackedVector2Array(-2, -8, -2, -7, -3, -7, -3, -5, -4, -5, -4, -3, -5, -3, -5, -2, -6, -2, -6, 1, -5, 1, -5, 2, -4, 2, -4, 3, -3, 3, -3, 5, -2, 5, -2, 7, -1, 7, -1, 8, 2, 8, 2, 7, 3, 7, 3, 4, 4, 4, 4, 1, 5, 1, 5, -1, 4, -1, 4, -2, 5, -2, 5, -4, 6, -4, 6, -6, 5, -6, 5, -7, 4, -7, 4, -6, 3, -6, 3, -5, 2, -5, 2, -7, 1, -7, 1, -8)
