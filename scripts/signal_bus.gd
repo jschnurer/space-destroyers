@@ -100,3 +100,7 @@ func emit_clear_enemy_attacks() -> void:
 signal toggle_options(enabled: bool)
 func emit_toggle_options(enabled: bool) -> void:
 	toggle_options.emit(enabled)
+
+signal return_pooled_objects()
+func emit_return_pooled_objects() -> void:
+	return_pooled_objects.emit()

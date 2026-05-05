@@ -37,7 +37,7 @@ func _on_area_entered(area: Area2D) -> void:
 			_on_took_damage(0, hitbox)
 		
 		# Always play "hit sound".
-		_try_play_hit_sound()
+		_try_play_hit_sound(area as HitboxComponent)
 		
 		# Notify.
 		on_hurtbox_hit.emit(hitbox)
@@ -61,8 +61,13 @@ func _set_flash_color(color: Color) -> void:
 		return
 	sprite_mat.set_shader_parameter("flash_color", color)
 
-func _try_play_hit_sound() -> void:
+func _try_play_hit_sound(area: HitboxComponent) -> void:
 	if !play_hit_sound or !hit_sound:
+		return
+	
+	if !area.get_collision_layer_value(4) and !area.get_collision_mask_value(1):
+		# Don't play hit sound if the hitbox isn't a player attack and
+		# the mask isn't player.
 		return
 	
 	var life := 0.0 if !life_component else life_component.life

@@ -122,6 +122,8 @@ func load_next_level(instantly := false) -> void:
 		if !instantly:
 			teleport_anim.global_position = player_tank.global_position
 	
+	SignalBus.emit_return_pooled_objects()
+	
 	if !instantly:
 		SignalBus.emit_fade_in_screen()
 	

@@ -12,7 +12,7 @@ const _help_text: String = \
 [color=yellow]collision show/hide[/color]: toggles visible collision shapes
 [color=yellow]credits ####[/color]: pick up specified number of credits (multiplier affects)
 [color=yellow]die[/color]: destroys the player, triggering a game over
-[color=yellow]goto type #[/color]: skips to indicated level type/# (type: invader/space) (#: 1-8)
+[color=yellow]goto type #[/color]: skips to indicated level type/# (type: i/s) (#: 1-8)
 [color=yellow]help[/color]: show this message
 [color=yellow]max[/color]: maxes all stats and upgrades
 [color=yellow]maxstats[/color]: maxes all stats
@@ -134,18 +134,23 @@ func _add_credits(text_chunks: Array[String]) -> void:
 
 ## Goes to a specific level.
 func _go_to_level(text_chunks: Array[String]) -> void:
-	var err_msg := "[color=red]Go to which level? (e.g. 'goto invader 1', 'goto space 3')[/color]"
+	var err_msg := "[color=red]Go to which level? (e.g. 'goto i 1', 'goto s 3')[/color]"
 	
 	if text_chunks.size() < 3:
 		_log(err_msg)
 		return
 	
-	var level_type := text_chunks[1].to_upper()
-	if level_type not in Enums.LevelTypes:
+	var level_type_str := text_chunks[1].to_upper()
+	var level_type: Enums.LevelTypes = Enums.LevelTypes.NONE
+	
+	match level_type_str:
+		"I": level_type = Enums.LevelTypes.INVADERS
+		"S": level_type = Enums.LevelTypes.SPACE
+	
+	if level_type == Enums.LevelTypes.NONE:
 		var keys := Enums.LevelTypes.keys()
 		_log("[color=red]Invalid level type. Valid types: %s[/color]" % str(keys))
 		return
-	var lvl_type: int = Enums.LevelTypes[level_type]
 	
 	var level_num_str := text_chunks[2]
 	if !level_num_str.is_valid_int():
@@ -153,7 +158,7 @@ func _go_to_level(text_chunks: Array[String]) -> void:
 		return
 	
 	var level_num := level_num_str.to_int()
-	Game.go_to_level(lvl_type, level_num)
+	Game.go_to_level(level_type, level_num)
 
 func _collect_credits() -> void:
 	var player := get_tree().get_first_node_in_group(GroupNames.PLAYER)

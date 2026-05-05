@@ -85,6 +85,11 @@ func _spawn_projectile(position_offset: float) -> void:
 	elif inherit_sprite_scale and inherit_from_sprite:
 		projectile.scale = inherit_from_sprite.scale
 	
+	if shoot_at_player:
+		var player: Node2D = get_tree().get_first_node_in_group(GroupNames.PLAYER)
+		if player:
+			projectile.direction = global_position.direction_to(player.global_position)
+	
 	Utilities.call_deferred("add_child_to_level", projectile)
 
 func toggle(is_enabled: bool) -> void:

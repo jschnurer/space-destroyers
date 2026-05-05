@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://cdyvlsr8w6mui" path="res://art/credit.png" id="1_e0jmu"]
 [ext_resource type="Material" uid="uid://d0vxn0ewbmjii" path="res://shaders/enemy_shader_material.tres" id="1_kdqey"]
 [ext_resource type="AudioStream" uid="uid://yq6codvmyndo" path="res://audio/sfx/beepfx_samples/32_item_5.wav" id="2_jkw83"]
-[ext_resource type="PackedScene" uid="uid://dddchihkt36mp" path="res://scenes/components/delete_offscreen_component.tscn" id="5_kdqey"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4nouu"]
 radius = 13.0
@@ -23,10 +22,11 @@ scale = Vector2(3, 3)
 texture = ExtResource("1_e0jmu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1997303180]
+unique_name_in_owner = true
 shape = SubResource("CircleShape2D_4nouu")
 
 [node name="Components" type="Node2D" parent="." unique_id=1019852361]
 
-[node name="DeleteOffscreenComponent" parent="Components" unique_id=1973328041 node_paths=PackedStringArray("delete_node") instance=ExtResource("5_kdqey")]
-unique_name_in_owner = true
-delete_node = NodePath("../..")
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Components" unique_id=1789108563]
+
+[connection signal="screen_exited" from="Components/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

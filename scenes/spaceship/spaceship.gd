@@ -59,11 +59,11 @@ func _process_shield(delta: float) -> void:
 	var max_life := Game.get_stat(Enums.PlayerStats.LIFE).level + 1
 	var life_percent: float = float(life) / float(max_life)
 	
-	var shield_thickness: float = lerp(3.0, 4.0 * life_percent, pulse)
+	var shield_thickness: float = lerp(1.5, 4.0 * life_percent, pulse)
 	ship_mat.set_shader_parameter("shield_thickness", shield_thickness)
 	
 	var shield_color := shield_base_color
-	shield_color.a = lerp(.33, shield_base_color.a, life_percent)
+	shield_color.a = lerp(.25, shield_base_color.a, life_percent)
 	ship_mat.set_shader_parameter("shield_color", shield_color)
 
 func _physics_process(delta: float) -> void:

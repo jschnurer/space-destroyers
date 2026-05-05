@@ -4,6 +4,64 @@
 [ext_resource type="PackedScene" uid="uid://c0y57xromu46c" path="res://scenes/space_shooter_levels/bits/asteroids/asteroid1.tscn" id="2_nd71p"]
 [ext_resource type="PackedScene" uid="uid://bbo560qlstfg8" path="res://scenes/space_shooter_levels/bits/asteroids/asteroid2.tscn" id="3_7ddre"]
 [ext_resource type="PackedScene" uid="uid://cvy8o2178opxm" path="res://scenes/space_shooter_levels/bits/asteroids/asteroid3.tscn" id="4_qjeyg"]
+[ext_resource type="PackedScene" uid="uid://c0butq736uma6" path="res://scenes/enemies/space/space_squid.tscn" id="5_3qnke"]
+[ext_resource type="Shader" uid="uid://dairmqngktiej" path="res://shaders/enemy_shader.tres" id="6_wtsjf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3qnke"]
+resource_local_to_scene = true
+shader = ExtResource("6_wtsjf")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wtsjf"]
+resource_local_to_scene = true
+shader = ExtResource("6_wtsjf")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rnaij"]
+resource_local_to_scene = true
+shader = ExtResource("6_wtsjf")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h3xc6"]
+resource_local_to_scene = true
+shader = ExtResource("6_wtsjf")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
 
 [node name="TestScene" type="Node2D" unique_id=1625908978]
 
@@ -39,3 +97,19 @@ scale = Vector2(3.5, 3.5)
 position = Vector2(1248, 328.99997)
 rotation = -0.2617994
 scale = Vector2(2.2, 2.2)
+
+[node name="space_squid" parent="." unique_id=1108431160 instance=ExtResource("5_3qnke")]
+material = SubResource("ShaderMaterial_3qnke")
+position = Vector2(111, 140)
+
+[node name="space_squid2" parent="." unique_id=273439087 instance=ExtResource("5_3qnke")]
+material = SubResource("ShaderMaterial_wtsjf")
+position = Vector2(179, 140)
+
+[node name="space_squid3" parent="." unique_id=36095047 instance=ExtResource("5_3qnke")]
+material = SubResource("ShaderMaterial_rnaij")
+position = Vector2(111, 209)
+
+[node name="space_squid4" parent="." unique_id=1581435595 instance=ExtResource("5_3qnke")]
+material = SubResource("ShaderMaterial_h3xc6")
+position = Vector2(179, 209)

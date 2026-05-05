@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://sl01uxvf8cvq"]
+
+[ext_resource type="Script" uid="uid://bh3vkutj4gx1b" path="res://scenes/bullet/bullet_round.gd" id="1_7542h"]
+[ext_resource type="PackedScene" uid="uid://dddchihkt36mp" path="res://scenes/components/delete_offscreen_component.tscn" id="1_jwsu2"]
+[ext_resource type="Texture2D" uid="uid://b1fsgw8ilg5d8" path="res://art/shot_circular.png" id="1_n5m42"]
+[ext_resource type="PackedScene" uid="uid://ce38u6nauhq7y" path="res://scenes/components/hitbox_component.tscn" id="2_n5m42"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n5m42"]
+radius = 3.0
+
+[node name="bullet_round" type="Node2D" unique_id=739881527]
+script = ExtResource("1_7542h")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1325736682]
+unique_name_in_owner = true
+z_index = 2
+scale = Vector2(3, 3)
+texture = ExtResource("1_n5m42")
+
+[node name="Components" type="Node2D" parent="." unique_id=1098703942]
+
+[node name="DeleteOffscreenComponent" parent="Components" unique_id=1973328041 node_paths=PackedStringArray("delete_node") instance=ExtResource("1_jwsu2")]
+rect = Rect2(-4, -4, 8, 8)
+delete_node = NodePath("")
+
+[node name="HitboxComponent" parent="Components" unique_id=428100613 instance=ExtResource("2_n5m42")]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 0
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Components/HitboxComponent" unique_id=533621305]
+unique_name_in_owner = true
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_n5m42")
+debug_color = Color(1, 0, 0, 0.753)
+
+[connection signal="dealt_damage" from="Components/HitboxComponent" to="." method="_on_hitbox_component_dealt_damage"]

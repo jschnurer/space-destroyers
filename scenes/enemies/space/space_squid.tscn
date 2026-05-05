@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://c0butq736uma6"]
+
+[ext_resource type="Texture2D" uid="uid://765o5wldv1qi" path="res://art/squid.png" id="1_50qbg"]
+[ext_resource type="Material" uid="uid://d0vxn0ewbmjii" path="res://shaders/enemy_shader_material.tres" id="1_jdubq"]
+[ext_resource type="PackedScene" uid="uid://d1xwwb4h1awsi" path="res://scenes/components/life_component.tscn" id="2_jdubq"]
+[ext_resource type="PackedScene" uid="uid://bdmudihj1sun8" path="res://scenes/components/dance_component.tscn" id="3_iouw7"]
+[ext_resource type="PackedScene" uid="uid://b8unj7w73q0w3" path="res://scenes/components/hurtbox_component.tscn" id="4_7bw4c"]
+[ext_resource type="PackedScene" uid="uid://cmoknedm8lvnp" path="res://scenes/components/lucky_component.tscn" id="5_1hqro"]
+[ext_resource type="PackedScene" uid="uid://mdxtaa55xkqh" path="res://scenes/components/on_death_component.tscn" id="6_0rcgo"]
+[ext_resource type="AudioStream" uid="uid://cmhc5uu76dpxd" path="res://audio/sfx/50-CC0-retro-synth-SFX/retro_die_01.ogg" id="8_jdubq"]
+[ext_resource type="PackedScene" uid="uid://b0rqtlww1es66" path="res://scenes/invader_death/invader_death.tscn" id="8_jhvoi"]
+[ext_resource type="PackedScene" uid="uid://ce38u6nauhq7y" path="res://scenes/components/hitbox_component.tscn" id="9_v6jnc"]
+[ext_resource type="PackedScene" uid="uid://dddchihkt36mp" path="res://scenes/components/delete_offscreen_component.tscn" id="11_jdubq"]
+[ext_resource type="PackedScene" uid="uid://bqkgb4mpppgmt" path="res://scenes/components/auto_shoot_component.tscn" id="12_7bw4c"]
+[ext_resource type="PackedScene" uid="uid://sl01uxvf8cvq" path="res://scenes/bullet/bullet_round.tscn" id="13_0rcgo"]
+[ext_resource type="PackedScene" uid="uid://0esplk3dg3yq" path="res://scenes/components/reload_component.tscn" id="13_1hqro"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3tedx"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1su0"]
+size = Vector2(32, 32)
+
+[node name="space_squid" type="Sprite2D" unique_id=1108431160]
+modulate = Color(0.24526232, 1, 0.27395758, 1)
+material = ExtResource("1_jdubq")
+texture = ExtResource("1_50qbg")
+hframes = 2
+
+[node name="Components" type="Node2D" parent="." unique_id=2088527891]
+
+[node name="LifeComponent" parent="Components" unique_id=759486464 instance=ExtResource("2_jdubq")]
+life = 11.0
+
+[node name="DanceComponent" parent="Components" unique_id=709328576 node_paths=PackedStringArray("sprite") instance=ExtResource("3_iouw7")]
+sprite = NodePath("../..")
+fps = 2.5
+
+[node name="HurtboxComponent" parent="Components" unique_id=2122994445 node_paths=PackedStringArray("life_component", "sprite_2d") instance=ExtResource("4_7bw4c")]
+collision_layer = 2
+collision_mask = 8
+life_component = NodePath("../LifeComponent")
+flash_damage = true
+sprite_2d = NodePath("../..")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Components/HurtboxComponent" unique_id=44264093]
+shape = SubResource("RectangleShape2D_3tedx")
+
+[node name="LuckyComponent" parent="Components" unique_id=1751092268 node_paths=PackedStringArray("sprite") instance=ExtResource("5_1hqro")]
+unique_name_in_owner = true
+sprite = NodePath("../..")
+
+[node name="OnDeathComponent" parent="Components" unique_id=128414731 node_paths=PackedStringArray("life_component", "enemy_node", "deletion_node", "lucky_component") instance=ExtResource("6_0rcgo")]
+position = Vector2(22, 17)
+life_component = NodePath("../LifeComponent")
+death_sound = ExtResource("8_jdubq")
+enemy_node = NodePath("../..")
+deletion_node = NodePath("../..")
+lucky_component = NodePath("../LuckyComponent")
+death_anim_scene = ExtResource("8_jhvoi")
+can_spawn_flak = true
+
+[node name="HitboxComponent" parent="Components" unique_id=428100613 instance=ExtResource("9_v6jnc")]
+collision_layer = 64
+damage = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HitboxComponent" unique_id=112958625]
+shape = SubResource("RectangleShape2D_b1su0")
+
+[node name="DeleteOffscreenComponent2" parent="Components" unique_id=1973328041 node_paths=PackedStringArray("delete_node") instance=ExtResource("11_jdubq")]
+rect = Rect2(-4, -4, 8, 8)
+delete_node = NodePath("../..")
+
+[node name="AutoShootComponent" parent="Components" unique_id=523345871 node_paths=PackedStringArray("reload_component", "inherit_from_sprite") instance=ExtResource("12_7bw4c")]
+reload_component = NodePath("../ReloadComponent")
+bullet_scene = ExtResource("13_0rcgo")
+bullet_group = "ENEMY_ATTACK"
+shot_modulate = Color(0.24526232, 1, 0.27395758, 1)
+shot_speed = 750.0
+shot_damage = 1.0
+shoot_at_player = true
+shot_collision_layer = 64
+shot_collision_mask = 17
+min_delay = 1.0
+max_delay = 1.0
+inherit_sprite_scale = true
+inherit_from_sprite = NodePath("../..")
+
+[node name="ReloadComponent" parent="Components" unique_id=315688650 instance=ExtResource("13_1hqro")]
+reload_time = 0.75

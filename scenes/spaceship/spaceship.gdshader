@@ -35,15 +35,11 @@ void handle_shield(vec2 texture_pixel_size, sampler2D base_tex, vec2 base_uv, in
 	// If the current pixel is transparent but neighbors aren't, apply outline
 	if (color.a <= 0.0 && outline > 0.0) {
 		current_color = shield_color; //vec4(shield_color.rgb, clamp(outline, 0.0, 1.0));
-	} else {
-		current_color = color;
 	}
 }
 
 void fragment() {
-	if (flash_color.a < 0.0001) {
-		handle_flash(TEXTURE, UV, COLOR);
-	} else if (shadow_side != 0) {
+	if (shadow_side != 0) {
 		int pixel_side = UV.x < 0.5 ? -1 : 1;
 		
 		if (pixel_side == shadow_side) {
@@ -56,5 +52,9 @@ void fragment() {
 		}
 	}
 	
+	if (flash_color.a > 0.0001) {
+		handle_flash(TEXTURE, UV, COLOR);
+	}
+
 	handle_shield(TEXTURE_PIXEL_SIZE, TEXTURE, UV, COLOR);
 }

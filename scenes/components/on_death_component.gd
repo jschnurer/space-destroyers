@@ -43,7 +43,11 @@ class_name OnDeathComponent
 @export var can_spawn_flak := false
 @export var flak_scene: PackedScene
 
+var _credit_pool: CreditPool
+
 func _ready() -> void:
+	_credit_pool = get_tree().get_first_node_in_group(GroupNames.CREDIT_POOL)
+
 	if life_component:
 		life_component.life_zeroed.connect(_on_life_zeroed)
 
@@ -115,8 +119,7 @@ func _try_spawn_credit() -> void:
 	
 	coins_to_spawn.shuffle()
 	
-	for i in coins_to_spawn:
-		call_deferred("_spawn_credit", i)
+	call_deferred("_spawn_credits", coins_to_spawn)
 
 ## Simulates spawning credits and calculates their total value (without counting user stats).
 func get_total_credit_value() -> float:
@@ -135,20 +138,35 @@ func get_total_credit_value() -> float:
 	
 	return (credit_mult * (credit_value + credit_bonus)) * play_multiplier
 
-func _spawn_credit(credit_denomination: CreditDenomination) -> void:
-	var credit := credit_scene.instantiate() as Credit
+## Spawn the requested number of credits from the credit pool.
+func _spawn_credits(credit_denominations: Array[CreditDenomination]) -> void:
+	var credits := _credit_pool.get_available_credits(credit_denominations.size())
 	
-	Utilities.add_child_to_level(credit)
-	#Utilities.add_child_to_group_node(credit, GroupNames.CREDIT_PARENT)
+	if credits.size() < credit_denominations.size():
+		push_warning("Not enough available credits found in credit pool! (pool size: %s)" % _credit_pool.credit_pool_size)
 	
-	credit.global_position = global_position + Vector2(randf_range(-1, 1), randf_range(-1, 1))
-	credit.value = credit_denomination.value
-	credit.denomination = credit_denomination
-	
-	if Game.game_state.current_level_type == Enums.LevelTypes.SPACE:
-		credit.gravity_scale = 0
-		credit.linear_damp_mode = RigidBody2D.DAMP_MODE_REPLACE
-		credit.linear_velocity = Vector2(0, 400)
+	for i in credits.size():
+		var credit := credits[i]
+		
+		if !credit:
+			continue
+		
+		var spawn_position := global_position + Vector2(randf_range(-1, 1), randf_range(-1, 1))
+		PhysicsServer2D.body_set_state(
+			credit.get_rid(),
+			PhysicsServer2D.BODY_STATE_TRANSFORM,
+			Transform2D(0, spawn_position)
+		)
+		
+		credit.value = credit_denominations[i].value
+		credit.denomination = credit_denominations[i]
+		
+		credit.toggle(true)
+		
+		if Game.game_state.current_level_type == Enums.LevelTypes.SPACE:
+			credit.gravity_scale = 0
+			credit.linear_damp_mode = RigidBody2D.DAMP_MODE_REPLACE
+			credit.linear_velocity = Vector2(0, 400)
 
 func _try_death_anim() -> void:
 	if !show_death_anim or !death_anim_scene:

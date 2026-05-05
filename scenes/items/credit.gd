@@ -19,11 +19,9 @@ var _is_pushing := false
 var _steer_force := 20.0
 
 @onready var sprite_2d: Sprite2D = %Sprite2D
-@onready var delete_offscreen_component: DeleteOffscreenComponent = %DeleteOffscreenComponent
+@onready var collision_shape_2d: CollisionShape2D = %CollisionShape2D
 
-func _ready() -> void:
-	await get_tree().physics_frame
-	PhysicsServer2D.body_set_force_integration_callback(get_rid(), Callable(self, "_on_force_integration"))
+signal return_to_pool
 
 func _process(delta: float) -> void:
 	if _is_pushing:
@@ -50,7 +48,7 @@ func _process(delta: float) -> void:
 func collect() -> void:
 	SignalBus.emit_credits_picked_up(value)
 	SignalBus.emit_play_sfx(credit_sound, 0.5)
-	queue_free()
+	return_to_pool.emit()
 
 func _on_force_integration(_state: PhysicsDirectBodyState2D) -> void:
 	var side_motion := randf_range(-120.0, 120.0)
@@ -74,10 +72,6 @@ func start_pickup_sequence(player_target: Node2D) -> void:
 	if _is_collecting:
 		return
 	
-	# Delete the off-screen component or the push will delete the credit!
-	if is_instance_valid(delete_offscreen_component):
-		delete_offscreen_component.queue_free()
-	
 	# Save the point to fly to.
 	_player_target = player_target
 	call_deferred("_lock_and_push")
@@ -96,5 +90,38 @@ func _lock_and_push() -> void:
 	_collection_velocity = push_dir * _collection_push_strength
 	_is_pushing = true
 
-func _set_gravity_scale(p_gravity_scale: float = 1.5) -> void:
-	gravity_scale = p_gravity_scale
+func toggle(is_enabled: bool) -> void:
+	visible = is_enabled
+	process_mode = Node.PROCESS_MODE_INHERIT if is_enabled else Node.PROCESS_MODE_DISABLED
+	
+	if is_enabled:
+		set_collision_layer_value(6, true)
+		set_collision_mask_value(3, true)
+		set_collision_mask_value(5, true)
+		set_collision_mask_value(6, true)
+	else:
+		collision_mask = 0
+		collision_layer = 0
+	
+	freeze = !is_enabled
+	
+	_is_pushing = false
+	_collection_velocity = Vector2.ZERO
+	_player_target = null
+	_is_collecting = false
+	
+	if is_enabled:
+		var rid := get_rid()
+		PhysicsServer2D.body_set_state(rid, PhysicsServer2D.BODY_STATE_LINEAR_VELOCITY, Vector2.ZERO)
+		PhysicsServer2D.body_set_state(rid, PhysicsServer2D.BODY_STATE_ANGULAR_VELOCITY, 0.0)
+		PhysicsServer2D.body_set_state(rid, PhysicsServer2D.BODY_STATE_SLEEPING, false)
+		
+		# 5. Re-enable the integration callback
+		PhysicsServer2D.body_set_force_integration_callback(rid, _on_force_integration)
+	
+	#if is_enabled:
+		#await get_tree().physics_frame
+		#PhysicsServer2D.body_set_force_integration_callback(get_rid(), Callable(self, "_on_force_integration"))
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	return_to_pool.emit()

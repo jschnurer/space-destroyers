@@ -17,7 +17,7 @@ texture = ExtResource("1_rqkbf")
 [node name="HitboxComponent" parent="." unique_id=428100613 instance=ExtResource("2_3v2q4")]
 visible = false
 scale = Vector2(4, 4)
-collision_layer = 64
+collision_layer = 16
 damage = 1.0
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="HitboxComponent" unique_id=779979346]
@@ -33,8 +33,8 @@ scale = Vector2(4, 4)
 polygon = PackedVector2Array(-3, -8, -3, -7, -5, -7, -5, -6, -6, -6, -6, -4, -8, -4, -8, 4, -7, 4, -7, 5, -6, 5, -6, 6, -7, 6, -7, 8, -1, 8, -1, 7, 4, 7, 4, 6, 5, 6, 5, 5, 7, 5, 7, 4, 8, 4, 8, -1, 7, -1, 7, -2, 6, -2, 6, -3, 7, -3, 7, -5, 8, -5, 8, -7, 7, -7, 7, -8, 0, -8, 0, -7, -1, -7, -1, -8)
 
 [node name="HurtboxComponent" parent="." unique_id=2122994445 instance=ExtResource("4_nqq4k")]
-collision_layer = 2
-collision_mask = 8
+collision_layer = 16
+collision_mask = 72
 play_hit_sound = true
 hit_sound = ExtResource("5_hyy8w")
 play_on_death = true

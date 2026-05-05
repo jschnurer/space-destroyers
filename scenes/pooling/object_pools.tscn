@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c02ruxw3627cn"]
+
+[ext_resource type="Script" uid="uid://cqiv6imqsu7e4" path="res://scenes/pooling/player_bullet_pool.gd" id="1_tetuf"]
+[ext_resource type="PackedScene" uid="uid://d1jln5dps07ua" path="res://scenes/bullet/bullet.tscn" id="2_n63v4"]
+[ext_resource type="Script" uid="uid://brct14j67rykb" path="res://scenes/pooling/credit_pool.gd" id="2_smiey"]
+[ext_resource type="PackedScene" uid="uid://8th60kwk8o5f" path="res://scenes/items/credit.tscn" id="4_qlmdn"]
+
+[node name="ObjectPools" type="Node2D" unique_id=1991477579]
+
+[node name="PlayerBulletPool" type="Node2D" parent="." unique_id=561465038 groups=["PLAYER_BULLET_POOL"]]
+script = ExtResource("1_tetuf")
+bullet_scene = ExtResource("2_n63v4")
+
+[node name="EnemyBulletPool" type="Node2D" parent="." unique_id=916320986 groups=["ENEMY_BULLET_POOL"]]
+
+[node name="CreditPool" type="Node2D" parent="." unique_id=283097289 groups=["CREDIT_POOL"]]
+script = ExtResource("2_smiey")
+credit_scene = ExtResource("4_qlmdn")
+credit_pool_size = 1000

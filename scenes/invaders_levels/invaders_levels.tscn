@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://yvu0kduqhohj" path="res://scenes/level_holder.tscn" id="6_rleg4"]
 [ext_resource type="PackedScene" uid="uid://iqoyhfigpopi" path="res://scenes/effects/teleport_animation.tscn" id="8_o11bu"]
 [ext_resource type="PackedScene" uid="uid://c2ejscy1w7qsh" path="res://scenes/ui/gameplay_ui/gameplay_ui.tscn" id="9_ivkc4"]
+[ext_resource type="PackedScene" uid="uid://c02ruxw3627cn" path="res://scenes/pooling/object_pools.tscn" id="10_rj4q6"]
 [ext_resource type="PackedScene" uid="uid://coa4jrtx5c26o" path="res://scenes/towers/anti_air_tower_battery.tscn" id="12_55ttk"]
 
 [node name="InvadersLevels" type="Node2D" unique_id=1327851371]
@@ -22,6 +23,8 @@ metadata/_edit_lock_ = true
 [node name="ReferenceRect" parent="Starfield" index="0" unique_id=674209285]
 offset_bottom = 1015.0
 metadata/_edit_lock_ = true
+
+[node name="ObjectPools" parent="." unique_id=1991477579 instance=ExtResource("10_rj4q6")]
 
 [node name="LevelCompleteUI" parent="." unique_id=983809610 instance=ExtResource("3_6k04t")]
 visible = false
@@ -51,7 +54,5 @@ metadata/_edit_lock_ = true
 
 [node name="AntiAirTowerBattery" parent="." unique_id=1385625833 instance=ExtResource("12_55ttk")]
 position = Vector2(960, 1012)
-
-[node name="PlayerBulletPool" type="Node2D" parent="." unique_id=73316276 groups=["PLAYER_BULLET_POOL"]]
 
 [editable path="Starfield"]
