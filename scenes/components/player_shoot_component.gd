@@ -31,15 +31,18 @@ func _try_shoot() -> void:
 	
 	# Shoot bullets.
 	var multi_level := Game.get_upgrade_level  (Enums.PlayerUpgrades.MULTI_CANNON)
+	
+	var bullets := _bullet_pool.get_available_bullets(multi_level + 1)
+	
 	if multi_level > 0:
-		_spawn_bullet(-8.0, 0.0, 0.55, Color.SILVER)
-		_spawn_bullet(8.0, 0.0, 0.55, Color.SILVER)
+		_spawn_bullet(-8.0, 0.0, 0.55, Color.SILVER, bullets[0])
+		_spawn_bullet(8.0, 0.0, 0.55, Color.SILVER, bullets[1])
 		if multi_level >= 2:
-			_spawn_bullet(-24, -4, 0.225, Color.GRAY)
+			_spawn_bullet(-24, -4, 0.225, Color.GRAY, bullets[2])
 		if multi_level >= 3:
-			_spawn_bullet(24, 4, 0.225, Color.GRAY)
+			_spawn_bullet(24, 4, 0.225, Color.GRAY, bullets[3])
 	else:
-		_spawn_bullet(0)
+		_spawn_bullet(0, 0, 1, Color.WHITE, bullets[0])
 	
 	# Play sound.
 	SignalBus.emit_play_sfx(shot_sound)
@@ -49,9 +52,11 @@ func _try_shoot() -> void:
 	# Start reloading.
 	reload_component.reload()
 
-func _spawn_bullet(bullet_offset: float, angle_offset: float = 0.0, damage_scale: float = 1.0, bullet_modulate: Color = Color.WHITE) -> void:
-	var bullet := _bullet_pool.get_first_available_bullet()
-	
+func _spawn_bullet(bullet_offset: float, 
+	angle_offset: float,
+	damage_scale: float,
+	bullet_modulate: Color,
+	bullet: Bullet) -> void:
 	if !bullet:
 		push_warning("No available bullet found in player bullet pool! (pool size: %s)" % _bullet_pool.bullet_pool_size)
 		return

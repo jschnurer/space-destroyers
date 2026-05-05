@@ -46,12 +46,16 @@ func _init_bullet_pool() -> void:
 		# Disable and hide it.
 		bullet.toggle_bullet(false)
 
-## Finds the first available bullet that is in the pool and disabled so it can be used.
-func get_first_available_bullet() -> Bullet:
+## Gets the requested number of available bullets.
+func get_available_bullets(number: int) -> Array[Bullet]:
+	var bullets: Array[Bullet] = []
 	for bullet in _bullet_pool:
 		if bullet.process_mode == ProcessMode.PROCESS_MODE_DISABLED:
-			return bullet
-	return null
+			bullets.append(bullet)
+			
+			if bullets.size() == number:
+				break
+	return bullets
 
 ## Triggered when a player bullet exits the screen.
 func _on_bullet_screen_exited(bullet: Bullet) -> void:
