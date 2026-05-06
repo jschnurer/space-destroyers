@@ -30,6 +30,9 @@ var level_holder: Node2D
 ## The current game state data.
 var game_state: GameState
 
+## If enabled, the player cannot take damage.
+var god_mode := false
+
 ## Emitted when the player's number of credits is changed (spent or picked up).
 signal credits_changed(new_credits: float)
 ## Emitted when a player's stat changes (purchased).
@@ -38,6 +41,8 @@ signal stat_changed(changed_stat: Stat)
 signal upgrade_changed(changed_upgrade: Upgrade)
 ## Emitted when a player's current life changes (increased or damaged).
 signal current_life_changed(new_life: int)
+## Emitted if the god_mode changes.
+signal god_mode_changed(is_god_mode: bool)
 
 func _ready() -> void:
 	game_state = GameState.new()
@@ -121,7 +126,21 @@ func load_next_level(instantly := false) -> void:
 		
 		if !instantly:
 			teleport_anim.global_position = player_tank.global_position
-	
+	elif game_state.current_level_type == Enums.LevelTypes.SPACE:
+		# Move player to center
+		var player: Spaceship = get_tree().get_first_node_in_group(GroupNames.PLAYER)
+		if player:
+			player.global_position = Vector2(960, 700)
+			player.velocity = Vector2.ZERO
+			player.toggle_allow_exit_screen(false)
+			player.toggle_player_input(true)
+			player.reset_options()
+		
+		# Resume cruise speed.
+		var sf: Starfield = get_tree().get_first_node_in_group(GroupNames.STAR_FIELD)
+		if sf:
+			sf.animate_speed = 600.0
+		
 	SignalBus.emit_return_pooled_objects()
 	
 	if !instantly:
@@ -234,8 +253,9 @@ func set_upgrade(upgr: Enums.PlayerUpgrades, level: int) -> void:
 	upgrade_changed.emit(game_state.upgrades[upgr])
 
 func _on_game_over(_reason: Enums.GameOverReason) -> void:
-	for child in level_holder.get_children():
-		child.queue_free()
+	if level_holder:
+		for child in level_holder.get_children():
+			child.queue_free()
 
 ## Clears the game state, sends player to main menu.
 func restart_game() -> void:
@@ -256,8 +276,15 @@ func _on_clear_enemy_attacks() -> void:
 	for n in attack_nodes:
 		n.queue_free()
 
+## Gets the current level type's shop music.
 func get_shop_bgm() -> AudioStream:
 	return load(shop_bgms[game_state.current_level_type]) as AudioStream
 
+## Directly sets the game difficulty multiplier for enemy life/credits.
 func set_difficulty(difficulty_level: int) -> void:
 	game_state.current_difficulty = difficulty_level
+
+## Toggles god mode on/off for the player.
+func toggle_god_mode(enabled: bool) -> void:
+	god_mode = enabled
+	god_mode_changed.emit(enabled)

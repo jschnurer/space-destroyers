@@ -30,6 +30,10 @@ var _follower: PathFollow2D
 var _remote_transform: RemoteTransform2D
 
 func handle() -> Signal:
+	if !is_instance_valid(node_to_move):
+		emit_behavior_complete.call_deferred()
+		return behavior_complete
+	
 	if _path_tween:
 		_path_tween.kill()
 	

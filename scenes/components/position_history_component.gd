@@ -53,3 +53,7 @@ func get_position_at_history_index(index: int) -> Vector2:
 		else:
 			return watch_node.global_position
 	return _position_history[index]
+
+## Clears the position history log.
+func reset() -> void:
+	_position_history.clear()

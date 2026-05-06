@@ -6,20 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cvy8o2178opxm" path="res://scenes/space_shooter_levels/bits/asteroids/asteroid3.tscn" id="4_qjeyg"]
 [ext_resource type="PackedScene" uid="uid://c0butq736uma6" path="res://scenes/enemies/space/space_squid.tscn" id="5_3qnke"]
 [ext_resource type="Shader" uid="uid://dairmqngktiej" path="res://shaders/enemy_shader.tres" id="6_wtsjf"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3qnke"]
-resource_local_to_scene = true
-shader = ExtResource("6_wtsjf")
-shader_parameter/time = 0.0
-shader_parameter/is_lucky = false
-shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
-shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
-shader_parameter/rotation = 0.0
-shader_parameter/hframes = 2.0
-shader_parameter/vframes = 1.0
-shader_parameter/band_width = 0.30000001355148
-shader_parameter/sharpness = 0.02
-shader_parameter/flash_color = Color(0, 0, 0, 0)
+[ext_resource type="PackedScene" uid="uid://c02ruxw3627cn" path="res://scenes/pooling/object_pools.tscn" id="7_wtsjf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wtsjf"]
 resource_local_to_scene = true
@@ -63,15 +50,29 @@ shader_parameter/band_width = 0.30000001355148
 shader_parameter/sharpness = 0.02
 shader_parameter/flash_color = Color(0, 0, 0, 0)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s36qc"]
+resource_local_to_scene = true
+shader = ExtResource("6_wtsjf")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
 [node name="TestScene" type="Node2D" unique_id=1625908978]
+
+[node name="ObjectPools" parent="." unique_id=1991477579 instance=ExtResource("7_wtsjf")]
 
 [node name="Spaceship" parent="." unique_id=564671516 instance=ExtResource("1_j8ivh")]
 position = Vector2(1100, 816)
 
 [node name="Asteroid" parent="." unique_id=1727459073 instance=ExtResource("2_nd71p")]
 position = Vector2(1174, 165)
-
-[node name="bulletpool" type="Node2D" parent="." unique_id=423966189 groups=["PLAYER_BULLET_POOL"]]
 
 [node name="Asteroid2" parent="." unique_id=1665983298 instance=ExtResource("2_nd71p")]
 position = Vector2(920, 347)
@@ -99,17 +100,21 @@ rotation = -0.2617994
 scale = Vector2(2.2, 2.2)
 
 [node name="space_squid" parent="." unique_id=1108431160 instance=ExtResource("5_3qnke")]
-material = SubResource("ShaderMaterial_3qnke")
+material = SubResource("ShaderMaterial_wtsjf")
 position = Vector2(111, 140)
+frame = 1
 
 [node name="space_squid2" parent="." unique_id=273439087 instance=ExtResource("5_3qnke")]
-material = SubResource("ShaderMaterial_wtsjf")
+material = SubResource("ShaderMaterial_rnaij")
 position = Vector2(179, 140)
+frame = 1
 
 [node name="space_squid3" parent="." unique_id=36095047 instance=ExtResource("5_3qnke")]
-material = SubResource("ShaderMaterial_rnaij")
+material = SubResource("ShaderMaterial_h3xc6")
 position = Vector2(111, 209)
+frame = 1
 
 [node name="space_squid4" parent="." unique_id=1581435595 instance=ExtResource("5_3qnke")]
-material = SubResource("ShaderMaterial_h3xc6")
+material = SubResource("ShaderMaterial_s36qc")
 position = Vector2(179, 209)
+frame = 1

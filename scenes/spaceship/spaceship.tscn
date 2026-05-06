@@ -47,9 +47,12 @@ shader_parameter/shield_color = Color(0, 0.8724542, 1, 0.54800004)
 process_mode = 1
 collision_mask = 16
 script = ExtResource("1_6nyhl")
+move_speed_multiplier = null
+rotate_duration = null
 shot_sound = ExtResource("2_cours")
 bullet_scene = ExtResource("2_oedjh")
 shield_base_color = Color(0, 0.8724542, 1, 0.54800004)
+show_shield = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2032204974]
 shape = SubResource("CircleShape2D_rga66")
@@ -62,22 +65,21 @@ reload_component = NodePath("../PlayerReloadComponent")
 [node name="PlayerReloadComponent" parent="Components" unique_id=1805562506 instance=ExtResource("10_cjlj8")]
 
 [node name="PositionHistoryComponent" parent="Components" unique_id=857927283 node_paths=PackedStringArray("watch_node") instance=ExtResource("11_cjlj8")]
+unique_name_in_owner = true
 watch_node = NodePath("../..")
 deadzone = 2.0
 record_history_with_input = true
 
-[node name="OptionSpawnComponent" parent="Components" unique_id=3628961 node_paths=PackedStringArray("spawn_position", "position_history_comp") instance=ExtResource("12_vh5ma")]
+[node name="OptionSpawnComponent" parent="Components" unique_id=3628961 node_paths=PackedStringArray("spawn_position", "visibility_parent", "position_history_comp") instance=ExtResource("12_vh5ma")]
+unique_name_in_owner = true
 spawn_position = NodePath("../..")
+visibility_parent = NodePath("../..")
 option_scene = ExtResource("13_prjj7")
 position_history_comp = NodePath("../PositionHistoryComponent")
 option_position_spacing = 15
 
 [node name="PlayerPickupComponent" parent="Components" unique_id=2016039151 instance=ExtResource("14_ebil8")]
 visible = false
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Components" unique_id=1631827236]
-visible = false
-rect = Rect2(-34, -32, 68, 94)
 
 [node name="HurtboxComponent" parent="Components" unique_id=2122994445 node_paths=PackedStringArray("life_component", "sprite_2d") instance=ExtResource("16_2qnxw")]
 visible = false
@@ -130,7 +132,5 @@ texture = ExtResource("1_4vs15")
 [node name="BulletSpawnPoint" type="Node2D" parent="." unique_id=622951088]
 unique_name_in_owner = true
 position = Vector2(0, -36)
-
-[connection signal="screen_exited" from="Components/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 
 [editable path="Components/PlayerLifeComponent"]

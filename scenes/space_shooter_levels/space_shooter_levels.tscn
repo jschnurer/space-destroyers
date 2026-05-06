@@ -4,10 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://c1d0q60eo05na" path="res://scenes/rocket_docking_anim/rocket_docking_anim.tscn" id="2_bl0i2"]
 [ext_resource type="PackedScene" uid="uid://yvu0kduqhohj" path="res://scenes/level_holder.tscn" id="3_muc2s"]
 [ext_resource type="PackedScene" uid="uid://c02ruxw3627cn" path="res://scenes/pooling/object_pools.tscn" id="4_np5t5"]
+[ext_resource type="PackedScene" uid="uid://kw6ct5hy8kno" path="res://scenes/spaceship/spaceship.tscn" id="5_1ndqw"]
+[ext_resource type="PackedScene" uid="uid://c2ejscy1w7qsh" path="res://scenes/ui/gameplay_ui/gameplay_ui.tscn" id="5_um1i6"]
 
-[node name="SpaceShooterLevels" type="Node2D" unique_id=1940226276]
+[node name="SpaceShooterLevels" type="Node2D" unique_id=1940226276 groups=["LEVEL_BASE_NODE"]]
 
-[node name="Starfield" parent="." unique_id=2061530491 instance=ExtResource("1_0hnfl")]
+[node name="Starfield" parent="." unique_id=2061530491 groups=["STAR_FIELD"] instance=ExtResource("1_0hnfl")]
 star_count = 200
 star_size_min = 1
 star_size_max = 2
@@ -20,10 +22,14 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ObjectPools" parent="." unique_id=1991477579 instance=ExtResource("4_np5t5")]
 
+[node name="Spaceship" parent="." unique_id=564671516 instance=ExtResource("5_1ndqw")]
+
 [node name="RocketDockingAnim" parent="." unique_id=1753536332 node_paths=PackedStringArray("starfield") instance=ExtResource("2_bl0i2")]
 rocket_cutoff_distance = 325.0
 starfield = NodePath("../Starfield")
 
 [node name="LevelHolder" parent="." unique_id=614011244 instance=ExtResource("3_muc2s")]
+
+[node name="GameplayUI" parent="." unique_id=1460615082 instance=ExtResource("5_um1i6")]
 
 [editable path="Starfield"]

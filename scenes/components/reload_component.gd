@@ -63,4 +63,7 @@ func _on_reload_timer_timeout() -> void:
 
 func toggle(is_enabled: bool) -> void:
 	# Pause the delay timer.
-	reload_timer.paused = !is_enabled
+	if reload_timer:
+		reload_timer.paused = !is_enabled
+	else:
+		($ReloadTimer as Timer).paused = !is_enabled

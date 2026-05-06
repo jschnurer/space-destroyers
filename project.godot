@@ -68,6 +68,8 @@ CREDIT_PARENT=""
 PLAYER_BULLET_POOL=""
 ENEMY_BULLET_POOL=""
 CREDIT_POOL=""
+STAR_FIELD=""
+LEVEL_BASE_NODE="InvadersLevels, SpaceShooterLevels, etc."
 
 [input]
 

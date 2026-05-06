@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://765o5wldv1qi" path="res://art/squid.png" id="1_50qbg"]
 [ext_resource type="Material" uid="uid://d0vxn0ewbmjii" path="res://shaders/enemy_shader_material.tres" id="1_jdubq"]
 [ext_resource type="PackedScene" uid="uid://d1xwwb4h1awsi" path="res://scenes/components/life_component.tscn" id="2_jdubq"]
+[ext_resource type="Script" uid="uid://dbtrrcm6y3ioy" path="res://scenes/enemies/enemy.gd" id="3_0rcgo"]
 [ext_resource type="PackedScene" uid="uid://bdmudihj1sun8" path="res://scenes/components/dance_component.tscn" id="3_iouw7"]
 [ext_resource type="PackedScene" uid="uid://b8unj7w73q0w3" path="res://scenes/components/hurtbox_component.tscn" id="4_7bw4c"]
 [ext_resource type="PackedScene" uid="uid://cmoknedm8lvnp" path="res://scenes/components/lucky_component.tscn" id="5_1hqro"]
@@ -21,11 +22,17 @@ size = Vector2(32, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b1su0"]
 size = Vector2(32, 32)
 
-[node name="space_squid" type="Sprite2D" unique_id=1108431160]
+[node name="space_squid" type="Sprite2D" unique_id=1108431160 node_paths=PackedStringArray("enemy_sprite") groups=["ENEMY"]]
 modulate = Color(0.24526232, 1, 0.27395758, 1)
 material = ExtResource("1_jdubq")
 texture = ExtResource("1_50qbg")
 hframes = 2
+frame = 1
+script = ExtResource("3_0rcgo")
+type = 2
+enemy_sprite = NodePath(".")
+life = 33
+credit_value = 4.5
 
 [node name="Components" type="Node2D" parent="." unique_id=2088527891]
 
@@ -35,6 +42,7 @@ life = 11.0
 [node name="DanceComponent" parent="Components" unique_id=709328576 node_paths=PackedStringArray("sprite") instance=ExtResource("3_iouw7")]
 sprite = NodePath("../..")
 fps = 2.5
+current_frame = 1
 
 [node name="HurtboxComponent" parent="Components" unique_id=2122994445 node_paths=PackedStringArray("life_component", "sprite_2d") instance=ExtResource("4_7bw4c")]
 collision_layer = 2
@@ -88,3 +96,7 @@ inherit_from_sprite = NodePath("../..")
 
 [node name="ReloadComponent" parent="Components" unique_id=315688650 instance=ExtResource("13_1hqro")]
 reload_time = 0.75
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Components" unique_id=1050612436]
+rect = Rect2(-16, -16, 32, 32)
+enable_node_path = NodePath("../..")

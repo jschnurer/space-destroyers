@@ -8,8 +8,10 @@ class_name PlayerLifeComponent
 
 func _ready() -> void:
 	life_component.life = Game.get_stat(Enums.PlayerStats.LIFE).get_current_value_int()
+	_on_god_mode_changed(Game.god_mode)
 	Game.stat_changed.connect(_on_stat_changed)
 	Game.current_life_changed.connect(_on_game_manager_current_life_changed)
+	Game.god_mode_changed.connect(_on_god_mode_changed)
 
 func _on_stat_changed(stat: Stat) -> void:
 	match stat.player_stat:
@@ -27,3 +29,6 @@ func _on_life_component_life_zeroed(_hitbox: HitboxComponent) -> void:
 
 func _on_life_component_life_changed(new_life: float, _hitbox: HitboxComponent) -> void:
 	Game.set_current_life(ceili(new_life))
+
+func _on_god_mode_changed(is_god_mode: bool) -> void:
+	life_component.god_mode = is_god_mode

@@ -6,6 +6,8 @@ class_name PlayerOption
 
 @onready var bullet_spawn_point: Node2D = $BulletSpawnPoint
 
+var power_bonus := 0
+
 func _ready() -> void:
 	var player := get_tree().get_first_node_in_group(GroupNames.PLAYER)
 	
@@ -22,8 +24,12 @@ func _on_player_shot_fired() -> void:
 	projectile.set_collision(1 << 3, 1 << 1)
 
 	projectile.set_damage_speed_direction(\
-		Game.get_stat_value(Enums.PlayerStats.DAMAGE),
+		Game.get_stat_value(Enums.PlayerStats.DAMAGE) * (0.20 + power_bonus * 0.15),
 		Game.get_stat_value(Enums.PlayerStats.SHOT_SPEED),
 		Vector2.UP)
 	
 	Utilities.add_child_to_level(projectile, true)
+
+# Resets position
+func reset() -> void:
+	pass

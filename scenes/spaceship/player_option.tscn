@@ -2,16 +2,19 @@
 
 [ext_resource type="Script" uid="uid://btlxb6lfssdvg" path="res://scenes/spaceship/player_option.gd" id="1_pu8qh"]
 [ext_resource type="PackedScene" uid="uid://d1jln5dps07ua" path="res://scenes/bullet/bullet.tscn" id="2_biamv"]
-[ext_resource type="Texture2D" uid="uid://bem3ae7ur3ij0" path="res://icon.svg" id="2_m77eo"]
 [ext_resource type="PackedScene" uid="uid://dogvh288ee54f" path="res://scenes/components/position_history_follow_component.tscn" id="3_6wuql"]
+[ext_resource type="Texture2D" uid="uid://b8rul04y3jbi8" path="res://art/spaceship/space-option.png" id="3_biamv"]
+[ext_resource type="PackedScene" uid="uid://bdmudihj1sun8" path="res://scenes/components/dance_component.tscn" id="5_gmqm7"]
 
 [node name="PlayerOption" type="Node2D" unique_id=1520615064]
 script = ExtResource("1_pu8qh")
 projectile_scene = ExtResource("2_biamv")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=640469105]
-scale = Vector2(0.33, 0.33)
-texture = ExtResource("2_m77eo")
+modulate = Color(0.80946815, 0.7923846, 0.85376436, 1)
+texture = ExtResource("3_biamv")
+hframes = 4
+frame = 1
 
 [node name="BulletSpawnPoint" type="Node2D" parent="." unique_id=1089642674]
 position = Vector2(0, -30)
@@ -20,3 +23,9 @@ position = Vector2(0, -30)
 
 [node name="PositionHistoryFollowComponent" parent="Components" unique_id=1466536004 node_paths=PackedStringArray("following_node") instance=ExtResource("3_6wuql")]
 following_node = NodePath("../..")
+
+[node name="DanceComponent" parent="Components" unique_id=709328576 node_paths=PackedStringArray("sprite") instance=ExtResource("5_gmqm7")]
+sprite = NodePath("../../Sprite2D")
+frame_count = 4
+fps = 7.0
+current_frame = 1

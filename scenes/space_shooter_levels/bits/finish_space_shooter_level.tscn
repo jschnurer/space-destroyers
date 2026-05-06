@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://qfd0261sna81"]
+
+[ext_resource type="Script" uid="uid://fyp7jocddx8a" path="res://scenes/space_shooter_levels/bits/finish_space_shooter_level.gd" id="1_kebt4"]
+[ext_resource type="AudioStream" uid="uid://xl5bwvpl57tr" path="res://audio/sfx/beepfx_samples/19_jet_burst.wav" id="2_u2flp"]
+
+[node name="FinishSpaceShooterLevel" type="Node2D" unique_id=1630331667]
+process_mode = 3
+script = ExtResource("1_kebt4")
+jet_burst_stream = ExtResource("2_u2flp")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=368519215]
+rect = Rect2(-311, -142, 2600, 292)
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]

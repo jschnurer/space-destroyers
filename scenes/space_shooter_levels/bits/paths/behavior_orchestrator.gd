@@ -17,6 +17,10 @@ signal all_steps_complete
 
 func _ready() -> void:
 	_level_manager = get_tree().get_first_node_in_group(GroupNames.LEVEL_MANAGER_SPACE)
+	
+	if behaviors.size() == 0:
+		behaviors.assign(Utilities.get_children_of_type(self, OrchestratedBehavior))
+	
 	_begin_next_behavior()
 
 func _begin_next_behavior() -> void:

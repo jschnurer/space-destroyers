@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bwas8mb77dw71"]
+
+[ext_resource type="PackedScene" uid="uid://6cfdogwf26vm" path="res://scenes/space_shooter_levels/space_shooter_level_manager.tscn" id="1_qwj0s"]
+
+[node name="level_2" type="Node2D" unique_id=652540525 groups=["LEVEL_NODE"]]
+
+[node name="SpaceShooterLevelManager" parent="." unique_id=675234762 node_paths=PackedStringArray("scrolling_area_node") instance=ExtResource("1_qwj0s")]
+scrolling_area_node = NodePath("../ScrollingArea")
+
+[node name="ScrollingArea" type="Node2D" parent="." unique_id=296577802 groups=["CREDIT_PARENT"]]

@@ -8,7 +8,6 @@
 [ext_resource type="AudioStream" uid="uid://dlnlvqat06u32" path="res://audio/bgm/Juhani Junkala/Juhani Junkala [Retro Game Music Pack] Ending.ogg" id="4_1mq86"]
 [ext_resource type="AudioStream" uid="uid://bq8ia2tk43jbl" path="res://audio/bgm/Juhani Junkala/Juhani Junkala [Retro Game Music Pack] Level 1.ogg" id="5_3qsyk"]
 [ext_resource type="AudioStream" uid="uid://xl5bwvpl57tr" path="res://audio/sfx/beepfx_samples/19_jet_burst.wav" id="5_n11v0"]
-[ext_resource type="PackedScene" uid="uid://kw6ct5hy8kno" path="res://scenes/spaceship/spaceship.tscn" id="6_dhyg0"]
 
 [node name="RocketDockingAnim" type="Node2D" unique_id=1753536332]
 process_mode = 3
@@ -43,11 +42,6 @@ unique_name_in_owner = true
 visible = false
 scale = Vector2(-1, 1)
 polygon = PackedVector2Array(5, -23, 10, -35, 13, -33)
-
-[node name="Spaceship" parent="AnimPosition" unique_id=564671516 instance=ExtResource("6_dhyg0")]
-unique_name_in_owner = true
-visible = false
-motion_mode = 1
 
 [node name="RocketSoundPlayer" type="AudioStreamPlayer2D" parent="." unique_id=230152784]
 stream = ExtResource("5_n11v0")

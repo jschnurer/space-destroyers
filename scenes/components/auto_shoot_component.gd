@@ -95,7 +95,10 @@ func _spawn_projectile(position_offset: float) -> void:
 func toggle(is_enabled: bool) -> void:
 	_is_enabled = is_enabled
 	# Pause the delay timer.
-	delay_timer.paused = !is_enabled
+	if delay_timer:
+		delay_timer.paused = !is_enabled
+	else:
+		($DelayTimer as Timer).paused = !is_enabled
 	# Pause the reload component.
 	if reload_component:
 		reload_component.toggle(is_enabled)

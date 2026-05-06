@@ -7,6 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://b1sxbmhh6261m" path="res://scenes/input_prompt/input_prompt.tscn" id="4_smd1y"]
 [ext_resource type="Texture2D" uid="uid://dmy6dpfb4i8j8" path="res://art/input/kb/keyboard_arrows.png" id="5_ywcpa"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_smd1y"]
+size = Vector2(200, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ywcpa"]
+
 [node name="GameplayUI" type="CanvasLayer" unique_id=1460615082]
 script = ExtResource("1_ya03u")
 
@@ -23,16 +28,21 @@ theme_override_constants/margin_bottom = 12
 layout_mode = 2
 columns = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/GridContainer" unique_id=430582701]
+[node name="LeftSide" type="HBoxContainer" parent="MarginContainer/GridContainer" unique_id=430582701]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ShieldIcon" type="TextureRect" parent="MarginContainer/GridContainer/HBoxContainer" unique_id=930170985]
+[node name="LifeContainer" type="HBoxContainer" parent="MarginContainer/GridContainer/LeftSide" unique_id=2114164496]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="ShieldIcon" type="TextureRect" parent="MarginContainer/GridContainer/LeftSide/LifeContainer" unique_id=930170985]
 layout_mode = 2
 texture = ExtResource("1_yucqp")
 expand_mode = 2
 
-[node name="CurrentLife" type="Label" parent="MarginContainer/GridContainer/HBoxContainer" unique_id=1543433398]
+[node name="CurrentLife" type="Label" parent="MarginContainer/GridContainer/LeftSide/LifeContainer" unique_id=1543433398]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("3_smd1y")
@@ -79,24 +89,52 @@ theme_override_font_sizes/font_size = 38
 text = "SHOOT"
 vertical_alignment = 1
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/GridContainer" unique_id=511239699]
+[node name="RightSide" type="HBoxContainer" parent="MarginContainer/GridContainer" unique_id=511239699]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
 
-[node name="CreditIcon" type="TextureRect" parent="MarginContainer/GridContainer/HBoxContainer3" unique_id=493623270]
+[node name="CreditsContainer" type="HBoxContainer" parent="MarginContainer/GridContainer/RightSide" unique_id=158782565]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+alignment = 2
+
+[node name="CreditIcon" type="TextureRect" parent="MarginContainer/GridContainer/RightSide/CreditsContainer" unique_id=493623270]
 layout_mode = 2
 texture = ExtResource("4_opt6b")
 expand_mode = 2
 
-[node name="Control2" type="Control" parent="MarginContainer/GridContainer/HBoxContainer3" unique_id=1603278716]
+[node name="Control2" type="Control" parent="MarginContainer/GridContainer/RightSide/CreditsContainer" unique_id=1603278716]
 custom_minimum_size = Vector2(12, 0)
 layout_mode = 2
 
-[node name="CreditsDisplay" type="Label" parent="MarginContainer/GridContainer/HBoxContainer3" unique_id=514837014]
+[node name="CreditsDisplay" type="Label" parent="MarginContainer/GridContainer/RightSide/CreditsContainer" unique_id=514837014]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("3_smd1y")
 theme_override_font_sizes/font_size = 38
 text = "0"
 vertical_alignment = 1
+
+[node name="LifeArea" type="Area2D" parent="." unique_id=591075138]
+position = Vector2(53, 1046)
+collision_layer = 0
+
+[node name="LifeAreaShape" type="CollisionShape2D" parent="LifeArea" unique_id=1530344610]
+unique_name_in_owner = true
+position = Vector2(47, -16)
+shape = SubResource("RectangleShape2D_smd1y")
+
+[node name="CreditsArea" type="Area2D" parent="." unique_id=1215899370]
+position = Vector2(1920, 1046)
+collision_layer = 0
+
+[node name="CreditsAreaShape" type="CollisionShape2D" parent="CreditsArea" unique_id=1926749031]
+unique_name_in_owner = true
+shape = SubResource("RectangleShape2D_ywcpa")
+
+[connection signal="body_entered" from="LifeArea" to="." method="_on_life_area_body_entered"]
+[connection signal="body_exited" from="LifeArea" to="." method="_on_life_area_body_exited"]
+[connection signal="body_entered" from="CreditsArea" to="." method="_on_credits_area_body_entered"]
+[connection signal="body_exited" from="CreditsArea" to="." method="_on_credits_area_body_exited"]

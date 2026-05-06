@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c02ruxw3627cn" path="res://scenes/pooling/object_pools.tscn" id="10_rj4q6"]
 [ext_resource type="PackedScene" uid="uid://coa4jrtx5c26o" path="res://scenes/towers/anti_air_tower_battery.tscn" id="12_55ttk"]
 
-[node name="InvadersLevels" type="Node2D" unique_id=1327851371]
+[node name="InvadersLevels" type="Node2D" unique_id=1327851371 groups=["LEVEL_BASE_NODE"]]
 texture_filter = 1
 
 [node name="Starfield" parent="." unique_id=2061530491 instance=ExtResource("2_8v7q3")]

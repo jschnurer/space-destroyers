@@ -34,6 +34,8 @@ func _ready() -> void:
 	var life_comp: LifeComponent = get_component(LifeComponent)
 	if life_comp:
 		life_comp.life = life
+	
+	apply_level_bonus()
 
 func apply_level_bonus() -> void:
 	var difficulty_bonus := Game.game_state.current_difficulty

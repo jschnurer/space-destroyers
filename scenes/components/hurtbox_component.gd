@@ -30,9 +30,9 @@ func _on_area_entered(area: Area2D) -> void:
 		
 		if life_component:
 			# Attempt to reduce life.
-			var dmg_dealt := life_component.take_damage(hitbox.damage, hitbox)
-			if dmg_dealt > 0:
-				_on_took_damage(dmg_dealt, hitbox)
+			var dmg_taken := life_component.take_damage(hitbox.damage, hitbox)
+			if dmg_taken > 0 or life_component.always_flash_damage:
+				_on_took_damage(dmg_taken, hitbox)
 		else:
 			_on_took_damage(0, hitbox)
 		

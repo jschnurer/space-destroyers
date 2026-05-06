@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://cfpdx0xdykyq6"]
+
+[ext_resource type="PackedScene" uid="uid://cq045jfgn54ii" path="res://scenes/space_shooter_levels/bits/paths/behavior_orchestrator.tscn" id="1_vow73"]
+[ext_resource type="Script" uid="uid://dhqfsna2crfbs" path="res://scripts/behaviors/toggle_autoshoot_behavior.gd" id="2_muu38"]
+[ext_resource type="Script" uid="uid://brs7lenqdruyf" path="res://scripts/behaviors/follow_path_behavior.gd" id="3_s3eus"]
+[ext_resource type="Script" uid="uid://cjqv40xmldbto" path="res://scripts/behaviors/wait_behavior.gd" id="4_41ncl"]
+[ext_resource type="PackedScene" uid="uid://c0butq736uma6" path="res://scenes/enemies/space/space_squid.tscn" id="5_s3eus"]
+[ext_resource type="Shader" uid="uid://dairmqngktiej" path="res://shaders/enemy_shader.tres" id="6_41ncl"]
+
+[sub_resource type="Curve2D" id="Curve2D_ki7de"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 119)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_s3eus"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 119, 145.2, -5.5, -145.2, 5.5, -204, 296, 195.8, -45.100002, -195.8, 45.100002, -625, -52)
+}
+point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ki7de"]
+resource_local_to_scene = true
+shader = ExtResource("6_41ncl")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[node name="Squid_SlideDownShootLeave" type="Node2D" unique_id=262394427]
+
+[node name="BehaviorOrchestrator" parent="." unique_id=534433363 instance=ExtResource("1_vow73")]
+
+[node name="AutoShoot_Off" type="Node2D" parent="BehaviorOrchestrator" unique_id=1242853351 node_paths=PackedStringArray("nodes_with_autoshoot")]
+script = ExtResource("2_muu38")
+nodes_with_autoshoot = [NodePath("../../space_squid")]
+metadata/_custom_type_script = "uid://dhqfsna2crfbs"
+metadata/_edit_lock_ = true
+
+[node name="FollowPath_Arrive" type="Node2D" parent="BehaviorOrchestrator" unique_id=379094204 node_paths=PackedStringArray("path", "node_to_move")]
+script = ExtResource("3_s3eus")
+path = NodePath("Path2D")
+node_to_move = NodePath("../../space_squid")
+path_speed = 250.0
+path_use_transition = true
+path_transition = 1
+path_use_easing = true
+path_easing = 1
+metadata/_custom_type_script = "uid://brs7lenqdruyf"
+metadata/_edit_lock_ = true
+
+[node name="Path2D" type="Path2D" parent="BehaviorOrchestrator/FollowPath_Arrive" unique_id=2056343939]
+curve = SubResource("Curve2D_ki7de")
+
+[node name="AutoShoot_On" type="Node2D" parent="BehaviorOrchestrator" unique_id=751590090 node_paths=PackedStringArray("nodes_with_autoshoot")]
+script = ExtResource("2_muu38")
+autoshoot_enabled = true
+nodes_with_autoshoot = [NodePath("../../space_squid")]
+metadata/_custom_type_script = "uid://dhqfsna2crfbs"
+metadata/_edit_lock_ = true
+
+[node name="Wait" type="Node2D" parent="BehaviorOrchestrator" unique_id=636974706]
+script = ExtResource("4_41ncl")
+wait_time = 10.0
+metadata/_custom_type_script = "uid://cjqv40xmldbto"
+metadata/_edit_lock_ = true
+
+[node name="AutoShoot_Off_2" type="Node2D" parent="BehaviorOrchestrator" unique_id=541348812 node_paths=PackedStringArray("nodes_with_autoshoot")]
+script = ExtResource("2_muu38")
+nodes_with_autoshoot = [NodePath("../../space_squid")]
+metadata/_custom_type_script = "uid://dhqfsna2crfbs"
+metadata/_edit_lock_ = true
+
+[node name="FollowPath_Exit" type="Node2D" parent="BehaviorOrchestrator" unique_id=917865534 node_paths=PackedStringArray("path", "node_to_move")]
+script = ExtResource("3_s3eus")
+path = NodePath("Path2D")
+node_to_move = NodePath("../../space_squid")
+path_speed = 350.0
+path_use_transition = true
+path_transition = 4
+path_use_easing = true
+metadata/_custom_type_script = "uid://brs7lenqdruyf"
+metadata/_edit_lock_ = true
+
+[node name="Path2D" type="Path2D" parent="BehaviorOrchestrator/FollowPath_Exit" unique_id=1603345895]
+curve = SubResource("Curve2D_s3eus")
+
+[node name="space_squid" parent="." unique_id=1108431160 instance=ExtResource("5_s3eus")]
+material = SubResource("ShaderMaterial_ki7de")

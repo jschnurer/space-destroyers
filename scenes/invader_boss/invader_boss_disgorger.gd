@@ -54,7 +54,6 @@ func _spawn_enemy(enemy_scene: PackedScene) -> void:
 	# Apply level bonuses!
 	if enemy is Enemy:
 		var en := enemy as Enemy
-		en.apply_level_bonus()
 		
 		if enemy is Sprite2D:
 			var sprite_rect := (enemy as Sprite2D).get_rect()

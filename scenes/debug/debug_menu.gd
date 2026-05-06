@@ -11,7 +11,9 @@ const _help_text: String = \
 [color=yellow]collect[/color]: collects all visible credits
 [color=yellow]collision show/hide[/color]: toggles visible collision shapes
 [color=yellow]credits ####[/color]: pick up specified number of credits (multiplier affects)
+[color=yellow]debug #[/color]: setup debug scenario #
 [color=yellow]die[/color]: destroys the player, triggering a game over
+[color=yellow]god on/off[/color]: toggles god mode
 [color=yellow]goto type #[/color]: skips to indicated level type/# (type: i/s) (#: 1-8)
 [color=yellow]help[/color]: show this message
 [color=yellow]max[/color]: maxes all stats and upgrades
@@ -76,6 +78,8 @@ func _on_debug_input_text_submitted(new_text: String) -> void:
 		"pass": _pass_level(false)
 		"shop": _pass_level(true)
 		"die": _die()
+		"god": _god_mode(text_chunks)
+		"debug": _debug(text_chunks)
 		"timescale": _time_scale(text_chunks)
 		"credits": _add_credits(text_chunks)
 		"goto": _go_to_level(text_chunks)
@@ -136,11 +140,19 @@ func _add_credits(text_chunks: Array[String]) -> void:
 func _go_to_level(text_chunks: Array[String]) -> void:
 	var err_msg := "[color=red]Go to which level? (e.g. 'goto i 1', 'goto s 3')[/color]"
 	
+	var level_type_str := text_chunks[1].to_upper() if text_chunks.size() > 1 else ""
+	
+	if level_type_str == "TEST":
+		# Special case. Change scene.
+		SignalBus.emit_fade_out_bgm(0)
+		SignalBus.emit_toggle_mouse_visibility(false)
+		get_tree().change_scene_to_file("res://scenes/test_scene.tscn")
+		return
+	
 	if text_chunks.size() < 3:
 		_log(err_msg)
 		return
 	
-	var level_type_str := text_chunks[1].to_upper()
 	var level_type: Enums.LevelTypes = Enums.LevelTypes.NONE
 	
 	match level_type_str:
@@ -148,8 +160,7 @@ func _go_to_level(text_chunks: Array[String]) -> void:
 		"S": level_type = Enums.LevelTypes.SPACE
 	
 	if level_type == Enums.LevelTypes.NONE:
-		var keys := Enums.LevelTypes.keys()
-		_log("[color=red]Invalid level type. Valid types: %s[/color]" % str(keys))
+		_log("[color=red]Invalid level type. Valid types: I, S, TEST[/color]")
 		return
 	
 	var level_num_str := text_chunks[2]
@@ -159,6 +170,7 @@ func _go_to_level(text_chunks: Array[String]) -> void:
 	
 	var level_num := level_num_str.to_int()
 	Game.go_to_level(level_type, level_num)
+	SignalBus.emit_toggle_mouse_visibility(false)
 
 func _collect_credits() -> void:
 	var player := get_tree().get_first_node_in_group(GroupNames.PLAYER)
@@ -320,6 +332,7 @@ func _on_debug_input_gui_input(event: InputEvent) -> void:
 		var ev: InputEventKey = event
 		if ev.pressed and ev.keycode == KEY_UP:
 			_alter_history_ix(1)
+			debug_input.caret_column = debug_input.text.length()
 			# Don't bubble up.
 			get_viewport().set_input_as_handled()
 		elif ev.pressed and ev.keycode == KEY_DOWN:
@@ -410,3 +423,48 @@ func _set_difficulty(text_chunks: Array[String]) -> void:
 	Game.set_difficulty(diff)
 	
 	_log("Game difficulty level set to %s" % arg)
+
+func _debug(text_chunks: Array[String]) -> void:
+	if text_chunks.size() < 2:
+		_log("[color=red]Invalid arguments. (e.g. 'debug ###')[/color]")
+		return
+	
+	var arg := text_chunks[1].to_upper()
+	if !arg.is_valid_int():
+		_log("[color=red]Invalid arguments. (e.g. 'debug ###')[/color]")
+		return
+	
+	var scenario := arg.to_int()
+	if scenario < 0:
+		_log("[color=red]Scenario must be 0+.[/color]")
+		return
+	
+	match scenario:
+		1:
+			_on_debug_input_text_submitted("setallstats 10")
+			_on_debug_input_text_submitted("setupgrade full_auto 1")
+			_on_debug_input_text_submitted("setupgrade flak_cannon 2")
+			_on_debug_input_text_submitted("setupgrade multi_cannon 1")
+			_on_debug_input_text_submitted("setupgrade option 1")
+			_on_debug_input_text_submitted("setdifficulty 8")
+			_on_debug_input_text_submitted("god on")
+			_on_debug_input_text_submitted("goto s 1")
+
+func _god_mode(text_chunks: Array[String]) -> void:
+	if text_chunks.size() < 2:
+		_log("[color=red]Invalid arguments. (e.g. 'god on/off')[/color]")
+		return
+	
+	var arg := text_chunks[1].to_upper()
+	
+	match arg:
+		"ON":
+			Game.toggle_god_mode(true)
+			_log("[color=green]GOD MODE enabled.[/color]")
+			return
+		"OFF": 
+			Game.toggle_god_mode(false)
+			_log("[color=green]GOD MODE enabled.[/color]")
+			return
+	
+	_log("[color=red]Invalid arguments. (e.g. 'god on/off')[/color]")

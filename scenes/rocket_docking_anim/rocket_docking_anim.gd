@@ -28,7 +28,7 @@ class_name RocketDockingAnim
 @onready var rocket: Rocket = %Rocket
 @onready var anim_position: Node2D = %AnimPosition
 @onready var rocket_sound_player: AudioStreamPlayer2D = $RocketSoundPlayer
-@onready var spaceship: Spaceship = %Spaceship
+
 @onready var air_jet_right: Polygon2D = %AirJetRight
 @onready var air_jet_left: Polygon2D = %AirJetLeft
 
@@ -36,6 +36,7 @@ var _mode := Mode.FLYING_IN
 var _fire_off := false
 var _jets_activated := false
 var _dock_sound_played := false
+var _spaceship: Spaceship
 
 enum Mode {
 	FLYING_IN,
@@ -43,9 +44,12 @@ enum Mode {
 }
 
 func _ready() -> void:
+	_spaceship = get_tree().get_first_node_in_group(GroupNames.PLAYER)
+	
 	PauseManager.pause()
 	SignalBus.emit_fade_in_screen()
-	spaceship.toggle_smoke_emission(false)
+	_spaceship.visible = false
+	_spaceship.toggle_smoke_emission(false)
 	_animate_rocket_arriving()
 	# Wait a frame then start the new bgm to override the GameManager's bgm.
 	await get_tree().process_frame
@@ -84,8 +88,9 @@ func _animate_gleam() -> void:
 	_mode = Mode.GLEAM
 	empty_wings.visible = false
 	rocket.visible = false
-	spaceship.visible = true
-	spaceship.toggle_smoke_emission(true)
+	_spaceship.global_position = empty_wings.global_position
+	_spaceship.visible = true
+	_spaceship.toggle_smoke_emission(true)
 	
 	SignalBus.emit_flash_screen(Color.WHITE)
 	
@@ -101,6 +106,9 @@ func _animate_gleam() -> void:
 		tween\
 			.tween_property(starfield, "animate_speed", cruise_star_speed, 2.5)\
 			.set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+		tween.finished.connect(queue_free)
+	else:
+		queue_free()
 
 func _animate_jets() -> void:
 	_jets_activated = true

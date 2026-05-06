@@ -20,10 +20,6 @@ func _ready() -> void:
 	_enemy_count = enemies.size()
 	_max_enemies = _enemy_count
 	
-	# Add difficulty modifiers.
-	for en in enemies:
-		(en as Enemy).apply_level_bonus()
-	
 	SignalBus.enemy_hit_screen_edge.connect(_on_enemy_hit_screen_edge)
 	SignalBus.enemy_died.connect(_on_enemy_died)
 	

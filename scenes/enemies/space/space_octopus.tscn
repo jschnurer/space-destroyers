@@ -27,10 +27,12 @@ modulate = Color(1, 1, 0.24313726, 1)
 material = ExtResource("1_qh4jw")
 texture = ExtResource("2_n00bl")
 hframes = 2
+frame = 1
 script = ExtResource("3_uxf1w")
 type = 1
 enemy_sprite = NodePath(".")
-life = 35
+life = 28
+credit_value = 2.5
 
 [node name="Components" type="Node2D" parent="." unique_id=202961834]
 
@@ -38,6 +40,7 @@ life = 35
 
 [node name="DanceComponent" parent="Components" unique_id=709328576 node_paths=PackedStringArray("sprite") instance=ExtResource("5_jlfpt")]
 sprite = NodePath("../..")
+current_frame = 1
 
 [node name="HurtboxComponent" parent="Components" unique_id=2122994445 node_paths=PackedStringArray("life_component", "sprite_2d") instance=ExtResource("7_6ok4c")]
 collision_layer = 2
@@ -82,7 +85,6 @@ reload_time = 1.5
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Components" unique_id=592611382]
 rect = Rect2(-24, -16, 48, 32)
-enable_mode = 1
 enable_node_path = NodePath("../..")
 
 [node name="HitboxComponent" parent="Components" unique_id=428100613 instance=ExtResource("14_2sesk")]

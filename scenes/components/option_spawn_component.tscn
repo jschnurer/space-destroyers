@@ -4,3 +4,4 @@
 
 [node name="OptionSpawnComponent" type="Node" unique_id=3628961]
 script = ExtResource("1_o2rp2")
+option_position_spacing = null

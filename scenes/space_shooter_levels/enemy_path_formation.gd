@@ -52,12 +52,10 @@ func _physics_process(delta: float) -> void:
 		follower.progress += enemy_path_speed * delta
 		if follower.progress_ratio >= 1.0:
 			follower.queue_free()
-			if free_enemy_at_path_end:
-				var rt := follower.get_child(0) as RemoteTransform2D
-				if rt:
-					var enemy := get_node(rt.remote_path)
-					if enemy:
-						enemy.queue_free()
+			if free_enemy_at_path_end and is_instance_valid(follower):
+				var enemy: Node2D = follower.get_meta("enemy_node", null)
+				if enemy:
+					enemy.queue_free()
 
 func _draw() -> void:
 	if !editor_show_time_hint:
@@ -108,12 +106,16 @@ func _spawn_enemy() -> void:
 	follower.rotates = rotate_enemies
 	
 	var enemy: Node2D = enemy_scenes[_spawn_index].scene.instantiate()
+	enemy.tree_exited.connect(follower.queue_free)
 	Utilities.add_child_to_level(enemy)
+	
+	follower.set_meta("enemy_node", enemy)
 	
 	var transformer: RemoteTransform2D = Utilities.get_first_child_of_type(follower, RemoteTransform2D)
 	transformer.remote_path = enemy.get_path()
 	
 	_enemy_path.add_child(follower)
+	follower.progress_ratio = 0
 	
 	_spawn_index_count += 1
 	
