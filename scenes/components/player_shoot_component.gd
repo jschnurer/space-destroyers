@@ -33,15 +33,18 @@ func _try_shoot() -> void:
 	var multi_level := Game.get_upgrade_level  (Enums.PlayerUpgrades.MULTI_CANNON)
 	
 	var bullets := _bullet_pool.get_available_bullets(multi_level + 1)
+	var num_bullets := bullets.size()
 	
 	if multi_level > 0:
-		_spawn_bullet(-8.0, 0.0, 0.55, Color.SILVER, bullets[0])
-		_spawn_bullet(8.0, 0.0, 0.55, Color.SILVER, bullets[1])
-		if multi_level >= 2:
+		if num_bullets >= 1:
+			_spawn_bullet(-8.0, 0.0, 0.55, Color.SILVER, bullets[0])
+		if num_bullets >= 2:
+			_spawn_bullet(8.0, 0.0, 0.55, Color.SILVER, bullets[1])
+		if multi_level >= 2 and num_bullets >= 3:
 			_spawn_bullet(-24, -4, 0.225, Color.GRAY, bullets[2])
-		if multi_level >= 3:
+		if multi_level >= 3 and num_bullets >= 4:
 			_spawn_bullet(24, 4, 0.225, Color.GRAY, bullets[3])
-	else:
+	elif num_bullets >= 1:
 		_spawn_bullet(0, 0, 1, Color.WHITE, bullets[0])
 	
 	# Play sound.

@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" uid="uid://cei6ruw2gvitc" path="res://scenes/space_shooter_levels/space_shooter_level_manager.gd" id="1_l4n7s"]
 
-[node name="SpaceShooterLevelManager" type="Node" unique_id=675234762]
+[node name="SpaceShooterLevelManager" type="Node" unique_id=675234762 groups=["LEVEL_MANAGER_SPACE"]]
 script = ExtResource("1_l4n7s")

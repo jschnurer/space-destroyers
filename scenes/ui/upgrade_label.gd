@@ -4,7 +4,7 @@ extends CenterContainer
 @export var upgrade: Upgrade:
 	set(value):
 		upgrade = value
-		($HBoxContainer/Label as Label).text = value.display_text
+		(%Label as Label).text = value.display_text
 	get():
 		return upgrade
 		
@@ -22,7 +22,7 @@ extends CenterContainer
 	get():
 		return show_level_number
 
-@onready var value_label: Label = $HBoxContainer/ValueLabel
+@onready var value_label: Label = %ValueLabel
 
 func _ready() -> void:
 	if !Engine.is_editor_hint():
@@ -36,8 +36,8 @@ func _on_upgrade_changed(upgr: Upgrade) -> void:
 		value_label.text = ("+" if show_plus else "") + str(upgr.level)
 
 func _toggle_plus() -> void:
-	($HBoxContainer/ValueLabel as Label).text = ("+" if show_plus else "") + "0"
+	(%ValueLabel as Label).text = ("+" if show_plus else "") + "0"
 
 func _toggle_num_visibility() -> void:
-	($HBoxContainer/ValueLabel as Label).visible = show_level_number
-	($HBoxContainer/Label as Label).horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER if !show_level_number else HORIZONTAL_ALIGNMENT_LEFT
+	(%ValueLabel as Label).visible = show_level_number
+	(%Label as Label).horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER if !show_level_number else HORIZONTAL_ALIGNMENT_LEFT

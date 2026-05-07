@@ -1,6 +1,500 @@
 [gd_scene format=3 uid="uid://bwas8mb77dw71"]
 
 [ext_resource type="PackedScene" uid="uid://6cfdogwf26vm" path="res://scenes/space_shooter_levels/space_shooter_level_manager.tscn" id="1_qwj0s"]
+[ext_resource type="PackedScene" uid="uid://owvblgld0bxd" path="res://scenes/enemies/space/space_octopus.tscn" id="2_u0l5f"]
+[ext_resource type="Shader" uid="uid://dairmqngktiej" path="res://shaders/enemy_shader.tres" id="3_podpg"]
+[ext_resource type="PackedScene" uid="uid://bchselfjc6apf" path="res://scenes/enemies/space/prefab_behaviors/fly_down_side.tscn" id="4_podpg"]
+[ext_resource type="PackedScene" uid="uid://dhu2elw6nf7l5" path="res://scenes/enemies/space/space_crab.tscn" id="5_hyo7h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hyo7h"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sux8e"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nkc2d"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y12b7"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kdueo"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5f5xr"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ascbu"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5m7fx"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_46vdi"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l5fnl"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2iv6c"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bhlg7"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sut6q"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0r6re"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_67rvj"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8d04i"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_irghk"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_opf5t"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_26ru4"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_anj4j"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lbc7h"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i4rt0"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bfe7x"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i4rx8"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5h3bv"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1losp"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v7vdp"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_51k0h"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bmwmy"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ldcxo"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_py5oq"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ym5jw"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y4gsn"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lk026"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w2gyj"]
+resource_local_to_scene = true
+shader = ExtResource("3_podpg")
+shader_parameter/time = 0.0
+shader_parameter/is_lucky = false
+shader_parameter/base_color = Color(0.9254902, 0.69411767, 0, 1)
+shader_parameter/glint_color = Color(1, 1, 1, 0.67058825)
+shader_parameter/rotation = 0.0
+shader_parameter/hframes = 2.0
+shader_parameter/vframes = 1.0
+shader_parameter/band_width = 0.30000001355148
+shader_parameter/sharpness = 0.02
+shader_parameter/flash_color = Color(0, 0, 0, 0)
 
 [node name="level_2" type="Node2D" unique_id=652540525 groups=["LEVEL_NODE"]]
 
@@ -8,3 +502,215 @@
 scrolling_area_node = NodePath("../ScrollingArea")
 
 [node name="ScrollingArea" type="Node2D" parent="." unique_id=296577802 groups=["CREDIT_PARENT"]]
+
+[node name="SpaceOctopus9" parent="ScrollingArea" unique_id=559603659 instance=ExtResource("2_u0l5f")]
+material = SubResource("ShaderMaterial_hyo7h")
+position = Vector2(150, -2850)
+
+[node name="SpaceOctopus11" parent="ScrollingArea" unique_id=576155626 instance=ExtResource("2_u0l5f")]
+material = SubResource("ShaderMaterial_sux8e")
+position = Vector2(350, -2950)
+
+[node name="SpaceOctopus13" parent="ScrollingArea" unique_id=1601963226 instance=ExtResource("2_u0l5f")]
+material = SubResource("ShaderMaterial_nkc2d")
+position = Vector2(450, -3000)
+
+[node name="SpaceOctopus14" parent="ScrollingArea" unique_id=1491207603 instance=ExtResource("2_u0l5f")]
+material = SubResource("ShaderMaterial_y12b7")
+position = Vector2(550, -3050)
+
+[node name="SpaceOctopus15" parent="ScrollingArea" unique_id=1298654745 instance=ExtResource("2_u0l5f")]
+material = SubResource("ShaderMaterial_kdueo")
+position = Vector2(650, -3100)
+
+[node name="SpaceOctopus16" parent="ScrollingArea" unique_id=1602450262 instance=ExtResource("2_u0l5f")]
+material = SubResource("ShaderMaterial_5f5xr")
+position = Vector2(750, -3150)
+
+[node name="SpaceOctopus17" parent="ScrollingArea" unique_id=912119422 instance=ExtResource("2_u0l5f")]
+material = SubResource("ShaderMaterial_ascbu")
+position = Vector2(850, -3200)
+
+[node name="SpaceOctopus18" parent="ScrollingArea" unique_id=159147747 instance=ExtResource("2_u0l5f")]
+material = SubResource("ShaderMaterial_5m7fx")
+position = Vector2(950, -3250)
+
+[node name="SpaceOctopus19" parent="ScrollingArea" unique_id=129670364 instance=ExtResource("2_u0l5f")]
+material = SubResource("ShaderMaterial_46vdi")
+position = Vector2(1050, -3300)
+
+[node name="SpaceOctopus20" parent="ScrollingArea" unique_id=538984588 instance=ExtResource("2_u0l5f")]
+material = SubResource("ShaderMaterial_l5fnl")
+position = Vector2(1150, -3350)
+
+[node name="SpaceOctopus21" parent="ScrollingArea" unique_id=1686793271 instance=ExtResource("2_u0l5f")]
+material = SubResource("ShaderMaterial_2iv6c")
+position = Vector2(1100, -3000)
+
+[node name="SpaceOctopus22" parent="ScrollingArea" unique_id=59645855 instance=ExtResource("2_u0l5f")]
+material = SubResource("ShaderMaterial_bhlg7")
+position = Vector2(1200, -3050)
+
+[node name="SpaceOctopus23" parent="ScrollingArea" unique_id=1792877516 instance=ExtResource("2_u0l5f")]
+material = SubResource("ShaderMaterial_sut6q")
+position = Vector2(1300, -3100)
+
+[node name="SpaceOctopus24" parent="ScrollingArea" unique_id=1117474726 instance=ExtResource("2_u0l5f")]
+material = SubResource("ShaderMaterial_0r6re")
+position = Vector2(1400, -3150)
+
+[node name="SpaceOctopus25" parent="ScrollingArea" unique_id=1504654684 instance=ExtResource("2_u0l5f")]
+material = SubResource("ShaderMaterial_67rvj")
+position = Vector2(1500, -3200)
+
+[node name="SpaceOctopus26" parent="ScrollingArea" unique_id=529791069 instance=ExtResource("2_u0l5f")]
+material = SubResource("ShaderMaterial_8d04i")
+position = Vector2(1600, -3250)
+
+[node name="SpaceOctopus27" parent="ScrollingArea" unique_id=1575421422 instance=ExtResource("2_u0l5f")]
+material = SubResource("ShaderMaterial_irghk")
+position = Vector2(1700, -3300)
+
+[node name="SpaceOctopus28" parent="ScrollingArea" unique_id=215945900 instance=ExtResource("2_u0l5f")]
+material = SubResource("ShaderMaterial_opf5t")
+position = Vector2(1800, -3350)
+
+[node name="SpaceOctopus12" parent="ScrollingArea" unique_id=603435487 instance=ExtResource("2_u0l5f")]
+material = SubResource("ShaderMaterial_26ru4")
+position = Vector2(250, -2900)
+
+[node name="Fly_Down_Left" parent="ScrollingArea" unique_id=1404715910 instance=ExtResource("4_podpg")]
+position = Vector2(960, -300)
+
+[node name="SpaceCrab" parent="ScrollingArea/Fly_Down_Left" unique_id=1822881906 instance=ExtResource("5_hyo7h")]
+material = SubResource("ShaderMaterial_anj4j")
+position = Vector2(0, -50)
+metadata/_edit_lock_ = true
+
+[node name="Fly_Down_Left2" parent="ScrollingArea" unique_id=1900483300 instance=ExtResource("4_podpg")]
+position = Vector2(960, -400)
+
+[node name="SpaceCrab" parent="ScrollingArea/Fly_Down_Left2" unique_id=145803804 instance=ExtResource("5_hyo7h")]
+material = SubResource("ShaderMaterial_lbc7h")
+position = Vector2(0, -50)
+metadata/_edit_lock_ = true
+
+[node name="Fly_Down_Left3" parent="ScrollingArea" unique_id=1216692982 instance=ExtResource("4_podpg")]
+position = Vector2(960, -500)
+
+[node name="SpaceCrab" parent="ScrollingArea/Fly_Down_Left3" unique_id=640599269 instance=ExtResource("5_hyo7h")]
+material = SubResource("ShaderMaterial_i4rt0")
+position = Vector2(0, -50)
+metadata/_edit_lock_ = true
+
+[node name="Fly_Down_Left4" parent="ScrollingArea" unique_id=1387765350 instance=ExtResource("4_podpg")]
+position = Vector2(960, -600)
+
+[node name="SpaceCrab" parent="ScrollingArea/Fly_Down_Left4" unique_id=847491299 instance=ExtResource("5_hyo7h")]
+material = SubResource("ShaderMaterial_bfe7x")
+position = Vector2(0, -50)
+metadata/_edit_lock_ = true
+
+[node name="Fly_Down_Left5" parent="ScrollingArea" unique_id=1427614750 instance=ExtResource("4_podpg")]
+position = Vector2(960, -700)
+
+[node name="SpaceCrab" parent="ScrollingArea/Fly_Down_Left5" unique_id=1349952659 instance=ExtResource("5_hyo7h")]
+material = SubResource("ShaderMaterial_i4rx8")
+position = Vector2(0, -50)
+metadata/_edit_lock_ = true
+
+[node name="Fly_Down_Left6" parent="ScrollingArea" unique_id=952764202 instance=ExtResource("4_podpg")]
+position = Vector2(960, -800)
+
+[node name="SpaceCrab" parent="ScrollingArea/Fly_Down_Left6" unique_id=220209737 instance=ExtResource("5_hyo7h")]
+material = SubResource("ShaderMaterial_5h3bv")
+position = Vector2(0, -50)
+metadata/_edit_lock_ = true
+
+[node name="Fly_Down_Left7" parent="ScrollingArea" unique_id=611264374 instance=ExtResource("4_podpg")]
+position = Vector2(960, -900)
+
+[node name="SpaceCrab" parent="ScrollingArea/Fly_Down_Left7" unique_id=1832746153 instance=ExtResource("5_hyo7h")]
+material = SubResource("ShaderMaterial_1losp")
+position = Vector2(0, -50)
+metadata/_edit_lock_ = true
+
+[node name="Fly_Down_Left8" parent="ScrollingArea" unique_id=708497684 instance=ExtResource("4_podpg")]
+position = Vector2(960, -1000)
+
+[node name="SpaceCrab" parent="ScrollingArea/Fly_Down_Left8" unique_id=265095830 instance=ExtResource("5_hyo7h")]
+material = SubResource("ShaderMaterial_v7vdp")
+position = Vector2(0, -50)
+metadata/_edit_lock_ = true
+
+[node name="Fly_Down_Right" parent="ScrollingArea" unique_id=1569791396 instance=ExtResource("4_podpg")]
+position = Vector2(960, -350)
+side = 1
+
+[node name="SpaceCrab" parent="ScrollingArea/Fly_Down_Right" unique_id=720052823 instance=ExtResource("5_hyo7h")]
+material = SubResource("ShaderMaterial_51k0h")
+position = Vector2(0, -50)
+metadata/_edit_lock_ = true
+
+[node name="Fly_Down_Right2" parent="ScrollingArea" unique_id=821940156 instance=ExtResource("4_podpg")]
+position = Vector2(960, -450)
+side = 1
+
+[node name="SpaceCrab" parent="ScrollingArea/Fly_Down_Right2" unique_id=1242248488 instance=ExtResource("5_hyo7h")]
+material = SubResource("ShaderMaterial_bmwmy")
+position = Vector2(0, -50)
+metadata/_edit_lock_ = true
+
+[node name="Fly_Down_Right3" parent="ScrollingArea" unique_id=775143730 instance=ExtResource("4_podpg")]
+position = Vector2(960, -550)
+side = 1
+
+[node name="SpaceCrab" parent="ScrollingArea/Fly_Down_Right3" unique_id=1563099807 instance=ExtResource("5_hyo7h")]
+material = SubResource("ShaderMaterial_ldcxo")
+position = Vector2(0, -50)
+metadata/_edit_lock_ = true
+
+[node name="Fly_Down_Right4" parent="ScrollingArea" unique_id=2071290106 instance=ExtResource("4_podpg")]
+position = Vector2(960, -650)
+side = 1
+
+[node name="SpaceCrab" parent="ScrollingArea/Fly_Down_Right4" unique_id=669886305 instance=ExtResource("5_hyo7h")]
+material = SubResource("ShaderMaterial_py5oq")
+position = Vector2(0, -50)
+metadata/_edit_lock_ = true
+
+[node name="Fly_Down_Right5" parent="ScrollingArea" unique_id=316791473 instance=ExtResource("4_podpg")]
+position = Vector2(960, -750)
+side = 1
+
+[node name="SpaceCrab" parent="ScrollingArea/Fly_Down_Right5" unique_id=968235799 instance=ExtResource("5_hyo7h")]
+material = SubResource("ShaderMaterial_ym5jw")
+position = Vector2(0, -50)
+metadata/_edit_lock_ = true
+
+[node name="Fly_Down_Right6" parent="ScrollingArea" unique_id=94747363 instance=ExtResource("4_podpg")]
+position = Vector2(960, -850)
+side = 1
+
+[node name="SpaceCrab" parent="ScrollingArea/Fly_Down_Right6" unique_id=598784527 instance=ExtResource("5_hyo7h")]
+material = SubResource("ShaderMaterial_y4gsn")
+position = Vector2(0, -50)
+metadata/_edit_lock_ = true
+
+[node name="Fly_Down_Right7" parent="ScrollingArea" unique_id=777181500 instance=ExtResource("4_podpg")]
+position = Vector2(960, -950)
+side = 1
+
+[node name="SpaceCrab" parent="ScrollingArea/Fly_Down_Right7" unique_id=674967249 instance=ExtResource("5_hyo7h")]
+material = SubResource("ShaderMaterial_lk026")
+position = Vector2(0, -50)
+metadata/_edit_lock_ = true
+
+[node name="Fly_Down_Right8" parent="ScrollingArea" unique_id=845877710 instance=ExtResource("4_podpg")]
+position = Vector2(960, -1050)
+side = 1
+
+[node name="SpaceCrab" parent="ScrollingArea/Fly_Down_Right8" unique_id=1310940687 instance=ExtResource("5_hyo7h")]
+material = SubResource("ShaderMaterial_w2gyj")
+position = Vector2(0, -50)
+metadata/_edit_lock_ = true

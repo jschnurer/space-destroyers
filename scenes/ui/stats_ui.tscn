@@ -232,7 +232,7 @@ layout_mode = 2
 upgrade = ExtResource("8_gs80r")
 show_level_number = true
 
-[node name="Anti-Air Towers" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Upgrades" unique_id=1914625113 instance=ExtResource("6_lt1i3")]
+[node name="Option" parent="HBoxContainer/PanelContainer2/Right/VBoxContainer/Upgrades" unique_id=1914625113 instance=ExtResource("6_lt1i3")]
 layout_mode = 2
 upgrade = ExtResource("9_acfpo")
 show_level_number = true

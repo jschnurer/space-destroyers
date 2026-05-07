@@ -10,6 +10,7 @@
 [node name="PlayerBulletPool" type="Node2D" parent="." unique_id=561465038 groups=["PLAYER_BULLET_POOL"]]
 script = ExtResource("1_tetuf")
 bullet_scene = ExtResource("2_n63v4")
+bullet_pool_size = 150
 
 [node name="EnemyBulletPool" type="Node2D" parent="." unique_id=916320986 groups=["ENEMY_BULLET_POOL"]]
 

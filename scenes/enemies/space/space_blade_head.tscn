@@ -25,6 +25,7 @@ modulate = Color(5.0055983e-06, 0.8592934, 0.47698796, 1)
 material = ExtResource("1_nmjc7")
 texture = ExtResource("1_24jh4")
 hframes = 2
+frame = 1
 script = ExtResource("3_watfn")
 type = 4
 enemy_sprite = NodePath(".")
@@ -38,6 +39,7 @@ life = 1.0
 
 [node name="DanceComponent" parent="Components" unique_id=709328576 node_paths=PackedStringArray("sprite") instance=ExtResource("2_24jh4")]
 sprite = NodePath("../..")
+current_frame = 1
 
 [node name="HurtboxComponent" parent="Components" unique_id=2122994445 node_paths=PackedStringArray("life_component", "sprite_2d") instance=ExtResource("3_nmjc7")]
 collision_layer = 2

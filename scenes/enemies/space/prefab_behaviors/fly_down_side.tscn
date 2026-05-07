@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://bchselfjc6apf"]
+
+[ext_resource type="Script" uid="uid://ck6xf088p7kmf" path="res://scenes/enemies/space/prefab_behaviors/fly_down_side.gd" id="1_0x6aj"]
+[ext_resource type="PackedScene" uid="uid://cq045jfgn54ii" path="res://scenes/space_shooter_levels/bits/paths/behavior_orchestrator.tscn" id="1_ojjx5"]
+[ext_resource type="Script" uid="uid://brs7lenqdruyf" path="res://scripts/behaviors/follow_path_behavior.gd" id="2_0x6aj"]
+
+[sub_resource type="Curve2D" id="Curve2D_u15a5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -44, 85.034935, -428.7178, -85.034935, 428.7178, -78, 580, 120.466156, 3.5431223, -120.466156, -3.5431223, -1268, 1253)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_ojjx5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -44, -85.034935, -434.0325, 85.034935, 434.0325, 78, 580, 120.466156, 3.5431223, -120.466156, -3.5431223, 1268, 1253)
+}
+point_count = 3
+
+[node name="Fly_Down_Side" type="Node2D" unique_id=1404715910]
+script = ExtResource("1_0x6aj")
+
+[node name="BehaviorOrchestrator" parent="." unique_id=534433363 instance=ExtResource("1_ojjx5")]
+
+[node name="FollowPathDownLeft" type="Node2D" parent="BehaviorOrchestrator" unique_id=622345246 node_paths=PackedStringArray("path")]
+script = ExtResource("2_0x6aj")
+path = NodePath("DownLeftPath")
+path_speed = 250.0
+path_use_transition = true
+path_transition = 1
+path_use_easing = true
+path_easing = 1
+metadata/_custom_type_script = "uid://brs7lenqdruyf"
+metadata/_edit_lock_ = true
+
+[node name="DownLeftPath" type="Path2D" parent="BehaviorOrchestrator/FollowPathDownLeft" unique_id=1384931302]
+curve = SubResource("Curve2D_u15a5")
+
+[node name="FollowPathDownRight" type="Node2D" parent="BehaviorOrchestrator" unique_id=1836213639 node_paths=PackedStringArray("path")]
+visible = false
+script = ExtResource("2_0x6aj")
+path = NodePath("DownRightPath")
+path_speed = 250.0
+path_use_transition = true
+path_transition = 1
+path_use_easing = true
+path_easing = 1
+metadata/_custom_type_script = "uid://brs7lenqdruyf"
+metadata/_edit_lock_ = true
+
+[node name="DownRightPath" type="Path2D" parent="BehaviorOrchestrator/FollowPathDownRight" unique_id=1977550540]
+curve = SubResource("Curve2D_ojjx5")

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cb2h7748of352"]
+
+[ext_resource type="Script" uid="uid://266u4xolypei" path="res://scenes/space_shooter_levels/bits/space_shooter_grid.gd" id="1_ptxcj"]
+
+[node name="SpaceShooterGrid" type="Node2D" unique_id=485580584]
+script = ExtResource("1_ptxcj")
+line_color = Color(0, 1, 1, 0.45200002)

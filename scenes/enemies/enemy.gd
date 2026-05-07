@@ -48,4 +48,4 @@ func apply_level_bonus() -> void:
 		credit_value = roundi((credit_value + scale.x) * pow(scale.x, 1.22))
 	
 	# Derive shield value from life.
-	shield_life = floori(life * 12)
+	shield_life = floori(life * 24)
