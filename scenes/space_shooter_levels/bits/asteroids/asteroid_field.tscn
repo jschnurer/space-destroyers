@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://6qy8pb2ytstx"]
+
+[ext_resource type="Script" uid="uid://c2evvrwxbk0qe" path="res://scenes/space_shooter_levels/bits/asteroids/asteroid_field.gd" id="1_5bgkp"]
+[ext_resource type="PackedScene" uid="uid://c0y57xromu46c" path="res://scenes/space_shooter_levels/bits/asteroids/asteroid1.tscn" id="2_ytv48"]
+[ext_resource type="PackedScene" uid="uid://bbo560qlstfg8" path="res://scenes/space_shooter_levels/bits/asteroids/asteroid2.tscn" id="3_mimpl"]
+[ext_resource type="PackedScene" uid="uid://cvy8o2178opxm" path="res://scenes/space_shooter_levels/bits/asteroids/asteroid3.tscn" id="4_cjnhh"]
+
+[sub_resource type="Gradient" id="Gradient_ytv48"]
+colors = PackedColorArray(1, 1, 1, 1, 0.15487596, 0.154876, 0.15487596, 1)
+
+[node name="AsteroidField" type="Node2D" unique_id=15772045]
+script = ExtResource("1_5bgkp")
+asteroid_scenes = Array[PackedScene]([ExtResource("2_ytv48"), ExtResource("3_mimpl"), ExtResource("4_cjnhh")])
+max_asteroid_count = 10
+scale_modulate_gradient = SubResource("Gradient_ytv48")

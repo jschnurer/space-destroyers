@@ -102,19 +102,15 @@ scale = Vector2(2.2, 2.2)
 [node name="space_squid" parent="." unique_id=1108431160 instance=ExtResource("5_3qnke")]
 material = SubResource("ShaderMaterial_wtsjf")
 position = Vector2(111, 140)
-frame = 1
 
 [node name="space_squid2" parent="." unique_id=273439087 instance=ExtResource("5_3qnke")]
 material = SubResource("ShaderMaterial_rnaij")
 position = Vector2(179, 140)
-frame = 1
 
 [node name="space_squid3" parent="." unique_id=36095047 instance=ExtResource("5_3qnke")]
 material = SubResource("ShaderMaterial_h3xc6")
 position = Vector2(111, 209)
-frame = 1
 
 [node name="space_squid4" parent="." unique_id=1581435595 instance=ExtResource("5_3qnke")]
 material = SubResource("ShaderMaterial_s36qc")
 position = Vector2(179, 209)
-frame = 1

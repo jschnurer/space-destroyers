@@ -20,25 +20,37 @@ scale = Vector2(4, 4)
 collision_layer = 16
 damage = 1.0
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="HitboxComponent" unique_id=779979346]
+[node name="HitboxShape" type="CollisionPolygon2D" parent="HitboxComponent" unique_id=779979346]
+unique_name_in_owner = true
 polygon = PackedVector2Array(-3, -8, -3, -7, -5, -7, -5, -6, -6, -6, -6, -4, -8, -4, -8, 4, -7, 4, -7, 5, -6, 5, -6, 6, -7, 6, -7, 8, -1, 8, -1, 7, 4, 7, 4, 6, 5, 6, 5, 5, 7, 5, 7, 4, 8, 4, 8, -1, 7, -1, 7, -2, 6, -2, 6, -3, 7, -3, 7, -5, 8, -5, 8, -7, 7, -7, 7, -8, 0, -8, 0, -7, -1, -7, -1, -8)
+disabled = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1349650410]
+visible = false
 scale = Vector2(0.95, 0.95)
 collision_layer = 16
 collision_mask = 9
 
-[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1684923688]
+[node name="BodyShape" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1684923688]
+unique_name_in_owner = true
 scale = Vector2(4, 4)
 polygon = PackedVector2Array(-3, -8, -3, -7, -5, -7, -5, -6, -6, -6, -6, -4, -8, -4, -8, 4, -7, 4, -7, 5, -6, 5, -6, 6, -7, 6, -7, 8, -1, 8, -1, 7, 4, 7, 4, 6, 5, 6, 5, 5, 7, 5, 7, 4, 8, 4, 8, -1, 7, -1, 7, -2, 6, -2, 6, -3, 7, -3, 7, -5, 8, -5, 8, -7, 7, -7, 7, -8, 0, -8, 0, -7, -1, -7, -1, -8)
+disabled = true
 
 [node name="HurtboxComponent" parent="." unique_id=2122994445 instance=ExtResource("4_nqq4k")]
+visible = false
 collision_layer = 16
 collision_mask = 72
 play_hit_sound = true
 hit_sound = ExtResource("5_hyy8w")
 play_on_death = true
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HurtboxComponent" unique_id=690805096]
+[node name="HurtboxShape" type="CollisionPolygon2D" parent="HurtboxComponent" unique_id=690805096]
+unique_name_in_owner = true
 scale = Vector2(4, 4)
 polygon = PackedVector2Array(-3, -8, -3, -7, -5, -7, -5, -6, -6, -6, -6, -4, -8, -4, -8, 4, -7, 4, -7, 5, -6, 5, -6, 6, -7, 6, -7, 8, -1, 8, -1, 7, 4, 7, 4, 6, 5, 6, 5, 5, 7, 5, 7, 4, 8, 4, 8, -1, 7, -1, 7, -2, 6, -2, 6, -3, 7, -3, 7, -5, 8, -5, 8, -7, 7, -7, 7, -8, 0, -8, 0, -7, -1, -7, -1, -8)
+disabled = true
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=1252753439]
+process_mode = 3
+rect = Rect2(-32, -32, 64, 64)

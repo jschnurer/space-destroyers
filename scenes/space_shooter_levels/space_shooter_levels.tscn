@@ -10,6 +10,7 @@
 [node name="SpaceShooterLevels" type="Node2D" unique_id=1940226276 groups=["LEVEL_BASE_NODE"]]
 
 [node name="Starfield" parent="." unique_id=2061530491 groups=["STAR_FIELD"] instance=ExtResource("1_0hnfl")]
+z_index = -4096
 star_count = 200
 star_size_min = 1
 star_size_max = 2

@@ -130,7 +130,7 @@ text = "QUIT"
 [node name="Copyright" type="Label" parent="MainMenuUI/VBoxContainer" unique_id=334510376]
 layout_mode = 2
 theme = ExtResource("4_3ovsr")
-text = "(c) Zero XP Games"
+text = "© 2026 Puzzle Dust"
 horizontal_alignment = 2
 
 [node name="SettingsUI" parent="." unique_id=2081907031 instance=ExtResource("7_5mqxt")]

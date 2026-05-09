@@ -56,3 +56,9 @@ func _input(event: InputEvent) -> void:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 		else:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+func get_random_pos_in_playable_area() -> Vector2:
+	return Vector2(
+		randf_range(PLAYABLE_AREA_RECT.position.x, PLAYABLE_AREA_RECT.size.x),
+		randf_range(PLAYABLE_AREA_RECT.position.y, PLAYABLE_AREA_RECT.size.y)
+	)
